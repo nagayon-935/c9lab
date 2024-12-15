@@ -1,0 +1,173 @@
+username: admin
+timeout: 10s
+
+# 共通サブスクリプション設定
+common_arista_subscriptions: &common_arista_subs
+  skip-verify: true
+  insecure: true
+  password: admin
+  subscriptions:
+    - eos_bgp_neighbors
+    - eos_cpu
+    - eos_cpu_load_avg
+    - eos_mem
+    - eos_int_counters
+    - eos_int_admin_state
+    - eos_int_oper_state
+    - eos_int_config
+    - eos_show_version
+    - eos_boot_time
+    - eos_hardware
+
+# ターゲットデバイス設定
+targets:
+  sw01:6030: *common_arista_subs
+
+# サブスクリプションの詳細
+subscriptions:
+  eos_bgp_neighbors:
+    paths:
+      - /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  eos_cpu:
+    paths:
+      - components/component/cpu
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  eos_cpu_load_avg:
+    paths:
+      - eos_native:/Kernel/sysinfo
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  eos_mem:
+    paths:
+      - components/component/state/memory/
+      - system/memory/kernel/state
+      - system/memory/state
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  eos_int_counters:
+    paths:
+      - /interfaces/interface[name=*]/state/counters
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  eos_int_admin_state:
+    paths:
+      - /interfaces/interface[name=*]/state/admin-status
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  eos_int_oper_state:
+    paths:
+      - /interfaces/interface[name=*]/state/oper-status
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  eos_int_config:
+    paths:
+      - interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  eos_show_version:
+    paths:
+      - eos_native:/Eos/image
+    mode: stream
+    stream-mode: sample
+    sample-interval: 60s
+
+  eos_boot_time:
+    paths:
+      - system/state/boot-time
+    mode: stream
+    stream-mode: sample
+    sample-interval: 60s
+
+  eos_hardware:
+    paths:
+      - components/component/state
+      - eos_native:/Sysdb/hardware/entmib
+    mode: stream
+    stream-mode: sample
+    sample-interval: 60s
+
+# 出力設定
+outputs:
+  prom:
+    type: prometheus
+    listen: :9273
+    strings-as-labels: true
+    export-timestamps: true
+    debug: false
+    event-processors:
+      - eos-version
+      - trim-prefixes
+      - oper-state-to-int
+      - rename-eos-interface
+      - rename-source
+
+# プロセッサ設定
+processors:
+  eos-version:
+    event-strings:
+      value-names:
+        - ".*version$"
+        - ".*arch$"
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "EOS"
+            new: "eos"
+  trim-prefixes:
+    event-strings:
+      value-names:
+        - "^/state/.*"
+      transforms:
+        - trim-prefix:
+            apply-on: "name"
+            prefix: "/state/"
+  oper-state-to-int:
+    event-strings:
+      value-names:
+        - ".*"
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "UP"
+            new: "1"
+        - replace:
+            apply-on: "value"
+            old: "DOWN"
+            new: "0"
+  rename-eos-interface:
+    event-strings:
+      tag-names:
+        - "^interface_name"
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "Ethernet(\\d+)"
+            new: "eth$1"
+  rename-source:
+    event-strings:
+      tag-names:
+        - "^source"
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "(\\d+):(\\d+)"
+            new: "$1"

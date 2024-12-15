@@ -1,0 +1,100 @@
+---
+anchors:
+  thresholds-operstate: &thresholds-operstate
+  - color: red
+    level: 0
+  - color: green
+    level: 1
+  thresholds-traffic: &thresholds-traffic
+  - color: gray
+    level: 0
+  - color: green
+    level: 199999
+  - color: yellow
+    level: 500000
+  - color: orange
+    level: 1000000
+  - color: red
+    level: 5000000
+  label-config: &label-config
+    separator: replace
+    units: bps
+    decimalPoints: 1
+    valueMappings:
+    - valueMax: 199999
+      text: ​
+    - valueMin: 200000
+cellIdPreamble: cell-
+cells:
+  PC01:eth1:RT01:eth1:
+    dataRef: oper-state:PC01:eth1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:PC01:eth1:RT01:eth1:
+    dataRef: PC01:eth1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  PC02:eth1:RT03:e1-2:
+    dataRef: oper-state:PC02:eth1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:PC02:eth1:RT03:e1-2:
+    dataRef: PC02:eth1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  RT01:eth1:PC01:eth1:
+    dataRef: oper-state:RT01:eth1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:RT01:eth1:PC01:eth1:
+    dataRef: RT01:eth1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  RT01:eth2:RT02:eth1:
+    dataRef: oper-state:RT01:eth2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:RT01:eth2:RT02:eth1:
+    dataRef: RT01:eth2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  RT02:eth1:RT01:eth2:
+    dataRef: oper-state:RT02:eth1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:RT02:eth1:RT01:eth2:
+    dataRef: RT02:eth1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  RT02:eth2:RT03:e1-1:
+    dataRef: oper-state:RT02:eth2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:RT02:eth2:RT03:e1-1:
+    dataRef: RT02:eth2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  RT03:e1-1:RT02:eth2:
+    dataRef: oper-state:RT03:e1-1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:RT03:e1-1:RT02:eth2:
+    dataRef: RT03:e1-1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  RT03:e1-2:PC02:eth1:
+    dataRef: oper-state:RT03:e1-2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:RT03:e1-2:PC02:eth1:
+    dataRef: RT03:e1-2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
