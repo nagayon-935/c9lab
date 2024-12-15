@@ -35,7 +35,7 @@ common_srl_subscriptions: &common_srl_subs
 # ターゲットデバイス設定
 targets:
   rt01:57400: *common_srl_subs
-  rt02:6030: *common_arista_subs
+  rt02:57400: *common_arista_subs
   rt03:6030: *common_arista_subs
   rt04:6030: *common_arista_subs
 
