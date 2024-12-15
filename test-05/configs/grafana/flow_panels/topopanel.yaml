@@ -26,39 +26,39 @@ anchors:
     - valueMin: 200000
 cellIdPreamble: cell-
 cells:
-  RT01:eth1:RT02:eth1:
-    dataRef: oper-state:RT01:eth1
+  rt01:eth1:rt02:eth1:
+    dataRef: oper-state:rt01:eth1
     fillColor:
       thresholds: *thresholds-operstate
-  link_id:RT01:eth1:RT02:eth1:
-    dataRef: RT01:eth1:out
+  link_id:rt01:eth1:rt02:eth1:
+    dataRef: rt01:eth1:out
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
-  RT01:eth2:RT03:eth1:
-    dataRef: oper-state:RT01:eth2
+  rt01:eth2:rt03:eth1:
+    dataRef: oper-state:rt01:eth2
     fillColor:
       thresholds: *thresholds-operstate
-  link_id:RT01:eth2:RT03:eth1:
-    dataRef: RT01:eth2:out
+  link_id:rt01:eth2:rt03:eth1:
+    dataRef: rt01:eth2:out
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
-  RT02:eth1:RT01:eth1:
-    dataRef: oper-state:RT02:eth1
+  rt02:eth1:rt01:eth1:
+    dataRef: oper-state:rt02:eth1
     fillColor:
       thresholds: *thresholds-operstate
-  link_id:RT02:eth1:RT01:eth1:
-    dataRef: RT02:eth1:out
+  link_id:rt02:eth1:rt01:eth1:
+    dataRef: rt02:eth1:out
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
-  RT03:eth1:RT01:eth2:
-    dataRef: oper-state:RT03:eth1
+  rt03:eth1:rt01:eth2:
+    dataRef: oper-state:rt03:eth1
     fillColor:
       thresholds: *thresholds-operstate
-  link_id:RT03:eth1:RT01:eth2:
-    dataRef: RT03:eth1:out
+  link_id:rt03:eth1:rt01:eth2:
+    dataRef: rt03:eth1:out
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
