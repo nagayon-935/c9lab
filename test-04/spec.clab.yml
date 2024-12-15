@@ -18,7 +18,7 @@ topology:
     nokia_srlinux:
       image: ghcr.io/nokia/srlinux
       type: ixrd2l
-    arista_ceos:
+    ceos:
       image: ceos:4.31.5M
 
   nodes:
