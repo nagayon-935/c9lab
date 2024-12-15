@@ -43,7 +43,7 @@ topology:
       kind: ceos
       group: switch
       mgmt-ipv4: 172.100.100.134
-      startup-config: ./configs/rt01/cEoS-problem.conf
+      startup-config: ./configs/sw01/cEoS-problem.conf
     rt01:
       group: router
       mgmt-ipv4: 172.100.100.135
