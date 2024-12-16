@@ -118,7 +118,7 @@ outputs:
     event-processors:
       - eos-version
       - trim-prefixes
-      - oper-state-to-int
+      - bounce-map
       - rename-eos-interface
       - rename-source
 
@@ -142,10 +142,11 @@ processors:
         - trim-prefix:
             apply-on: "name"
             prefix: "/state/"
-  oper-state-to-int:
+  bounce-map:
     event-strings:
       value-names:
-        - ".*"
+        - oper-status
+        - admin-status
       transforms:
         - replace:
             apply-on: "value"

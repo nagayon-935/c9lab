@@ -172,10 +172,12 @@ outputs:
   prom-output:
     type: prometheus
     listen: :9273
+    strings-as-labels: true
+    export-timestamps: true
     event-processors:
       - trim-prefixes
       - rename-srl-interface
-      - oper-state-to-int
+      - bounce-map
       - eos-version
       - rename-source
 
@@ -200,10 +202,11 @@ processors:
         - trim-prefix:
             apply-on: "name"
             prefix: "/state/"
-  oper-state-to-int:
+  bounce-map:
     event-strings:
       value-names:
-        - ".*"
+        - oper-status
+        - admin-status
       transforms:
         - replace:
             apply-on: "value"
