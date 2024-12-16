@@ -25,6 +25,8 @@ topology:
       exec:
       - ip addr add 192.168.10.1/24 dev eth1
       - ip route del default
+      - iperf3 -s -p 5201 -D > iperf3_1.log
+      - iperf3 -s -p 5202 -D > iperf3_2.log
     pc02:
       group: clients
       mgmt-ipv4: 172.100.100.132

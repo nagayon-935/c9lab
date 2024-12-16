@@ -67,7 +67,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interface_traffic_rate_out_bps",
+          "expr": "interfaces_interface_state_counters_out_unicast_pkts",
           "hide": false,
           "instant": false,
           "legendFormat": "{{source}}:{{interface_name}}:out",
@@ -79,7 +79,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interface_traffic_rate_in_bps",
+          "expr": "interfaces_interface_state_counters_in_unicast_pkts",
           "hide": false,
           "instant": false,
           "legendFormat": "{{source}}:{{interface_name}}:in",
