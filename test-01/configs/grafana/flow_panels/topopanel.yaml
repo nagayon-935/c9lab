@@ -1,11 +1,11 @@
 ---
-anchors:
-  thresholds-operstate: &thresholds-operstate
+anchors: # 再利用可能な設定の定義
+  thresholds-operstate: &thresholds-operstate # インターフェースの状態によって色を決定
   - color: red
     level: 0
   - color: green
     level: 1
-  thresholds-traffic: &thresholds-traffic
+  thresholds-traffic: &thresholds-traffic # トラフィック量によって色を決定
   - color: gray
     level: 0
   - color: green
@@ -16,7 +16,7 @@ anchors:
     level: 1000000
   - color: red
     level: 5000000
-  label-config: &label-config
+  label-config: &label-config # リンクのラベル設定 xxxb/sと出力される
     separator: replace
     units: bps
     decimalPoints: 1
@@ -26,15 +26,15 @@ anchors:
     - valueMin: 200000
 cellIdPreamble: cell-
 cells:
-  pc01:eth1:sw01:eth1:
-    dataRef: oper-state:pc01:eth1
-    fillColor:
-      thresholds: *thresholds-operstate
-  link_id:pc01:eth1:sw01:eth1:
-    dataRef: pc01:eth1:out
-    label: *label-config
-    strokeColor:
-      thresholds: *thresholds-traffic
+  pc01:eth1:sw01:eth1: # ポートのID
+    dataRef: oper-state:pc01:eth1 # データ参照
+    fillColor: # 塗りつぶしの設定
+      thresholds: *thresholds-operstate # インターフェースの状態によって色を決定
+  link_id:pc01:eth1:sw01:eth1: # リンクのID
+    dataRef: pc01:eth1:out # データ参照
+    label: *label-config # ラベル設定
+    strokeColor: # ストロークの色
+      thresholds: *thresholds-traffic # トラフィック量によって色を決定
   pc02:eth1:sw01:eth2:
     dataRef: oper-state:pc02:eth1
     fillColor:

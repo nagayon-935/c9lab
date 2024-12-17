@@ -1,11 +1,10 @@
 apiVersion: 1
 
 providers:
-  - name: telemetry
-    type: file
-    updateIntervalSeconds: 10
-    allowUiUpdates: false
+  - name: telemetry #プロバイダー名
+    type: file #file形式でダッシュボードを読み込む
+    updateIntervalSeconds: 10 # ダッシュボードの更新間隔
+    allowUiUpdates: false #UIからの更新を許可しない
     options:
-      # <string, required> path to dashboard files on disk. Required when using the 'file' type
-      path: /var/lib/grafana/dashboards
-      foldersFromFilesStructure: true
+      path: /var/lib/grafana/dashboards #ダッシュボードのパス
+      foldersFromFilesStructure: true #ファイル構造に基づいてフォルダを作成

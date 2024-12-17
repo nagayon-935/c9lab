@@ -1,12 +1,12 @@
-username: admin
+username: admin 
 timeout: 30s
 
 # 共通サブスクリプション設定
-common_arista_subscriptions: &common_arista_subs
-  skip-verify: true
-  insecure: true
+common_arista_subscriptions: &common_arista_subs #設定名：&エイリアス名
+  skip-verify: true #安全な接続のための署名検証をスキップ
+  insecure: true #TLSを使用しないgRPC接続を確立したい
   password: admin
-  subscriptions:
+  subscriptions: #サブスクリプションのリスト
     - eos_bgp_neighbors
     - eos_cpu
     - eos_cpu_load_avg
@@ -21,16 +21,16 @@ common_arista_subscriptions: &common_arista_subs
 
 # ターゲットデバイス設定
 targets:
-  sw01:6030: *common_arista_subs
+  sw01:6030: *common_arista_subs #ターゲット名:ポート番号:共通サブスクリプションのエイリアス名
 
 # サブスクリプションの詳細
 subscriptions:
   eos_bgp_neighbors:
-    paths:
+    paths: # メトリクス情報を取得するパス
       - /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
+    mode: stream # ストリームモード 他にONCE, POLLがある
+    stream-mode: sample # サンプリングモード 他にON_CHANGE, TARGET_DEFINEDがある
+    sample-interval: 5s # サンプリングの感覚
 
   eos_cpu:
     paths:
@@ -107,13 +107,13 @@ subscriptions:
 
 # 出力設定
 outputs:
-  prom:
-    type: prometheus
-    listen: :9273
-    strings-as-labels: true
-    export-timestamps: true
+  prom: #出力設定名
+    type: prometheus #prometheus形式(Pull型)
+    listen: :9273 #listenするポート番号
+    strings-as-labels: true #文字列をプロメテウスのラベルとして扱う
+    export-timestamps: true #ターゲットから受信したタイムスタンプをエクスポートする
     debug: false
-    event-processors:
+    event-processors: #メッセージを処理するプロセッサのリスト 
       - eos-version
       - trim-prefixes
       - bounce-map
@@ -122,6 +122,29 @@ outputs:
 
 # プロセッサ設定
 processors:
+  rename-eos-interface: #プロセッサ名
+    event-strings: # stringに関するイベント
+      tag-names: #タグ名
+        - "^interface_name"
+      transforms: #変換
+        - replace: #Ethernetをethに変換
+            apply-on: "value"
+            old: "Ethernet(\\d+)"
+            new: "eth$1"
+  bounce-map:
+    event-strings:
+      value-names: #値名
+        - oper-status
+        - admin-status
+      transforms:
+        - replace: #UPを1に、DOWNを0に変換
+            apply-on: "value"
+            old: "UP"
+            new: "1"
+        - replace:
+            apply-on: "value"
+            old: "DOWN"
+            new: "0"
   eos-version:
     event-strings:
       value-names:
@@ -140,29 +163,6 @@ processors:
         - trim-prefix:
             apply-on: "name"
             prefix: "/state/"
-  bounce-map:
-    event-strings:
-      value-names:
-        - oper-status
-        - admin-status
-      transforms:
-        - replace:
-            apply-on: "value"
-            old: "UP"
-            new: "1"
-        - replace:
-            apply-on: "value"
-            old: "DOWN"
-            new: "0"
-  rename-eos-interface:
-    event-strings:
-      tag-names:
-        - "^interface_name"
-      transforms:
-        - replace:
-            apply-on: "value"
-            old: "Ethernet(\\d+)"
-            new: "eth$1"
   rename-source:
     event-strings:
       tag-names:
