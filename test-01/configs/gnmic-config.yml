@@ -109,6 +109,7 @@ subscriptions:
 outputs:
   prom:
     type: prometheus
+    path: /metrics
     listen: :9273
     strings-as-labels: true
     export-timestamps: true
