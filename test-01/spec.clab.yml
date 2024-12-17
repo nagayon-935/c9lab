@@ -51,12 +51,11 @@ topology:
       mgmt-ipv4: 172.100.100.21
       startup-config: ./configs/sw01/cEoS-problem.conf
     rt01:
+      kind: ceos
       group: router
       mgmt-ipv4: 172.100.100.31
-      exec:
-      - sysctl -w net.ipv4.ip_forward=1
-      - ip addr add 192.168.10.254/24 dev eth1
-      - ip addr add 192.168.20.254/24 dev eth2
+      startup-config: ./configs/rt01/cEoS.conf
+
 
     ### TELEMETRY STACK ###
     gnmic:
