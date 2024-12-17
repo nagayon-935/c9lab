@@ -110,13 +110,12 @@ outputs:
   prom:
     type: prometheus
     listen: :9273
-    path: /metrics
     strings-as-labels: true
     export-timestamps: true
     debug: false
     event-processors:
       - eos-version
-      - trim-prefixe
+      - trim-prefixes
       - bounce-map
       - rename-eos-interface
       - rename-source
@@ -136,10 +135,11 @@ processors:
   trim-prefixes:
     event-strings:
       value-names:
-        - ".*"
+        - "^/state/.*"
       transforms:
         - trim-prefix:
             apply-on: "name"
+            prefix: "/state/"
   bounce-map:
     event-strings:
       value-names:
