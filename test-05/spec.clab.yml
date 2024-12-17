@@ -22,17 +22,17 @@ topology:
     rt01:
       kind: ceos
       group: router
-      mgmt-ipv4: 172.100.100.131
+      mgmt-ipv4: 172.100.100.31
       startup-config: ./configs/rt01/cEoS-problem.conf
     rt02:
       kind: ceos
       group: router
-      mgmt-ipv4: 172.100.100.132
+      mgmt-ipv4: 172.100.100.32
       startup-config: ./configs/rt02/cEoS.conf
     rt03:
       kind: ceos
       group: router
-      mgmt-ipv4: 172.100.100.133
+      mgmt-ipv4: 172.100.100.33
       startup-config: ./configs/rt03/cEoS.conf
 
      ### TELEMETRY STACK ###

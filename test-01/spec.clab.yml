@@ -21,7 +21,7 @@ topology:
   nodes:
     pc01:
       group: clients
-      mgmt-ipv4: 172.100.100.131
+      mgmt-ipv4: 172.100.100.11
       exec:
       - ip addr add 192.168.10.1/24 dev eth1
       - ip route del default
@@ -29,14 +29,14 @@ topology:
       - iperf3 -s -p 5202 -D > iperf3_2.log
     pc02:
       group: clients
-      mgmt-ipv4: 172.100.100.132
+      mgmt-ipv4: 172.100.100.12
       exec:
       - ip addr add 192.168.10.2/24 dev eth1
       - ip route del default
       - ip route add default via 192.168.10.254 dev eth1
     pc03:
       group: server
-      mgmt-ipv4: 172.100.100.133
+      mgmt-ipv4: 172.100.100.13
       exec:
       - ip addr add 192.168.20.1/24 dev eth1
       - ip route del default
@@ -44,11 +44,11 @@ topology:
     sw01:
       kind: ceos
       group: switch
-      mgmt-ipv4: 172.100.100.134
+      mgmt-ipv4: 172.100.100.21
       startup-config: ./configs/sw01/cEoS-problem.conf
     rt01:
       group: router
-      mgmt-ipv4: 172.100.100.135
+      mgmt-ipv4: 172.100.100.31
       exec:
       - sysctl -w net.ipv4.ip_forward=1
       - ip addr add 192.168.10.254/24 dev eth1

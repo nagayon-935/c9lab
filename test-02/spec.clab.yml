@@ -24,12 +24,14 @@ topology:
   nodes:
     pc01:
       group: clients
+      mgmt-ipv4: 172.100.100.11
       exec:
         - ip addr add 192.168.1.1/24 dev eth1
         - ip route del default
         - ip route add default via 192.168.1.254 dev eth1
     pc02:
       group: clients
+      mgmt-ipv4: 172.100.100.12
       exec:
         - ip addr add 172.16.2.1/24 dev eth1
         - ip route del default
@@ -37,17 +39,17 @@ topology:
     rt01:
       kind: ceos
       group: router
-      mgmt-ipv4: 172.100.100.131
+      mgmt-ipv4: 172.100.100.31
       startup-config: ./configs/rt01/cEoS.conf
     rt02:
       kind: ceos
       group: router
-      mgmt-ipv4: 172.100.100.132
+      mgmt-ipv4: 172.100.100.32
       startup-config: ./configs/rt02/cEoS.conf
     rt03:
       kind: nokia_srlinux
       group: router
-      mgmt-ipv4: 172.100.100.133
+      mgmt-ipv4: 172.100.100.33
       startup-config: ./configs/rt03/srlinux-problem.cfg
 
     ### TELEMETRY STACK ###
