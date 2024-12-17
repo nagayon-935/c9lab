@@ -172,6 +172,7 @@ outputs:
   prom-output:
     type: prometheus
     listen: :9273
+    path: /metrics
     strings-as-labels: true
     export-timestamps: true
     event-processors:
