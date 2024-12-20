@@ -56,7 +56,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interfaces_interface_state_oper_status",
+          "expr": "eos_int_oper_state_oper_state",
           "instant": false,
           "legendFormat": "oper-state:{{source}}:{{interface_name}}",
           "range": true,
