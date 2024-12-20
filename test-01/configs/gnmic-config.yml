@@ -114,6 +114,7 @@ outputs:
     type: prometheus #prometheus形式(Pull型)
     path: /metrics #出力先パス
     listen: :9273 #listenするポート番号
+    append-subscription-name: true #サブスクリプション名をメトリクス名に追加する
     strings-as-labels: true #文字列をプロメテウスのラベルとして扱う
     export-timestamps: true #ターゲットから受信したタイムスタンプをエクスポートする
     debug: false
