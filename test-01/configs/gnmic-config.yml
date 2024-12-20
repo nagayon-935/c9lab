@@ -5,6 +5,7 @@ timeout: 30s
 # 共通サブスクリプション設定
 common_arista_subscriptions: &common_arista_subs #設定名：&エイリアス名
   skip-verify: true #安全な接続のための署名検証をスキップ
+  insecure: true #TLSを使用しないgRPC接続を確立したい
   password: admin
   encoding: json_ietf #エンコーディング形式
   subscriptions: #サブスクリプションのリスト
