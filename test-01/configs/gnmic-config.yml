@@ -52,8 +52,6 @@ subscriptions:
   eos_mem:
     paths:
       - components/component/state/memory/
-      - system/memory/kernel/state
-      - system/memory/state
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -100,13 +98,6 @@ subscriptions:
     stream-mode: sample
     sample-interval: 60s
 
-  eos_hardware:
-    paths:
-      - components/component/state
-      - eos_native:/Sysdb/hardware/entmib
-    mode: stream
-    stream-mode: sample
-    sample-interval: 60s
 
 # 出力設定
 outputs:
