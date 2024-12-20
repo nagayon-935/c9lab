@@ -26,12 +26,12 @@ anchors: # 再利用可能な設定の定義
     - valueMin: 200000
 cellIdPreamble: cell-
 cells:
-  pc01:eth1:sw01:eth1: # ポートのID
-    dataRef: oper-state:pc01:eth1 # データ参照
+  sw01:eth1:pc01:eth1: # ポートのID
+    dataRef: oper-state:sw01:eth1 # データ参照
     fillColor: # 塗りつぶしの設定
       thresholds: *thresholds-operstate # インターフェースの状態によって色を決定
-  link_id:pc01:eth1:sw01:eth1: # リンクのID
-    dataRef: pc01:eth1:out # データ参照
+  link_id:sw01:eth1:pc01:eth1: # リンクのID
+    dataRef: sw01:eth1:out # データ参照
     label: *label-config # ラベル設定
     strokeColor: # ストロークの色
       thresholds: *thresholds-traffic # トラフィック量によって色を決定
@@ -53,15 +53,15 @@ cells:
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
-  sw01:eth1:pc01:eth1:
-    dataRef: oper-state:sw01:eth1
+  pc01:eth1:sw01:eth1:
+    dataRef: oper-state:pc01:eth1
     fillColor:
       thresholds: *thresholds-operstate
-  link_id:sw01:eth1:pc01:eth1:
-    dataRef: sw01:eth1:out
-    label: *label-config
-    strokeColor:
-      thresholds: *thresholds-traffic
+  link_id:pc01:eth1:sw01:eth1:
+    dataRef: pc01:eth1:out 
+    label: *label-config 
+    strokeColor: 
+      thresholds: *thresholds-traffic 
   sw01:eth2:pc02:eth1:
     dataRef: oper-state:sw01:eth2
     fillColor:
