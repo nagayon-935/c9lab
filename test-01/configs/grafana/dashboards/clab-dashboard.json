@@ -67,7 +67,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interfaces_interface_state_counters_out_unicast_pkts",
+          "expr": "eos_int_counters_out_octets",
           "hide": false,
           "instant": false,
           "legendFormat": "{{source}}:{{interface_name}}:out",
@@ -79,7 +79,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interfaces_interface_state_counters_in_unicast_pkts",
+          "expr": "eos_int_counters_in_octets",
           "hide": false,
           "instant": false,
           "legendFormat": "{{source}}:{{interface_name}}:in",
@@ -95,7 +95,7 @@
   "schemaVersion": 38,
   "tags": [],
   "time": {
-    "from": "now-2m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
