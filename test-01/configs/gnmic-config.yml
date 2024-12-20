@@ -77,14 +77,14 @@ subscriptions:
       - /interfaces/interface[name=*]/state/oper-status
     mode: stream
     stream-mode: sample
-    sample-interval: 5s
+    sample-interval: 15s
 
   eos_int_config:
     paths:
       - interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
     mode: stream
     stream-mode: sample
-    sample-interval: 5s
+    stream-mode: on_change
 
   eos_show_version:
     paths:
@@ -112,6 +112,7 @@ subscriptions:
 outputs:
   prom: #出力設定名
     type: prometheus #prometheus形式(Pull型)
+    path: /metrics #出力先パス
     listen: :9273 #listenするポート番号
     strings-as-labels: true #文字列をプロメテウスのラベルとして扱う
     export-timestamps: true #ターゲットから受信したタイムスタンプをエクスポートする
@@ -161,11 +162,10 @@ processors:
   trim-prefixes:
     event-strings:
       value-names:
-        - "^/state/.*"
+        - ".*"
       transforms:
-        - trim-prefix:
+        - path-base:
             apply-on: "name"
-            prefix: "/state/"
   rename-source:
     event-strings:
       tag-names:
