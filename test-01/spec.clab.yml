@@ -63,6 +63,7 @@ topology:
       image: ghcr.io/openconfig/gnmic:0.39.1
       binds:
       - configs/gnmic-config.yml:/gnmic-config.yml:ro
+      - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
       cmd: --config /gnmic-config.yml --log subscribe
       group: '10'
     prometheus:
