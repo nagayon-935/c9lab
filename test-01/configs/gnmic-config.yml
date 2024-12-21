@@ -66,7 +66,7 @@ subscriptions:
       - /interfaces/interface[name=*]/state/oper-status
     mode: stream
     stream-mode: sample
-    sample-interval: 15s
+    sample-interval: 5s
 
   eos_int_config:
     paths:
