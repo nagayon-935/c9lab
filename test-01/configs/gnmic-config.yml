@@ -80,7 +80,6 @@ outputs:
       - trim-prefixes
       - bounce-map
       - rename-interface
-      - rename-source
       - eos-version
 
 # プロセッサ設定
