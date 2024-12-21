@@ -146,10 +146,11 @@ processors:
   trim-prefixes:
     event-strings:
       value-names:
-        - ".*"
+        - "^/state/.*"
       transforms:
-        - path-base:
+        - trim-prefix:
             apply-on: "name"
+            prefix: "/state/"
   rename-source:
     event-strings:
       tag-names:
