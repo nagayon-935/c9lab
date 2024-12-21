@@ -21,7 +21,7 @@ targets:
 
 # サブスクリプションの詳細
 subscriptions:
-
+  ### General Information ###
   cpu:
     paths:
       - components/component/cpu
