@@ -51,7 +51,7 @@ subscriptions:
       - interfaces/interface/state/counters
       - interfaces/interface/state/admin-status
       - interfaces/interface/state/oper-status
-      - interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/ip
+      - interfaces/interface[name=*]/subinterfaces/subinterface[index=*]/ipv4/addresses/address[ip=*]/config/ip
       - interfaces/interface/state/mtu
     mode: stream
     stream-mode: sample
