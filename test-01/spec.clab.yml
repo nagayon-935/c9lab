@@ -15,6 +15,8 @@ topology:
   kinds:
     linux:
       image: nicolaka/netshoot:latest
+      binds:
+      - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
     ceos:
       image: ceos:4.31.5M
 
@@ -22,8 +24,6 @@ topology:
     pc01:
       group: clients
       mgmt-ipv4: 172.100.100.11
-      binds:
-      - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
       exec:
       - ip addr add 192.168.10.1/24 dev eth1
       - ip route del default
@@ -34,7 +34,6 @@ topology:
       mgmt-ipv4: 172.100.100.12
       binds:
         - configs/pc02:/config
-        - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
       exec:
       - ip addr add 192.168.10.2/24 dev eth1
       - ip route del default
@@ -44,7 +43,6 @@ topology:
       mgmt-ipv4: 172.100.100.13
       binds:
         - configs/pc03:/config
-        - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
       exec:
       - ip addr add 192.168.20.1/24 dev eth1
       - ip route del default
@@ -67,7 +65,6 @@ topology:
       image: ghcr.io/openconfig/gnmic:0.39.1
       binds:
       - configs/gnmic-config.yml:/gnmic-config.yml:ro
-      - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
       cmd: --config /gnmic-config.yml --log subscribe
       group: '10'
     prometheus:
@@ -75,7 +72,6 @@ topology:
       image: quay.io/prometheus/prometheus:v2.54.1
       binds:
       - configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
-      - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
       cmd: --config.file=/etc/prometheus/prometheus.yml
       ports:
       - 9090:9090
@@ -87,7 +83,6 @@ topology:
       - configs/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
       - configs/grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
       - configs/grafana/dashboards:/var/lib/grafana/dashboards
-      - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
       ports:
       - 3000:3000
       env:

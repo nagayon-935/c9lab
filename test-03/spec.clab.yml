@@ -15,6 +15,8 @@ topology:
   kinds:
     linux:
       image: nicolaka/netshoot:latest
+      binds:
+      - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
     ceos:
       image: ceos:4.31.5M
 

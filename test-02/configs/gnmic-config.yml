@@ -172,9 +172,6 @@ outputs:
   prom-output:
     type: prometheus
     listen: :9273
-    path: /metrics
-    strings-as-labels: true
-    export-timestamps: true
     event-processors:
       - trim-prefixes
       - rename-srl-interface
@@ -198,11 +195,10 @@ processors:
   trim-prefixes:
     event-strings:
       value-names:
-        - "^/state/.*"
+        - ".*"
       transforms:
-        - trim-prefix:
+        - path-base:
             apply-on: "name"
-            prefix: "/state/"
   bounce-map:
     event-strings:
       value-names:

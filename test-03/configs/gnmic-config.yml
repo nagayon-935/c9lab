@@ -113,9 +113,6 @@ outputs:
   prom:
     type: prometheus
     listen: :9273
-    strings-as-labels: true
-    export-timestamps: true
-    debug: false
     event-processors:
       - eos-version
       - trim-prefixes
@@ -138,11 +135,10 @@ processors:
   trim-prefixes:
     event-strings:
       value-names:
-        - "^/state/.*"
+        - ".*"
       transforms:
-        - trim-prefix:
+        - path-base:
             apply-on: "name"
-            prefix: "/state/"
   bounce-map:
     event-strings:
       value-names:
