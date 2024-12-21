@@ -58,7 +58,7 @@ subscriptions:
 
   interface_config:
     paths:
-      - interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
+      - interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/
     mode: stream
     stream-mode: sample
     sample-interval: 5s

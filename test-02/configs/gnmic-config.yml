@@ -22,7 +22,6 @@ common_srl_subscriptions: &common_srl_subs
     - cpu
     - mem
     - interface_state
-    - interface_config
     - boot_time
 
 # ターゲットデバイス設定
@@ -54,13 +53,6 @@ subscriptions:
       - interfaces/interface[name=*]/state/counters
       - interfaces/interface[name=*]/state/admin-status
       - interfaces/interface[name=*]/state/oper-status
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-
-  interface_config:
-    paths:
-      - interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
     mode: stream
     stream-mode: sample
     sample-interval: 5s
