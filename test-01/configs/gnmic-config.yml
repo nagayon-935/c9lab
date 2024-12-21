@@ -1,6 +1,6 @@
 # グローバル設定
 username: admin 
-timeout: 10s
+timeout: 30s
 
 # 共通サブスクリプション設定
 common_arista_subscriptions: &common_arista_subs #設定名：&エイリアス名
