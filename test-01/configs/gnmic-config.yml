@@ -41,7 +41,7 @@ subscriptions:
 
   version_info:
     paths:
-      - system/state/siftware-version
+      - system/state/software-version
     mode: stream
     stream-mode: sample
     sample-interval: 60s
@@ -51,7 +51,7 @@ subscriptions:
       - interfaces/interface/state/counters
       - interfaces/interface/state/admin-status
       - interfaces/interface/state/oper-status
-      - interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config/ip
+      - interfaces/interface/subinterfaces/subinterface/
       - interfaces/interface/state/mtu
     mode: stream
     stream-mode: sample
