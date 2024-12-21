@@ -41,10 +41,10 @@ subscriptions:
 
   version_info:
     paths:
-      - /components/component[name=EOS]/state/
+      - /components/component[name=EOS]/state/software-version
     mode: stream
     stream-mode: sample
-    sample-interval: 60s
+    sample-interval: 5s
 
   interface_state:
     paths:
