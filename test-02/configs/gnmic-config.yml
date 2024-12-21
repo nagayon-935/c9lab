@@ -6,6 +6,7 @@ common_arista_subscriptions: &common_arista_subs
   skip-verify: true
   insecure: true
   password: admin
+  encoding: json_ietf
   subscriptions:
     - eos_bgp_neighbors
     - eos_cpu
@@ -23,6 +24,7 @@ common_srl_subscriptions: &common_srl_subs
   skip-verify: true
   insecure: false
   password: NokiaSrl1!
+  encoding: json_ietf
   subscriptions:
     - srl-if-stats
     - srl-bgp
