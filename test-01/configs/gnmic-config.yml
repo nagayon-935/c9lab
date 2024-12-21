@@ -41,7 +41,7 @@ subscriptions:
 
   version_info:
     paths:
-      - system/state/
+      - /components/component/state/software-version
     mode: stream
     stream-mode: sample
     sample-interval: 60s
