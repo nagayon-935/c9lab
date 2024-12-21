@@ -41,10 +41,9 @@ subscriptions:
 
   version_info:
     paths:
-    - eos_native:/Eos/image
+    - 	/system/state/software-version
     mode: stream
-    stream-mode: sample
-    sample-interval: 60s
+    stream-mode: on_chance
 
   interface_state:
     paths:
