@@ -91,6 +91,7 @@
       "type": "andrewbmchugh-flow-panel"
     }
   ],
+  "refresh": "5s",
   "schemaVersion": 38,
   "tags": [],
   "time": {
