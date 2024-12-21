@@ -101,6 +101,7 @@ outputs:
   prom: #出力設定名
     type: prometheus #prometheus形式(Pull型)
     listen: :9273 #listenするポート番号
+    append-subscription-name: true
     event-processors: #メッセージを処理するプロセッサのリスト 
       - eos-version
       - trim-prefixes
@@ -146,11 +147,10 @@ processors:
   trim-prefixes:
     event-strings:
       value-names:
-        - "^/state/.*"
+        - ".*"
       transforms:
-        - trim-prefix:
+        - path-base:
             apply-on: "name"
-            prefix: "/state/"
   rename-source:
     event-strings:
       tag-names:
