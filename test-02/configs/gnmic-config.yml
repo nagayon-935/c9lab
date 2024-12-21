@@ -8,17 +8,10 @@ common_arista_subscriptions: &common_arista_subs
   password: admin
   encoding: json_ietf
   subscriptions:
-    - eos_bgp_neighbors
-    - eos_cpu
-    - eos_cpu_load_avg
-    - eos_mem
-    - eos_interface_counters
-    - eos_interface_admin_state
-    - eos_interface_oper_state
-    - eos_interface_config
-    - eos_show_version
-    - eos_boot_time
-    - eos_hardware
+    - cpu
+    - mem
+    - interface_state
+    - boot_time
 
 common_srl_subscriptions: &common_srl_subs
   skip-verify: true
@@ -26,13 +19,10 @@ common_srl_subscriptions: &common_srl_subs
   password: NokiaSrl1!
   encoding: json_ietf
   subscriptions:
-    - srl-if-stats
-    - srl-bgp
-    - srl-system-performance
-    - srl-routes
-    - srl-bridge
-    - srl-apps
-    - srl-net-instance
+    - cpu
+    - mem
+    - interface_state
+    - boot_time
 
 # ターゲットデバイス設定
 targets:
@@ -42,133 +32,37 @@ targets:
 
 # サブスクリプションの詳細
 subscriptions:
-  eos_bgp_neighbors:
-    paths:
-      - /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
 
-  eos_cpu:
+  ### General Information ###
+  cpu:
     paths:
       - components/component/cpu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
-  eos_cpu_load_avg:
-    paths:
-      - eos_native:/Kernel/sysinfo
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-
-  eos_mem:
+  mem:
     paths:
       - components/component/state/memory/
-      - system/memory/kernel/state
-      - system/memory/state
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
-  eos_interface_counters:
+  interface_state:
     paths:
-      - /interfaces/interface[name=*]/state/counters
+      - interfaces/interface[name=*]/state/counters
+      - interfaces/interface[name=*]/state/admin-status
+      - interfaces/interface[name=*]/state/oper-status
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
-  eos_interface_admin_state:
-    paths:
-      - /interfaces/interface[name=*]/state/admin-status
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-
-  eos_interface_oper_state:
-    paths:
-      - /interfaces/interface[name=*]/state/oper-status
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-
-  eos_interface_config:
-    paths:
-      - interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-
-  eos_show_version:
-    paths:
-      - eos_native:/Eos/image
-    mode: stream
-    stream-mode: sample
-    sample-interval: 60s
-
-  eos_boot_time:
+  boot_time:
     paths:
       - system/state/boot-time
     mode: stream
     stream-mode: sample
     sample-interval: 60s
-
-  eos_hardware:
-    paths:
-      - components/component/state
-      - eos_native:/Sysdb/hardware/entmib
-    mode: stream
-    stream-mode: sample
-    sample-interval: 60s
-
-  srl-system-performance:
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-    paths:
-      - /platform/control[slot=*]/cpu[index=all]/total
-      - /platform/control[slot=*]/memory
-  srl-if-stats:
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-    paths:
-      - /interfaces/interface[name=*]/state/oper-status
-#      - /interface[name=ethernet-1/*]/oper-state
-#      - /interface[name=ethernet-1/*]/statistics
-#      - /interface[name=ethernet-1/*]/traffic-rate
-  srl-routes:
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-    paths:
-      - /network-instance[name=*]/route-table/ipv4-unicast/statistics/
-      - /network-instance[name=*]/route-table/ipv6-unicast/statistics/
-  srl-bgp:
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-    paths:
-      - /network-instance[name=*]/protocols/bgp/statistics
-  srl-bridge:
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-    paths:
-      - /network-instance[name=*]/bridge-table/statistics/
-  srl-apps:
-    paths:
-      - /system/app-management/application[name=*]
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-  srl-net-instance:
-    paths:
-      - /network-instance[name=*]/oper-state
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
 
 # 出力設定
 outputs:
@@ -178,24 +72,13 @@ outputs:
     append-subscription-name: true
     event-processors:
       - trim-prefixes
-      - rename-srl-interface
       - bounce-map
-      - eos-version
+      - rename-interface
       - rename-source
+      - eos-version
 
 # プロセッサ設定
 processors:
-  eos-version:
-    event-strings:
-      value-names:
-        - ".*version$"
-        - ".*arch$"
-      transforms:
-        - replace:
-            apply-on: "value"
-            old: "EOS"
-            new: "eos"
-
   trim-prefixes:
     event-strings:
       value-names:
@@ -225,7 +108,7 @@ processors:
             apply-on: "value"
             old: "DOWN"
             new: "0"
-  rename-srl-interface:
+  rename-interface:
     event-strings:
       tag-names:
         - "^interface_name"
@@ -247,3 +130,13 @@ processors:
             apply-on: "value"
             old: "(\\d+):(\\d+)"
             new: "$1"
+  eos-version:
+    event-strings:
+      value-names:
+        - ".*version$"
+        - ".*arch$"
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "EOS"
+            new: "eos"

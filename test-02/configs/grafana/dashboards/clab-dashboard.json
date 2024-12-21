@@ -57,7 +57,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interface_oper_state",
+          "expr": "interface_state_oper_status",
           "instant": false,
           "legendFormat": "oper-state:{{source}}:{{interface_name}}",
           "range": true,
@@ -68,7 +68,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interfaces_interface_state_oper_status",
+          "expr": "interface_state_in_octets",
           "instant": false,
           "legendFormat": "oper-state:{{source}}:{{interface_name}}",
           "range": true,
@@ -79,48 +79,12 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interface_traffic_rate_out_bps",
+          "expr": "interface_state_out_octets",
           "hide": false,
           "instant": false,
           "legendFormat": "{{source}}:{{interface_name}}:out",
           "range": true,
           "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "expr": "interfaces_interface_state_counters_out_unicast_pkts",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "{{source}}:{{interface_name}}:out",
-          "range": true,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "expr": "interface_traffic_rate_in_bps",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "{{source}}:{{interface_name}}:in",
-          "range": true,
-          "refId": "E"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "expr": "interfaces_interface_state_counters_in_unicast_pkts",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "{{source}}:{{interface_name}}:in",
-          "range": true,
-          "refId": "F"
         }
       ],
       "title": "Network Telemetry",
