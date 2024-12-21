@@ -43,7 +43,8 @@ subscriptions:
     paths:
     - 	/system/state/software-version
     mode: stream
-    stream-mode: on_chance
+    stream-mode: sample
+    sample-interval: 60s
 
   interface_state:
     paths:
