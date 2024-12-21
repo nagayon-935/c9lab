@@ -63,6 +63,8 @@ topology:
       image: ghcr.io/openconfig/gnmic:0.39.1
       binds:
       - configs/gnmic-config.yml:/gnmic-config.yml:ro
+      exec:
+      - timedatectl set-timezone Asia/Tokyo
       cmd: --config /gnmic-config.yml --log subscribe
       group: '10'
     prometheus:
@@ -70,6 +72,8 @@ topology:
       image: quay.io/prometheus/prometheus:v2.54.1
       binds:
       - configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      exec:
+      - timedatectl set-timezone Asia/Tokyo
       cmd: --config.file=/etc/prometheus/prometheus.yml
       ports:
       - 9090:9090
@@ -81,6 +85,8 @@ topology:
       - configs/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
       - configs/grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
       - configs/grafana/dashboards:/var/lib/grafana/dashboards
+      exec:
+      - timedatectl set-timezone Asia/Tokyo
       ports:
       - 3000:3000
       env:
