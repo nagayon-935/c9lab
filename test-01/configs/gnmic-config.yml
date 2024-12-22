@@ -42,14 +42,16 @@ subscriptions:
   version_info:
     paths:
       - /components/component[name=EOS]/state/
-    mode: once
+    mode: stream
+    stream-mode: sample
+    sample-interval: 60s
 
   interface_state:
     paths:
       - interfaces/interface/state/counters
       - interfaces/interface/state/admin-status
       - interfaces/interface/state/oper-status
-      - interfaces/interface/state/mtu
+      - /interfaces/interface/subinterfaces/subinterface/oc-ip:ipv4/state/oc-ip:mtu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -78,6 +80,7 @@ outputs:
       - trim-prefixes
       - bounce-map
       - rename-interface
+      - eos-version
 
 # プロセッサ設定
 processors:
