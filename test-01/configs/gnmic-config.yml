@@ -42,7 +42,6 @@ subscriptions:
   version_info:
     paths:
       - /components/component[name=EOS]/state/
-      - /state/system/version
     mode: once
 
   interface_state:
@@ -79,7 +78,6 @@ outputs:
       - trim-prefixes
       - bounce-map
       - rename-interface
-      - eos-version
 
 # プロセッサ設定
 processors:
