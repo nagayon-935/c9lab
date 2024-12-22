@@ -148,7 +148,9 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "default": true,
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "gridPos": {
         "h": 21,
@@ -169,9 +171,9 @@
         },
         "highlighterEnabled": true,
         "panZoomEnabled": true,
-        "panelConfig": "https://raw.githubusercontent.com/nagayon-935/srl-telemetry-lab/refs/heads/main/configs/grafana/flow_panels/st_topopanel.yml",
-        "siteConfig": "https://raw.githubusercontent.com/srl-labs/srl-telemetry-lab/refs/heads/flow_panel/configs/grafana/flow_panels/siteconfig.yml",
-        "svg": "https://raw.githubusercontent.com/srl-labs/srl-telemetry-lab/refs/heads/flow_panel/configs/grafana/flow_panels/topology.svg",
+        "panelConfig": "https://raw.githubusercontent.com/nagayon-935/c9lab/refs/heads/main/test-01/configs/grafana/flow_panels/topopanel.yaml",
+        "siteConfig": "https://raw.githubusercontent.com/nagayon-935/c9lab/refs/heads/main/test-01/configs/grafana/flow_panels/topopanel.yaml",
+        "svg": "https://raw.githubusercontent.com/nagayon-935/c9lab/refs/heads/main/test-01/configs/grafana/flow_panels/topology.svg",
         "testDataEnabled": false,
         "timeSliderEnabled": true
       },
@@ -181,7 +183,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interface_oper_state",
+          "expr": "interface_state_oper_status",
           "instant": false,
           "legendFormat": "oper-state:{{source}}:{{interface_name}}",
           "range": true,
@@ -192,7 +194,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interface_traffic_rate_out_bps",
+          "expr": "interface_state_out_octets",
           "hide": false,
           "instant": false,
           "legendFormat": "{{source}}:{{interface_name}}:out",
@@ -204,7 +206,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interface_traffic_rate_in_bps",
+          "expr": "interface_state_in_octets",
           "hide": false,
           "instant": false,
           "legendFormat": "{{source}}:{{interface_name}}:in",
@@ -213,54 +215,6 @@
         }
       ],
       "title": "Network Telemetry",
-      "type": "andrewbmchugh-flow-panel"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "gridPos": {
-        "h": 16,
-        "w": 13,
-        "x": 0,
-        "y": 6
-      },
-      "id": 23,
-      "options": {
-        "animationControlEnabled": true,
-        "animationsEnabled": true,
-        "debuggingCtr": {
-          "colorsCtr": 0,
-          "dataCtr": 1,
-          "displaySvgCtr": 0,
-          "mappingsCtr": 1,
-          "timingsCtr": 0
-        },
-        "highlighterEnabled": true,
-        "panZoomEnabled": true,
-        "panelConfig": "https://raw.githubusercontent.com/srl-labs/srl-telemetry-lab/refs/heads/flow_panel/configs/grafana/flow_panels/st_frontpanel.yml",
-        "siteConfig": "https://raw.githubusercontent.com/srl-labs/srl-telemetry-lab/refs/heads/flow_panel/configs/grafana/flow_panels/siteconfig.yml",
-        "svg": "https://raw.githubusercontent.com/srl-labs/srl-telemetry-lab/refs/heads/flow_panel/configs/grafana/flow_panels/front-panels.svg",
-        "testDataEnabled": false,
-        "timeSliderEnabled": true
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "interface_oper_state",
-          "instant": false,
-          "legendFormat": "oper-state:{{source}}:{{interface_name}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Front panel view",
       "type": "andrewbmchugh-flow-panel"
     },
     {
@@ -720,47 +674,15 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 23,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -780,17 +702,21 @@
       },
       "id": 30,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
         },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
       },
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -798,14 +724,14 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "platform_control_cpu_total_instant{source=\"$NE\"}",
-          "legendFormat": "Total",
+          "expr": "cpu_instant{source=\"$NE\"}",
+          "legendFormat": "{{source}}:{{component_name}}",
           "range": true,
           "refId": "A"
         }
       ],
       "title": "CPU Utilization",
-      "type": "timeseries"
+      "type": "gauge"
     },
     {
       "datasource": {
@@ -857,7 +783,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -984,7 +911,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1056,7 +984,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1127,244 +1056,6 @@
         }
       ],
       "type": "table"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 41
-      },
-      "id": 35,
-      "panels": [],
-      "title": "Logging $NE",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 15,
-        "x": 0,
-        "y": 42
-      },
-      "id": 37,
-      "options": {
-        "dedupStrategy": "none",
-        "enableLogDetails": true,
-        "prettifyLogMessage": false,
-        "showCommonLabels": false,
-        "showLabels": false,
-        "showTime": true,
-        "sortOrder": "Descending",
-        "wrapLogMessage": true
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
-          },
-          "editorMode": "code",
-          "expr": "{application=\"$Logs\", source=\"$NE\"}",
-          "queryType": "range",
-          "refId": "A"
-        }
-      ],
-      "title": "Log: $Logs",
-      "type": "logs"
-    },
-    {
-      "datasource": {
-        "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "sr_aaa_mgr",
-                  "sr_bgp_mgr",
-                  "sr_cli",
-                  "sr_gnmi_server",
-                  "sr_log_mgr",
-                  "sr_mgmt_server",
-                  "sr_xdp_cpm",
-                  "aaa_authkeys"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 21,
-        "w": 9,
-        "x": 15,
-        "y": 42
-      },
-      "id": 36,
-      "options": {
-        "displayLabels": [
-          "value"
-        ],
-        "legend": {
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
-          },
-          "editorMode": "code",
-          "expr": "sum by (application) (count_over_time({source=\"$NE\"}[$__range]))",
-          "legendFormat": "{{application}}",
-          "queryType": "range",
-          "refId": "A"
-        }
-      ],
-      "title": "Total logs $NE",
-      "type": "piechart"
-    },
-    {
-      "datasource": {
-        "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 1,
-            "drawStyle": "bars",
-            "fillOpacity": 100,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 15,
-        "x": 0,
-        "y": 55
-      },
-      "id": 38,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
-          },
-          "editorMode": "code",
-          "expr": "sum by (level) (count_over_time({application=\"$Logs\",source=\"$NE\"} | logfmt [$__interval]))",
-          "legendFormat": "{{level}}",
-          "queryType": "range",
-          "refId": "A"
-        }
-      ],
-      "title": "Log volume: $Logs",
-      "type": "timeseries"
     }
   ],
   "refresh": "5s",
@@ -1375,8 +1066,8 @@
       {
         "current": {
           "selected": false,
-          "text": "leaf1",
-          "value": "leaf1"
+          "text": "rt01",
+          "value": "rt01"
         },
         "datasource": {
           "type": "prometheus",
@@ -1401,9 +1092,10 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "default",
-          "value": "default"
+          "isNone": true,
+          "selected": true,
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
