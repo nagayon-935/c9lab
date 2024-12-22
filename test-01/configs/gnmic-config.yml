@@ -51,7 +51,6 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /interfaces/interface/subinterfaces/subinterface/oc-ip:ipv4/state/oc-ip:mtu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
