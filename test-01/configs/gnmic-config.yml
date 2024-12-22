@@ -27,45 +27,45 @@ subscriptions:
   ### General Information ###
   cpu:
     paths:
-      - components/component/cpu
+      - openconfig-interfaces:/components/component/cpu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
   mem:
     paths:
-      - components/component/state/memory/
+      - openconfig-interfaces:/components/component/state/memory/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
   show_ver:
     paths:
-      - /
+      - eos_native:/Eos/image
     mode: stream
     stream-mode: sample
     sample-interval: 60s
 
   interface_state:
     paths:
-      - interfaces/interface/state/counters
-      - interfaces/interface/state/admin-status
-      - interfaces/interface/state/oper-status
-      - interfaces/interface/subinterfaces/subinterface/oc-ip:ipv4/state/oc-ip:mtu
+      - openconfig-interfaces:/interfaces/interface/state/counters
+      - openconfig-interfaces:/interfaces/interface/state/admin-status
+      - openconfig-interfaces:/interfaces/interface/state/oper-status
+      - openconfig-interfaces:/interfaces/interface/subinterfaces/subinterface/oc-ip:ipv4/state/oc-ip:mtu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
   interface_config:
     paths:
-      - interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/
+      - openconfig-interfaces:/interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
   boot_time:
     paths:
-      - system/state/boot-time
+      - openconfig-interfaces:/system/state/boot-time
     mode: stream
     stream-mode: sample
     sample-interval: 60s
