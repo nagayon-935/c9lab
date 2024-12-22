@@ -21,7 +21,7 @@ topology:
       image: ghcr.io/nokia/srlinux
       type: ixrd2l
     ceos:
-      image: ceos:4.31.5M
+      image: ceos:4.32.2.1F
 
   nodes:
     rt01:
