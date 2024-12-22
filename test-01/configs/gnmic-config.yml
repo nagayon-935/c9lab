@@ -41,7 +41,7 @@ subscriptions:
 
   show_ver:
     paths:
-      - eos_native:/Eos/image
+      - eos_native:/Eos/
     mode: stream
     stream-mode: sample
     sample-interval: 60s
