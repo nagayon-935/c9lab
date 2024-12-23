@@ -34,7 +34,7 @@ subscriptions:
 
   mem:
     paths:
-      - /components/component/state/memory/
+      - /system/memory/state
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -51,7 +51,7 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /interfaces/interface/state/mtu
+      - /interfaces/interface/subinterfaces/subinterface/ipv4/state/mtu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -147,13 +147,3 @@ processors:
             apply-on: "value"
             old: "EOS"
             new: "eos"
-  convert-data-unit:
-    event-data-convert:
-      value-names: 
-        - ".*-octets$"
-      from: B
-      to: KB
-      keep: false
-      old: 
-      new:
-      debug: false
