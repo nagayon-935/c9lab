@@ -1046,43 +1046,20 @@
     },
     {
       "datasource": {
-        "default": true,
+        "default": false,
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "fixed"
-          },
           "custom": {
-            "fillOpacity": 70,
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
             },
-            "insertNulls": false,
-            "lineWidth": 0,
-            "spanNulls": false
+            "inspect": false
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "color": "dark-red",
-                  "index": 1,
-                  "text": "DOWN"
-                },
-                "1": {
-                  "color": "dark-green",
-                  "index": 0,
-                  "text": "UP"
-                }
-              },
-              "type": "value"
-            }
-          ],
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1095,175 +1072,107 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "color": {
+            "mode": "thresholds"
+          },
+          "unit": "ns"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 18,
-        "y": 33
+        "h": 9,
+        "w": 7,
+        "x": 0,
+        "y": 1
       },
-      "id": 36,
+      "id": 3,
       "options": {
-        "alignValue": "center",
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "mergeValues": true,
-        "rowHeight": 0.9,
-        "showValue": "always",
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
         }
       },
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
+          "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "interface_config_prefix_length",
+          "exemplar": false,
+          "expr": "time()*1000000000-gnmic_boot_time_boot_time",
+          "format": "table",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": true,
           "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
+          "range": false,
+          "refId": "A",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "gnmic_intf_config_ip{job=\"gnmic\", interface_name=\"Management0\"}",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "B"
         }
-      ],
-      "title": "Service: $Services",
-      "type": "state-timeline"
-    },
-    {
-      "datasource": {
-          "default": false,
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-          "defaults": {
-              "color": {
-                  "mode": "thresholds"
-              },
-              "custom": {
-                  "align": "auto",
-                  "cellOptions": {
-                      "type": "auto"
-                  },
-                  "inspect": false
-              },
-              "mappings": [],
-              "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                      {
-                          "color": "green",
-                          "value": null
-                      },
-                      {
-                          "color": "red",
-                          "value": 80
-                      }
-                  ]
-              },
-              "unit": "ns"
-          },
-          "overrides": []
-      },
-      "gridPos": {
-          "h": 9,
-          "w": 7,
-          "x": 0,
-          "y": 0
-      },
-      "id": 3,
-      "options": {
-          "cellHeight": "sm",
-          "footer": {
-              "countRows": false,
-              "fields": "",
-              "reducer": ["sum"],
-              "show": false
-          },
-          "showHeader": true
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-          {
-              "datasource": {
-                  "type": "prometheus",
-                  "uid": "PBFA97CFB590B2093"
-              },
-              "disableTextWrap": false,
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "time()*1000000000-gnmic_boot_time_boot_time",
-              "format": "table",
-              "fullMetaSearch": false,
-              "includeNullMetadata": true,
-              "instant": true,
-              "legendFormat": "__auto",
-              "range": false,
-              "refId": "A",
-              "useBackend": false
-          },
-          {
-              "datasource": {
-                  "type": "prometheus",
-                  "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "gnmic_intf_config_ip{job=\"gnmic\", interface_name=\"Management0\"}",
-              "format": "table",
-              "hide": false,
-              "instant": true,
-              "legendFormat": "__auto",
-              "range": false,
-              "refId": "B"
-          }
       ],
       "title": "Uptime",
       "transformations": [
-          {
-              "id": "joinByField",
-              "options": {
-                  "byField": "source",
-                  "mode": "outer"
-              }
-          },
-          {
-              "id": "organize",
-              "options": {
-                  "excludeByName": {
-                      "Time": true,
-                      "Value #B": true,
-                      "__name__": true,
-                      "address_ip": true,
-                      "instance": true,
-                      "instance 2": true,
-                      "job": true,
-                      "job 2": true,
-                      "subinterface_index": true,
-                      "subscription_name": true,
-                      "subscription_name 2": true
-                  },
-                  "includeByName": {},
-                  "indexByName": {},
-                  "renameByName": {
-                      "Value #A": "Uptime",
-                      "interface_name": "Management Interface",
-                      "ip": "Management IP",
-                      "source": "Hostname"
-                  }
-              }
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "source",
+            "mode": "outer"
           }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value #B": true,
+              "__name__": true,
+              "address_ip": true,
+              "instance": true,
+              "instance 2": true,
+              "job": true,
+              "job 2": true,
+              "subinterface_index": true,
+              "subscription_name": true,
+              "subscription_name 2": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value #A": "Uptime",
+              "interface_name": "Management Interface",
+              "ip": "Management IP",
+              "source": "Hostname"
+            }
+          }
+        }
       ],
       "type": "table"
-  }
+    }
   ],
   "refresh": "5s",
   "schemaVersion": 39,
