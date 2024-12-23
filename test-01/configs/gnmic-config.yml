@@ -51,7 +51,7 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /interfaces/interface/config/mtu
+      - /interfaces/interface/state/mtu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -150,7 +150,7 @@ processors:
   mtu:
     event-strings:
       value-names:
-        - "mtu"
+        - mtu
       transforms:
         - replace:
             apply-on: "value"
