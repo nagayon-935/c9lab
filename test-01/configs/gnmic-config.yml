@@ -82,7 +82,6 @@ outputs:
       - rename-interface
       - rename-source
       - eos-version
-      - convert-data-unit
 
 # プロセッサ設定
 processors:
