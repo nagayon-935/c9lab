@@ -5,25 +5,25 @@ anchors: # 再利用可能な設定の定義
     level: 0
   - color: green
     level: 1
-  thresholds-traffic: &thresholds-traffic # トラフィック量によって色を決定
-  - color: gray 
+  thresholds-traffic: &thresholds-traffic
+  - color: gray
     level: 0
   - color: green
-    level: 49
+    level: 199999
   - color: yellow
-    level: 250
+    level: 500000
   - color: orange
-    level: 1000
+    level: 1000000
   - color: red
-    level: 4000 #4Mbps
-  label-config: &label-config # リンクのラベル設定 xxxb/sと出力される
+    level: 5000000
+  label-config: &label-config
     separator: replace
     units: bps
     decimalPoints: 1
     valueMappings:
-    - valueMax: 1999
+    - valueMax: 199999
       text: ​
-    - valueMin: 2000
+    - valueMin: 200000
 cellIdPreamble: cell-
 cells:
   sw01:eth1:pc01:eth1:
