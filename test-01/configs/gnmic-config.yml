@@ -147,12 +147,3 @@ processors:
             apply-on: "value"
             old: "EOS"
             new: "eos"
-  mtu:
-    event-strings:
-      value-names:
-        - mtu
-      transforms:
-        - replace:
-            apply-on: "value"
-            old: 0
-            new: 1500
