@@ -82,7 +82,6 @@ outputs:
       - rename-interface
       - rename-source
       - eos-version
-      - convert-data-unit
 
 # プロセッサ設定
 processors:
@@ -147,13 +146,3 @@ processors:
             apply-on: "value"
             old: "EOS"
             new: "eos"
-  convert-data-unit:
-    event-data-convert:
-      value-names: 
-        - ".*-octets$"
-      from: B
-      to: MB
-      keep: false
-      old: 
-      new:
-      debug: false
