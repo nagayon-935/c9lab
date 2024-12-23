@@ -21,9 +21,9 @@ anchors: # 再利用可能な設定の定義
     units: bps
     decimalPoints: 1
     valueMappings:
-    - valueMax: 49
+    - valueMax: 1999
       text: ​
-    - valueMin: 50
+    - valueMin: 2000
 cellIdPreamble: cell-
 cells:
   sw01:eth1:pc01:eth1: # ポートのID
