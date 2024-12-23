@@ -549,6 +549,23 @@
           "range": true,
           "refId": "A",
           "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "interface_state_oper_status{interface_name=\"mgmt0\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{source}}:{{interface_name}}",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
         }
       ],
       "title": "mgmt state",
