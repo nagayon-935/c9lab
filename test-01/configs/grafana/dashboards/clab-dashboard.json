@@ -551,7 +551,7 @@
           "useBackend": false
         }
       ],
-      "title": "MTU",
+      "title": "mgmt state",
       "type": "stat"
     },
     {
