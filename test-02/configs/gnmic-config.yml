@@ -11,7 +11,8 @@ common_arista_subscriptions: &common_arista_subs
     - cpu
     - mem
     - interface_state
-    - boot_time
+    - interface_config
+    - bgp
 
 common_srl_subscriptions: &common_srl_subs
   skip-verify: true
