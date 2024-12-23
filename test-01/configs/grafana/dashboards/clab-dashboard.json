@@ -215,6 +215,113 @@
         }
       ],
       "title": "Network Telemetry",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "sw01:eth1:in",
+            "binary": {
+              "left": "sw01:eth1:in",
+              "operator": "*",
+              "right": "1000"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "sw01:eth1:out",
+            "binary": {
+              "left": "sw01:eth1:out",
+              "operator": "*",
+              "right": "1000"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "sw01:eth2:in",
+            "binary": {
+              "left": "sw01:eth2:in",
+              "operator": "*",
+              "right": "1000"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "sw01:eth2:out",
+            "binary": {
+              "left": "sw01:eth2:out",
+              "operator": "*",
+              "right": "1000"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "sw01:eth3:out",
+            "binary": {
+              "left": "sw01:eth3:out",
+              "operator": "*",
+              "right": "1000"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "rt01:eth1:out",
+            "binary": {
+              "left": "rt01:eth1:out",
+              "operator": "*",
+              "right": "1000"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "rt01:eth2:in",
+            "binary": {
+              "left": "rt01:eth2:in",
+              "operator": "*",
+              "right": "1000"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
       "type": "andrewbmchugh-flow-panel"
     },
     {
@@ -462,7 +569,7 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "axisSoftMax": 400,
+            "axisSoftMax": 4000,
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
