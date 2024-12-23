@@ -54,7 +54,7 @@ topology:
       kind: nokia_srlinux
       group: router
       mgmt-ipv4: 172.100.100.33
-      startup-config: ./configs/rt03/srlinux-problem.cfg
+      startup-config: ./configs/rt03/srlinux-answer.cfg
 
     ### TELEMETRY STACK ###
     gnmic:
