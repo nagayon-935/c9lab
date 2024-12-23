@@ -41,7 +41,7 @@ subscriptions:
 
   show_ver:
     paths:
-      - eos_native:/Eos/image
+      - components/component/state/software-version
     mode: stream
     stream-mode: sample
     sample-interval: 60s
@@ -51,6 +51,7 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
+      - /interfaces/interface/state/mtu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -145,3 +146,12 @@ processors:
             apply-on: "value"
             old: "EOS"
             new: "eos"
+  mtu:
+    event-strings:
+      value-names:
+        - "mtu"
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "0"
+            new: "1500"
