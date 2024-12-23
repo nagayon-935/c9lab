@@ -125,7 +125,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "interface_state_in_octets",
+          "expr": "rate(interface_state_in_octets[$__rate_interval])",
           "legendFormat": "{{source}}:{{interface_name}}:int",
           "range": true,
           "refId": "A"
@@ -136,7 +136,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "interface_state_out_octets",
+          "expr": "rate(interface_state_out_octets[$__rate_interval])",
           "hide": false,
           "legendFormat": "{{source}}:{{interface_name}}:out",
           "range": true,
@@ -245,10 +245,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -335,6 +331,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -586,7 +586,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "interface_state_in_pkts{source=\"$NE\"}",
+          "expr": "rate(interface_state_in_octets{source=\"$NE\"}[$__rate_interval])",
           "instant": false,
           "legendFormat": "{{interface_name}}:in",
           "range": true,
@@ -598,7 +598,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "interface_state_out_pkts{source=\"$NE\"}",
+          "expr": "rate(interface_state_out_octets{source=\"$NE\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "{{interface_name}}:out",
@@ -1053,16 +1053,36 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "fixed"
           },
           "custom": {
-            "align": "left",
-            "cellOptions": {
-              "type": "auto"
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
             },
-            "inspect": false
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
           },
-          "mappings": [],
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "dark-red",
+                  "index": 1,
+                  "text": "DOWN"
+                },
+                "1": {
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1085,22 +1105,22 @@
         "x": 18,
         "y": 33
       },
-      "id": 34,
+      "id": 36,
       "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "enablePagination": true,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
+        "alignValue": "center",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
-        "frameIndex": 0,
-        "showHeader": true
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "always",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -1108,37 +1128,14 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "exemplar": false,
-          "expr": "system_app_management_application_pid{source='$NE'}",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{application_name}}",
-          "range": false,
+          "expr": "interface_config_prefix_length",
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
-      "title": "Running SR Linux applications",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": true,
-              "__name__": true,
-              "instance": true,
-              "job": true,
-              "source": true,
-              "subscription_name": true
-            },
-            "indexByName": {},
-            "renameByName": {
-              "Value": "PID"
-            }
-          }
-        }
-      ],
-      "type": "table"
+      "title": "Service: $Services",
+      "type": "state-timeline"
     }
   ],
   "refresh": "5s",
@@ -1228,6 +1225,17 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "filters": [],
+        "hide": 0,
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
       }
     ]
   },
