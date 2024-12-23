@@ -82,7 +82,7 @@ outputs:
       - rename-interface
       - rename-source
       - eos-version
-      - mtu
+      - convert-data-unit
 
 # プロセッサ設定
 processors:
