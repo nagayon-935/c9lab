@@ -9,21 +9,21 @@ anchors: # 再利用可能な設定の定義
   - color: gray 
     level: 0
   - color: green
-    level: 500 #0.2Mbps ~ 0.5Mbps
+    level: 49
   - color: yellow
-    level: 1000 #0.5Mbps ~ 1Mbps
+    level: 250
   - color: orange
-    level: 1500 #1Mbps ~ 5Mbps
+    level: 1000
   - color: red
-    level: 2000 #5Mbps +
+    level: 4000 #4Mbps
   label-config: &label-config # リンクのラベル設定 xxxb/sと出力される
     separator: replace
     units: kbps
     decimalPoints: 1
     valueMappings:
-    - valueMax: 199999
+    - valueMax: 49
       text: ​
-    - valueMin: 200000
+    - valueMin: 50
 cellIdPreamble: cell-
 cells:
   sw01:eth1:pc01:eth1: # ポートのID
