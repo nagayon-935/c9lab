@@ -51,7 +51,7 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /interfaces/interface/state/mtu
+      - /interfaces/interface/config/mtu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
