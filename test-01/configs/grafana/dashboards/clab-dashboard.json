@@ -1112,7 +1112,7 @@
       },
       "id": 24,
       "panels": [],
-      "title": "$NE",
+      "title": "$NE BGP",
       "type": "row"
     },
     {
@@ -1437,6 +1437,19 @@
       ],
       "title": "BGP Route Stats",
       "type": "gauge"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 52
+      },
+      "id": 39,
+      "panels": [],
+      "title": "$NE OSPF",
+      "type": "row"
     }
   ],
   "refresh": "5s",
