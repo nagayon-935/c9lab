@@ -147,3 +147,13 @@ processors:
             apply-on: "value"
             old: "EOS"
             new: "eos"
+  convert-data-unit:
+    event-data-convert:
+      value-names: 
+        - ".*-octets$"
+      from: B
+      to: KB
+      keep: false
+      old: 
+      new:
+      debug: false
