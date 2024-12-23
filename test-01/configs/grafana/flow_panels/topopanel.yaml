@@ -18,7 +18,7 @@ anchors: # 再利用可能な設定の定義
     level: 4000 #4Mbps
   label-config: &label-config # リンクのラベル設定 xxxb/sと出力される
     separator: replace
-    units: kbps
+    units: bps
     decimalPoints: 1
     valueMappings:
     - valueMax: 49
