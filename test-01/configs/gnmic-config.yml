@@ -154,5 +154,5 @@ processors:
       transforms:
         - replace:
             apply-on: "value"
-            old: "0"
-            new: "1500"
+            old: 0
+            new: 1500
