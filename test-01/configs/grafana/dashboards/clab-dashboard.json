@@ -50,7 +50,7 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "axisSoftMax": 3000000,
+            "axisSoftMax": 4000,
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
@@ -95,7 +95,7 @@
               }
             ]
           },
-          "unit": "bps"
+          "unit": "Kbits"
         },
         "overrides": []
       },
@@ -194,7 +194,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interface_state_out_octets",
+          "expr": "rate(interface_state_out_octets[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "{{source}}:{{interface_name}}:out",
@@ -206,7 +206,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "interface_state_in_octets",
+          "expr": "rate(interface_state_in_octets[$__rate_interval])",
           "hide": false,
           "instant": false,
           "legendFormat": "{{source}}:{{interface_name}}:in",
@@ -462,7 +462,7 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "axisSoftMax": 3000000,
+            "axisSoftMax": 400,
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
@@ -504,7 +504,7 @@
               }
             ]
           },
-          "unit": "decbits"
+          "unit": "Kbits"
         },
         "overrides": []
       },

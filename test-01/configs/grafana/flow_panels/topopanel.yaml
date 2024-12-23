@@ -6,19 +6,19 @@ anchors: # 再利用可能な設定の定義
   - color: green
     level: 1
   thresholds-traffic: &thresholds-traffic # トラフィック量によって色を決定
-  - color: gray
+  - color: gray 
     level: 0
   - color: green
-    level: 199999
+    level: 199999 #0.2Mbps ~ 0.5Mbps
   - color: yellow
-    level: 500000
+    level: 500000 #0.5Mbps ~ 1Mbps
   - color: orange
-    level: 1000000
+    level: 1000000 #1Mbps ~ 5Mbps
   - color: red
-    level: 5000000
+    level: 5000000 #5Mbps +
   label-config: &label-config # リンクのラベル設定 xxxb/sと出力される
     separator: replace
-    units: bps
+    units: kbps
     decimalPoints: 1
     valueMappings:
     - valueMax: 199999
