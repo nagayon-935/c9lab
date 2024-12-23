@@ -590,7 +590,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "interface_state_in_octets{source=\"$NE\"}",
+          "expr": "interface_state_in_pkts{source=\"$NE\"}",
           "instant": false,
           "legendFormat": "{{interface_name}}:in",
           "range": true,
@@ -602,7 +602,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "interface_state_out_octets{source=\"$NE\"}",
+          "expr": "interface_state_out_pkts{source=\"$NE\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "{{interface_name}}:out",
@@ -909,9 +909,9 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "mem_available{source=\"$NE\"}",
+          "expr": "mem_free{source=\"$NE\"}",
           "hide": false,
-          "legendFormat": "Available",
+          "legendFormat": "Free",
           "range": true,
           "refId": "A"
         },
@@ -921,11 +921,35 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "mem_utilized{source=\"$NE\"}",
+          "expr": "mem_used{source=\"$NE\"}",
           "hide": false,
-          "legendFormat": "Utilization",
+          "legendFormat": "Used",
           "range": true,
           "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "mem_reserved{source=\"$NE\"}",
+          "hide": false,
+          "legendFormat": "Reserved",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "mem_physical{source=\"$NE\"}",
+          "hide": false,
+          "legendFormat": "Physical",
+          "range": true,
+          "refId": "D"
         }
       ],
       "title": "Memory",
