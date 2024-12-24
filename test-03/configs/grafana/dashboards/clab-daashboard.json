@@ -143,7 +143,7 @@
           "refId": "B"
         }
       ],
-      "title": "DC Fabric Throughput",
+      "title": "Throughput",
       "type": "timeseries"
     },
     {
@@ -1173,7 +1173,7 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 6,
+        "w": 7,
         "x": 0,
         "y": 42
       },
@@ -1276,7 +1276,7 @@
       "gridPos": {
         "h": 4,
         "w": 5,
-        "x": 6,
+        "x": 7,
         "y": 42
       },
       "id": 41,
@@ -1327,7 +1327,7 @@
           "refId": "A"
         }
       ],
-      "title": "address",
+      "title": "router-id",
       "transformations": [
         {
           "id": "joinByField",
@@ -1420,8 +1420,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 17,
-        "x": 6,
+        "w": 16,
+        "x": 7,
         "y": 46
       },
       "id": 40,
@@ -1492,7 +1492,7 @@
           "refId": "A"
         }
       ],
-      "title": "BGP sssss",
+      "title": "BGP status",
       "transformations": [
         {
           "id": "joinByField",
@@ -1631,7 +1631,7 @@
               "subscription_name 2": 16
             },
             "renameByName": {
-              "Value #A": "PreRcvd",
+              "Value #A": "",
               "Value #B": "PreSent",
               "Value #peer-as": "Peer ASN",
               "Value #rec": "PfxRcvd",
@@ -1641,7 +1641,11 @@
               "interface_name": "Interface",
               "ip": "Management IP",
               "neighbor_address": "",
-              "source": "Hostname"
+              "neighbor_neighbor_address": "neighbor_address",
+              "peer_type": "Peer Type",
+              "session_state": "State",
+              "source": "Hostname",
+              "source 1": "Hostname"
             }
           }
         }
@@ -1745,12 +1749,12 @@
           "refId": "B"
         }
       ],
-      "title": "Panel Title",
+      "title": "OSPF status",
       "transformations": [
         {
           "id": "joinByField",
           "options": {
-            "byField": "network_instance_name",
+            "byField": "interface_id",
             "mode": "outer"
           }
         },
@@ -1787,29 +1791,19 @@
             },
             "includeByName": {},
             "indexByName": {
-              "Time 1": 6,
-              "Time 2": 14,
-              "Value #A": 13,
-              "Value #B": 22,
-              "__name__ 1": 7,
-              "__name__ 2": 15,
-              "area_identifier": 2,
-              "instance 1": 8,
-              "instance 2": 16,
-              "interface_id": 4,
-              "job 1": 9,
-              "job 2": 17,
-              "network_instance_name": 3,
-              "network_type": 5,
-              "protocol_identifier 1": 10,
-              "protocol_identifier 2": 18,
-              "protocol_name 1": 11,
-              "protocol_name 2": 19,
-              "router_id": 1,
-              "source 1": 0,
-              "source 2": 20,
-              "subscription_name 1": 12,
-              "subscription_name 2": 21
+              "Time": 5,
+              "Value #A": 4,
+              "__name__": 6,
+              "area_identifier": 1,
+              "instance": 7,
+              "interface_id": 2,
+              "job": 8,
+              "network_instance_name": 10,
+              "network_type": 3,
+              "protocol_identifier": 9,
+              "protocol_name": 11,
+              "source": 0,
+              "subscription_name": 12
             },
             "renameByName": {}
           }

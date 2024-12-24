@@ -9,7 +9,6 @@ common_arista_subscriptions: &common_arista_subs
   password: admin
   encoding: json_ietf
   subscriptions:
-    - version_info
     - cpu
     - mem
     - interface_state
@@ -26,11 +25,6 @@ targets:
 subscriptions:
 
   ### General Information ###
-    version_info:
-    paths:
-      - /components/component/state/
-    mode: once
-
   cpu:
     paths:
       - /components/component/cpu
