@@ -25,7 +25,7 @@ common_srl_subscriptions: &common_srl_subs
     - mem
     - interface_state
     - interface_config
-    - bgp
+    - srl_bgp
 
 # ターゲットデバイス設定
 targets:
@@ -75,6 +75,13 @@ subscriptions:
 
   ### BGP Information ###
   bgp:
+    paths:
+      - /network-instances/network-instance/protocols/protocol/bgp/neighbors/
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  srl_bgp:
     paths:
       - /network-instances/network-instance/protocols/protocol/bgp/neighbors/
     mode: stream
