@@ -69,6 +69,7 @@ subscriptions:
   interface_config:
     paths:
       - /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
+      - srl_native:/interface/subinterface/ipv4/address/ip-prefix
     mode: stream
     stream-mode: sample
     sample-interval: 5s
