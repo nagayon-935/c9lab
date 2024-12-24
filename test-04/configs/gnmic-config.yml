@@ -72,6 +72,7 @@ outputs:
     type: prometheus
     listen: :9273
     append-subscription-name: true
+    strings-as-labels: true
     event-processors:
       - trim-prefixes
       - bounce-map

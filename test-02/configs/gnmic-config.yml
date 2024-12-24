@@ -20,6 +20,7 @@ common_srl_subscriptions: &common_srl_subs
   password: NokiaSrl1!
   encoding: json_ietf
   subscriptions:
+    - version_info
     - cpu
     - mem
     - interface_state
@@ -36,6 +37,11 @@ targets:
 subscriptions:
 
   ### General Information ###
+  version_info:
+    paths:
+      - /components/component/state/software-version
+    mode: once
+
   cpu:
     paths:
       - /components/component/cpu
@@ -67,6 +73,7 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
 
+  ### BGP Information ###
   bgp:
     paths:
       - /network-instances/network-instance/protocols/protocol/bgp/
