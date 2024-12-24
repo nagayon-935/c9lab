@@ -20,11 +20,10 @@ common_srl_subscriptions: &common_srl_subs
   password: NokiaSrl1!
   encoding: json_ietf
   subscriptions:
-    - version_info
     - cpu
     - mem
     - interface_state
-    - srl_interface_config
+    - srl_int_conf
     - bgp
 
 # ターゲットデバイス設定
@@ -37,11 +36,6 @@ targets:
 subscriptions:
 
   ### General Information ###
-  version_info:
-    paths:
-      - /components/component/state/
-    mode: once
-
   cpu:
     paths:
       - /components/component/cpu
@@ -73,7 +67,7 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
 
-    srl_interface_config:
+    srl_int_conf:
     paths:
       - srl_native:/interface/subinterface/ipv4/address/ip-prefix
     mode: stream
