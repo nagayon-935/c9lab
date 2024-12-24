@@ -83,6 +83,15 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
 
+  ### OSPF Information ###
+  ospf:
+    paths:
+      - /network-instances/network-instance/protocols/protocol/ospf/neighbors/
+      - /network-instances/network-instance/protocols/protocol/ospf/global/state/router-id
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
 # 出力設定
 outputs:
   prom-output:
