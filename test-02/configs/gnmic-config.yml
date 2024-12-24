@@ -65,7 +65,8 @@ subscriptions:
     paths:
       - /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
     mode: stream
-    stream-mode: on-change
+    stream-mode: sample
+    sample-interval: 5s
 
   ### BGP Information ###
   bgp:
