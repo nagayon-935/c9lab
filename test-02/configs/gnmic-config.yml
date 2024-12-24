@@ -82,6 +82,14 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
 
+  eos_native:
+    paths:
+      - eos_native:/Smash/routing/status/route
+      - eos_native:/Smash/counters/ethIntf/PhyEthtool-1/current/counter
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
 # 出力設定
 outputs:
   prom-output:
