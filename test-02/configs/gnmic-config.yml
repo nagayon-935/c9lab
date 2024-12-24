@@ -25,7 +25,7 @@ common_srl_subscriptions: &common_srl_subs
     - mem
     - interface_state
     - interface_config
-    - srl_interface_config
+
     - bgp
 
 # ターゲットデバイス設定
@@ -69,12 +69,7 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
 
-  srl_interface_config:
-    paths:
-      - srl_native:/interface/subinterface/ipv4/address/
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
+
 
   ### BGP Information ###
   bgp:
