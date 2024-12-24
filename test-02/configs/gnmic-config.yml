@@ -76,6 +76,7 @@ subscriptions:
   ### BGP Information ###
   bgp:
     paths:
+      - /network-instances/network-instance/protocols/protocol/bgp/
       - /network-instances/network-instance/protocols/protocol/bgp/neighbors/
     mode: stream
     stream-mode: sample
