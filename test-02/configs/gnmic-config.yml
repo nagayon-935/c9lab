@@ -24,6 +24,7 @@ common_srl_subscriptions: &common_srl_subs
     - cpu
     - mem
     - interface_state
+    - interface_config
     - srl_interface_config
     - bgp
 
