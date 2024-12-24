@@ -1237,13 +1237,22 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "dark-yellow",
             "mode": "thresholds"
           },
-          "mappings": [],
-          "max": 4,
+          "mappings": [
+            {
+              "options": {
+                "": {
+                  "text": ""
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "max": 16,
+          "min": 0,
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
                 "color": "dark-blue",
@@ -1256,56 +1265,15 @@
             ]
           }
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Up Peers"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "dark-blue",
-                      "value": null
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Total Peers"
-            },
-            "properties": [
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "dark-blue",
-                      "value": null
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
-        "w": 7,
-        "x": 5,
+        "w": 10,
+        "x": 10,
         "y": 42
       },
-      "id": 10,
+      "id": 11,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -1329,11 +1297,11 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "network_instance_protocols_bgp_statistics_up_peers{network_instance_name=\"default\",source=\"$NE\"}",
-          "format": "time_series",
+          "expr": "sum(bgp_session_state{network_instance_name=\"default\",source=\"$NE\", session_state=\"ESTABLISHED\"})",
+          "hide": false,
           "instant": false,
-          "interval": "",
-          "legendFormat": "Up Peers",
+          "legendFormat": "UP Peers",
+          "range": true,
           "refId": "A"
         },
         {
@@ -1342,10 +1310,11 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "network_instance_protocols_bgp_statistics_total_peers{network_instance_name=\"default\",source=\"$NE\"}",
+          "expr": "sum(bgp_installed{source=\"$NE\", afi_safi_afi_safi_name=\"IPV4_UNICAST\"})",
+          "format": "time_series",
           "instant": false,
           "interval": "",
-          "legendFormat": "Total Peers",
+          "legendFormat": "Total Received Routes",
           "refId": "B"
         },
         {
@@ -1354,14 +1323,14 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "network_instance_protocols_bgp_statistics_disabled_peers{network_instance_name=\"default\",source=\"$NE\"}",
+          "expr": "sum(bgp_sent{source=\"$NE\", afi_safi_afi_safi_name=\"IPV4_UNICAST\"})",
           "instant": false,
           "interval": "",
-          "legendFormat": "Disabled Peers",
+          "legendFormat": "Total Sent Routes",
           "refId": "C"
         }
       ],
-      "title": "BGP Peer stats",
+      "title": "BGP Route Stats",
       "type": "gauge"
     },
     {
@@ -1401,10 +1370,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 12,
-        "y": 42
+        "h": 4,
+        "w": 15,
+        "x": 5,
+        "y": 47
       },
       "id": 40,
       "options": {
@@ -1615,97 +1584,6 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "": {
-                  "text": ""
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "max": 16,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "dark-blue",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 7,
-        "x": 5,
-        "y": 47
-      },
-      "id": 11,
-      "options": {
-        "minVizHeight": 75,
-        "minVizWidth": 75,
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "sizing": "auto"
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "network_instance_protocols_bgp_statistics_total_received_routes{network_instance_name=\"default\",source=\"$NE\"}",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "Total Received Routes",
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "network_instance_protocols_bgp_statistics_total_active_routes{network_instance_name=\"default\",source=\"$NE\"}",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "Total Active Routes",
-          "refId": "B"
-        }
-      ],
-      "title": "BGP Route Stats",
-      "type": "gauge"
-    },
-    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
@@ -1726,9 +1604,9 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": "rt02",
-          "value": "rt02"
+          "selected": false,
+          "text": "rt03",
+          "value": "rt03"
         },
         "datasource": {
           "type": "prometheus",
