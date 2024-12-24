@@ -23,7 +23,7 @@ common_srl_subscriptions: &common_srl_subs
     - cpu
     - mem
     - interface_state
-    - srl_int_conf
+    - srl_interface_config
     - bgp
 
 # ターゲットデバイス設定
@@ -67,7 +67,7 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
 
-    srl_int_conf:
+  srl_interface_config:
     paths:
       - srl_native:/interface/subinterface/ipv4/address/ip-prefix
     mode: stream
