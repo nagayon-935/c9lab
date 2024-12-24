@@ -13,6 +13,7 @@ common_arista_subscriptions: &common_arista_subs
     - interface_state
     - interface_config
     - bgp
+    - ospf
 
 common_srl_subscriptions: &common_srl_subs
   skip-verify: true
