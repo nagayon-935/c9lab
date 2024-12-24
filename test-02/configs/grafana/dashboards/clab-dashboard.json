@@ -1375,6 +1375,331 @@
           "color": {
             "mode": "thresholds"
           },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 42
+      },
+      "id": 40,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "bgp_neighbor_address{source=\"$NE\"}",
+          "format": "table",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "neighbor",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "bgp_received{source=\"$NE\"}",
+          "format": "table",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "rec",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "bgp_sent{source=\"$NE\"}",
+          "format": "table",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "sent",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "bgp_session_state{source=\"$NE\"}",
+          "format": "table",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "state",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "bgp_peer_as{source=\"$NE\"}",
+          "format": "table",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "peer-as",
+          "useBackend": false
+        }
+      ],
+      "title": "address",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "source",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Time 1": true,
+              "Time 2": true,
+              "Time 3": true,
+              "Time 4": true,
+              "Time 5": true,
+              "Value": true,
+              "Value #B": false,
+              "Value #D": true,
+              "Value #neighbor": true,
+              "Value #state": true,
+              "__name__": true,
+              "__name__ 1": true,
+              "__name__ 2": true,
+              "__name__ 3": true,
+              "__name__ 4": true,
+              "__name__ 5": true,
+              "address_ip": false,
+              "afi_safi_afi_safi_name 1": true,
+              "afi_safi_afi_safi_name 2": true,
+              "instance": true,
+              "instance 1": true,
+              "instance 2": true,
+              "instance 3": true,
+              "instance 4": true,
+              "instance 5": true,
+              "job": true,
+              "job 1": true,
+              "job 2": true,
+              "job 3": true,
+              "job 4": true,
+              "job 5": true,
+              "neighbor_address 1": false,
+              "neighbor_address 2": true,
+              "neighbor_address 3": true,
+              "neighbor_neighbor_address 1": true,
+              "neighbor_neighbor_address 2": true,
+              "neighbor_neighbor_address 3": true,
+              "neighbor_neighbor_address 4": true,
+              "neighbor_neighbor_address 5": true,
+              "network_instance_name": true,
+              "network_instance_name 1": true,
+              "network_instance_name 2": true,
+              "network_instance_name 3": true,
+              "network_instance_name 4": true,
+              "network_instance_name 5": true,
+              "peer_group 1": true,
+              "peer_group 2": true,
+              "peer_group 3": true,
+              "peer_group_peer_group_name": true,
+              "peer_type 1": true,
+              "peer_type 2": true,
+              "peer_type 3": true,
+              "protocol_identifier": true,
+              "protocol_identifier 1": true,
+              "protocol_identifier 2": true,
+              "protocol_identifier 3": true,
+              "protocol_identifier 4": true,
+              "protocol_identifier 5": true,
+              "protocol_name": true,
+              "protocol_name 1": true,
+              "protocol_name 2": true,
+              "protocol_name 3": true,
+              "protocol_name 4": true,
+              "protocol_name 5": true,
+              "remove_private_as 1": true,
+              "remove_private_as 2": true,
+              "remove_private_as 3": true,
+              "send_community 1": true,
+              "send_community 2": true,
+              "send_community 3": true,
+              "session_state 2": true,
+              "session_state 3": true,
+              "source": false,
+              "subinterface_index": true,
+              "subscription_name": true,
+              "subscription_name 1": true,
+              "subscription_name 2": true,
+              "subscription_name 3": true,
+              "subscription_name 4": true,
+              "subscription_name 5": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time 1": 8,
+              "Time 2": 17,
+              "Time 3": 27,
+              "Time 4": 37,
+              "Time 5": 46,
+              "Value #A": 2,
+              "Value #B": 3,
+              "Value #C": 4,
+              "Value #D": 5,
+              "Value #E": 6,
+              "__name__ 1": 9,
+              "__name__ 2": 18,
+              "__name__ 3": 28,
+              "__name__ 4": 38,
+              "__name__ 5": 47,
+              "afi_safi_afi_safi_name 1": 19,
+              "afi_safi_afi_safi_name 2": 29,
+              "instance 1": 10,
+              "instance 2": 20,
+              "instance 3": 30,
+              "instance 4": 39,
+              "instance 5": 48,
+              "job 1": 11,
+              "job 2": 21,
+              "job 3": 31,
+              "job 4": 40,
+              "job 5": 49,
+              "neighbor_address": 1,
+              "neighbor_neighbor_address 1": 12,
+              "neighbor_neighbor_address 2": 22,
+              "neighbor_neighbor_address 3": 32,
+              "neighbor_neighbor_address 4": 41,
+              "neighbor_neighbor_address 5": 50,
+              "network_instance_name 1": 13,
+              "network_instance_name 2": 23,
+              "network_instance_name 3": 33,
+              "network_instance_name 4": 42,
+              "network_instance_name 5": 51,
+              "peer_group_peer_group_name": 55,
+              "protocol_identifier 1": 14,
+              "protocol_identifier 2": 24,
+              "protocol_identifier 3": 34,
+              "protocol_identifier 4": 43,
+              "protocol_identifier 5": 52,
+              "protocol_name 1": 15,
+              "protocol_name 2": 25,
+              "protocol_name 3": 35,
+              "protocol_name 4": 44,
+              "protocol_name 5": 53,
+              "session_state": 7,
+              "source": 0,
+              "subscription_name 1": 16,
+              "subscription_name 2": 26,
+              "subscription_name 3": 36,
+              "subscription_name 4": 45,
+              "subscription_name 5": 54
+            },
+            "renameByName": {
+              "Value #A": "PreRcvd",
+              "Value #B": "PreSent",
+              "Value #peer-as": "Peer ASN",
+              "Value #rec": "PfxRcvd",
+              "Value #sent": "PfxSent",
+              "Value #state": "",
+              "address_ip": "",
+              "interface_name": "Interface",
+              "ip": "Management IP",
+              "neighbor_address": "",
+              "source": "Hostname"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "mappings": [
             {
               "options": {
@@ -1477,8 +1802,8 @@
       {
         "current": {
           "selected": false,
-          "text": "rt01",
-          "value": "rt01"
+          "text": "rt02",
+          "value": "rt02"
         },
         "datasource": {
           "type": "prometheus",

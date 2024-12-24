@@ -39,7 +39,7 @@ subscriptions:
   ### General Information ###
   version_info:
     paths:
-      - /components/component/state/software-version
+      - /components/component/state/
     mode: once
 
   cpu:
