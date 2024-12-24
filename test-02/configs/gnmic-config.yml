@@ -69,9 +69,8 @@ subscriptions:
 
   bgp:
     paths:
-      - /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/
       - /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/
-      - /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor/state/session-state
+      - /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/neighbors/neighbor/state/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
