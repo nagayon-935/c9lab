@@ -86,8 +86,8 @@ subscriptions:
   ### OSPF Information ###
   ospf:
     paths:
-      - /network-instances/network-instance/protocols/protocol/ospf/neighbors/
-      - /network-instances/network-instance/protocols/protocol/ospf/global/state/router-id
+      - /network-instances/network-instance/protocols/protocol/ospfv2/
+      - /network-instances/network-instance/protocols/protocol/ospfv2/areas/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
