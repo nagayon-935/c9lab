@@ -76,10 +76,7 @@ subscriptions:
   ### BGP Information ###
   bgp:
     paths:
-      - /network-instances/network-instance/protocols/protocol/bgp/
       - /network-instances/network-instance/protocols/protocol/bgp/neighbors/
-      - eos_native:/Smash/routing/status/route
-      - eos_native:/Smash/routing/status/nexthop
     mode: stream
     stream-mode: sample
     sample-interval: 5s
