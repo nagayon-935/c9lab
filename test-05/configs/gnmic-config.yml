@@ -9,10 +9,12 @@ common_arista_subscriptions: &common_arista_subs
   password: admin
   encoding: json_ietf
   subscriptions:
+    - version_info
     - cpu
     - mem
     - interface_state
-    - boot_time
+    - interface_config
+    - ospf
 
 # ターゲットデバイス設定
 targets:
@@ -24,36 +26,51 @@ targets:
 subscriptions:
 
   ### General Information ###
+    version_info:
+    paths:
+      - /components/component/state/
+    mode: once
+
   cpu:
     paths:
-      - components/component/cpu
+      - /components/component/cpu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
   mem:
     paths:
-      - components/component/state/memory/
+      - /system/memory/state
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
   interface_state:
     paths:
-      - interfaces/interface[name=*]/state/counters
-      - interfaces/interface[name=*]/state/admin-status
-      - interfaces/interface[name=*]/state/oper-status
+      - /interfaces/interface/state/counters
+      - /interfaces/interface/state/admin-status
+      - /interfaces/interface/state/oper-status
+      - /interfaces/interface/subinterfaces/subinterface/ipv4/state/mtu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
-  boot_time:
+  interface_config:
     paths:
-      - system/state/boot-time
+      - /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
     mode: stream
     stream-mode: sample
-    sample-interval: 60s
+    sample-interval: 5s
 
+  ### OSPF Information ###
+  ospf:
+    paths:
+      - /network-instances/network-instance/protocols/protocol/ospfv2/
+      - /network-instances/network-instance/protocols/protocol/ospfv2/areas/
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+  
 # 出力設定
 outputs:
   prom-output:
@@ -67,6 +84,7 @@ outputs:
       - rename-interface
       - rename-source
       - eos-version
+      - convert-data-unit
 
 # プロセッサ設定
 processors:
@@ -131,3 +149,13 @@ processors:
             apply-on: "value"
             old: "EOS"
             new: "eos"
+  convert-data-unit:
+    event-data-convert:
+      value-names: 
+        - ".*-octets$"
+      from: B
+      to: kb
+      keep: false
+      old: 
+      new:
+      debug: false

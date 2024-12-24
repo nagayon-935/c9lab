@@ -11,7 +11,9 @@ common_arista_subscriptions: &common_arista_subs
     - cpu
     - mem
     - interface_state
-    - boot_time
+    - interface_config
+    - bgp
+    - ospf
 
 common_srl_subscriptions: &common_srl_subs
   skip-verify: true
@@ -22,7 +24,8 @@ common_srl_subscriptions: &common_srl_subs
     - cpu
     - mem
     - interface_state
-    - boot_time
+    - interface_config
+    - bgp
 
 # ターゲットデバイス設定
 targets:
@@ -37,34 +40,52 @@ subscriptions:
   ### General Information ###
   cpu:
     paths:
-      - components/component/cpu
+      - /components/component/cpu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
   mem:
     paths:
-      - components/component/state/memory/
+      - /system/memory/state
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
   interface_state:
     paths:
-      - interfaces/interface[name=*]/state/counters
-      - interfaces/interface[name=*]/state/admin-status
-      - interfaces/interface[name=*]/state/oper-status
+      - /interfaces/interface/state/counters
+      - /interfaces/interface/state/admin-status
+      - /interfaces/interface/state/oper-status
+      - /interfaces/interface/subinterfaces/subinterface/ipv4/state/mtu
     mode: stream
     stream-mode: sample
     sample-interval: 5s
 
-  boot_time:
+  interface_config:
     paths:
-      - system/state/boot-time
+      - /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
     mode: stream
     stream-mode: sample
-    sample-interval: 60s
+    sample-interval: 5s
 
+  ### BGP Information ###
+  bgp:
+    paths:
+      - /network-instances/network-instance/protocols/protocol/bgp/neighbors/
+      - /network-instances/network-instance/protocols/protocol/bgp/global/state/router-id
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  ### OSPF Information ###
+  ospf:
+    paths:
+      - /network-instances/network-instance/protocols/protocol/ospfv2/
+      - /network-instances/network-instance/protocols/protocol/ospfv2/areas/
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
 
 # 出力設定
 outputs:

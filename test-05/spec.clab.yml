@@ -25,7 +25,7 @@ topology:
       kind: ceos
       group: router
       mgmt-ipv4: 172.100.100.31
-      startup-config: ./configs/rt01/cEoS-problem.conf
+      startup-config: ./configs/rt01/cEoS-answer.conf
     rt02:
       kind: ceos
       group: router

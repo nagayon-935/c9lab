@@ -43,7 +43,7 @@ topology:
       kind: ceos
       group: router
       mgmt-ipv4: 172.100.100.34
-      startup-config: ./configs/rt04/cEoS-problem.conf
+      startup-config: ./configs/rt04/cEoS-answer.conf
 
     ### TELEMETRY STACK ###
     gnmic:
