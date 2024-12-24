@@ -18,7 +18,7 @@ topology:
       binds:
       - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
     ceos:
-      image: ceos:4.32.2.1F
+      image: ceos:4.33.1F
     nokia_srlinux:
       image: ghcr.io/nokia/srlinux:24.10.1
       type: ixrd2l
