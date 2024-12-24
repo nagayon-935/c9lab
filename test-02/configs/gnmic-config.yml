@@ -13,7 +13,6 @@ common_arista_subscriptions: &common_arista_subs
     - interface_state
     - interface_config
     - bgp
-    - eos_native
 
 common_srl_subscriptions: &common_srl_subs
   skip-verify: true
@@ -77,16 +76,7 @@ subscriptions:
   ### BGP Information ###
   bgp:
     paths:
-      - /network-instances/network-instance/protocols/protocol/bgp/
       - /network-instances/network-instance/protocols/protocol/bgp/neighbors/
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-
-  eos_native:
-    paths:
-      - eos_native:/Smash/routing/status/route
-      - eos_native:/Smash/counters/ethIntf/PhyEthtool-1/current/counter
     mode: stream
     stream-mode: sample
     sample-interval: 5s
