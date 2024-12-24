@@ -71,7 +71,7 @@ subscriptions:
     paths:
       - /network-instances/network-instance[name=default]/protocols/protocol[name=BGP]/bgp/
     mode: stream
-    stream-mode: on_change
+    stream-mode: samlpe
     sample-interval: 5s
 
 # 出力設定
