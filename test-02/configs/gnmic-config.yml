@@ -25,7 +25,6 @@ common_srl_subscriptions: &common_srl_subs
     - mem
     - interface_state
     - interface_config
-
     - bgp
 
 # ターゲットデバイス設定
@@ -68,8 +67,6 @@ subscriptions:
     mode: stream
     stream-mode: sample
     sample-interval: 5s
-
-
 
   ### BGP Information ###
   bgp:
