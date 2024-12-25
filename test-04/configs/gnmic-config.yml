@@ -26,6 +26,8 @@ common_srl_subscriptions: &common_srl_subs
     - interface_state
     - interface_config
     - bgp
+    - ospf
+    - srl_ospf
 
 # ターゲットデバイス設定
 targets:
@@ -83,6 +85,12 @@ subscriptions:
     paths:
       - /network-instances/network-instance/protocols/protocol/ospfv2/
       - /network-instances/network-instance/protocols/protocol/ospfv2/areas/
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  srl_ospf:
+    paths:
       - srl_native:/network-instance[name=*]/protocols/ospf/
     mode: stream
     stream-mode: sample
