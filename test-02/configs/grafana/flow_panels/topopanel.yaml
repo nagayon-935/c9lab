@@ -31,7 +31,7 @@ cells:
     fillColor:
       thresholds: *thresholds-operstate
   link_id:pc01:eth1:rt01:eth1:
-    dataRef: pc01:eth1:out
+    dataRef: rt01:eth1:in
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
@@ -40,7 +40,7 @@ cells:
     fillColor:
       thresholds: *thresholds-operstate
   link_id:pc02:eth1:rt03:e1-2:
-    dataRef: pc02:eth1:out
+    dataRef: rt03:e1-2:in
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
