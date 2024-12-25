@@ -126,7 +126,7 @@
           },
           "editorMode": "code",
           "expr": "rate(interface_state_in_octets[$__rate_interval])",
-          "legendFormat": "{{source}}:{{interface_name}}:int",
+          "legendFormat": "{{source}}:{{interface_name}}in",
           "range": true,
           "refId": "A"
         },
