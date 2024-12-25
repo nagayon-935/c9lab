@@ -37,6 +37,8 @@ topology:
     pc02:
       group: clients
       mgmt-ipv4: 172.100.100.12
+      binds:
+        - configs/pc02:/config
       exec:
         - ip addr add 172.16.2.1/24 dev eth1
         - ip route del default
