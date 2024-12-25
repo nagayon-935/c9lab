@@ -83,6 +83,7 @@ subscriptions:
     paths:
       - /network-instances/network-instance/protocols/protocol/ospfv2/
       - /network-instances/network-instance/protocols/protocol/ospfv2/areas/
+      - srl_native:/network-instance[name=*]/protocols/ospf/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
