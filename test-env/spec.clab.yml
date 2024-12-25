@@ -94,6 +94,13 @@ topology:
         GF_AUTH_ANONYMOUS: 'true'
         GF_AUTH_OAUTH_AUTO_LOGIN: 'true'
       group: '10'
+    snmp-exporter:
+      mgmt-ipv4: 172.100.100.44
+      image: prom/snmp-exporter:v0.26.0
+      binds:
+      - configs/snmp-exporter/snmp.yml:/etc/snmp-exporter/snmp.yml:ro
+      ports:
+      - 9116:9116
 
   links:
     - endpoints: ["pc01:eth1", "rt01:eth1"]
