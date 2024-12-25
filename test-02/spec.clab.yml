@@ -33,6 +33,7 @@ topology:
         - ip addr add 192.168.1.1/24 dev eth1
         - ip route del default
         - ip route add default via 192.168.1.254 dev eth1
+        - iperf3 -s -p 5201 -D > iperf3_1.log
     pc02:
       group: clients
       mgmt-ipv4: 172.100.100.12
