@@ -14,7 +14,7 @@ topology:
 
   kinds:
     linux:
-      image: nicolaka/netshoot:latest
+      image: nagayon/my-netshoot:1.0.0 
       binds:
       - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
     ceos:
@@ -24,30 +24,37 @@ topology:
     pc01:
       group: clients
       mgmt-ipv4: 172.100.100.11
+      binds:
+        - configs/pc01/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.10.1/24 dev eth1
       - ip route del default
       - ip route add default via 192.168.10.254 dev eth1
       - iperf3 -s -p 5201 -D > iperf3_1.log
       - iperf3 -s -p 5202 -D > iperf3_2.log
+      - ping_exporter --config.path /etc/ping_exporter/config.yml
     pc02:
       group: clients
       mgmt-ipv4: 172.100.100.12
       binds:
         - configs/pc02:/config
+        - configs/pc02/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.10.2/24 dev eth1
       - ip route del default
       - ip route add default via 192.168.10.254 dev eth1
+      - ping_exporter --config.path /etc/ping_exporter/config.yml
     pc03:
       group: server
       mgmt-ipv4: 172.100.100.13
       binds:
         - configs/pc03:/config
+        - configs/pc03/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.20.1/24 dev eth1
       - ip route del default
       - ip route add default via 192.168.20.254 dev eth1
+      - ping_exporter --config.path /etc/ping_exporter/config.yml
     sw01:
       kind: ceos
       group: switch
@@ -72,7 +79,7 @@ topology:
       mgmt-ipv4: 172.100.100.42
       image: quay.io/prometheus/prometheus:v2.54.1
       binds:
-      - configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       cmd: --config.file=/etc/prometheus/prometheus.yml
       ports:
       - 9090:9090
