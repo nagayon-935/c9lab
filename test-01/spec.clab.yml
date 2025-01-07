@@ -32,7 +32,7 @@ topology:
       - ip route add default via 192.168.10.254 dev eth1
       - iperf3 -s -p 5201 -D > iperf3_1.log
       - iperf3 -s -p 5202 -D > iperf3_2.log
-      - ping_exporter --config.path /etc/ping_exporter/config.yml
+      cmd: - ping_exporter --config.path /etc/ping_exporter/config.yml
     pc02:
       group: clients
       mgmt-ipv4: 172.100.100.12
@@ -43,7 +43,7 @@ topology:
       - ip addr add 192.168.10.2/24 dev eth1
       - ip route del default
       - ip route add default via 192.168.10.254 dev eth1
-      - ping_exporter --config.path /etc/ping_exporter/config.yml
+      cmd: - ping_exporter --config.path /etc/ping_exporter/config.yml
     pc03:
       group: server
       mgmt-ipv4: 172.100.100.13
@@ -54,7 +54,7 @@ topology:
       - ip addr add 192.168.20.1/24 dev eth1
       - ip route del default
       - ip route add default via 192.168.20.254 dev eth1
-      - ping_exporter --config.path /etc/ping_exporter/config.yml
+      cmd: - ping_exporter --config.path /etc/ping_exporter/config.yml
     sw01:
       kind: ceos
       group: switch
