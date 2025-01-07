@@ -1,0 +1,106 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "prometheus"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 3,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus"
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 13,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "animationControlEnabled": true,
+        "animationsEnabled": true,
+        "debuggingCtr": {
+          "colorsCtr": 1,
+          "dataCtr": 0,
+          "displaySvgCtr": 0,
+          "mappingsCtr": 0,
+          "timingsCtr": 0
+        },
+        "highlighterEnabled": true,
+        "panZoomEnabled": true,
+        "panelConfig": "---\nanchors:\n  thresholds-operstate: &thresholds-operstate\n  - color: red\n    level: 0\n  - color: green\n    level: 1\n  thresholds-traffic: &thresholds-traffic\n  - color: gray\n    level: 0\n  - color: green\n    level: 199999\n  - color: yellow\n    level: 500000\n  - color: orange\n    level: 1000000\n  - color: red\n    level: 5000000\n  label-config: &label-config\n    separator: replace\n    units: bps\n    decimalPoints: 1\n    valueMappings:\n    - valueMax: 199999\n      text: \u200b\n    - valueMin: 200000\ncellIdPreamble: cell-\ncells:\n  sw01:eth1:pc01:eth1:\n    dataRef: oper-state:sw01:eth1\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:sw01:eth1:pc01:eth1:\n    dataRef: sw01:eth1:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n  sw01:eth2:pc02:eth1:\n    dataRef: oper-state:sw01:eth2\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:sw01:eth2:pc02:eth1:\n    dataRef: sw01:eth2:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n  sw01:eth3:sw02:eth3:\n    dataRef: oper-state:sw01:eth3\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:sw01:eth3:sw02:eth3:\n    dataRef: sw01:eth3:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n  sw02:eth1:pc03:eth1:\n    dataRef: oper-state:sw02:eth1\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:sw02:eth1:pc03:eth1:\n    dataRef: sw02:eth1:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n  sw02:eth2:pc04:eth1:\n    dataRef: oper-state:sw02:eth2\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:sw02:eth2:pc04:eth1:\n    dataRef: sw02:eth2:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n  sw02:eth3:sw01:eth3:\n    dataRef: oper-state:sw02:eth3\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:sw02:eth3:sw01:eth3:\n    dataRef: sw02:eth3:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n  pc01:eth1:sw01:eth1:\n    dataRef: oper-state:pc01:eth1\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:pc01:eth1:sw01:eth1:\n    dataRef: pc01:eth1:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n  pc02:eth1:sw01:eth2:\n    dataRef: oper-state:pc02:eth1\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:pc02:eth1:sw01:eth2:\n    dataRef: pc02:eth1:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n  pc03:eth1:sw02:eth1:\n    dataRef: oper-state:pc03:eth1\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:pc03:eth1:sw02:eth1:\n    dataRef: pc03:eth1:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n  pc04:eth1:sw02:eth2:\n    dataRef: oper-state:pc04:eth1\n    fillColor:\n      thresholds: *thresholds-operstate\n  link_id:pc04:eth1:sw02:eth2:\n    dataRef: pc04:eth1:out\n    label: *label-config\n    strokeColor:\n      thresholds: *thresholds-traffic\n",
+        "siteConfig": "",
+        "svg": "",
+        "testDataEnabled": false,
+        "timeSliderEnabled": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "interface_oper_state",
+          "instant": false,
+          "legendFormat": "oper-state:{{source}}:{{interface_name}}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "interface_traffic_rate_out_bps",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{source}}:{{interface_name}}:out",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "interface_traffic_rate_in_bps",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{source}}:{{interface_name}}:in",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Network Telemetry",
+      "type": "andrewbmchugh-flow-panel"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 38,
+  "tags": [],
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Network Telemetry",
+  "version": 6,
+  "weekStart": ""
+}
