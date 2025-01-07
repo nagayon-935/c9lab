@@ -45,7 +45,7 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /interfaces/interface/subinterfaces/subinterface/vlan
+      - /network-instances/network-instance/fdb/mac-table/entries/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
