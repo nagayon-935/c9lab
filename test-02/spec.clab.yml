@@ -1,4 +1,4 @@
-### Test02 Interfaceに設定されているIPアドレスが間違っている ospfのnetwork type point-to-pointじゃなくてもよいかも###
+### Test02 Interfaceに設定されているIPアドレスが間違っている ###
 
 name: test02
 prefix: ''
