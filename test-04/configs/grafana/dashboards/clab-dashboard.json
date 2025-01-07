@@ -912,52 +912,49 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "index": 0,
-                  "text": "1500"
-                }
-              },
-              "type": "value"
-            }
-          ],
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          }
+          },
+          "unit": "none"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 7,
+        "h": 9,
+        "w": 6,
         "x": 7,
         "y": 33
       },
-      "id": 35,
+      "id": 39,
       "options": {
-        "colorMode": "background_solid",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
           "fields": "",
-          "values": false
+          "reducer": [
+            "sum"
+          ],
+          "show": false
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "showHeader": true
       },
       "pluginVersion": "11.2.0",
       "targets": [
@@ -967,19 +964,71 @@
             "uid": "PBFA97CFB590B2093"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "interface_state_mtu{source=\"$NE\"}",
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "interface_state_interface{job=\"gnmic\",source=\"$NE\"}",
+          "format": "table",
           "fullMetaSearch": false,
+          "hide": false,
           "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{source}}:{{interface_name}}",
-          "range": true,
-          "refId": "A",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "B",
           "useBackend": false
         }
       ],
-      "title": "MTU",
-      "type": "stat"
+      "title": "mgmt address",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "source",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": true,
+              "Value #B": true,
+              "__name__": true,
+              "address_ip": false,
+              "instance": true,
+              "instance 2": true,
+              "job": true,
+              "job 2": true,
+              "source": true,
+              "subinterface_index": true,
+              "subscription_name": true,
+              "subscription_name 2": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 2,
+              "Value": 9,
+              "__name__": 3,
+              "address_ip": 4,
+              "instance": 5,
+              "interface_name": 1,
+              "job": 6,
+              "source": 0,
+              "subinterface_index": 7,
+              "subscription_name": 8
+            },
+            "renameByName": {
+              "Value #A": "Uptime",
+              "address_ip": "",
+              "interface_name": "Interface",
+              "ip": "Management IP",
+              "source": "Hostname"
+            }
+          }
+        }
+      ],
+      "type": "table"
     },
     {
       "datasource": {
@@ -1118,264 +1167,6 @@
       ],
       "title": "Memory",
       "type": "timeseries"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 41
-      },
-      "id": 39,
-      "panels": [],
-      "title": "$NE OSPF",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 0,
-        "y": 42
-      },
-      "id": 43,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "ospf_router_id{source=\"$NE\"}",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "interval": "1",
-          "legendFormat": "__auto",
-          "range": false,
-          "refId": "B"
-        }
-      ],
-      "title": "OSPF router-id",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": true,
-              "Value": true,
-              "instance": true,
-              "job": true,
-              "network_instance_name": true,
-              "protocol_identifier": true,
-              "protocol_name": true,
-              "source": true,
-              "subscription_name": true
-            },
-            "includeByName": {},
-            "indexByName": {},
-            "renameByName": {
-              "__name__": "router-id"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 17,
-        "x": 6,
-        "y": 42
-      },
-      "id": 42,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "ospf_network_type{source=\"$NE\",interface_id!=\"Loopback0\"}",
-          "format": "table",
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "expr": "ospf_router_id{source=\"$NE\"}",
-          "format": "table",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "OSPF status",
-      "transformations": [
-        {
-          "id": "joinByField",
-          "options": {
-            "byField": "interface_id",
-            "mode": "outer"
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": true,
-              "Time 1": true,
-              "Time 2": true,
-              "Value": true,
-              "Value #A": true,
-              "Value #B": true,
-              "__name__": true,
-              "__name__ 1": true,
-              "__name__ 2": true,
-              "instance": true,
-              "instance 1": true,
-              "instance 2": true,
-              "job": true,
-              "job 1": true,
-              "job 2": true,
-              "network_instance_name": true,
-              "protocol_identifier": true,
-              "protocol_identifier 1": true,
-              "protocol_identifier 2": true,
-              "protocol_name": true,
-              "protocol_name 1": true,
-              "protocol_name 2": true,
-              "source 2": true,
-              "subscription_name": true,
-              "subscription_name 1": true,
-              "subscription_name 2": true
-            },
-            "includeByName": {},
-            "indexByName": {
-              "Time": 5,
-              "Value #A": 4,
-              "__name__": 6,
-              "area_identifier": 1,
-              "instance": 7,
-              "interface_id": 2,
-              "job": 8,
-              "network_instance_name": 10,
-              "network_type": 3,
-              "protocol_identifier": 9,
-              "protocol_name": 11,
-              "source": 0,
-              "subscription_name": 12
-            },
-            "renameByName": {}
-          }
-        }
-      ],
-      "type": "table"
     }
   ],
   "refresh": "5s",
@@ -1386,8 +1177,8 @@
       {
         "current": {
           "selected": false,
-          "text": "rt04",
-          "value": "rt04"
+          "text": "sw01",
+          "value": "sw01"
         },
         "datasource": {
           "type": "prometheus",
