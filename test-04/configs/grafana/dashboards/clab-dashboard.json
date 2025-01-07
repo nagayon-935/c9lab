@@ -791,6 +791,7 @@
             "inspect": false
           },
           "mappings": [],
+          "noValue": "No IP address configured on any interface.",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -938,8 +939,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 6,
+        "h": 8,
+        "w": 7,
         "x": 7,
         "y": 33
       },
@@ -954,7 +955,13 @@
           ],
           "show": false
         },
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "interface"
+          }
+        ]
       },
       "pluginVersion": "11.2.0",
       "targets": [
@@ -978,7 +985,7 @@
           "useBackend": false
         }
       ],
-      "title": "mgmt address",
+      "title": "VLAN",
       "transformations": [
         {
           "id": "joinByField",
@@ -996,31 +1003,36 @@
               "Value #B": true,
               "__name__": true,
               "address_ip": false,
+              "entry_mac_address": true,
               "instance": true,
               "instance 2": true,
               "job": true,
               "job 2": true,
-              "source": true,
+              "network_instance_name": true,
+              "source": false,
               "subinterface_index": true,
               "subscription_name": true,
               "subscription_name 2": true
             },
             "includeByName": {},
             "indexByName": {
-              "Time": 2,
-              "Value": 9,
-              "__name__": 3,
-              "address_ip": 4,
-              "instance": 5,
-              "interface_name": 1,
-              "job": 6,
+              "Time": 1,
+              "Value": 6,
+              "__name__": 2,
+              "entry_mac_address": 7,
+              "entry_vlan": 9,
+              "instance": 3,
+              "interface": 8,
+              "job": 4,
+              "network_instance_name": 10,
               "source": 0,
-              "subinterface_index": 7,
-              "subscription_name": 8
+              "subscription_name": 5
             },
             "renameByName": {
               "Value #A": "Uptime",
               "address_ip": "",
+              "entry_vlan": "VLAN ID",
+              "interface": "",
               "interface_name": "Interface",
               "ip": "Management IP",
               "source": "Hostname"
