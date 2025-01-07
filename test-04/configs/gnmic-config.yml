@@ -45,7 +45,7 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /interfaces/interface/subinterfaces/subinterface/ipv4/state/mtu
+      - /interfaces/interface/subinterfaces/subinterface/vlan
     mode: stream
     stream-mode: sample
     sample-interval: 5s
