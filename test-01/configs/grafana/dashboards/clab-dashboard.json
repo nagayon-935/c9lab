@@ -837,7 +837,7 @@
           "disableTextWrap": false,
           "editorMode": "builder",
           "exemplar": false,
-          "expr": "interface_config_prefix_length{interface_name!=\"Management0\"}",
+          "expr": "interface_config_prefix_length{interface_name!=\"Management0\", source=\"$NE\"}",
           "format": "table",
           "fullMetaSearch": false,
           "hide": false,
@@ -912,26 +912,28 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "index": 0,
-                  "text": "1500"
-                }
-              },
-              "type": "value"
-            }
-          ],
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          }
+          },
+          "unit": "ns"
         },
         "overrides": []
       },
@@ -941,45 +943,71 @@
         "x": 7,
         "y": 33
       },
-      "id": 35,
+      "id": 39,
       "options": {
-        "colorMode": "background_solid",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
           "fields": "",
-          "values": false
+          "reducer": [
+            "sum"
+          ],
+          "show": false
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "showHeader": true
       },
       "pluginVersion": "11.2.0",
-      "targets": [
+      "title": "asdf",
+      "transformations": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "interface_state_mtu{source=\"$NE\"}",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{source}}:{{interface_name}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
+          "id": "joinByField",
+          "options": {
+            "byField": "source",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": true,
+              "Value #B": true,
+              "__name__": true,
+              "address_ip": false,
+              "instance": true,
+              "instance 2": true,
+              "job": true,
+              "job 2": true,
+              "source": true,
+              "subinterface_index": true,
+              "subscription_name": true,
+              "subscription_name 2": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 2,
+              "Value": 9,
+              "__name__": 3,
+              "address_ip": 4,
+              "instance": 5,
+              "interface_name": 1,
+              "job": 6,
+              "source": 0,
+              "subinterface_index": 7,
+              "subscription_name": 8
+            },
+            "renameByName": {
+              "Value #A": "Uptime",
+              "address_ip": "",
+              "interface_name": "Interface",
+              "ip": "Management IP",
+              "source": "Hostname"
+            }
+          }
         }
       ],
-      "title": "MTU",
-      "type": "stat"
+      "type": "table"
     },
     {
       "datasource": {
@@ -1153,15 +1181,91 @@
         "type": "query"
       },
       {
+        "allFormat": "glob",
+        "allValue": "",
+        "current": {},
         "datasource": {
           "type": "prometheus",
           "uid": "PBFA97CFB590B2093"
         },
-        "filters": [],
+        "definition": "label_values(ping_loss_ratio,job)",
         "hide": 0,
-        "name": "Filters",
+        "includeAll": true,
+        "label": "Job",
+        "multi": true,
+        "multiFormat": "glob",
+        "name": "job",
+        "options": [],
+        "query": {
+          "query": "label_values(ping_loss_ratio,job)",
+          "refId": "PromShort-job-Variable-Query"
+        },
+        "refresh": 2,
+        "regex": "",
         "skipUrlSync": false,
-        "type": "adhoc"
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allFormat": "glob",
+        "allValue": "",
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "definition": "label_values(ping_loss_ratio{job=~\"$job\"},instance)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Instance",
+        "multi": true,
+        "multiFormat": "glob",
+        "name": "instance",
+        "options": [],
+        "query": {
+          "query": "label_values(ping_loss_ratio{job=~\"$job\"},instance)",
+          "refId": "PromShort-instance-Variable-Query"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allFormat": "glob",
+        "allValue": "",
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "definition": "label_values(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\"},target)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Target",
+        "multi": true,
+        "multiFormat": "glob",
+        "name": "target",
+        "options": [],
+        "query": {
+          "query": "label_values(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\"},target)",
+          "refId": "PromShort-target-Variable-Query"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
