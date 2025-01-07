@@ -12,7 +12,6 @@ common_arista_subscriptions: &common_arista_subs
     - mem
     - interface_state
     - interface_config
-    - bgp
     - eos_ospf
 
 common_srl_subscriptions: &common_srl_subs
@@ -25,7 +24,6 @@ common_srl_subscriptions: &common_srl_subs
     - mem
     - interface_state
     - interface_config
-    - bgp
     - srl_ospf
 
 # ターゲットデバイス設定
@@ -66,15 +64,6 @@ subscriptions:
   interface_config:
     paths:
       - /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-
-  ### BGP Information ###
-  bgp:
-    paths:
-      - /network-instances/network-instance/protocols/protocol/bgp/neighbors/
-      - /network-instances/network-instance/protocols/protocol/bgp/global/state/router-id
     mode: stream
     stream-mode: sample
     sample-interval: 5s
