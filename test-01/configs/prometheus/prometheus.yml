@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 5s #5秒ごとにデータを取得する 
+
+scrape_configs: #スクレイプする設定
+  - job_name: "gnmic" #ジョブ名
+    static_configs: #静的な設定
+      - targets: ["gnmic:9273"] #ターゲット名:ポート番号
