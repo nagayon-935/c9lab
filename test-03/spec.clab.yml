@@ -41,22 +41,16 @@ topology:
       mgmt-ipv4: 172.100.100.11
       exec:
       - ip addr add 172.16.10.105/24 dev eth1
-      - ip route del default
-      - ip route add default via 172.16.20.254 dev eth1
     pc02:
       group: server
       mgmt-ipv4: 172.100.100.12
       exec:
       - ip addr add 172.16.100.5/24 dev eth1
-      - ip route del default
-      - ip route add default via 172.16.20.254 dev eth1
     pc03:
       group: server
       mgmt-ipv4: 172.100.100.13
       exec:
       - ip addr add 172.16.10.5/24 dev eth1
-      - ip route del default
-      - ip route add default via 172.16.20.254 dev eth1
 
     ### TELEMETRY STACK ###
     gnmic:
