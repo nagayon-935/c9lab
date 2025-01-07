@@ -40,7 +40,7 @@ topology:
       group: server
       mgmt-ipv4: 172.100.100.11
       exec:
-      - ip addr add 172.16.100.105/24 dev eth1
+      - ip addr add 172.16.10.105/24 dev eth1
       - ip route del default
       - ip route add default via 172.16.20.254 dev eth1
     pc02:
