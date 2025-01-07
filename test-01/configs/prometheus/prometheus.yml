@@ -5,3 +5,9 @@ scrape_configs: #スクレイプする設定
   - job_name: "gnmic" #ジョブ名
     static_configs: #静的な設定
       - targets: ["gnmic:9273"] #ターゲット名:ポート番号
+  - job_name: "ping"
+    static_configs:
+      - targets: ["pc01:9427"]
+      - targets: ["pc02:9427"]
+      - targets: ["pc03:9427"]
+
