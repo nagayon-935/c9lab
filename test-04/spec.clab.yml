@@ -25,7 +25,7 @@ topology:
       kind: ceos
       group: switch
       mgmt-ipv4: 172.100.100.31
-      startup-config: ./configs/sw01/cEoS-answer.conf
+      startup-config: ./configs/sw01/cEoS.conf
     sw02:
       kind: ceos
       group: switch
