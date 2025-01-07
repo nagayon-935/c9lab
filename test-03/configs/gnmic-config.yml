@@ -13,7 +13,6 @@ common_arista_subscriptions: &common_arista_subs
     - mem
     - interface_state
     - interface_config
-    - ospf
 
 # ターゲットデバイス設定
 targets:
@@ -44,7 +43,8 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /interfaces/interface/subinterfaces/subinterface/ipv4/state/mtu
+      - /network-instances/network-instance/vlans
+      - /network-instances/network-instance/fdb/mac-table/entries/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -52,15 +52,6 @@ subscriptions:
   interface_config:
     paths:
       - /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-
-  ### OSPF Information ###
-  ospf:
-    paths:
-      - /network-instances/network-instance/protocols/protocol/ospfv2/
-      - /network-instances/network-instance/protocols/protocol/ospfv2/areas/
     mode: stream
     stream-mode: sample
     sample-interval: 5s

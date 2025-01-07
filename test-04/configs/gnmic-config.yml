@@ -45,6 +45,7 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
+      - /network-instances/network-instance/vlans
       - /network-instances/network-instance/fdb/mac-table/entries/
     mode: stream
     stream-mode: sample
@@ -57,15 +58,6 @@ subscriptions:
     stream-mode: sample
     sample-interval: 5s
 
-  ### OSPF Information ###
-  ospf:
-    paths:
-      - /network-instances/network-instance/protocols/protocol/ospfv2/
-      - /network-instances/network-instance/protocols/protocol/ospfv2/areas/
-    mode: stream
-    stream-mode: sample
-    sample-interval: 5s
-  
 # 出力設定
 outputs:
   prom-output:
