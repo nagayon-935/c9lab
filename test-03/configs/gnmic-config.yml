@@ -70,6 +70,7 @@ outputs:
       - rename-source
       - eos-version
       - convert-data-unit
+      - rename-vlan
     debug: true
 
 # プロセッサ設定
