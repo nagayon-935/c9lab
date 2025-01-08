@@ -213,6 +213,10 @@
                       "value": null
                     },
                     {
+                      "color": "#EAB839",
+                      "value": 50
+                    },
+                    {
                       "color": "rgba(245, 54, 54, 0.9)",
                       "value": 100
                     }
@@ -601,7 +605,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 8,
+        "w": 12,
         "x": 0,
         "y": 10
       },
@@ -688,7 +692,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 25
       },
       "id": 2,
       "panels": [],
@@ -765,7 +769,7 @@
         "h": 12,
         "w": 13,
         "x": 0,
-        "y": 34
+        "y": 26
       },
       "id": 22,
       "options": {
@@ -818,7 +822,7 @@
         "h": 21,
         "w": 11,
         "x": 13,
-        "y": 34
+        "y": 26
       },
       "id": 1,
       "options": {
@@ -1041,7 +1045,7 @@
         "h": 9,
         "w": 6,
         "x": 0,
-        "y": 46
+        "y": 38
       },
       "id": 36,
       "options": {
@@ -1174,7 +1178,7 @@
         "h": 9,
         "w": 7,
         "x": 6,
-        "y": 46
+        "y": 38
       },
       "id": 37,
       "options": {
@@ -1239,7 +1243,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 47
       },
       "id": 38,
       "panels": [],
@@ -1296,7 +1300,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1312,7 +1317,7 @@
         "h": 10,
         "w": 14,
         "x": 0,
-        "y": 56
+        "y": 48
       },
       "id": 25,
       "options": {
@@ -1381,7 +1386,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1397,7 +1403,7 @@
         "h": 10,
         "w": 9,
         "x": 14,
-        "y": 56
+        "y": 48
       },
       "id": 30,
       "options": {
@@ -1455,7 +1461,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1471,7 +1478,7 @@
         "h": 8,
         "w": 7,
         "x": 0,
-        "y": 66
+        "y": 58
       },
       "id": 3,
       "options": {
@@ -1583,7 +1590,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1599,7 +1607,7 @@
         "h": 8,
         "w": 7,
         "x": 7,
-        "y": 66
+        "y": 58
       },
       "id": 39,
       "options": {
@@ -1720,7 +1728,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1736,7 +1745,7 @@
         "h": 8,
         "w": 9,
         "x": 14,
-        "y": 66
+        "y": 58
       },
       "id": 28,
       "options": {
@@ -1841,9 +1850,13 @@
         "allFormat": "glob",
         "allValue": "",
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -1911,9 +1924,13 @@
         "allFormat": "glob",
         "allValue": "",
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
