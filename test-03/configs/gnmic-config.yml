@@ -43,7 +43,7 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /network-instances/network-instance/vlans/vlan
+      - /network-instances/network-instance/vlans/vlan/members/member/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
