@@ -22,7 +22,7 @@
   "panels": [
     {
       "datasource": {
-        "uid": "$Datasource"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -360,7 +360,7 @@
         },
         {
           "datasource": {
-            "uid": "$Datasource"
+            "uid": "Prometheus"
           },
           "expr": "sum(label_replace(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\",ip_version=~\"$ip_version\",ip_version=\"4\"}, \"ipv4\", \"$1\", \"ip\", \"(.*)\")) by (instance,target,ipv4)",
           "format": "table",
@@ -373,7 +373,7 @@
         },
         {
           "datasource": {
-            "uid": "$Datasource"
+            "uid": "Prometheus"
           },
           "expr": "sum(label_replace(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\",ip_version=~\"$ip_version\",ip_version=\"6\"}, \"ipv6\", \"$1\", \"ip\", \"(.*)\")) by (instance,target,ipv6)",
           "format": "table",
@@ -398,15 +398,30 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "000000001"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 9
       },
-      "id": 2,
+      "id": 23,
       "panels": [],
-      "title": "Problem env",
+      "repeat": "instance",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "000000001"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Instance $instance",
       "type": "row"
     },
     {
@@ -479,7 +494,7 @@
         "h": 12,
         "w": 13,
         "x": 0,
-        "y": 10
+        "y": 12
       },
       "id": 22,
       "options": {
@@ -532,7 +547,7 @@
         "h": 21,
         "w": 11,
         "x": 13,
-        "y": 10
+        "y": 12
       },
       "id": 1,
       "options": {
@@ -755,7 +770,7 @@
         "h": 9,
         "w": 6,
         "x": 0,
-        "y": 22
+        "y": 24
       },
       "id": 36,
       "options": {
@@ -888,7 +903,7 @@
         "h": 9,
         "w": 7,
         "x": 6,
-        "y": 22
+        "y": 24
       },
       "id": 37,
       "options": {
@@ -953,7 +968,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 33
       },
       "id": 38,
       "panels": [],
@@ -1027,7 +1042,7 @@
         "h": 10,
         "w": 14,
         "x": 0,
-        "y": 32
+        "y": 34
       },
       "id": 25,
       "options": {
@@ -1113,7 +1128,7 @@
         "h": 10,
         "w": 9,
         "x": 14,
-        "y": 32
+        "y": 34
       },
       "id": 30,
       "options": {
@@ -1188,7 +1203,7 @@
         "h": 8,
         "w": 7,
         "x": 0,
-        "y": 42
+        "y": 44
       },
       "id": 3,
       "options": {
@@ -1315,7 +1330,7 @@
         "h": 8,
         "w": 7,
         "x": 7,
-        "y": 42
+        "y": 44
       },
       "id": 35,
       "options": {
@@ -1427,7 +1442,7 @@
         "h": 8,
         "w": 9,
         "x": 14,
-        "y": 42
+        "y": 44
       },
       "id": 28,
       "options": {
@@ -1501,7 +1516,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 50
+        "y": 52
       },
       "id": 39,
       "panels": [
@@ -1543,7 +1558,7 @@
             "h": 4,
             "w": 6,
             "x": 0,
-            "y": 50
+            "y": 74
           },
           "id": 43,
           "options": {
@@ -1641,7 +1656,7 @@
             "h": 6,
             "w": 17,
             "x": 6,
-            "y": 50
+            "y": 74
           },
           "id": 42,
           "options": {
@@ -1787,9 +1802,17 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "ping",
-          "value": "ping"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(ping_loss_ratio,job)",
         "hide": 0,
@@ -1811,9 +1834,17 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "pc01:9427",
-          "value": "pc01:9427"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(ping_loss_ratio{job=~\"$job\"},instance)",
         "hide": 0,
@@ -1835,9 +1866,17 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "10.0.20.1",
-          "value": "10.0.20.1"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(ping_loss_ratio{job=~\"$job\", instance=~\"$instance\"},target)",
         "hide": 0,
@@ -1859,9 +1898,17 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "4",
-          "value": "4"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(ping_loss_ratio{job=~\"$job\", instance=~\"$instance\"},ip_version)",
         "hide": 0,
@@ -1884,8 +1931,8 @@
     ]
   },
   "time": {
-    "from": "2025-01-08T13:56:14.693Z",
-    "to": "2025-01-08T14:01:14.693Z"
+    "from": "now-5m",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
