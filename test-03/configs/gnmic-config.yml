@@ -70,7 +70,6 @@ outputs:
       - rename-source
       - eos-version
       - convert-data-unit
-      - rename-vlan
     debug: true
 
 # プロセッサ設定
@@ -146,7 +145,3 @@ processors:
       old: 
       new:
       debug: false
-  rename-vlan:
-    event-jq:
-      condition: "true"
-      expression: .updates[] |= (select(.Path | test("trunk-vlans")) | .values."interfaces/interface/ethernet/switched-vlan/config/trunk-vlans" |= .element | map(select(.Value.UintVal | test("^[1-9][0-9]*$"))
