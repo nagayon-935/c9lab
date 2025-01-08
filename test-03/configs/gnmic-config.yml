@@ -151,7 +151,8 @@ processors:
     event-strings:
       value-names:
         - ".*trunk-vlans"
-    transforms:
-        - join:
-            separator: ","
-            apply-on: "value"
+      transforms:
+        - split:
+            on: "value"
+            split-on: ","
+            join-with: "-"
