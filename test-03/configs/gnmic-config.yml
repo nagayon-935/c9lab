@@ -71,6 +71,17 @@ outputs:
       - eos-version
       - convert-data-unit
 
+  stdout:
+    type: file
+    file-type: stdout
+    event-processors:
+      - trim-prefixes
+      - bounce-map
+      - rename-interface
+      - rename-source
+      - eos-version
+      - convert-data-unit
+
 # プロセッサ設定
 processors:
   trim-prefixes:
