@@ -811,7 +811,7 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 7,
+        "w": 6,
         "x": 0,
         "y": 33
       },
@@ -940,8 +940,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 7,
-        "x": 7,
+        "w": 4,
+        "x": 6,
         "y": 33
       },
       "id": 39,
@@ -973,7 +973,7 @@
           "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "interface_state_interface{job=\"gnmic\",source=\"$NE\"}",
+          "expr": "interface_state_access_vlan{source=\"$NE\"}",
           "format": "table",
           "fullMetaSearch": false,
           "hide": false,
@@ -985,7 +985,7 @@
           "useBackend": false
         }
       ],
-      "title": "VLAN",
+      "title": "ACCESS VLAN",
       "transformations": [
         {
           "id": "joinByField",
@@ -999,7 +999,7 @@
           "options": {
             "excludeByName": {
               "Time": true,
-              "Value": true,
+              "Value": false,
               "Value #B": true,
               "__name__": true,
               "address_ip": false,
@@ -1029,6 +1029,148 @@
               "subscription_name": 5
             },
             "renameByName": {
+              "Value": "VLAN ID",
+              "Value #A": "Uptime",
+              "address_ip": "",
+              "entry_vlan": "VLAN ID",
+              "interface": "",
+              "interface_name": "Interface",
+              "ip": "Management IP",
+              "source": "Hostname"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 10,
+        "y": 33
+      },
+      "id": 40,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "interface"
+          }
+        ]
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "interface_state_trunk_vlans{source=\"$NE\"}",
+          "format": "table",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "B",
+          "useBackend": false
+        }
+      ],
+      "title": "TRUNK VLAN",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "byField": "source",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": false,
+              "Value #B": true,
+              "__name__": true,
+              "address_ip": false,
+              "entry_mac_address": true,
+              "instance": true,
+              "instance 2": true,
+              "job": true,
+              "job 2": true,
+              "network_instance_name": true,
+              "source": false,
+              "subinterface_index": true,
+              "subscription_name": true,
+              "subscription_name 2": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 1,
+              "Value": 6,
+              "__name__": 2,
+              "entry_mac_address": 7,
+              "entry_vlan": 9,
+              "instance": 3,
+              "interface": 8,
+              "job": 4,
+              "network_instance_name": 10,
+              "source": 0,
+              "subscription_name": 5
+            },
+            "renameByName": {
+              "Value": "VLAN ID",
               "Value #A": "Uptime",
               "address_ip": "",
               "entry_vlan": "VLAN ID",
