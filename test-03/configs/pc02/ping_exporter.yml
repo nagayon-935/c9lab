@@ -1,0 +1,7 @@
+targets:
+  - 172.16.10.105
+  - 172.16.10.5
+
+ping:
+  interval: 10s
+  timeout: 3s

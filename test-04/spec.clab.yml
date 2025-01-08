@@ -14,7 +14,7 @@ topology:
 
   kinds:
     linux:
-      image: nicolaka/netshoot:latest
+      image: nagayon/my-netshoot:1.0.0 
       binds:
         - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
     ceos:
@@ -44,31 +44,43 @@ topology:
     pc01:
       group: server
       mgmt-ipv4: 172.100.100.11
+      binds:
+        - configs/pc01/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
       exec:
       - ip addr add 172.16.0.1/24 dev eth1
       - ip route del default
       - ip route add default via 172.16.20.254 dev eth1
+      cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
     pc02:
       group: server
       mgmt-ipv4: 172.100.100.12
+      binds:
+        - configs/pc02/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
       exec:
       - ip addr add 172.16.254.1/24 dev eth1
       - ip route del default
       - ip route add default via 172.16.20.254 dev eth1
+      cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
     pc03:
       group: server
       mgmt-ipv4: 172.100.100.13
+      binds:
+        - configs/pc03/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
       exec:
       - ip addr add 172.16.0.254/24 dev eth1
       - ip route del default
       - ip route add default via 172.16.20.254 dev eth1
+      cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
     pc04:
       group: server
       mgmt-ipv4: 172.100.100.14
+      binds:
+        - configs/pc04/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
       exec:
       - ip addr add 172.16.254.254/24 dev eth1
       - ip route del default
       - ip route add default via 172.16.20.254 dev eth1
+      cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
 
     ### TELEMETRY STACK ###
     gnmic:

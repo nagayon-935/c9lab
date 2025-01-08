@@ -1,0 +1,6 @@
+targets:
+  - 10.0.20.1
+
+ping:
+  interval: 10s
+  timeout: 3s

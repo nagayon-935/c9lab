@@ -14,7 +14,7 @@ topology:
 
   kinds:
     linux:
-      image: nicolaka/netshoot:latest
+      image: nagayon/my-netshoot:1.0.0 
       binds:
         - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
     ceos:
@@ -24,17 +24,23 @@ topology:
     pc01:
       group: clients
       mgmt-ipv4: 172.100.100.11
+      binds:
+        - configs/pc01/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
       exec:
       - ip addr add 10.0.10.1/24 dev eth1
       - ip route del default
       - ip route add default via 10.0.10.254 dev eth1
+      cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
     pc02:
       group: clients
       mgmt-ipv4: 172.100.100.12
+      binds:
+        - configs/pc02/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
       exec:
       - ip addr add 10.0.20.1/24 dev eth1
       - ip route del default
       - ip route add default via 10.0.20.254 dev eth1
+      cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
     rt01:
       kind: ceos
       group: router
