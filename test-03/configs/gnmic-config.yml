@@ -71,6 +71,7 @@ outputs:
       - rename-source
       - eos-version
       - convert-data-unit
+      - trunk-vlan-processor
     debug: true
 
 # プロセッサ設定
@@ -146,3 +147,16 @@ processors:
       old: 
       new:
       debug: false
+  trunk-vlan-processor:
+    event-strings:
+      value-names:
+        - ".*trunk-vlans"
+      transforms:
+        - flatten:
+            apply-on: "value"
+            path: "element[].Value.UintVal"
+        - rename:
+            apply-on: "value"
+            old: "trunk-vlan"
+            new: "vlan_id"
+        - unique: true
