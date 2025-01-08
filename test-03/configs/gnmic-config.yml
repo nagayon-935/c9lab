@@ -43,8 +43,6 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /interfaces/interface/ethernet/switched-vlan/config
-      - /interfaces/interface[name=Port-Channel1]/aggregation/switched-vlan/config
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -52,6 +50,9 @@ subscriptions:
   interface_config:
     paths:
       - /interfaces/interface/subinterfaces/subinterface/ipv4/addresses/address/config
+      - /interfaces/interface/ethernet/switched-vlan/config/access-vlan
+      - /interfaces/interface/ethernet/switched-vlan/config/trunk-vlans
+      - /interfaces/interfac/aggregation/switched-vlan/config
     mode: stream
     stream-mode: sample
     sample-interval: 5s
