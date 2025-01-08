@@ -43,6 +43,7 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
+      - /network-instances/network-instance/vlans
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -53,7 +54,6 @@ subscriptions:
       - /interfaces/interface/ethernet/switched-vlan/config/access-vlan
       - /interfaces/interface/ethernet/switched-vlan/config/trunk-vlans
       - /interfaces/interfac/aggregation/switched-vlan/config
-      - /network-instances/network-instance/vlans
     mode: stream
     stream-mode: sample
     sample-interval: 5s
