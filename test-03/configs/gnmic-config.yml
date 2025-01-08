@@ -151,5 +151,7 @@ processors:
     event-strings:
       value-names:
         - ".*trunk-vlans"
-    jq:
-      expression: '.updates[].values."interfaces/interface/ethernet/switched-vlan/config/trunk-vlans" | .[]'
+    transforms:
+        - join:
+            separator: ","
+            apply-on: "value"
