@@ -152,7 +152,7 @@ processors:
       value-names:
         - ".*trunk-vlans"
       transforms:
-        - split:
-            on: "value"
-            split-on: ","
-            join-with: "-"
+        - replace:
+            apply-on: "value"
+            old: "\\[\\s*(\\d+)(?:,\\s*(\\d+))*\\s*\\]"
+            new: "$1, $2, $3"
