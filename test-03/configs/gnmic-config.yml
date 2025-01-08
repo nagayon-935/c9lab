@@ -71,8 +71,6 @@ outputs:
       - rename-source
       - eos-version
       - convert-data-unit
-      - trunk-vlan-jq
-    debug: true
 
 # プロセッサ設定
 processors:
@@ -147,12 +145,3 @@ processors:
       old: 
       new:
       debug: false
-  trunk-vlan-jq:
-    event-strings:
-      value-names:
-        - ".*trunk-vlans"
-      transforms:
-        - replace:
-            apply-on: "value"
-            old: "\\[\\s*(\\d+)(?:,\\s*(\\d+))*\\s*\\]"
-            new: "$1, $2, $3"
