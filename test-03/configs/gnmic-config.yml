@@ -71,7 +71,6 @@ outputs:
       - rename-source
       - eos-version
       - convert-data-unit
-      - trunk-vlan-jq
     debug: true
 
 # プロセッサ設定
@@ -147,10 +146,3 @@ processors:
       old: 
       new:
       debug: false
-  trunk-vlan-jq:
-    type: map
-    map:
-      "values.trunk-vlans": |
-        [
-          (.values["trunk-vlans"][] | {name: "interface_config_trunk_vlan", value: ., tags: .tags})
-        ]
