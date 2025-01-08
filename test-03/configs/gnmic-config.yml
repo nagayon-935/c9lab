@@ -148,7 +148,7 @@ processors:
   rename-vlan:
     event-jq:
       condition: "true"
-      expression: |
+      expression:
       .updates[] |= (
         select(.Path | test("trunk-vlans")) |
         .values."interfaces/interface/ethernet/switched-vlan/config/trunk-vlans" |=
