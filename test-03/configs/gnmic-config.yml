@@ -74,6 +74,8 @@ outputs:
   stdout:
     type: file
     file-type: stdout
+    append-subscription-name: true
+    strings-as-labels: true
     event-processors:
       - trim-prefixes
       - bounce-map
