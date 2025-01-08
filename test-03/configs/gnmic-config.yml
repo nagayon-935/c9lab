@@ -68,6 +68,7 @@ outputs:
       - bounce-map
       - rename-interface
       - rename-source
+      - eos-version
       - convert-data-unit
 
 # プロセッサ設定
@@ -83,6 +84,16 @@ processors:
     event-strings:
       value-names:
         - oper-status
+        - admin-status
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "up"
+            new: "1"
+        - replace:
+            apply-on: "value"
+            old: "down"
+            new: "0"
         - replace:
             apply-on: "value"
             old: "UP"
@@ -95,6 +106,11 @@ processors:
     event-strings:
       tag-names:
         - "^interface_name"
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "ethernet-(\\d+)/(\\d+)"
+            new: "e$1-$2"
         - replace:
             apply-on: "value"
             old: "Ethernet(\\d+)"
@@ -108,6 +124,16 @@ processors:
             apply-on: "value"
             old: "(\\d+):(\\d+)"
             new: "$1"
+  eos-version:
+    event-strings:
+      value-names:
+        - ".*version$"
+        - ".*arch$"
+      transforms:
+        - replace:
+            apply-on: "value"
+            old: "EOS"
+            new: "eos"
   convert-data-unit:
     event-data-convert:
       value-names: 
