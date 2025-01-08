@@ -22,7 +22,9 @@
   "panels": [
     {
       "datasource": {
-        "uid": "Prometheus"
+        "default": true,
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -128,10 +130,6 @@
                       "value": null
                     },
                     {
-                      "color": "rgba(237, 129, 40, 0.89)",
-                      "value": 0
-                    },
-                    {
                       "color": "rgba(245, 54, 54, 0.9)",
                       "value": 1
                     }
@@ -208,91 +206,15 @@
               {
                 "id": "thresholds",
                 "value": {
-                  "mode": "absolute",
+                  "mode": "percentage",
                   "steps": [
                     {
                       "color": "rgba(50, 172, 45, 0.97)",
                       "value": null
                     },
                     {
-                      "color": "rgba(237, 129, 40, 0.89)",
-                      "value": 0
-                    },
-                    {
                       "color": "rgba(245, 54, 54, 0.9)",
-                      "value": 0
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "ipv6"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "IPv6"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 2
-              },
-              {
-                "id": "custom.align"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #C"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Loss IPv6"
-              },
-              {
-                "id": "unit",
-                "value": "percentunit"
-              },
-              {
-                "id": "decimals",
-                "value": 2
-              },
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "color-text"
-                }
-              },
-              {
-                "id": "custom.align"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "rgba(50, 172, 45, 0.97)",
-                      "value": null
-                    },
-                    {
-                      "color": "rgba(237, 129, 40, 0.89)",
-                      "value": 0
-                    },
-                    {
-                      "color": "rgba(245, 54, 54, 0.9)",
-                      "value": 0
+                      "value": 100
                     }
                   ]
                 }
@@ -330,7 +252,7 @@
         "x": 0,
         "y": 0
       },
-      "id": 44,
+      "id": 40,
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -349,7 +271,8 @@
           "datasource": {
             "uid": "$Datasource"
           },
-          "expr": "sum(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\",ip_version=~\"$ip_version\"}) by (instance,target) / count(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\",ip_version=~\"$ip_version\"}) by (instance,target)",
+          "editorMode": "code",
+          "expr": "sum(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\"}) by (instance,target) / count(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\"}) by (instance,target)",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -360,28 +283,16 @@
         },
         {
           "datasource": {
-            "uid": "Prometheus"
+            "uid": "$Datasource"
           },
-          "expr": "sum(label_replace(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\",ip_version=~\"$ip_version\",ip_version=\"4\"}, \"ipv4\", \"$1\", \"ip\", \"(.*)\")) by (instance,target,ipv4)",
+          "editorMode": "code",
+          "expr": "sum(label_replace(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\"}, \"ipv4\", \"$1\", \"ip\", \"(.*)\")) by (instance,target,ipv4)",
           "format": "table",
           "hide": false,
           "instant": true,
           "intervalFactor": 1,
           "legendFormat": "",
           "refId": "B",
-          "step": 2
-        },
-        {
-          "datasource": {
-            "uid": "Prometheus"
-          },
-          "expr": "sum(label_replace(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\",ip_version=~\"$ip_version\",ip_version=\"6\"}, \"ipv6\", \"$1\", \"ip\", \"(.*)\")) by (instance,target,ipv6)",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "C",
           "step": 2
         }
       ],
@@ -398,30 +309,390 @@
     },
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "000000001"
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 9
       },
-      "id": 23,
+      "id": 42,
       "panels": [],
       "repeat": "instance",
+      "repeatDirection": "h",
+      "title": "instance $instance",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "RTT",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 35,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IPv4 worst"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#B877D9",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.fillBelowTo",
+                "value": "IPv4 best"
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IPv4 mean"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#B877D9",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IPv4 best"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#B877D9",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IPv6 worst"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#5794F2",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.fillBelowTo",
+                "value": "IPv6 best"
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IPv6 mean"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#5794F2",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IPv6 best"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#5794F2",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IPv4 loss"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#DEB6F2",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 20
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "max",
+                "value": 1
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Loss"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IPv6 loss"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#C0D8FF",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 20
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "max",
+                "value": 1
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Loss"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byValue",
+              "options": {
+                "op": "gte",
+                "reducer": "allIsNull",
+                "value": 0
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 10
+      },
+      "id": 41,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "10.0.1",
+      "repeat": "target",
       "repeatDirection": "h",
       "targets": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "000000001"
+            "uid": "$Datasource"
           },
-          "refId": "A"
+          "editorMode": "code",
+          "expr": "avg(ping_rtt_best_seconds{job=~\"$job\",instance=~\"$instance\",target=~\"$target\"}) by (ip_version)",
+          "format": "time_series",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "IPv{{ip_version}} best",
+          "metric": "probe_",
+          "refId": "A",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "uid": "$Datasource"
+          },
+          "editorMode": "code",
+          "expr": "avg(ping_rtt_mean_seconds{job=~\"$job\",instance=~\"$instance\",target=~\"$target\"}) by (ip_version)",
+          "format": "time_series",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "IPv{{ip_version}} mean",
+          "metric": "probe_",
+          "refId": "B",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "uid": "$Datasource"
+          },
+          "editorMode": "code",
+          "expr": "avg(ping_rtt_worst_seconds{job=~\"$job\",instance=~\"$instance\",target=~\"$target\"}) by (ip_version)",
+          "format": "time_series",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "IPv{{ip_version}} worst",
+          "metric": "probe_",
+          "refId": "C",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "uid": "$Datasource"
+          },
+          "editorMode": "code",
+          "expr": "avg(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\",target=~\"$target\"}) by (ip_version)",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "IPv{{ip_version}} loss",
+          "range": true,
+          "refId": "D"
         }
       ],
-      "title": "Instance $instance",
+      "title": "Target $target",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 2,
+      "panels": [],
+      "title": "Problem env",
       "type": "row"
     },
     {
@@ -494,7 +765,7 @@
         "h": 12,
         "w": 13,
         "x": 0,
-        "y": 12
+        "y": 34
       },
       "id": 22,
       "options": {
@@ -547,7 +818,7 @@
         "h": 21,
         "w": 11,
         "x": 13,
-        "y": 12
+        "y": 34
       },
       "id": 1,
       "options": {
@@ -770,7 +1041,7 @@
         "h": 9,
         "w": 6,
         "x": 0,
-        "y": 24
+        "y": 46
       },
       "id": 36,
       "options": {
@@ -903,7 +1174,7 @@
         "h": 9,
         "w": 7,
         "x": 6,
-        "y": 24
+        "y": 46
       },
       "id": 37,
       "options": {
@@ -968,7 +1239,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 55
       },
       "id": 38,
       "panels": [],
@@ -1025,8 +1296,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1042,7 +1312,7 @@
         "h": 10,
         "w": 14,
         "x": 0,
-        "y": 34
+        "y": 56
       },
       "id": 25,
       "options": {
@@ -1111,8 +1381,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1128,7 +1397,7 @@
         "h": 10,
         "w": 9,
         "x": 14,
-        "y": 34
+        "y": 56
       },
       "id": 30,
       "options": {
@@ -1186,8 +1455,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1203,7 +1471,7 @@
         "h": 8,
         "w": 7,
         "x": 0,
-        "y": 44
+        "y": 66
       },
       "id": 3,
       "options": {
@@ -1226,9 +1494,9 @@
             "uid": "PBFA97CFB590B2093"
           },
           "disableTextWrap": false,
-          "editorMode": "code",
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "interface_config_prefix_length{job=\"gnmic\", interface_name!=\"Management0\", source=\"$NE\"}",
+          "expr": "interface_config_prefix_length{interface_name!=\"Management0\", source=\"$NE\"}",
           "format": "table",
           "fullMetaSearch": false,
           "hide": false,
@@ -1303,26 +1571,27 @@
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "index": 0,
-                  "text": "1500"
-                }
-              },
-              "type": "value"
-            }
-          ],
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          }
+          },
+          "unit": "ns"
         },
         "overrides": []
       },
@@ -1330,47 +1599,73 @@
         "h": 8,
         "w": 7,
         "x": 7,
-        "y": 44
+        "y": 66
       },
-      "id": 35,
+      "id": 39,
       "options": {
-        "colorMode": "background_solid",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
           "fields": "",
-          "values": false
+          "reducer": [
+            "sum"
+          ],
+          "show": false
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "showHeader": true
       },
       "pluginVersion": "11.2.0",
-      "targets": [
+      "title": "asdf",
+      "transformations": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "interface_state_mtu{source=\"$NE\"}",
-          "fullMetaSearch": false,
-          "includeNullMetadata": true,
-          "instant": false,
-          "legendFormat": "{{source}}:{{interface_name}}",
-          "range": true,
-          "refId": "A",
-          "useBackend": false
+          "id": "joinByField",
+          "options": {
+            "byField": "source",
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": true,
+              "Value #B": true,
+              "__name__": true,
+              "address_ip": false,
+              "instance": true,
+              "instance 2": true,
+              "job": true,
+              "job 2": true,
+              "source": true,
+              "subinterface_index": true,
+              "subscription_name": true,
+              "subscription_name 2": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Time": 2,
+              "Value": 9,
+              "__name__": 3,
+              "address_ip": 4,
+              "instance": 5,
+              "interface_name": 1,
+              "job": 6,
+              "source": 0,
+              "subinterface_index": 7,
+              "subscription_name": 8
+            },
+            "renameByName": {
+              "Value #A": "Uptime",
+              "address_ip": "",
+              "interface_name": "Interface",
+              "ip": "Management IP",
+              "source": "Hostname"
+            }
+          }
         }
       ],
-      "title": "MTU",
-      "type": "stat"
+      "type": "table"
     },
     {
       "datasource": {
@@ -1425,8 +1720,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1442,7 +1736,7 @@
         "h": 8,
         "w": 9,
         "x": 14,
-        "y": 44
+        "y": 66
       },
       "id": 28,
       "options": {
@@ -1509,266 +1803,9 @@
       ],
       "title": "Memory",
       "type": "timeseries"
-    },
-    {
-      "collapsed": true,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 52
-      },
-      "id": 39,
-      "panels": [
-        {
-          "datasource": {
-            "default": true,
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "custom": {
-                "align": "auto",
-                "cellOptions": {
-                  "type": "auto"
-                },
-                "inspect": false
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 4,
-            "w": 6,
-            "x": 0,
-            "y": 74
-          },
-          "id": 43,
-          "options": {
-            "cellHeight": "sm",
-            "footer": {
-              "countRows": false,
-              "fields": "",
-              "reducer": [
-                "sum"
-              ],
-              "show": false
-            },
-            "showHeader": true
-          },
-          "pluginVersion": "11.2.0",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "ospf_router_id{source=\"$NE\"}",
-              "format": "table",
-              "hide": false,
-              "instant": true,
-              "interval": "1",
-              "legendFormat": "__auto",
-              "range": false,
-              "refId": "B"
-            }
-          ],
-          "title": "OSPF router-id",
-          "transformations": [
-            {
-              "id": "organize",
-              "options": {
-                "excludeByName": {
-                  "Time": true,
-                  "Value": true,
-                  "instance": true,
-                  "job": true,
-                  "network_instance_name": true,
-                  "protocol_identifier": true,
-                  "protocol_name": true,
-                  "source": true,
-                  "subscription_name": true
-                },
-                "includeByName": {},
-                "indexByName": {},
-                "renameByName": {
-                  "__name__": "router-id"
-                }
-              }
-            }
-          ],
-          "type": "table"
-        },
-        {
-          "datasource": {
-            "default": true,
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "custom": {
-                "align": "auto",
-                "cellOptions": {
-                  "type": "auto"
-                },
-                "inspect": false
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 17,
-            "x": 6,
-            "y": 74
-          },
-          "id": 42,
-          "options": {
-            "cellHeight": "sm",
-            "footer": {
-              "countRows": false,
-              "fields": "",
-              "reducer": [
-                "sum"
-              ],
-              "show": false
-            },
-            "showHeader": true
-          },
-          "pluginVersion": "11.2.0",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "ospf_network_type{source=\"$NE\",interface_id!=\"Loopback0\"}",
-              "format": "table",
-              "instant": false,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-              },
-              "editorMode": "code",
-              "expr": "ospf_router_id{source=\"$NE\"}",
-              "format": "table",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "B"
-            }
-          ],
-          "title": "OSPF status",
-          "transformations": [
-            {
-              "id": "joinByField",
-              "options": {
-                "byField": "interface_id",
-                "mode": "outer"
-              }
-            },
-            {
-              "id": "organize",
-              "options": {
-                "excludeByName": {
-                  "Time": true,
-                  "Time 1": true,
-                  "Time 2": true,
-                  "Value": true,
-                  "Value #A": true,
-                  "Value #B": true,
-                  "__name__": true,
-                  "__name__ 1": true,
-                  "__name__ 2": true,
-                  "instance": true,
-                  "instance 1": true,
-                  "instance 2": true,
-                  "job": true,
-                  "job 1": true,
-                  "job 2": true,
-                  "network_instance_name": true,
-                  "protocol_identifier": true,
-                  "protocol_identifier 1": true,
-                  "protocol_identifier 2": true,
-                  "protocol_name": true,
-                  "protocol_name 1": true,
-                  "protocol_name 2": true,
-                  "source 2": true,
-                  "subscription_name": true,
-                  "subscription_name 1": true,
-                  "subscription_name 2": true
-                },
-                "includeByName": {},
-                "indexByName": {
-                  "Time": 5,
-                  "Value #A": 4,
-                  "__name__": 6,
-                  "area_identifier": 1,
-                  "instance": 7,
-                  "interface_id": 2,
-                  "job": 8,
-                  "network_instance_name": 10,
-                  "network_type": 3,
-                  "protocol_identifier": 9,
-                  "protocol_name": 11,
-                  "source": 0,
-                  "subscription_name": 12
-                },
-                "renameByName": {}
-              }
-            }
-          ],
-          "type": "table"
-        }
-      ],
-      "title": "$NE OSPF",
-      "type": "row"
     }
   ],
-  "refresh": "",
+  "refresh": "5s",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
@@ -1801,14 +1838,12 @@
         "type": "query"
       },
       {
+        "allFormat": "glob",
+        "allValue": "",
         "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
@@ -1819,20 +1854,25 @@
         "includeAll": true,
         "label": "Job",
         "multi": true,
+        "multiFormat": "glob",
         "name": "job",
         "options": [],
         "query": {
-          "qryType": 1,
           "query": "label_values(ping_loss_ratio,job)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          "refId": "PromShort-job-Variable-Query"
         },
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
-        "type": "query"
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       },
       {
+        "allFormat": "glob",
+        "allValue": "",
         "current": {
           "selected": true,
           "text": [
@@ -1851,82 +1891,54 @@
         "includeAll": true,
         "label": "Instance",
         "multi": true,
+        "multiFormat": "glob",
         "name": "instance",
         "options": [],
         "query": {
-          "qryType": 1,
           "query": "label_values(ping_loss_ratio{job=~\"$job\"},instance)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          "refId": "PromShort-instance-Variable-Query"
         },
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       },
       {
+        "allFormat": "glob",
+        "allValue": "",
         "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
           "uid": "PBFA97CFB590B2093"
         },
-        "definition": "label_values(ping_loss_ratio{job=~\"$job\", instance=~\"$instance\"},target)",
+        "definition": "label_values(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\"},target)",
         "hide": 0,
         "includeAll": true,
         "label": "Target",
         "multi": true,
+        "multiFormat": "glob",
         "name": "target",
         "options": [],
         "query": {
-          "qryType": 1,
-          "query": "label_values(ping_loss_ratio{job=~\"$job\", instance=~\"$instance\"},target)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          "query": "label_values(ping_loss_ratio{job=~\"$job\",instance=~\"$instance\"},target)",
+          "refId": "PromShort-target-Variable-Query"
         },
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PBFA97CFB590B2093"
-        },
-        "definition": "label_values(ping_loss_ratio{job=~\"$job\", instance=~\"$instance\"},ip_version)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "IP Version",
-        "multi": true,
-        "name": "ip_version",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(ping_loss_ratio{job=~\"$job\", instance=~\"$instance\"},ip_version)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "type": "query"
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
