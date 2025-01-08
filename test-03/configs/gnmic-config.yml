@@ -43,9 +43,8 @@ subscriptions:
       - /interfaces/interface/state/counters
       - /interfaces/interface/state/admin-status
       - /interfaces/interface/state/oper-status
-      - /interfaces/interface/ethernet/switched-vlan
-      - /interfaces/interface[name=Port-Channel1]/aggregation/switched-vlan
-      - /interfaces/interface/ethernet/switched-vlan/config/trunk-vlans
+      - /interfaces/interface/ethernet/switched-vlan/config
+      - /interfaces/interface[name=Port-Channel1]/aggregation/switched-vlan/config
     mode: stream
     stream-mode: sample
     sample-interval: 5s
