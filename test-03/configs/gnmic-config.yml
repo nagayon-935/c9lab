@@ -53,7 +53,7 @@ subscriptions:
       - /interfaces/interface/ethernet/switched-vlan/config/access-vlan
       - /interfaces/interface/ethernet/switched-vlan/config/trunk-vlans
       - /interfaces/interfac/aggregation/switched-vlan/config
-      - /network-instances/network-instance/vlans/vlan/vlan-i
+      - /network-instances/network-instance/vlans/vlan/vlan-id
     mode: stream
     stream-mode: sample
     sample-interval: 5s
