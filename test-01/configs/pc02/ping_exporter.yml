@@ -1,6 +1,6 @@
 targets:
-  - 8.8.8.8
-
+  - 192.168.10.1
+  - 192.168.20.1
 ping:
   interval: 10s
   timeout: 3s
