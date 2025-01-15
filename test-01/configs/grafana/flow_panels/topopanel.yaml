@@ -18,7 +18,7 @@ anchors: # 再利用可能な設定の定義
     level: 5000000
   label-config: &label-config
     separator: replace
-    decimalPoints: 1
+    decimalPoints: 3
 
 cellIdPreamble: cell-
 cells:
