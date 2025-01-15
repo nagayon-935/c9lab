@@ -17,7 +17,6 @@ anchors: # 再利用可能な設定の定義
   - color: red
     level: 5000000
   label-config: &label-config
-    separator: "cr"
     units: "none"
 cellIdPreamble: cell-
 cells:
