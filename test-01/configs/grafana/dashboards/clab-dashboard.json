@@ -601,7 +601,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 8,
+        "w": 6,
         "x": 0,
         "y": 10
       },
@@ -688,7 +688,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 24
       },
       "id": 2,
       "panels": [],
@@ -765,7 +765,7 @@
         "h": 12,
         "w": 13,
         "x": 0,
-        "y": 34
+        "y": 25
       },
       "id": 22,
       "options": {
@@ -818,7 +818,7 @@
         "h": 21,
         "w": 11,
         "x": 13,
-        "y": 34
+        "y": 25
       },
       "id": 1,
       "options": {
@@ -874,6 +874,19 @@
           "legendFormat": "{{source}}:{{interface_name}}:in",
           "range": true,
           "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "ping_loss_ratio",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "ping_loss_ratio:{{instance}}:{{target}}",
+          "range": true,
+          "refId": "D"
         }
       ],
       "title": "Network Telemetry",
@@ -1041,7 +1054,7 @@
         "h": 9,
         "w": 6,
         "x": 0,
-        "y": 46
+        "y": 37
       },
       "id": 36,
       "options": {
@@ -1174,7 +1187,7 @@
         "h": 9,
         "w": 7,
         "x": 6,
-        "y": 46
+        "y": 37
       },
       "id": 37,
       "options": {
@@ -1239,7 +1252,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 46
       },
       "id": 38,
       "panels": [],
@@ -1296,7 +1309,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1312,7 +1326,7 @@
         "h": 10,
         "w": 14,
         "x": 0,
-        "y": 56
+        "y": 47
       },
       "id": 25,
       "options": {
@@ -1381,7 +1395,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1397,7 +1412,7 @@
         "h": 10,
         "w": 9,
         "x": 14,
-        "y": 56
+        "y": 47
       },
       "id": 30,
       "options": {
@@ -1455,7 +1470,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1471,7 +1487,7 @@
         "h": 8,
         "w": 7,
         "x": 0,
-        "y": 66
+        "y": 57
       },
       "id": 3,
       "options": {
@@ -1583,7 +1599,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1599,7 +1616,7 @@
         "h": 8,
         "w": 7,
         "x": 7,
-        "y": 66
+        "y": 57
       },
       "id": 39,
       "options": {
@@ -1720,7 +1737,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1736,7 +1754,7 @@
         "h": 8,
         "w": 9,
         "x": 14,
-        "y": 66
+        "y": 57
       },
       "id": 28,
       "options": {
@@ -1911,9 +1929,13 @@
         "allFormat": "glob",
         "allValue": "",
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
