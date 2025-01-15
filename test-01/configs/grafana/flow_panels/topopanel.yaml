@@ -31,7 +31,7 @@ cells:
     fillColor:
       thresholds: *thresholds-operstate
   link_id:sw01:eth1:pc01:eth1:
-    dataRef: ping_loss_ration:pc03:192.168.10.1
+    dataRef: ping_loss_ratio:pc03:192.168.10.1
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
@@ -49,7 +49,7 @@ cells:
     fillColor:
       thresholds: *thresholds-operstate
   link_id:pc03:eth1:rt01:eth2:
-    dataRef: ping_loss_ration:pc03:192.168.20.254
+    dataRef: ping_loss_ratio:pc03:192.168.20.254
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
