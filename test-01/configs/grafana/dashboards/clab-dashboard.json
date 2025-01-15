@@ -688,7 +688,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 17
       },
       "id": 2,
       "panels": [],
@@ -765,7 +765,7 @@
         "h": 12,
         "w": 13,
         "x": 0,
-        "y": 25
+        "y": 18
       },
       "id": 22,
       "options": {
@@ -818,7 +818,7 @@
         "h": 21,
         "w": 11,
         "x": 13,
-        "y": 25
+        "y": 18
       },
       "id": 1,
       "options": {
@@ -880,13 +880,17 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "code",
-          "expr": "ping_loss_ratio",
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "ping_loss_ratio * 100",
+          "fullMetaSearch": false,
           "hide": false,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "ping_loss_ratio:{{instance}}:{{target}}",
           "range": true,
-          "refId": "D"
+          "refId": "D",
+          "useBackend": false
         }
       ],
       "title": "Network Telemetry",
@@ -1054,7 +1058,7 @@
         "h": 9,
         "w": 6,
         "x": 0,
-        "y": 37
+        "y": 30
       },
       "id": 36,
       "options": {
@@ -1187,7 +1191,7 @@
         "h": 9,
         "w": 7,
         "x": 6,
-        "y": 37
+        "y": 30
       },
       "id": 37,
       "options": {
@@ -1252,7 +1256,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 39
       },
       "id": 38,
       "panels": [],
@@ -1309,8 +1313,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1326,7 +1329,7 @@
         "h": 10,
         "w": 14,
         "x": 0,
-        "y": 47
+        "y": 40
       },
       "id": 25,
       "options": {
@@ -1395,8 +1398,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1412,7 +1414,7 @@
         "h": 10,
         "w": 9,
         "x": 14,
-        "y": 47
+        "y": 40
       },
       "id": 30,
       "options": {
@@ -1470,8 +1472,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1487,7 +1488,7 @@
         "h": 8,
         "w": 7,
         "x": 0,
-        "y": 57
+        "y": 50
       },
       "id": 3,
       "options": {
@@ -1599,8 +1600,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1616,7 +1616,7 @@
         "h": 8,
         "w": 7,
         "x": 7,
-        "y": 57
+        "y": 50
       },
       "id": 39,
       "options": {
@@ -1737,8 +1737,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1754,7 +1753,7 @@
         "h": 8,
         "w": 9,
         "x": 14,
-        "y": 57
+        "y": 50
       },
       "id": 28,
       "options": {
