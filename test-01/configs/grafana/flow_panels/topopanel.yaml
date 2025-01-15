@@ -18,7 +18,7 @@ anchors: # 再利用可能な設定の定義
     separator: replace
     decimalPoints: 1
     unitsPostfix: "%"
-    text: "packer loss ratio"
+    text: packer loss ratio
 
 cellIdPreamble: cell-
 cells:
