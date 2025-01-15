@@ -137,13 +137,13 @@
           <mxGeometry y="177" width="75" height="30" as="geometry" />
         </mxCell>
         <mxCell id="7z3W9UuVhsYCPQ_D0mKq-2" value="Packet Loss" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="205" y="296" width="75" height="30" as="geometry" />
+          <mxGeometry x="202" y="297" width="75" height="30" as="geometry" />
         </mxCell>
         <mxCell id="7z3W9UuVhsYCPQ_D0mKq-4" value="Packet Loss" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="318" y="380" width="75" height="30" as="geometry" />
+          <mxGeometry x="315" y="384" width="75" height="30" as="geometry" />
         </mxCell>
         <mxCell id="7z3W9UuVhsYCPQ_D0mKq-5" value="Packet Loss" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="464" y="380" width="75" height="30" as="geometry" />
+          <mxGeometry x="461" y="384" width="75" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
