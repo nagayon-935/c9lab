@@ -1,67 +1,35 @@
 <mxfile compressed="false" host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
   <diagram id="Network Topology" name="Network Topology">
-    <mxGraphModel dx="973" dy="684" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="350" pageHeight="550" background="#4D5766" math="0" shadow="0">
+    <mxGraphModel dx="692" dy="486" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="350" pageHeight="550" background="#4D5766" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <object label="​" id="mid:pc03:eth1:rt01:eth2">
-          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" parent="1" vertex="1">
-            <mxGeometry x="97.50034970169855" y="190.99620039773527" width="4" height="4" as="geometry" />
-          </mxCell>
-        </object>
         <object label="​" source="pc03:eth1:rt01:eth2" target="mid:pc03:eth1:rt01:eth2" id="link_id:pc03:eth1:rt01:eth2">
-          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;" parent="1" source="pc03:eth1:rt01:eth2" target="mid:pc03:eth1:rt01:eth2" edge="1">
-            <mxGeometry relative="1" as="geometry" />
-          </mxCell>
-        </object>
-        <object label="​" source="rt01:eth2:pc03:eth1" target="mid:pc03:eth1:rt01:eth2" id="link_id:rt01:eth2:pc03:eth1">
-          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;" parent="1" source="rt01:eth2:pc03:eth1" target="mid:pc03:eth1:rt01:eth2" edge="1">
-            <mxGeometry relative="1" as="geometry" />
-          </mxCell>
-        </object>
-        <object label="​" id="mid:sw01:eth1:pc01:eth1">
-          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" parent="1" vertex="1">
-            <mxGeometry x="415.995342861113" y="395.00065973737236" width="4" height="4" as="geometry" />
+          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="pc03:eth1:rt01:eth2" target="rt01:eth2:pc03:eth1" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="99.50034970169855" y="190.99620039773527" as="targetPoint" />
+            </mxGeometry>
           </mxCell>
         </object>
         <object label="​" source="sw01:eth1:pc01:eth1" target="mid:sw01:eth1:pc01:eth1" id="link_id:sw01:eth1:pc01:eth1">
-          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;" parent="1" source="sw01:eth1:pc01:eth1" target="mid:sw01:eth1:pc01:eth1" edge="1">
-            <mxGeometry relative="1" as="geometry" />
-          </mxCell>
-        </object>
-        <object label="​" source="pc01:eth1:sw01:eth1" target="mid:sw01:eth1:pc01:eth1" id="link_id:pc01:eth1:sw01:eth1">
-          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;" parent="1" source="pc01:eth1:sw01:eth1" target="mid:sw01:eth1:pc01:eth1" edge="1">
-            <mxGeometry relative="1" as="geometry" />
-          </mxCell>
-        </object>
-        <object label="​" id="mid:sw01:eth2:pc02:eth1">
-          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" parent="1" vertex="1">
-            <mxGeometry x="552" y="399.000498144784" width="4" height="4" as="geometry" />
+          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="sw01:eth1:pc01:eth1" target="pc01:eth1:sw01:eth1" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="419.3702453371799" y="395.54819866009143" as="targetPoint" />
+            </mxGeometry>
           </mxCell>
         </object>
         <object label="​" source="sw01:eth2:pc02:eth1" target="mid:sw01:eth2:pc02:eth1" id="link_id:sw01:eth2:pc02:eth1">
-          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;" parent="1" source="sw01:eth2:pc02:eth1" target="mid:sw01:eth2:pc02:eth1" edge="1">
-            <mxGeometry relative="1" as="geometry" />
-          </mxCell>
-        </object>
-        <object label="​" source="pc02:eth1:sw01:eth2" target="mid:sw01:eth2:pc02:eth1" id="link_id:pc02:eth1:sw01:eth2">
-          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;" parent="1" source="pc02:eth1:sw01:eth2" target="mid:sw01:eth2:pc02:eth1" edge="1">
-            <mxGeometry relative="1" as="geometry" />
-          </mxCell>
-        </object>
-        <object label="​" id="mid:sw01:eth3:rt01:eth1">
-          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;fillColor=#BEC8D2;strokeColor=none;noLabel=1;" parent="1" vertex="1">
-            <mxGeometry x="294.00132236682055" y="310.5" width="4" height="4" as="geometry" />
-          </mxCell>
-        </object>
-        <object label="​" source="sw01:eth3:rt01:eth1" target="mid:sw01:eth3:rt01:eth1" id="link_id:sw01:eth3:rt01:eth1">
-          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;" parent="1" source="sw01:eth3:rt01:eth1" target="mid:sw01:eth3:rt01:eth1" edge="1">
-            <mxGeometry relative="1" as="geometry" />
+          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="sw01:eth2:pc02:eth1" target="pc02:eth1:sw01:eth2" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="585" y="438" as="targetPoint" />
+            </mxGeometry>
           </mxCell>
         </object>
         <object label="​" source="rt01:eth1:sw01:eth3" target="mid:sw01:eth3:rt01:eth1" id="link_id:rt01:eth1:sw01:eth3">
-          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;" parent="1" source="rt01:eth1:sw01:eth3" target="mid:sw01:eth3:rt01:eth1" edge="1">
-            <mxGeometry relative="1" as="geometry" />
+          <mxCell style="rounded=0;orthogonalLoop=1;html=1;startSize=6;endArrow=classicThin;endFill=1;endSize=2;fontSize=14;strokeColor=#98A2AE;fontColor=#FFFFFF;textOpacity=60;labelBackgroundColor=#4D5766;jumpStyle=gap;strokeWidth=3;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="rt01:eth1:sw01:eth3" target="sw01:eth3:rt01:eth1" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="294.0013223668536" y="312.5000000000001" as="targetPoint" />
+            </mxGeometry>
           </mxCell>
         </object>
         <mxCell id="group-pc03" value="" style="group" parent="1" vertex="1" connectable="0">
@@ -141,7 +109,7 @@
         </object>
         <object label="1" id="pc02:eth1:sw01:eth2">
           <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fontColor=#FFFFFF;fontSize=6;strokeColor=#98A2AE;fillColor=#BEC8D2;" parent="group-pc02" vertex="1">
-            <mxGeometry x="44" width="12" height="12" as="geometry" />
+            <mxGeometry x="31.5" width="12" height="12" as="geometry" />
           </mxCell>
         </object>
         <mxCell id="eGUuJ49FiEMUcniuCF0X-2" value=".254" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" vertex="1" parent="1">
@@ -160,10 +128,10 @@
           <mxGeometry x="137" y="278" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="eGUuJ49FiEMUcniuCF0X-9" value=".1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="356" y="434" width="60" height="30" as="geometry" />
+          <mxGeometry x="365" y="440" width="36" height="18" as="geometry" />
         </mxCell>
         <mxCell id="eGUuJ49FiEMUcniuCF0X-10" value=".2" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="607" y="430" width="60" height="30" as="geometry" />
+          <mxGeometry x="622" y="440" width="29" height="18" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
