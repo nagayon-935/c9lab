@@ -3,7 +3,6 @@ targets:
   - 192.168.10.254
   - 192.168.10.1
   - 192.168.10.2
-  - grafana
 
 ping:
   interval: 10s
