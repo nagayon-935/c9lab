@@ -33,6 +33,8 @@ cells:
   link_id:sw01:eth1:pc01:eth1:
     dataRef: ping_loss_ration:pc03:192.168.10.1
     label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
   pc02:eth1:sw01:eth2:
     dataRef: oper-state:pc02:eth1
     fillColor:
