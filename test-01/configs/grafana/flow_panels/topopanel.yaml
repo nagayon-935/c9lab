@@ -17,6 +17,7 @@ anchors: # 再利用可能な設定の定義
   label-config: &label-config
     separator: replace
     decimalPoints: 1
+    text: "packer loss ratio"
 
 cellIdPreamble: cell-
 cells:
