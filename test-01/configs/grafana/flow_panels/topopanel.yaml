@@ -17,7 +17,13 @@ anchors: # 再利用可能な設定の定義
   - color: red
     level: 5000000
   label-config: &label-config
-    units: "none"
+    separator: replace
+    units: bps
+    decimalPoints: 1
+    valueMappings:
+    - valueMax: 199999
+      text: ​
+    - valueMin: 200000
 cellIdPreamble: cell-
 cells:
   sw01:eth1:pc01:eth1:
@@ -27,8 +33,6 @@ cells:
   link_id:sw01:eth1:pc01:eth1:
     dataRef: ping_loss_ration:pc03:192.168.10.1
     label: *label-config
-    strokeColor:
-      thresholds: *thresholds-traffic
   pc02:eth1:sw01:eth2:
     dataRef: oper-state:pc02:eth1
     fillColor:
