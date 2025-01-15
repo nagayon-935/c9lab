@@ -12,9 +12,7 @@ scrape_configs: #スクレイプする設定
       - targets: ["pc03:9427"]
     relabel_configs:
       - source_labels: [__address__]
-        target_label: __param_target
-        replacement: ${1}
-      - source_labels: [__param_target]
-        regex: (.*)
         target_label: instance
+        regex: '(.*):9427'
         replacement: ${1}
+        action: replace
