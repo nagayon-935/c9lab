@@ -17,8 +17,13 @@ anchors: # 再利用可能な設定の定義
   - color: red
     level: 5000000
   label-config: &label-config
-    separator: cr
-    decimalPoints: 3
+    separator: replace
+    units: bps
+    decimalPoints: 1
+    valueMappings:
+    - valueMax: 199999
+      text: ​
+    - valueMin: 200000
 cellIdPreamble: cell-
 cells:
   sw01:eth1:pc01:eth1:
