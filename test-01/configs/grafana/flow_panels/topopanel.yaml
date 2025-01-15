@@ -6,12 +6,10 @@ anchors: # 再利用可能な設定の定義
   - color: green
     level: 1
   thresholds-traffic: &thresholds-traffic
-  - color: gray
-    level: 0.0
   - color: green
-    level: 0.2
+    level: 0.0
   - color: yellow
-    level: 0.5
+    level: 0.4
   - color: orange
     level: 0.8
   - color: red
