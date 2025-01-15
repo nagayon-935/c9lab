@@ -10,10 +10,9 @@ scrape_configs: #スクレイプする設定
       - targets: ["pc01:9427"]
       - targets: ["pc02:9427"]
       - targets: ["pc03:9427"]
-
-metric_relabel_configs:
-- source_labels: [instance]
-  separator: :
-    regex: (.*):(.*)
-    replacement: ${1}
-    target_label: instance
+    metric_relabel_configs:
+    - source_labels: [instance]
+      separator: :
+        regex: (.*):(.*)
+        replacement: ${1}
+        target_label: instance
