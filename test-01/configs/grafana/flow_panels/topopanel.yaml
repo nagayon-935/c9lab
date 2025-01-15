@@ -7,15 +7,15 @@ anchors: # 再利用可能な設定の定義
     level: 1
   thresholds-traffic: &thresholds-traffic
   - color: gray
-    level: 0
+    level: 1
   - color: green
-    level: 199999
+    level: 0.8
   - color: yellow
-    level: 500000
+    level: 0.5
   - color: orange
-    level: 1000000
+    level: 0.2
   - color: red
-    level: 5000000
+    level: 0
   label-config: &label-config
     separator: replace
     decimalPoints: 1
@@ -81,7 +81,7 @@ cells:
     fillColor:
       thresholds: *thresholds-operstate
   link_id:rt01:eth1:sw01:eth3:
-    dataRef: rt01:eth1:out
+    dataRef: ping_loss_ratio:pc03:192.168.10.254
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
