@@ -63,7 +63,7 @@ cells:
     fillColor:
       thresholds: *thresholds-operstate
   link_id:sw01:eth2:pc02:eth1:
-    dataRef: sw01:eth2:out
+    dataRef: ping_loss_ratio:pc03:192.168.10.2
     label: *label-config
     strokeColor:
       thresholds: *thresholds-traffic
