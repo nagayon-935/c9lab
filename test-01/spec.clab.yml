@@ -25,37 +25,36 @@ topology:
       group: clients
       mgmt-ipv4: 172.100.100.11
       binds:
-        - configs/pc01/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+        - configs/pc01/network_exporter.yml:/etc/network_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.10.1/24 dev eth1
       - ip route del default
       - ip route add default via 192.168.10.254 dev eth1
       - iperf3 -s -p 5201 -D > iperf3_1.log
       - iperf3 -s -p 5202 -D > iperf3_2.log
-      # cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
-      cmd: network_exporter --config.file=/etc/network_exporter/network_exporter.yml
+      # cmd: network_exporter --config.file=/etc/network_exporter/network_exporter.yml
     pc02:
       group: clients
       mgmt-ipv4: 172.100.100.12
       binds:
         - configs/pc02:/config
-        - configs/pc02/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+        - configs/pc02/network_exporter.yml:/etc/network_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.10.2/24 dev eth1
       - ip route del default
       - ip route add default via 192.168.10.254 dev eth1
-      # cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
+      # cmd: network_exporter --config.file=/etc/network_exporter/network_exporter.yml
     pc03:
       group: server
       mgmt-ipv4: 172.100.100.13
       binds:
         - configs/pc03:/config
-        - configs/pc03/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+        - configs/pc03/network_exporter.yml:/etc/network_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.20.1/24 dev eth1
       - ip route del default
       - ip route add default via 192.168.20.254 dev eth1
-      cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
+      cmd: network_exporter --config.file=/etc/network_exporter/network_exporter.yml
     sw01:
       kind: ceos
       group: switch
