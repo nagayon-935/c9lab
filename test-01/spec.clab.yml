@@ -14,7 +14,7 @@ topology:
 
   kinds:
     linux:
-      image: nagayon/my-netshoot:1.0.0 
+      image: nagayon/my-netshoot:latest
       binds:
       - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
     ceos:

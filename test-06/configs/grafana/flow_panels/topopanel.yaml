@@ -1,0 +1,82 @@
+---
+anchors:
+  thresholds-operstate: &thresholds-operstate
+  - color: red
+    level: 0
+  - color: green
+    level: 1
+  thresholds-traffic: &thresholds-traffic
+  - color: gray
+    level: 0
+  - color: green
+    level: 199999
+  - color: yellow
+    level: 500000
+  - color: orange
+    level: 1000000
+  - color: red
+    level: 5000000
+  label-config: &label-config
+    separator: replace
+    units: bps
+    decimalPoints: 1
+    valueMappings:
+    - valueMax: 199999
+      text: ​
+    - valueMin: 200000
+cellIdPreamble: cell-
+cells:
+  rt01:eth1:rt02:eth1:
+    dataRef: oper-state:rt01:eth1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:rt01:eth1:rt02:eth1:
+    dataRef: rt01:eth1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  rt01:eth2:rt04:eth1:
+    dataRef: oper-state:rt01:eth2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:rt01:eth2:rt04:eth1:
+    dataRef: rt01:eth2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  rt02:eth1:rt01:eth1:
+    dataRef: oper-state:rt02:eth1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:rt02:eth1:rt01:eth1:
+    dataRef: rt02:eth1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  rt02:eth2:rt03:eth1:
+    dataRef: oper-state:rt02:eth2
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:rt02:eth2:rt03:eth1:
+    dataRef: rt02:eth2:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  rt03:eth1:rt02:eth2:
+    dataRef: oper-state:rt03:eth1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:rt03:eth1:rt02:eth2:
+    dataRef: rt03:eth1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
+  rt04:eth1:rt01:eth2:
+    dataRef: oper-state:rt04:eth1
+    fillColor:
+      thresholds: *thresholds-operstate
+  link_id:rt04:eth1:rt01:eth2:
+    dataRef: rt04:eth1:out
+    label: *label-config
+    strokeColor:
+      thresholds: *thresholds-traffic
