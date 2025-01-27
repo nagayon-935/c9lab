@@ -1,0 +1,174 @@
+topology:
+
+  defaults:
+    kind: linux
+
+  kinds:
+    linux:
+      image: frrouting/frr:v8.4.1
+      binds:
+        - config/daemons:/etc/frr/daemons
+
+  nodes:
+
+  ### SPINE ###
+    RT-S-01:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/RT-S-01.conf:/etc/frr/frr.conf
+    RT-S-02:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/RT-S-02.conf:/etc/frr/frr.conf
+
+  ### LEAF ###
+    RT-L-01:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/RT-L-01.conf:/etc/frr/frr.conf
+    RT-L-02:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/RT-L-02.conf:/etc/frr/frr.conf
+    RT-L-03:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/RT-L-03.conf:/etc/frr/frr.conf
+    RT-L-04:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/RT-L-04.conf:/etc/frr/frr.conf
+
+  ### ToR ###
+    RT-T-01:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/RT-T-01.conf:/etc/frr/frr.conf
+    RT-T-02:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/RT-T-02.conf:/etc/frr/frr.conf
+
+  ### Client ###
+    SV-01:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/SV-01.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+    SV-02:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/SV-02.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+    SV-03:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/SV-03.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+    SV-04:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/SV-04.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+    SV-05:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/SV-05.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+    SV-06:
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      binds:
+        - config/SV-06.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+
+  ### Switch ###
+    SW-01:
+      kind: linux
+      image: asia-northeast1-docker.pkg.dev/networkcontest/janog55/netshoot:latest
+      labels:
+        netcon.janog.gr.jp/adminOnly: "true"
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      exec:
+      - ip link add name br01 type bridge
+      - ip link set br01 up
+      - ip link set eth1 master br01
+      - ip link set eth2 master br01
+      - ip link set eth3 master br01
+      - ip link set eth4 master br01
+    SW-02:
+      kind: linux
+      image: asia-northeast1-docker.pkg.dev/networkcontest/janog55/netshoot:latest
+      labels:
+        netcon.janog.gr.jp/adminOnly: "true"
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+      exec:
+      - ip link add name br02 type bridge
+      - ip link set br02 up
+      - ip link set eth1 master br02
+      - ip link set eth2 master br02
+      - ip link set eth3 master br02
+      - ip link set eth4 master br02
+
+  links:
+    - endpoints: ["RT-S-01:eth1", "RT-L-01:eth1"]
+    - endpoints: ["RT-S-01:eth2", "RT-L-02:eth1"]
+    - endpoints: ["RT-S-01:eth3", "RT-L-03:eth1"]
+    - endpoints: ["RT-S-01:eth4", "RT-L-04:eth1"]
+    - endpoints: ["RT-S-02:eth1", "RT-L-01:eth2"]
+    - endpoints: ["RT-S-02:eth2", "RT-L-02:eth2"]
+    - endpoints: ["RT-S-02:eth3", "RT-L-03:eth2"]
+    - endpoints: ["RT-S-02:eth4", "RT-L-04:eth2"]
+    - endpoints: ["RT-L-01:eth3", "RT-T-01:eth1"]
+    - endpoints: ["RT-L-02:eth3", "RT-T-01:eth2"]
+    - endpoints: ["RT-L-03:eth3", "RT-T-02:eth1"]
+    - endpoints: ["RT-L-04:eth3", "RT-T-02:eth2"]
+    - endpoints: ["SW-01:eth1", "RT-T-01:eth3"]
+    - endpoints: ["SW-01:eth2", "SV-01:eth1"]
+    - endpoints: ["SW-01:eth3", "SV-02:eth1"]
+    - endpoints: ["SW-01:eth4", "SV-03:eth1"]
+    - endpoints: ["SW-02:eth1", "RT-T-02:eth3"]
+    - endpoints: ["SW-02:eth2", "SV-04:eth1"]
+    - endpoints: ["SW-02:eth3", "SV-05:eth1"]
+    - endpoints: ["SW-02:eth4", "SV-06:eth1"]
