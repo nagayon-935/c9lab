@@ -1,0 +1,55 @@
+topology:
+
+  defaults:
+    kind: linux
+
+  kinds:
+    linux:
+      image: asia-northeast1-docker.pkg.dev/networkcontest/janog55/netshoot:latest
+    arista_ceos:
+      image: asia-northeast1-docker.pkg.dev/networkcontest/janog55/ceos:4.31.5M
+    cisco_xrd:
+      image: asia-northeast1-docker.pkg.dev/networkcontest/janog55/xrd-control-plane:24.2.2
+
+  nodes:
+
+    SV-01:
+      exec:
+        - ip addr add 172.16.10.1/24 dev eth1
+        - ip route del default
+        - ip route add default via 172.16.10.254 dev eth1
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+    SV-02:
+      exec:
+        - ip addr add 10.70.10.1/24 dev eth1
+        - ip route del default
+        - ip route add default via 10.70.10.254 dev eth1
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+
+    RT-01:
+      kind: arista_ceos
+      labels:
+        netcon.janog.gr.jp/sshUsername: user
+        netcon.janog.gr.jp/sshPassword: user
+      startup-config: config/RT-01.conf
+    RT-02:
+      kind: cisco_xrd
+      startup-config: config/RT-02.conf
+    RT-03:
+      image: frrouting/frr:v8.4.1
+      binds:
+        - config/daemons:/etc/frr/daemons
+        - config/RT-03.conf:/etc/frr/frr.conf
+      labels:
+        netcon.janog.gr.jp/accessMethod: exec
+        netcon.janog.gr.jp/execCommand: /bin/bash
+
+  links:
+    - endpoints: ["SV-01:eth1", "RT-01:eth1"]
+    - endpoints: ["RT-01:eth2", "RT-02:Gi0-0-0-1"]
+    - endpoints: ["RT-02:Gi0-0-0-2", "RT-03:eth1"]
+    - endpoints: ["RT-03:eth2", "SV-02:eth1"]
