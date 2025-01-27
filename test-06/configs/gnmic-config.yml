@@ -14,6 +14,7 @@ common_arista_subscriptions: &common_arista_subs
     - interface_config
     - bgp
     - ospf
+    - policy
 
 # ターゲットデバイス設定
 targets:
@@ -63,8 +64,14 @@ subscriptions:
       - /network-instances/network-instance/protocols/protocol/bgp/neighbors/
       - /network-instances/network-instance/protocols/protocol/bgp/global/state/router-id
       - /network-instances/network-instance/protocols/protocol/bgp/peer-groups/peer-group/apply-policy/state
-      - /routing-policy/defined-sets/
-      - /routing-policy/policy-definitions/
+    mode: stream
+    stream-mode: sample
+    sample-interval: 5s
+
+  policy:
+    paths:
+      - /routing-policy/defined-sets/prefix-sets	
+      -/routing-policy/policy-definitions/policy-definition/state
     mode: stream
     stream-mode: sample
     sample-interval: 5s
