@@ -70,10 +70,9 @@ subscriptions:
 
   policy:
     paths:
-      - /routing-policy/defined-sets/prefix-sets
+      - /routing-policy/defined-sets/prefix-sets/
       - /routing-policy/policy-definitions/policy-definition/
-      - /routing-policy/policy-definitions/policy-definition/state/import-policy
-      - /routing-policy/policy-definitions/policy-definition/state/export-policy
+      - /routing-policy/policy-definitions/policy-definition/state/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
