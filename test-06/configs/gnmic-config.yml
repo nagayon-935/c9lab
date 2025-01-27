@@ -63,7 +63,7 @@ subscriptions:
     paths:
       - /network-instances/network-instance/protocols/protocol/bgp/neighbors/
       - /network-instances/network-instance/protocols/protocol/bgp/global/state/router-id
-      - /network-instances/network-instance/protocols/protocol/bgp/peer-groups/peer-group/apply-policy/state
+      - /network-instances/network-instance/protocols/protocol/bgp/peer-groups/peer-group/apply-policy/
     mode: stream
     stream-mode: sample
     sample-interval: 5s
@@ -72,6 +72,8 @@ subscriptions:
     paths:
       - /routing-policy/defined-sets/prefix-sets
       - /routing-policy/policy-definitions/policy-definition/
+      - /routing-policy/policy-definitions/policy-definition/state/import-policy
+      - /routing-policy/policy-definitions/policy-definition/state/export-policy
     mode: stream
     stream-mode: sample
     sample-interval: 5s
