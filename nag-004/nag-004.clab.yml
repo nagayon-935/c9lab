@@ -124,7 +124,7 @@ topology:
   ### Switch ###
     SW-01:
       kind: linux
-      image: asia-northeast1-docker.pkg.dev/networkcontest/janog55/netshoot:latest
+      image: nagayon/my-netshoot:latest
       labels:
         netcon.janog.gr.jp/adminOnly: "true"
         netcon.janog.gr.jp/accessMethod: exec
@@ -138,7 +138,7 @@ topology:
       - ip link set eth4 master br01
     SW-02:
       kind: linux
-      image: asia-northeast1-docker.pkg.dev/networkcontest/janog55/netshoot:latest
+      image: nagayon/my-netshoot:latest
       labels:
         netcon.janog.gr.jp/adminOnly: "true"
         netcon.janog.gr.jp/accessMethod: exec
