@@ -1,0 +1,24 @@
+conf:
+  refresh: 15m
+
+icmp:
+  interval: 3s
+  timeout: 1s
+  count: 6
+
+mtr:
+  interval: 3s
+  timeout: 500ms
+  max-hops: 30
+  count: 6
+
+targets:
+  - name: pc01
+    host: 192.168.10.1
+    type: ICMP+MTR
+  - name: pc02
+    host: 192.168.20.1
+    type: ICMP+MTR
+  - name: pc04
+    host: 192.168.40.1
+    type: ICMP+MTR

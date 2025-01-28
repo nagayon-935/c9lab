@@ -1,0 +1,142 @@
+name: test99
+prefix: ''
+
+mgmt:
+  network: mgmt-net
+  mtu: 1500
+  ipv4-subnet: 172.100.100.0/24
+
+topology:
+  defaults:
+    kind: linux
+
+  kinds:
+    linux:
+      image: nagayon/my-netshoot:latest
+      binds:
+      - /usr/share/zoneinfo/Asia/Tokyo:/etc/localtime:ro
+    ceos:
+      image: ceos:4.32.2.1F
+
+  nodes:
+    rt01:
+      kind: ceos
+      group: router
+      mgmt-ipv4: 172.100.100.31
+      startup-config: ./configs/rt01/cEoS.conf
+    rt02:
+      kind: ceos
+      group: router
+      mgmt-ipv4: 172.100.100.32
+      startup-config: ./configs/rt02/cEoS.conf
+    rt03:
+      kind: ceos
+      group: router
+      mgmt-ipv4: 172.100.100.33
+      startup-config: ./configs/rt03/cEoS.conf
+    rt04:
+      kind: ceos
+      group: router
+      mgmt-ipv4: 172.100.100.34
+      startup-config: ./configs/rt04/cEoS.conf
+    rt05:
+      kind: ceos
+      group: router
+      mgmt-ipv4: 172.100.100.35
+      startup-config: ./configs/rt05/cEoS.conf
+    rt06:
+      kind: ceos
+      group: router
+      mgmt-ipv4: 172.100.100.36
+      startup-config: ./configs/rt06/cEoS.conf
+    pc01:
+      group: clients
+      mgmt-ipv4: 172.100.100.11
+      binds:
+        - configs/pc01:/config
+        - configs/pc01/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+      exec:
+      - ip addr add 192.168.10.1/24 dev eth1
+      - ip route del default
+      - ip route add default via 192.168.10.254 dev eth1
+      # cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
+    pc02:
+      group: clients
+      mgmt-ipv4: 172.100.100.12
+      binds:
+        - configs/pc02:/config
+        - configs/pc02/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+      exec:
+      - ip addr add 192.168.20.1/24 dev eth1
+      - ip route del default
+      - ip route add default via 192.168.20.254 dev eth1
+      # cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
+    pc03:
+      group: clients
+      mgmt-ipv4: 172.100.100.13
+      binds:
+        - configs/pc03:/config
+        - configs/pc03/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+      exec:
+      - ip addr add 192.168.30.1/24 dev eth1
+      - ip route del default
+      - ip route add default via 192.168.30.254 dev eth1
+      # cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
+    pc04:
+      group: clients
+      mgmt-ipv4: 172.100.100.14
+      binds:
+        - configs/pc04:/config
+        - configs/pc04/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+      exec:
+      - ip addr add 192.168.40.1/24 dev eth1
+      - ip route del default
+      - ip route add default via 192.168.40.254 dev eth1
+      # cmd: ping_exporter --config.path /etc/ping_exporter/config.yml
+    ### TELEMETRY STACK ###
+    gnmic:
+      mgmt-ipv4: 172.100.100.41
+      image: ghcr.io/openconfig/gnmic:0.39.1
+      binds:
+      - configs/gnmic-config.yml:/gnmic-config.yml:ro
+      cmd: --config /gnmic-config.yml --log subscribe
+      group: '10'
+    prometheus:
+      mgmt-ipv4: 172.100.100.42
+      image: quay.io/prometheus/prometheus:v2.54.1
+      binds:
+      - configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      cmd: --config.file=/etc/prometheus/prometheus.yml
+      ports:
+      - 9090:9090
+      group: '10'
+    grafana:
+      mgmt-ipv4: 172.100.100.43
+      image: grafana/grafana:11.2.0
+      binds:
+      - configs/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+      - configs/grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
+      - configs/grafana/dashboards:/var/lib/grafana/dashboards
+      ports:
+      - 3000:3000
+      env:
+        GF_INSTALL_PLUGINS: andrewbmchugh-flow-panel
+        GF_ORG_ROLE: Admin
+        GF_ORG_NAME: Main Org
+        GF_AUTH_ANONYMOUS_ENABLED: 'true'
+        GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+        GF_AUTH_ANONYMOUS: 'true'
+        GF_AUTH_OAUTH_AUTO_LOGIN: 'true'
+      group: '10'
+
+  links:
+    - endpoints: ["rt01:eth1", "rt02:eth1"]
+    - endpoints: ["rt02:eth2", "rt03:eth2"]
+    - endpoints: ["rt03:eth3", "rt04:eth1"]
+    - endpoints: ["rt04:eth2", "rt05:eth3"]
+    - endpoints: ["rt03:eth1", "rt05:eth1"]
+    - endpoints: ["rt05:eth2", "rt01:eth2"]
+    - endpoints: ["rt01:eth3", "pc01:eth1"]
+    - endpoints: ["rt02:eth3", "pc02:eth1"]
+    - endpoints: ["rt05:eth4", "pc03:eth1"]
+    - endpoints: ["rt04:eth3", "pc04:eth1"]
