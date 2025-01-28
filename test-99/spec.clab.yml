@@ -44,11 +44,6 @@ topology:
       group: router
       mgmt-ipv4: 172.100.100.35
       startup-config: ./configs/rt05/cEoS.conf
-    rt06:
-      kind: ceos
-      group: router
-      mgmt-ipv4: 172.100.100.36
-      startup-config: ./configs/rt06/cEoS.conf
     pc01:
       group: clients
       mgmt-ipv4: 172.100.100.11
