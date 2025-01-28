@@ -54,7 +54,7 @@ topology:
       mgmt-ipv4: 172.100.100.11
       binds:
         - configs/pc01:/config
-        - configs/pc01/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+        - configs/pc01/network_exporter.yml:/etc/network_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.10.1/24 dev eth1
       - ip route del default
@@ -65,7 +65,7 @@ topology:
       mgmt-ipv4: 172.100.100.12
       binds:
         - configs/pc02:/config
-        - configs/pc02/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+        - configs/pc02/network_exporter.yml:/etc/network_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.20.1/24 dev eth1
       - ip route del default
@@ -76,7 +76,7 @@ topology:
       mgmt-ipv4: 172.100.100.13
       binds:
         - configs/pc03:/config
-        - configs/pc03/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+        - configs/pc03/network_exporter.yml:/etc/network_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.30.1/24 dev eth1
       - ip route del default
@@ -87,7 +87,7 @@ topology:
       mgmt-ipv4: 172.100.100.14
       binds:
         - configs/pc04:/config
-        - configs/pc04/ping_exporter.yml:/etc/ping_exporter/config.yml:ro
+        - configs/pc04/network_exporter.yml:/etc/network_exporter/config.yml:ro
       exec:
       - ip addr add 192.168.40.1/24 dev eth1
       - ip route del default
