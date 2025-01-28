@@ -95,8 +95,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -240,8 +239,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -471,8 +469,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -614,8 +611,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -714,8 +710,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1270,6 +1265,7 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
+            "align": "auto",
             "cellOptions": {
               "type": "color-background"
             },
@@ -1529,8 +1525,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1626,8 +1621,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1702,7 +1696,7 @@
       {
         "current": {
           "isNone": true,
-          "selected": true,
+          "selected": false,
           "text": "None",
           "value": ""
         },
@@ -1730,7 +1724,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "pc02",
           "value": "pc02"
         },
@@ -1760,7 +1754,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "pc02",
           "value": "pc02"
         },
@@ -1819,8 +1813,8 @@
     ]
   },
   "timezone": "",
-  "title": "PingStation Copy",
+  "title": "PingStation",
   "uid": "eebbdzfatcpa8a",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
