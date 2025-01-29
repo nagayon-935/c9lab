@@ -25,7 +25,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 2,
-  "id": 3,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -835,6 +834,8 @@
     },
     {
       "datasource": {
+        "default": false,
+        "type": "prometheus",
         "uid": "$datasource"
       },
       "description": "Number of network HOPS",
@@ -885,13 +886,14 @@
           "datasource": {
             "uid": "$datasource"
           },
+          "editorMode": "code",
           "expr": "mtr_hops{host=~\"$station\",name=~\"$name_mtr\"}",
           "format": "time_series",
           "hide": false,
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{target}}",
+          "legendFormat": "{{instance}}->{{target}}",
           "refId": "A"
         }
       ],
@@ -1525,7 +1527,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1621,7 +1624,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1815,6 +1819,6 @@
   "timezone": "",
   "title": "PingStation",
   "uid": "eebbdzfatcpa8a",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }
