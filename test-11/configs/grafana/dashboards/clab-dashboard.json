@@ -833,9 +833,9 @@
         },
         "highlighterEnabled": true,
         "panZoomEnabled": true,
-        "panelConfig": "https://raw.githubusercontent.com/nagayon-935/c9lab/refs/heads/main/test-01/configs/grafana/flow_panels/topopanel.yaml",
-        "siteConfig": "https://raw.githubusercontent.com/nagayon-935/c9lab/refs/heads/main/test-01/configs/grafana/flow_panels/topopanel.yaml",
-        "svg": "https://raw.githubusercontent.com/nagayon-935/c9lab/refs/heads/main/test-01/configs/grafana/flow_panels/topology.svg",
+        "panelConfig": "https://raw.githubusercontent.com/nagayon-935/c9lab/refs/heads/main/test-11/configs/grafana/flow_panels/topopanel.yaml",
+        "siteConfig": "https://raw.githubusercontent.com/nagayon-935/c9lab/refs/heads/main/test-11/configs/grafana/flow_panels/topopanel.yaml",
+        "svg": "https://raw.githubusercontent.com/nagayon-935/c9lab/refs/heads/main/test-11/configs/grafana/flow_panels/topology.svg",
         "testDataEnabled": false,
         "timeSliderEnabled": true
       },
