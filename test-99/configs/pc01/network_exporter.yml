@@ -17,8 +17,5 @@ targets:
     host: 192.168.20.1
     type: ICMP+MTR
   - name: pc03
-    host: 192.168.30.1
-    type: ICMP+MTR
-  - name: pc04
-    host: 192.168.40.1
+    host: 172.16.0.1
     type: ICMP+MTR
