@@ -45,12 +45,9 @@ topology:
       mgmt-ipv4: 172.100.100.35
       startup-config: ./configs/rt05/cEoS.conf
     sw01:
-      exec:
-      - ip link add name br01 type bridge
-      - ip link set br01 up
-      - ip link set eth1 master br01
-      - ip link set eth2 master br01
-      - ip link set eth3 master br01
+      kind: ceos
+      group: router
+      mgmt-ipv4: 172.100.100.21
     pc01:
       group: clients
       mgmt-ipv4: 172.100.100.11
