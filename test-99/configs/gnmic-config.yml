@@ -23,6 +23,7 @@ targets:
   rt03:6030: *common_arista_subs
   rt04:6030: *common_arista_subs
   rt05:6030: *common_arista_subs
+  sw01:6030: *common_arista_subs
 
 # サブスクリプションの詳細
 subscriptions:
