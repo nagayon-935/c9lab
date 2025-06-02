@@ -1,0 +1,108 @@
+name: SR-MPLS
+prefix: ""
+
+topology:
+
+  defaults:
+    kind: linux
+
+  kinds:
+    linux:
+      image: frrouting/frr:v8.4.1
+      binds:
+        - config/daemons:/etc/frr/daemons
+
+  nodes:
+
+    CE01:
+      binds:
+        - config/CE01.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-posX: "565"
+        graph-posY: "655"
+        graph-groupLabelPos: bottom-center
+    CE02:
+      binds:
+        - config/CE02.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-posX: "1085"
+        graph-posY: "595"
+        graph-groupLabelPos: bottom-center
+    CE03:
+      binds:
+        - config/CE03.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-posX: "1105"
+        graph-posY: "725"
+        graph-groupLabelPos: bottom-center
+    CE04:
+      binds:
+        - config/CE03.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+
+    PE01:
+      binds:
+        - config/CE01.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-posX: "655"
+        graph-posY: "655"
+        graph-groupLabelPos: bottom-center
+    PE02:
+      binds:
+        - config/CE02.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-posX: "985"
+        graph-posY: "645"
+        graph-groupLabelPos: bottom-center
+    RT01:
+      binds:
+        - config/CE03.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-posX: "735"
+        graph-posY: "585"
+        graph-groupLabelPos: bottom-center
+    RT02:
+      binds:
+        - config/CE01.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-posX: "735"
+        graph-posY: "725"
+        graph-groupLabelPos: bottom-center
+    RT03:
+      binds:
+        - config/CE02.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-posX: "875"
+        graph-posY: "585"
+        graph-groupLabelPos: bottom-center
+    RT04:
+      binds:
+        - config/CE03.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-posX: "875"
+        graph-posY: "725"
+        graph-groupLabelPos: bottom-center
+
+  links:
+    - endpoints: [ "CE01:eth1", "PE01:eth3" ]
+    - endpoints: [ "CE02:eth1", "PE01:eth4" ]
+    - endpoints: [ "PE01:eth2", "RT01:eth1" ]
+    - endpoints: [ "PE01:eth3", "RT02:eth1" ]
+    - endpoints: [ "RT01:eth2", "RT02:eth2" ]
+    - endpoints: [ "RT01:eth3", "RT03:eth1" ]
+    - endpoints: [ "RT02:eth3", "RT04:eth1" ]
+    - endpoints: [ "RT03:eth2", "RT04:eth2" ]
+    - endpoints: [ "RT03:eth3", "PE02:eth3" ]
+    - endpoints: [ "RT04:eth3", "PE02:eth4" ]
+    - endpoints: [ "PE02:eth1", "CE03:eth1" ]
+    - endpoints: [ "PE02:eth2", "CE04:eth1" ]

@@ -1,0 +1,467 @@
+name: EVPNVXLAN
+prefix: ''
+
+topology:
+
+  defaults:
+    kind: linux
+
+  kinds:
+    linux:
+      image: frrouting/frr:v8.4.1
+      binds:
+        - config/daemons:/etc/frr/daemons
+
+  nodes:
+
+    ### PROVIDER ###
+    RT-P-00:
+      binds:
+        - config/RT-P-00.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-group: "Provider"
+        graph-level: "1"
+        graph-posX: "270"
+        graph-posY: "120"
+        graph-groupLabelPos: bottom-center
+    RT-P-01:
+      binds:
+        - config/RT-P-01.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-group: "Provider"
+        graph-level: "1"
+        graph-posX: "75"
+        graph-posY: "205"
+        graph-groupLabelPos: bottom-center
+    RT-P-02:
+      binds:
+        - config/RT-P-02.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-group: "Provider"
+        graph-level: "1"
+        graph-posX: "485"
+        graph-posY: "205"
+        graph-groupLabelPos: bottom-center
+
+    ### CUSTEMER ###
+    RT-C-01:
+      binds:
+        - config/RT-C-01.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-group: "Custemer"
+        graph-level: "1"
+        graph-posX: "70"
+        graph-posY: "310"
+        graph-groupLabelPos: bottom-center
+    RT-C-02:
+      binds:
+        - config/RT-C-02.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: router
+        graph-group: "Custemer"
+        graph-level: "1"
+        graph-posX: "485"
+        graph-posY: "315"
+        graph-groupLabelPos: bottom-center
+
+    ### SPINE ###
+    RT-S-X-01:
+      binds:
+        - config/RT-S-X-01.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: spine
+        graph-group: "Data Center X"
+        graph-level: Spine
+        graph-posX: "-5"
+        graph-posY: "400"
+        graph-groupLabelPos: bottom-center
+    RT-S-X-02:
+      binds:
+        - config/RT-S-X-02.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: spine
+        graph-group: "Data Center X"
+        graph-level: Spine
+        graph-posX: "155"
+        graph-posY: "405"
+        graph-groupLabelPos: bottom-center
+    RT-S-Y-01:
+      binds:
+        - config/RT-S-Y-01.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: spine
+        graph-group: "Data Center Y"
+        graph-level: Spine
+        graph-posX: "395"
+        graph-posY: "410"
+        graph-groupLabelPos: bottom-center
+    RT-S-Y-02:
+      binds:
+        - config/RT-S-Y-02.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: spine
+        graph-group: "Data Center Y"
+        graph-level: Spine
+        graph-posX: "555"
+        graph-posY: "415"
+        graph-groupLabelPos: bottom-center
+
+    ### LEAF ###
+    RT-L-X-01:
+      binds:
+        - config/RT-L-X-01.conf:/etc/frr/frr.conf
+      exec:
+        - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link add br3000 type bridge
+        - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
+        - ip link set br3000 addr aa:bb:cc:30:11:01
+        - ip link add vni1010 type vxlan local 10.1.254.21 dstport 4789 id 1010 nolearning
+        - ip link set vni1010 master br3000 addrgenmode none
+        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link add br10 type bridge
+        - ip link set br10 master vrf-l3vni-3000
+        - ip link set br10 addr aa:bb:cc:10:11:01
+        - ip addr add 192.168.10.251/28 dev br10
+        - ip link add link eth3 name eth3.10 type vlan id 10
+        - ip link set eth3.10 master br10
+        - ip link set eth3 master br10
+        - ip link set up br3000
+        - ip link set up vrf-l3vni-3000 
+        - ip link set up vni1010
+        - ip link set up br10
+        - ip link set up eth3.10
+      labels:
+        graph-icon: leaf
+        graph-group: "Data Center X"
+        graph-level: Leaf
+        graph-posX: "-10"
+        graph-posY: "580"
+        graph-groupLabelPos: bottom-center
+    RT-L-X-02:
+      binds:
+        - config/RT-L-X-02.conf:/etc/frr/frr.conf
+      exec:
+        - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link add br3000 type bridge
+        - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
+        - ip link set br3000 addr aa:bb:cc:30:11:02
+        - ip link add vni1010 type vxlan local 10.1.254.22 dstport 4789 id 1010 nolearning
+        - ip link set vni1010 master br3000 addrgenmode none
+        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link add br10 type bridge
+        - ip link set br10 master vrf-l3vni-3000
+        - ip link set br10 addr aa:bb:cc:10:11:02
+        - ip addr add 192.168.10.252/28 dev br10
+        - ip link add link eth3 name eth3.10 type vlan id 10
+        - ip link set eth3.10 master br10
+        - ip link set eth3 master br10
+        - ip link set up br3000
+        - ip link set up vrf-l3vni-3000 
+        - ip link set up vni1010
+        - ip link set up br10
+        - ip link set up eth3.10
+      labels:
+        graph-icon: leaf
+        graph-group: "Data Center X"
+        graph-level: Leaf
+        graph-posX: "55"
+        graph-posY: "585"
+        graph-groupLabelPos: bottom-center
+    RT-L-X-03:
+      binds:
+        - config/RT-L-X-03.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: leaf
+        graph-group: "Data Center X"
+        graph-level: Leaf
+        graph-posX: "145"
+        graph-posY: "585"
+        graph-groupLabelPos: bottom-center
+    RT-L-X-04:
+      binds:
+        - config/RT-L-X-04.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: leaf
+        graph-group: "Data Center X"
+        graph-level: Leaf
+        graph-posX: "205"
+        graph-posY: "585"
+        graph-groupLabelPos: bottom-center
+    RT-L-Y-01:
+      binds:
+        - config/RT-L-Y-01.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: leaf
+        graph-group: "Data Center Y"
+        graph-level: Leaf
+        graph-posX: "400"
+        graph-posY: "580"
+        graph-groupLabelPos: bottom-center
+    RT-L-Y-02:
+      binds:
+        - config/RT-L-Y-02.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: leaf
+        graph-group: "Data Center Y"
+        graph-level: Leaf
+        graph-posX: "475"
+        graph-posY: "585"
+        graph-groupLabelPos: bottom-center
+    RT-L-Y-03:
+      binds:
+        - config/RT-L-Y-03.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: leaf
+        graph-group: "Data Center Y"
+        graph-level: Leaf
+        graph-posX: "545"
+        graph-posY: "585"
+        graph-groupLabelPos: bottom-center
+    RT-L-Y-04:
+      binds:
+        - config/RT-L-Y-04.conf:/etc/frr/frr.conf
+      labels:
+        graph-icon: leaf
+        graph-group: "Data Center Y"
+        graph-level: Leaf
+        graph-posX: "615"
+        graph-posY: "585"
+        graph-groupLabelPos: bottom-center
+
+    ### ToR ###
+    ToR-X-01:
+      exec:
+        - ip link add name br01 type bridge
+        - ip link set br01 up
+        - ip link set eth1 master br01
+        - ip link set eth2 master br01
+        - ip link set eth3 master br01
+        - ip link set eth4 master br01
+      labels:
+        graph-icon: switch
+        graph-group: "Data Center X"
+        graph-level: ToR
+        graph-posX: "5"
+        graph-posY: "690"
+        graph-groupLabelPos: bottom-center
+    ToR-X-02:
+      exec:
+        - ip link add name br01 type bridge
+        - ip link set br01 up
+        - ip link set eth1 master br01
+        - ip link set eth2 master br01
+        - ip link set eth3 master br01
+        - ip link set eth4 master br01
+      labels:
+        graph-icon: switch
+        graph-group: "Data Center X"
+        graph-level: ToR
+        graph-posX: "165"
+        graph-posY: "695"
+        graph-groupLabelPos: bottom-center
+    ToR-Y-01:
+      exec:
+        - ip link add name br01 type bridge
+        - ip link set br01 up
+        - ip link set eth1 master br01
+        - ip link set eth2 master br01
+        - ip link set eth3 master br01
+        - ip link set eth4 master br01
+      labels:
+        graph-icon: switch
+        graph-group: "Data Center Y"
+        graph-level: ToR
+        graph-posX: "415"
+        graph-posY: "700"
+        graph-groupLabelPos: bottom-center
+    ToR-Y-02:
+      exec:
+        - ip link add name br01 type bridge
+        - ip link set br01 up
+        - ip link set eth1 master br01
+        - ip link set eth2 master br01
+        - ip link set eth3 master br01
+        - ip link set eth4 master br01
+      labels:
+        graph-icon: switch
+        graph-group: "Data Center Y"
+        graph-level: ToR
+        graph-posX: "575"
+        graph-posY: "705"
+        graph-groupLabelPos: bottom-center
+
+    ### Client ###
+    SV-01:
+      binds:
+        - config/SV-01.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.10 type vlan id 10
+        - ip ip link set dev eth1.10 up
+        - ip addr add dev eth1.10 192.168.10.241/28
+      labels:
+        graph-icon: server
+        graph-group: "Data Center X"
+        graph-level: Server
+        graph-posX: "-35"
+        graph-posY: "805"
+        graph-groupLabelPos: bottom-center
+    SV-02:
+      binds:
+        - config/SV-02.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.10 type vlan id 10
+        - ip ip link set dev eth1.10 up
+        - ip addr add dev eth1.10 192.168.10.242/28
+      labels:
+        graph-icon: server
+        graph-group: "Data Center X"
+        graph-level: Server
+        graph-posX: "45"
+        graph-posY: "805"
+        graph-groupLabelPos: bottom-center
+    SV-03:
+      binds:
+        - config/SV-03.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.20 type vlan id 20
+        - ip ip link set dev eth1.20 up
+        - ip addr add dev eth1.20 192.168.20.241/28
+      labels:
+        graph-icon: server
+        graph-group: "Data Center X"
+        graph-level: Server
+        graph-posX: "125"
+        graph-posY: "805"
+        graph-groupLabelPos: bottom-center
+    SV-04:
+      binds:
+        - config/SV-04.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.20 type vlan id 20
+        - ip ip link set dev eth1.20 up
+        - ip addr add dev eth1.20 192.168.20.242/28
+      labels:
+        graph-icon: server
+        graph-group: "Data Center X"
+        graph-level: Server
+        graph-posX: "205"
+        graph-posY: "805"
+        graph-groupLabelPos: bottom-center
+    SV-05:
+      binds:
+        - config/SV-05.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.10 type vlan id 10
+        - ip ip link set dev eth1.10 up
+        - ip addr add dev eth1.10 192.168.10.243/28
+      labels:
+        graph-icon: server
+        graph-group: "Data Center Y"
+        graph-level: Server
+        graph-posX: "375"
+        graph-posY: "805"
+        graph-groupLabelPos: bottom-center
+    SV-06:
+      binds:
+        - config/SV-06.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.10 type vlan id 10
+        - ip ip link set dev eth1.10 up
+        - ip addr add dev eth1.10 192.168.10.244/28
+      labels:
+        graph-icon: server
+        graph-group: "Data Center Y"
+        graph-level: Server
+        graph-posX: "465"
+        graph-posY: "805"
+        graph-groupLabelPos: bottom-center
+    SV-07:
+      binds:
+        - config/SV-07.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.20 type vlan id 20
+        - ip ip link set dev eth1.20 up
+        - ip addr add dev eth1.20 192.168.20.243/28
+      labels:
+        graph-icon: server
+        graph-group: "Data Center Y"
+        graph-level: Server
+        graph-posX: "535"
+        graph-posY: "805"
+        graph-groupLabelPos: bottom-center
+    SV-08:
+      binds:
+        - config/SV-08.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.20 type vlan id 20
+        - ip ip link set dev eth1.20 up
+        - ip addr add dev eth1.20 192.168.20.244/28
+      labels:
+        graph-icon: server
+        graph-group: "Data Center Y"
+        graph-level: Server
+        graph-posX: "615"
+        graph-posY: "805"
+        graph-groupLabelPos: bottom-center
+
+  links:
+    - endpoints: [ "RT-P-00:eth1", "RT-P-01:eth1" ]
+    - endpoints: [ "RT-P-00:eth2", "RT-P-02:eth1" ]
+    - endpoints: [ "RT-C-01:eth2", "RT-S-X-01:eth5" ]
+    - endpoints: [ "RT-C-01:eth3", "RT-S-X-02:eth5" ]
+    - endpoints: [ "RT-C-02:eth2", "RT-S-Y-01:eth5" ]
+    - endpoints: [ "RT-C-02:eth3", "RT-S-Y-02:eth5" ]
+    - endpoints: [ "RT-C-01:eth1", "RT-P-01:eth2" ]
+    - endpoints: [ "RT-C-02:eth1", "RT-P-02:eth2" ]
+    - endpoints: [ "RT-S-X-01:eth1", "RT-L-X-01:eth1" ]
+    - endpoints: [ "RT-S-X-01:eth2", "RT-L-X-02:eth1" ]
+    - endpoints: [ "RT-S-X-01:eth3", "RT-L-X-03:eth1" ]
+    - endpoints: [ "RT-S-X-01:eth4", "RT-L-X-04:eth1" ]
+    - endpoints: [ "RT-S-X-02:eth1", "RT-L-X-01:eth2" ]
+    - endpoints: [ "RT-S-X-02:eth2", "RT-L-X-02:eth2" ]
+    - endpoints: [ "RT-S-X-02:eth3", "RT-L-X-03:eth2" ]
+    - endpoints: [ "RT-S-X-02:eth4", "RT-L-X-04:eth2" ]
+    - endpoints: [ "RT-L-X-01:eth3", "ToR-X-01:eth1" ]
+    - endpoints: [ "RT-L-X-02:eth3", "ToR-X-01:eth2" ]
+    - endpoints: [ "RT-L-X-03:eth3", "ToR-X-02:eth1" ]
+    - endpoints: [ "RT-L-X-04:eth3", "ToR-X-02:eth2" ]
+    - endpoints: [ "SV-01:eth1", "ToR-X-01:eth3" ]
+    - endpoints: [ "SV-02:eth1", "ToR-X-01:eth4" ]
+    - endpoints: [ "SV-03:eth1", "ToR-X-02:eth3" ]
+    - endpoints: [ "SV-04:eth1", "ToR-X-02:eth4" ]
+    - endpoints: [ "SV-05:eth1", "ToR-Y-01:eth3" ]
+    - endpoints: [ "SV-06:eth1", "ToR-Y-01:eth4" ]
+    - endpoints: [ "SV-07:eth1", "ToR-Y-02:eth3" ]
+    - endpoints: [ "SV-08:eth1", "ToR-Y-02:eth4" ]
+    - endpoints: [ "RT-S-Y-01:eth1", "RT-L-Y-01:eth1" ]
+    - endpoints: [ "RT-S-Y-01:eth2", "RT-L-Y-02:eth1" ]
+    - endpoints: [ "RT-S-Y-01:eth3", "RT-L-Y-03:eth1" ]
+    - endpoints: [ "RT-S-Y-01:eth4", "RT-L-Y-04:eth1" ]
+    - endpoints: [ "RT-S-Y-02:eth1", "RT-L-Y-01:eth2" ]
+    - endpoints: [ "RT-S-Y-02:eth2", "RT-L-Y-02:eth2" ]
+    - endpoints: [ "RT-S-Y-02:eth3", "RT-L-Y-03:eth2" ]
+    - endpoints: [ "RT-S-Y-02:eth4", "RT-L-Y-04:eth2" ]
+    - endpoints: [ "RT-L-Y-01:eth3", "ToR-Y-01:eth1" ]
+    - endpoints: [ "RT-L-Y-02:eth3", "ToR-Y-01:eth2" ]
+    - endpoints: [ "RT-L-Y-03:eth3", "ToR-Y-02:eth1" ]
+    - endpoints: [ "RT-L-Y-04:eth3", "ToR-Y-02:eth2" ]
