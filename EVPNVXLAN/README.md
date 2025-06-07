@@ -1,6 +1,8 @@
 # EVPN/VXLAN
 EVPN/VXLANの学習のために一足いや5足ぐらい飛んでいるが「Multi Site」構成で組んでみた
 
+EVPNとかVXLANのことについてはZennでまとめるつもり
+
 ## 構成
 ![EVPN/VXLAN Multisite](./images/EVPNVXLAN.svg "EVPN/VXLAN Multisite figure")
 
@@ -23,39 +25,49 @@ EVPN/VXLANの学習のために一足いや5足ぐらい飛んでいるが「Mul
 
 ---
 
-## Site-A 構成
+## Site-X 構成
 
-| デバイス名 | 役割    | IPアドレス              | Loopback IP     | ASN    | 備考             |
-|------------|---------|--------------------------|------------------|--------|------------------|
-| Leaf-A1    | Leaf    | eth: 10.1.1.1            | lo: 10.255.1.1   | 65101  | VTEPなし         |
-| Leaf-A2    | Leaf    | eth: 10.1.1.2            | lo: 10.255.1.2   | 65102  | VTEPなし         |
-| Leaf-A3    | Leaf    | eth: 10.1.1.3            | lo: 10.255.1.3   | 65103  | VTEPなし         |
-| Leaf-A4    | Leaf    | eth: 10.1.1.4            | lo: 10.255.1.4   | 65104  | VTEPなし         |
-| Spine-A1   | Spine   | eth: 10.1.0.1            | lo: 10.255.0.1   | 65001  | 同一ASN（iBGP）  |
-| Spine-A2   | Spine   | eth: 10.1.0.2            | lo: 10.255.0.2   | 65001  | 同一ASN（iBGP）  |
-| BGW-A      | BGW/VTEP| eth: 10.1.254.1          | lo: 10.255.254.1 | 65200  | VTEPあり         |
-
----
-
-## Site-B 構成
-
-| デバイス名 | 役割    | IPアドレス              | Loopback IP     | ASN    | 備考             |
-|------------|---------|--------------------------|------------------|--------|------------------|
-| Leaf-B1    | Leaf    | eth: 10.2.1.1            | lo: 10.255.2.1   | 65201  | VTEPなし         |
-| Leaf-B2    | Leaf    | eth: 10.2.1.2            | lo: 10.255.2.2   | 65202  | VTEPなし         |
-| Leaf-B3    | Leaf    | eth: 10.2.1.3            | lo: 10.255.2.3   | 65203  | VTEPなし         |
-| Leaf-B4    | Leaf    | eth: 10.2.1.4            | lo: 10.255.2.4   | 65204  | VTEPなし         |
-| Spine-B1   | Spine   | eth: 10.2.0.1            | lo: 10.255.0.3   | 65002  | 同一ASN（iBGP）  |
-| Spine-B2   | Spine   | eth: 10.2.0.2            | lo: 10.255.0.4   | 65002  | 同一ASN（iBGP）  |
-| BGW-B      | BGW/VTEP| eth: 10.2.254.1          | lo: 10.255.254.2 | 65210  | VTEPあり         |
+| デバイス名  | 役割      | IPアドレス                         | Loopback IP      | ASN    | 備考  |
+|-----------|-----------|----------------------------------|------------------|--------|------|
+| BGW-01    | BGW/VTEP  | eth1: 10.1.254.1                 | lo: 10.1.254.1   | 65100  |      |
+|           |           | eth2-3: ipv6 link-local-address  |                  |        |      |
+| Spine-11  | Spine     | eth1-5: ipv6 link-local-address  | lo: 10.1.254.11  | 65110  |      |
+| Spine-12  | Spine     | eth1-5: ipv6 link-local-address  | lo: 10.1.254.12  | 65110  |      |
+| Leaf-11   | Leaf      | eth1-2: ipv6 link-local-address  | lo: 10.1.254.21  | 65121  |      |
+|           |           | eth3: 192.168.10.251             |                  |        |      |
+| Leaf-12   | Leaf      | eth1-2: ipv6 link-local-address  | lo: 10.1.254.22  | 65122  |      |
+|           |           | eth3: 192.168.10.252             |                  |        |      |
+| Leaf-13   | Leaf      | eth1-2: ipv6 link-local-address  | lo: 10.1.254.23  | 65123  |      |
+|           |           | eth3: 192.168.20.251             |                  |        |      |
+| Leaf-14   | Leaf      | eth1-2: ipv6 link-local-address  | lo: 10.1.254.24  | 65124  |      |
+|           |           | eth3: 192.168.20.252             |                  |        |      |
+| SV-01     | Host      | eth1: 192.168.10.241             | lo: 10.1.254.31  | 65131  |      |
+| SV-02     | Host      | eth1: 192.168.10.242             | lo: 10.1.254.32  | 65132  |      |
+| SV-03     | Host      | eth1: 192.168.20.241             | lo: 10.1.254.33  | 65133  |      |
+| SV-04     | Host      | eth1: 192.168.20.241             | lo: 10.1.254.34  | 65134  |      |
 
 ---
 
-## 共通構成
+## Site-Y 構成
 
-| デバイス名 | 役割         | IPアドレス       | Loopback IP     | ASN    | 備考                    |
-|------------|--------------|------------------|------------------|--------|-------------------------|
-| RouteSrv-1 | Route Server | eth: 192.0.2.1    | lo: 10.255.255.1 | 65000  | EVPN用 eBGP Route Server|
+| デバイス名  | 役割      | IPアドレス                         | Loopback IP      | ASN    | 備考  |
+|-----------|-----------|----------------------------------|------------------|--------|------|
+| BGW-02    | BGW/VTEP  | eth1: 10.2.254.1                 | lo: 10.2.254.1   | 65200  |      |
+|           |           | eth2-3: ipv6 link-local-address  |                  |        |      |
+| Spine-21  | Spine     | eth1-5: ipv6 link-local-address  | lo: 10.2.254.11  | 65210  |      |
+| Spine-22  | Spine     | eth1-5: ipv6 link-local-address  | lo: 10.2.254.12  | 65210  |      |
+| Leaf-21   | Leaf      | eth1-2: ipv6 link-local-address  | lo: 10.2.254.21  | 65221  |      |
+|           |           | eth3: 192.168.10.253             |                  |        |      |
+| Leaf-22   | Leaf      | eth1-2: ipv6 link-local-address  | lo: 10.2.254.22  | 65222  |      |
+|           |           | eth3: 192.168.10.254             |                  |        |      |
+| Leaf-23   | Leaf      | eth1-2: ipv6 link-local-address  | lo: 10.2.254.23  | 65223  |      |
+|           |           | eth3: 192.168.20.253             |                  |        |      |
+| Leaf-24   | Leaf      | eth1-2: ipv6 link-local-address  | lo: 10.2.254.24  | 65224  |      |
+|           |           | eth3: 192.168.20.254             |                  |        |      |
+| SV-05     | Host      | eth1: 192.168.10.243             | lo: 10.2.254.31  | 65231  |      |
+| SV-06     | Host      | eth1: 192.168.10.244             | lo: 10.2.254.32  | 65232  |      |
+| SV-07     | Host      | eth1: 192.168.20.243             | lo: 10.2.254.33  | 65233  |      |
+| SV-08     | Host      | eth1: 192.168.20.244             | lo: 10.2.254.34  | 65234  |      |
 
 ---
 
@@ -64,3 +76,6 @@ EVPN/VXLANの学習のために一足いや5足ぐらい飛んでいるが「Mul
 - **Spineは同一ASNで構成され、Leaf–Spine間は eBGP**。
 - **BGWとLeaf、BGWとRS間ではMP-BGP EVPNセッションを確立**。
 - **Route TargetやVNIは別資料（またはFRR conf）に記載**。
+
+## Todo
+- [x] TaskA
