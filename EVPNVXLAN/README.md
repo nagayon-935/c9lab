@@ -78,4 +78,7 @@ EVPNとかVXLANのことについてはZennでまとめるつもり
 - **Route TargetやVNIは別資料（またはFRR conf）に記載**。
 
 ## Todo
-- [x] TaskA
+- [ ] READMEに随時情報をアップデートすること
+- [ ] BGW同士で通信ができるようにする
+- [ ] もう少し細かく設計を考える
+- [ ] EVPN, VXLANについて勉強したことをZennにまとめる
