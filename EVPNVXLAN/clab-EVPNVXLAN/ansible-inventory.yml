@@ -1,0 +1,67 @@
+all:
+  vars:
+    # The generated inventory is assumed to be used from the clab host.
+    # Hence no http proxy should be used. Therefore we make sure the http
+    # module does not attempt using any global http proxy.
+    ansible_httpapi_use_proxy: false
+  children:
+    linux:
+      hosts:
+        RT-BGW-01:
+          ansible_host: 172.20.20.10
+        RT-BGW-02:
+          ansible_host: 172.20.20.15
+        RT-DCI-01:
+          ansible_host: 172.20.20.18
+        RT-DCI-02:
+          ansible_host: 172.20.20.22
+        RT-DCI-03:
+          ansible_host: 172.20.20.17
+        RT-L-X-01:
+          ansible_host: 172.20.20.6
+        RT-L-X-02:
+          ansible_host: 172.20.20.3
+        RT-L-X-03:
+          ansible_host: 172.20.20.25
+        RT-L-X-04:
+          ansible_host: 172.20.20.24
+        RT-L-Y-01:
+          ansible_host: 172.20.20.30
+        RT-L-Y-02:
+          ansible_host: 172.20.20.13
+        RT-L-Y-03:
+          ansible_host: 172.20.20.2
+        RT-L-Y-04:
+          ansible_host: 172.20.20.16
+        RT-S-X-01:
+          ansible_host: 172.20.20.5
+        RT-S-X-02:
+          ansible_host: 172.20.20.4
+        RT-S-Y-01:
+          ansible_host: 172.20.20.28
+        RT-S-Y-02:
+          ansible_host: 172.20.20.7
+        SV-01:
+          ansible_host: 172.20.20.8
+        SV-02:
+          ansible_host: 172.20.20.19
+        SV-03:
+          ansible_host: 172.20.20.11
+        SV-04:
+          ansible_host: 172.20.20.20
+        SV-05:
+          ansible_host: 172.20.20.9
+        SV-06:
+          ansible_host: 172.20.20.26
+        SV-07:
+          ansible_host: 172.20.20.21
+        SV-08:
+          ansible_host: 172.20.20.27
+        ToR-X-01:
+          ansible_host: 172.20.20.12
+        ToR-X-02:
+          ansible_host: 172.20.20.29
+        ToR-Y-01:
+          ansible_host: 172.20.20.14
+        ToR-Y-02:
+          ansible_host: 172.20.20.23

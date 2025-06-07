@@ -79,6 +79,14 @@ EVPNとかVXLANのことについてはZennでまとめるつもり
 
 ## Todo
 - [ ] READMEに随時情報をアップデートすること
-- [ ] BGW同士で通信ができるようにする
-- [ ] もう少し細かく設計を考える
-- [ ] EVPN, VXLANについて勉強したことをZennにまとめる
+- [ ] BGW同士で通信ができるようにする next-hop selfをつけてibgpで広報する
+- [ ] leafのvrfで分けたからそこのBGPとかを考えないと
+- [ ] もう少し細かく設計を考える。hostのmacアドレスはleafからEVPNでBGWに伝搬されるよね????てかVTEPってなんだよVXLAN Tunnelの始点と終点らしいけど
+- [ ] EVPN, VXLANについて勉強したことをZennにまとめる  Multi Site, Multi Pod, Multi Fabricの違いってなんぞや
+- [ ] FRR or SONiCにevpn multisite border-gateway <SITE-ID> と evpn multisite fabric-tracking   evpn multisite dci-tracking  があるのか見つけないと
+
+
+
+We'll need at least two loopbacks to get the NVE working. Loopback0 will be acting as a source interface for the VXLAN tunnel and loopback100 is used for VIP purposes in case we have more than one BGW within one site. Essentially, the VIP address will be our next-hop for EVPN routes whereas loopback0 will be used for BUM traffic and a source of data plane traffic.
+
+NVEを動作させるには、少なくとも2つのループバックが必要だ。loopback0はVXLANトンネルのソースインターフェースとして動作し、loopback100は1つのサイト内に複数のBGWがある場合のVIP用として使用されます。基本的に、VIPアドレスはEVPNルートのネクストホップとなり、loopback0はBUMトラフィックとデータプレーントラフィックのソースとして使用されます。

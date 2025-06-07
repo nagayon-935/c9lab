@@ -16,9 +16,9 @@ topology:
   nodes:
 
     ### DCI ###
-    RT-P-00:
+    RT-DCI-01:
       binds:
-        - config/RT-P-00.conf:/etc/frr/frr.conf
+        - config/RT-DCI-01.conf:/etc/frr/frr.conf
       labels:
         graph-icon: router
         graph-group: "DCI"
@@ -26,9 +26,9 @@ topology:
         graph-posX: "280"
         graph-posY: "120"
         graph-groupLabelPos: bottom-center
-    RT-PE-01:
+    RT-DCI-02:
       binds:
-        - config/RT-PE-01.conf:/etc/frr/frr.conf
+        - config/RT-DCI-02.conf:/etc/frr/frr.conf
       labels:
         graph-icon: router
         graph-group: "DCI"
@@ -36,9 +36,9 @@ topology:
         graph-posX: "85"
         graph-posY: "205"
         graph-groupLabelPos: bottom-center
-    RT-PE-02:
+    RT-DCI-03:
       binds:
-        - config/RT-PE-02.conf:/etc/frr/frr.conf
+        - config/RT-DCI-03.conf:/etc/frr/frr.conf
       labels:
         graph-icon: router
         graph-group: "DCI"
@@ -630,14 +630,14 @@ topology:
         graph-groupLabelPos: bottom-center
 
   links:
-    - endpoints: [ "RT-P-00:eth1", "RT-PE-01:eth1" ]
-    - endpoints: [ "RT-P-00:eth2", "RT-PE-02:eth1" ]
+    - endpoints: [ "RT-DCI-01:eth1", "RT-DCI-02:eth1" ]
+    - endpoints: [ "RT-DCI-01:eth2", "RT-DCI-03:eth1" ]
     - endpoints: [ "RT-BGW-01:eth2", "RT-S-X-01:eth5" ]
     - endpoints: [ "RT-BGW-01:eth3", "RT-S-X-02:eth5" ]
     - endpoints: [ "RT-BGW-02:eth2", "RT-S-Y-01:eth5" ]
     - endpoints: [ "RT-BGW-02:eth3", "RT-S-Y-02:eth5" ]
-    - endpoints: [ "RT-BGW-01:eth1", "RT-PE-01:eth2" ]
-    - endpoints: [ "RT-BGW-02:eth1", "RT-PE-02:eth2" ]
+    - endpoints: [ "RT-BGW-01:eth1", "RT-DCI-02:eth2" ]
+    - endpoints: [ "RT-BGW-02:eth1", "RT-DCI-03:eth2" ]
     - endpoints: [ "RT-S-X-01:eth1", "RT-L-X-01:eth1" ]
     - endpoints: [ "RT-S-X-01:eth2", "RT-L-X-02:eth1" ]
     - endpoints: [ "RT-S-X-01:eth3", "RT-L-X-03:eth1" ]
