@@ -1,5 +1,7 @@
 name: EVPNVXLAN
 prefix: ''
+## ip vrf exec vrf-l3vni-3000 ping 192.168.20.251 ##
+## show ip bgp vrf vrf-l3vni-3000 ##
 
 topology:
 
