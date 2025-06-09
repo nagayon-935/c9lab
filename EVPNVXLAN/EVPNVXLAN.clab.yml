@@ -19,6 +19,9 @@ topology:
     RT-DCI-01:
       binds:
         - config/RT-DCI-01.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
       labels:
         graph-icon: router
         graph-group: "DCI"
@@ -29,6 +32,9 @@ topology:
     RT-DCI-02:
       binds:
         - config/RT-DCI-02.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
       labels:
         graph-icon: router
         graph-group: "DCI"
@@ -39,6 +45,9 @@ topology:
     RT-DCI-03:
       binds:
         - config/RT-DCI-03.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
       labels:
         graph-icon: router
         graph-group: "DCI"
@@ -51,6 +60,9 @@ topology:
     RT-BGW-01:
       binds:
         - config/RT-BGW-01.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
       labels:
         graph-icon: router
         graph-group: "BGW"
@@ -61,6 +73,9 @@ topology:
     RT-BGW-02:
       binds:
         - config/RT-BGW-02.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
       labels:
         graph-icon: router
         graph-group: "BGW"
@@ -73,6 +88,9 @@ topology:
     RT-S-X-01:
       binds:
         - config/RT-S-X-01.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
       labels:
         graph-icon: spine
         graph-group: "Data Center X"
@@ -83,6 +101,9 @@ topology:
     RT-S-X-02:
       binds:
         - config/RT-S-X-02.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
       labels:
         graph-icon: spine
         graph-group: "Data Center X"
@@ -93,6 +114,9 @@ topology:
     RT-S-Y-01:
       binds:
         - config/RT-S-Y-01.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
       labels:
         graph-icon: spine
         graph-group: "Data Center Y"
@@ -103,6 +127,9 @@ topology:
     RT-S-Y-02:
       binds:
         - config/RT-S-Y-02.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
       labels:
         graph-icon: spine
         graph-group: "Data Center Y"
@@ -116,25 +143,32 @@ topology:
       binds:
         - config/RT-L-X-01.conf:/etc/frr/frr.conf
       exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+      ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:11:01
-        - ip link add vni1010 type vxlan local 10.1.254.21 dstport 4789 id 1010
-          nolearning
-        - ip link set vni1010 master br3000 addrgenmode none
-        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link set br3000 addr aa:bb:cc:30:11:21
+        - ip link add vni3000 type vxlan local 10.1.254.21 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+      ### l2vni 1010 ###
         - ip link add br10 type bridge
-        - ip link set br10 type bridge vlan_filtering 1
         - ip link set br10 master vrf-l3vni-3000
         - ip link set br10 addr aa:bb:cc:10:11:01
         - ip addr add 192.168.10.251/28 dev br10
+        - ip link add vni1010 type vxlan local 10.1.254.21 dstport 4789 id 1010 nolearning
+        - ip link set vni1010 master br10 addrgenmode none
+        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1010 up
+        - ip link set up br10
+        - ip link set br10 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.10 type vlan id 10
         - ip link set eth3.10 master br10
-        - ip link set up br3000
-        - ip link set up vrf-l3vni-3000
-        - ip link set up vni1010
-        - ip link set up br10
         - ip link set up eth3.10
       labels:
         graph-icon: leaf
@@ -147,25 +181,32 @@ topology:
       binds:
         - config/RT-L-X-02.conf:/etc/frr/frr.conf
       exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+      ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:11:02
-        - ip link add vni1010 type vxlan local 10.1.254.22 dstport 4789 id 1010
-          nolearning
-        - ip link set vni1010 master br3000 addrgenmode none
-        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link set br3000 addr aa:bb:cc:30:11:22
+        - ip link add vni3000 type vxlan local 10.1.254.22 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+      ### l2vni 1010 ###
         - ip link add br10 type bridge
         - ip link set br10 master vrf-l3vni-3000
-        - ip link set br10 addr aa:bb:cc:10:11:02
-        - ip addr add 192.168.10.252/28 dev br10
+        - ip link set br10 addr aa:bb:cc:10:11:01
+        - ip addr add 192.168.10.251/28 dev br10
+        - ip link add vni1010 type vxlan local 10.1.254.22 dstport 4789 id 1010 nolearning
+        - ip link set vni1010 master br10 addrgenmode none
+        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1010 up
+        - ip link set up br10
+        - ip link set br10 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.10 type vlan id 10
         - ip link set eth3.10 master br10
-        - ip link set eth3 master br10
-        - ip link set up br3000
-        - ip link set up vrf-l3vni-3000
-        - ip link set up vni1010
-        - ip link set up br10
         - ip link set up eth3.10
       labels:
         graph-icon: leaf
@@ -178,25 +219,32 @@ topology:
       binds:
         - config/RT-L-X-03.conf:/etc/frr/frr.conf
       exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+      ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:22:01
-        - ip link add vni1020 type vxlan local 10.1.254.23 dstport 4789 id 1020
-          nolearning
-        - ip link set vni1020 master br3000 addrgenmode none
-        - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        - ip link set br3000 addr aa:bb:cc:30:11:23
+        - ip link add vni3000 type vxlan local 10.1.254.23 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+      ### l2vni 1020 ###
         - ip link add br20 type bridge
         - ip link set br20 master vrf-l3vni-3000
-        - ip link set br20 addr aa:bb:cc:10:22:01
+        - ip link set br20 addr aa:bb:cc:20:11:23
         - ip addr add 192.168.20.251/28 dev br20
+        - ip link add vni1020 type vxlan local 10.1.254.23 dstport 4789 id 1020 nolearning
+        - ip link set vni1020 master br20 addrgenmode none
+        - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1020 up
+        - ip link set up br20
+        - ip link set br20 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.20 type vlan id 20
         - ip link set eth3.20 master br20
-        - ip link set eth3 master br20
-        - ip link set up br3000
-        - ip link set up vrf-l3vni-3000
-        - ip link set up vni1020
-        - ip link set up br20
         - ip link set up eth3.20
       labels:
         graph-icon: leaf
@@ -209,25 +257,32 @@ topology:
       binds:
         - config/RT-L-X-04.conf:/etc/frr/frr.conf
       exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+      ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:22:02
-        - ip link add vni1020 type vxlan local 10.1.254.24 dstport 4789 id 1020
-          nolearning
-        - ip link set vni1020 master br3000 addrgenmode none
-        - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        - ip link set br3000 addr aa:bb:cc:30:11:24
+        - ip link add vni3000 type vxlan local 10.1.254.24 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+      ### l2vni 1020 ###
         - ip link add br20 type bridge
         - ip link set br20 master vrf-l3vni-3000
-        - ip link set br20 addr aa:bb:cc:10:22:02
-        - ip addr add 192.168.20.252/28 dev br20
+        - ip link set br20 addr aa:bb:cc:20:11:24
+        - ip addr add 192.168.20.251/28 dev br20
+        - ip link add vni1020 type vxlan local 10.1.254.24 dstport 4789 id 1020 nolearning
+        - ip link set vni1020 master br20 addrgenmode none
+        - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1020 up
+        - ip link set up br20
+        - ip link set br20 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.20 type vlan id 20
         - ip link set eth3.20 master br20
-        - ip link set eth3 master br20
-        - ip link set up br3000
-        - ip link set up vrf-l3vni-3000
-        - ip link set up vni1020
-        - ip link set up br20
         - ip link set up eth3.20
       labels:
         graph-icon: leaf
@@ -240,12 +295,13 @@ topology:
       binds:
         - config/RT-L-Y-01.conf:/etc/frr/frr.conf
       exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
         - ip link add vrf-l3vni-3000 type vrf table 3000
         - ip link add br3000 type bridge
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
         - ip link set br3000 addr aa:bb:cc:30:11:03
-        - ip link add vni1010 type vxlan local 10.2.254.21 dstport 4789 id 1010
-          nolearning
+        - ip link add vni1010 type vxlan local 10.2.254.21 dstport 4789 id 1010 nolearning
         - ip link set vni1010 master br3000 addrgenmode none
         - ip link set vni1010 type bridge_slave neigh_suppress on learning off
         - ip link add br10 type bridge
@@ -271,12 +327,13 @@ topology:
       binds:
         - config/RT-L-Y-02.conf:/etc/frr/frr.conf
       exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
         - ip link add vrf-l3vni-3000 type vrf table 3000
         - ip link add br3000 type bridge
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
         - ip link set br3000 addr aa:bb:cc:30:11:04
-        - ip link add vni1010 type vxlan local 10.2.254.22 dstport 4789 id 1010
-          nolearning
+        - ip link add vni1010 type vxlan local 10.2.254.22 dstport 4789 id 1010 nolearning
         - ip link set vni1010 master br3000 addrgenmode none
         - ip link set vni1010 type bridge_slave neigh_suppress on learning off
         - ip link add br10 type bridge
@@ -302,12 +359,13 @@ topology:
       binds:
         - config/RT-L-Y-03.conf:/etc/frr/frr.conf
       exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
         - ip link add vrf-l3vni-3000 type vrf table 3000
         - ip link add br3000 type bridge
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
         - ip link set br3000 addr aa:bb:cc:30:22:03
-        - ip link add vni1020 type vxlan local 10.2.254.23 dstport 4789 id 1020
-          nolearning
+        - ip link add vni1020 type vxlan local 10.2.254.23 dstport 4789 id 1020 nolearning
         - ip link set vni1020 master br3000 addrgenmode none
         - ip link set vni1020 type bridge_slave neigh_suppress on learning off
         - ip link add br20 type bridge
@@ -333,12 +391,13 @@ topology:
       binds:
         - config/RT-L-Y-04.conf:/etc/frr/frr.conf
       exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
         - ip link add vrf-l3vni-3000 type vrf table 3000
         - ip link add br3000 type bridge
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
         - ip link set br3000 addr aa:bb:cc:30:22:04
-        - ip link add vni1020 type vxlan local 10.2.254.24 dstport 4789 id 1020
-          nolearning
+        - ip link add vni1020 type vxlan local 10.2.254.24 dstport 4789 id 1020 nolearning
         - ip link set vni1020 master br3000 addrgenmode none
         - ip link set vni1020 type bridge_slave neigh_suppress on learning off
         - ip link add br20 type bridge

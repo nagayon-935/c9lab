@@ -79,7 +79,7 @@ EVPNとかVXLANのことについてはZennでまとめるつもり
 
 ## Todo
 - [ ] READMEに随時情報をアップデートすること
-- [ ] BGW同士で通信ができるようにする next-hop selfをつけてibgpで広報する
+- [x] UNDERLAYの構築
 - [ ] leafのvrfで分けたからそこのBGPとかを考えないと
 - [ ] もう少し細かく設計を考える。hostのmacアドレスはleafからEVPNでBGWに伝搬されるよね????てかVTEPってなんだよVXLAN Tunnelの始点と終点らしいけど
 - [ ] EVPN, VXLANについて勉強したことをZennにまとめる  Multi Site, Multi Pod, Multi Fabricの違いってなんぞや
