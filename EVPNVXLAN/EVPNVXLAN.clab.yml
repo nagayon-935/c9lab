@@ -2,6 +2,7 @@ name: EVPNVXLAN
 prefix: ''
 ## ip vrf exec vrf-l3vni-3000 ping 192.168.20.251 ##
 ## show ip bgp vrf vrf-l3vni-3000 ##
+## show bgp l2vpn evpn vni ##
 
 topology:
 
@@ -28,7 +29,7 @@ topology:
         graph-icon: router
         graph-group: "DCI"
         graph-level: "1"
-        graph-posX: "280"
+        graph-posX: "290"
         graph-posY: "120"
         graph-groupLabelPos: bottom-center
     RT-DCI-02:
@@ -41,8 +42,8 @@ topology:
         graph-icon: router
         graph-group: "DCI"
         graph-level: "1"
-        graph-posX: "85"
-        graph-posY: "205"
+        graph-posX: "90"
+        graph-posY: "200"
         graph-groupLabelPos: bottom-center
     RT-DCI-03:
       binds:
@@ -54,8 +55,8 @@ topology:
         graph-icon: router
         graph-group: "DCI"
         graph-level: "1"
-        graph-posX: "495"
-        graph-posY: "205"
+        graph-posX: "500"
+        graph-posY: "200"
         graph-groupLabelPos: bottom-center
 
     ### BGW ###
@@ -69,7 +70,7 @@ topology:
         graph-icon: router
         graph-group: "BGW"
         graph-level: "1"
-        graph-posX: "80"
+        graph-posX: "90"
         graph-posY: "310"
         graph-groupLabelPos: bottom-center
     RT-BGW-02:
@@ -82,8 +83,8 @@ topology:
         graph-icon: router
         graph-group: "BGW"
         graph-level: "1"
-        graph-posX: "495"
-        graph-posY: "315"
+        graph-posX: "500"
+        graph-posY: "310"
         graph-groupLabelPos: bottom-center
 
     ### SPINE ###
@@ -111,7 +112,7 @@ topology:
         graph-group: "Data Center X"
         graph-level: Spine
         graph-posX: "155"
-        graph-posY: "405"
+        graph-posY: "400"
         graph-groupLabelPos: bottom-center
     RT-S-Y-01:
       binds:
@@ -137,7 +138,7 @@ topology:
         graph-group: "Data Center Y"
         graph-level: Spine
         graph-posX: "555"
-        graph-posY: "415"
+        graph-posY: "410"
         graph-groupLabelPos: bottom-center
 
     ### LEAF ###
@@ -147,23 +148,27 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
-      ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
         - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
+        - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
         - ip link set br3000 addr aa:bb:cc:30:11:21
         - ip link add vni3000 type vxlan local 10.1.254.21 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
         - ip link set vni3000 type bridge_slave neigh_suppress on learning off
         - ip link set up br3000
         - ip link set up vni3000
-      ### l2vni 1010 ###
+        ### l2vni 1010 ###
         - ip link add br10 type bridge
         - ip link set br10 master vrf-l3vni-3000
+        - ip link set br10 mtu 9500
         - ip link set br10 addr aa:bb:cc:10:11:01
         - ip addr add 192.168.10.251/28 dev br10
         - ip link add vni1010 type vxlan local 10.1.254.21 dstport 4789 id 1010 nolearning
+        - ip link set vni1010 mtu 9500
         - ip link set vni1010 master br10 addrgenmode none
         - ip link set vni1010 type bridge_slave neigh_suppress on learning off
         - ip link set vni1010 up
@@ -176,8 +181,8 @@ topology:
         graph-icon: leaf
         graph-group: "Data Center X"
         graph-level: Leaf
-        graph-posX: "0"
-        graph-posY: "580"
+        graph-posX: "-25"
+        graph-posY: "515"
         graph-groupLabelPos: bottom-center
     RT-L-X-02:
       binds:
@@ -185,23 +190,27 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
-      ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
         - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
+        - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
         - ip link set br3000 addr aa:bb:cc:30:11:22
         - ip link add vni3000 type vxlan local 10.1.254.22 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
         - ip link set vni3000 type bridge_slave neigh_suppress on learning off
         - ip link set up br3000
         - ip link set up vni3000
-      ### l2vni 1010 ###
+        ### l2vni 1010 ###
         - ip link add br10 type bridge
+        - ip link set br10 mtu 9500
         - ip link set br10 master vrf-l3vni-3000
         - ip link set br10 addr aa:bb:cc:10:11:01
         - ip addr add 192.168.10.251/28 dev br10
         - ip link add vni1010 type vxlan local 10.1.254.22 dstport 4789 id 1010 nolearning
+        - ip link set vni1010 mtu 9500
         - ip link set vni1010 master br10 addrgenmode none
         - ip link set vni1010 type bridge_slave neigh_suppress on learning off
         - ip link set vni1010 up
@@ -214,8 +223,8 @@ topology:
         graph-icon: leaf
         graph-group: "Data Center X"
         graph-level: Leaf
-        graph-posX: "65"
-        graph-posY: "585"
+        graph-posX: "35"
+        graph-posY: "515"
         graph-groupLabelPos: bottom-center
     RT-L-X-03:
       binds:
@@ -223,23 +232,27 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
-      ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
         - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
+        - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
         - ip link set br3000 addr aa:bb:cc:30:11:23
         - ip link add vni3000 type vxlan local 10.1.254.23 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
         - ip link set vni3000 type bridge_slave neigh_suppress on learning off
         - ip link set up br3000
         - ip link set up vni3000
-      ### l2vni 1020 ###
+        ### l2vni 1020 ###
         - ip link add br20 type bridge
+        - ip link set br20 mtu 9500
         - ip link set br20 master vrf-l3vni-3000
         - ip link set br20 addr aa:bb:cc:20:11:23
         - ip addr add 192.168.20.251/28 dev br20
         - ip link add vni1020 type vxlan local 10.1.254.23 dstport 4789 id 1020 nolearning
+        - ip link set vni1020 mtu 9500
         - ip link set vni1020 master br20 addrgenmode none
         - ip link set vni1020 type bridge_slave neigh_suppress on learning off
         - ip link set vni1020 up
@@ -252,8 +265,8 @@ topology:
         graph-icon: leaf
         graph-group: "Data Center X"
         graph-level: Leaf
-        graph-posX: "155"
-        graph-posY: "585"
+        graph-posX: "125"
+        graph-posY: "515"
         graph-groupLabelPos: bottom-center
     RT-L-X-04:
       binds:
@@ -261,23 +274,27 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
-      ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
         - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
+        - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
         - ip link set br3000 addr aa:bb:cc:30:11:24
         - ip link add vni3000 type vxlan local 10.1.254.24 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
         - ip link set vni3000 type bridge_slave neigh_suppress on learning off
         - ip link set up br3000
         - ip link set up vni3000
-      ### l2vni 1020 ###
+        ### l2vni 1020 ###
         - ip link add br20 type bridge
+        - ip link set br20 mtu 9500
         - ip link set br20 master vrf-l3vni-3000
         - ip link set br20 addr aa:bb:cc:20:11:24
-        - ip addr add 192.168.20.251/28 dev br20
+        - ip addr add 192.168.20.252/28 dev br20
         - ip link add vni1020 type vxlan local 10.1.254.24 dstport 4789 id 1020 nolearning
+        - ip link set vni1020 mtu 9500
         - ip link set vni1020 master br20 addrgenmode none
         - ip link set vni1020 type bridge_slave neigh_suppress on learning off
         - ip link set vni1020 up
@@ -290,8 +307,8 @@ topology:
         graph-icon: leaf
         graph-group: "Data Center X"
         graph-level: Leaf
-        graph-posX: "215"
-        graph-posY: "585"
+        graph-posX: "185"
+        graph-posY: "515"
         graph-groupLabelPos: bottom-center
     RT-L-Y-01:
       binds:
@@ -299,31 +316,41 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
+        - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:11:03
-        - ip link add vni1010 type vxlan local 10.2.254.21 dstport 4789 id 1010 nolearning
-        - ip link set vni1010 master br3000 addrgenmode none
-        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link set br3000 addr aa:bb:cc:30:22:21
+        - ip link add vni3000 type vxlan local 10.2.254.21 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 mtu 9500
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+        ### l2vni 1010 ###
         - ip link add br10 type bridge
-        - ip link set br10 type bridge vlan_filtering 1
         - ip link set br10 master vrf-l3vni-3000
-        - ip link set br10 addr aa:bb:cc:20:11:03
+        - ip link set br10 mtu 9500
+        - ip link set br10 addr aa:bb:cc:10:22:01
         - ip addr add 192.168.10.253/28 dev br10
+        - ip link add vni1010 type vxlan local 10.2.254.21 dstport 4789 id 1010 nolearning
+        - ip link set vni1010 mtu 9500
+        - ip link set vni1010 master br10 addrgenmode none
+        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1010 up
+        - ip link set up br10
+        - ip link set br10 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.10 type vlan id 10
         - ip link set eth3.10 master br10
-        - ip link set up br3000
-        - ip link set up vrf-l3vni-3000
-        - ip link set up vni1010
-        - ip link set up br10
         - ip link set up eth3.10
       labels:
         graph-icon: leaf
         graph-group: "Data Center Y"
         graph-level: Leaf
-        graph-posX: "410"
-        graph-posY: "580"
+        graph-posX: "395"
+        graph-posY: "515"
         graph-groupLabelPos: bottom-center
     RT-L-Y-02:
       binds:
@@ -331,31 +358,41 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
+        - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:11:04
-        - ip link add vni1010 type vxlan local 10.2.254.22 dstport 4789 id 1010 nolearning
-        - ip link set vni1010 master br3000 addrgenmode none
-        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link set br3000 addr aa:bb:cc:30:22:22
+        - ip link add vni3000 type vxlan local 10.2.254.22 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 mtu 9500
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+        ### l2vni 1010 ###
         - ip link add br10 type bridge
-        - ip link set br10 type bridge vlan_filtering 1
         - ip link set br10 master vrf-l3vni-3000
-        - ip link set br10 addr aa:bb:cc:20:11:04
+        - ip link set br10 mtu 9500
+        - ip link set br10 addr aa:bb:cc:10:22:01
         - ip addr add 192.168.10.254/28 dev br10
+        - ip link add vni1010 type vxlan local 10.2.254.22 dstport 4789 id 1010 nolearning
+        - ip link set vni1010 mtu 9500
+        - ip link set vni1010 master br10 addrgenmode none
+        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1010 up
+        - ip link set up br10
+        - ip link set br10 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.10 type vlan id 10
         - ip link set eth3.10 master br10
-        - ip link set up br3000
-        - ip link set up vrf-l3vni-3000
-        - ip link set up vni1010
-        - ip link set up br10
         - ip link set up eth3.10
       labels:
         graph-icon: leaf
         graph-group: "Data Center Y"
         graph-level: Leaf
-        graph-posX: "485"
-        graph-posY: "585"
+        graph-posX: "465"
+        graph-posY: "515"
         graph-groupLabelPos: bottom-center
     RT-L-Y-03:
       binds:
@@ -363,31 +400,41 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
+        - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:22:03
-        - ip link add vni1020 type vxlan local 10.2.254.23 dstport 4789 id 1020 nolearning
-        - ip link set vni1020 master br3000 addrgenmode none
-        - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        - ip link set br3000 addr aa:bb:cc:30:22:23
+        - ip link add vni3000 type vxlan local 10.2.254.23 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 mtu 9500
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+        ### l2vni 1020 ###
         - ip link add br20 type bridge
+        - ip link set br20 mtu 9500
         - ip link set br20 master vrf-l3vni-3000
-        - ip link set br20 addr aa:bb:cc:20:22:03
+        - ip link set br20 addr aa:bb:cc:20:22:23
         - ip addr add 192.168.20.253/28 dev br20
+        - ip link add vni1020 type vxlan local 10.2.254.23 dstport 4789 id 1020 nolearning
+        - ip link set vni1020 mtu 9500
+        - ip link set vni1020 master br20 addrgenmode none
+        - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1020 up
+        - ip link set up br20
+        - ip link set br20 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.20 type vlan id 20
         - ip link set eth3.20 master br20
-        - ip link set eth3 master br20
-        - ip link set up br3000
-        - ip link set up vrf-l3vni-3000
-        - ip link set up vni1020
-        - ip link set up br20
         - ip link set up eth3.20
       labels:
         graph-icon: leaf
         graph-group: "Data Center Y"
         graph-level: Leaf
-        graph-posX: "555"
-        graph-posY: "585"
+        graph-posX: "535"
+        graph-posY: "515"
         graph-groupLabelPos: bottom-center
     RT-L-Y-04:
       binds:
@@ -395,169 +442,41 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
         - ip link add vrf-l3vni-3000 type vrf table 3000
+        - ip link set up vrf-l3vni-3000
         - ip link add br3000 type bridge
+        - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:22:04
-        - ip link add vni1020 type vxlan local 10.2.254.24 dstport 4789 id 1020 nolearning
-        - ip link set vni1020 master br3000 addrgenmode none
-        - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        - ip link set br3000 addr aa:bb:cc:30:22:24
+        - ip link add vni3000 type vxlan local 10.2.254.24 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 mtu 9500
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+        ### l2vni 1020 ###
         - ip link add br20 type bridge
+        - ip link set br20 mtu 9500
         - ip link set br20 master vrf-l3vni-3000
-        - ip link set br20 addr aa:bb:cc:20:22:04
+        - ip link set br20 addr aa:bb:cc:20:22:24
         - ip addr add 192.168.20.254/28 dev br20
+        - ip link add vni1020 type vxlan local 10.2.254.24 dstport 4789 id 1020 nolearning
+        - ip link set vni1020 mtu 9500
+        - ip link set vni1020 master br20 addrgenmode none
+        - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1020 up
+        - ip link set up br20
+        - ip link set br20 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.20 type vlan id 20
         - ip link set eth3.20 master br20
-        - ip link set eth3 master br20
-        - ip link set up br3000
-        - ip link set up vrf-l3vni-3000
-        - ip link set up vni1020
-        - ip link set up br20
         - ip link set up eth3.20
       labels:
         graph-icon: leaf
         graph-group: "Data Center Y"
         graph-level: Leaf
-        graph-posX: "625"
-        graph-posY: "585"
-        graph-groupLabelPos: bottom-center
-
-    ### ToR ###
-    ToR-X-01:
-      exec:
-        - ip link add name br01 type bridge
-        - ip link set dev br01 type bridge vlan_filtering 1
-        - ip link set br01 up
-        - ip link add link eth1 name eth1.10 type vlan id 10
-        - ip link add link eth2 name eth2.10 type vlan id 10
-        - ip link add link eth3 name eth3.10 type vlan id 10
-        - ip link add link eth4 name eth4.10 type vlan id 10
-        - ip link set eth1.10 master br01
-        - ip link set eth2.10 master br01
-        - ip link set eth3.10 master br01
-        - ip link set eth4.10 master br01
-        - ip link set eth1.10 up
-        - ip link set eth2.10 up
-        - ip link set eth3.10 up
-        - ip link set eth4.10 up
-        - bridge vlan add vid 10 dev br01 self pvid untagged
-        - bridge vlan add vid 10 dev eth1.10 pvid untagged
-        - bridge vlan add vid 10 dev eth2.10 pvid untagged
-        - bridge vlan add vid 10 dev eth3.10 pvid untagged
-        - bridge vlan add vid 10 dev eth4.10 pvid untagged
-        - bridge vlan del vid 1 dev br01 self pvid untagged
-        - bridge vlan del vid 1 dev eth1.10 pvid untagged
-        - bridge vlan del vid 1 dev eth2.10 pvid untagged
-        - bridge vlan del vid 1 dev eth3.10 pvid untagged
-        - bridge vlan del vid 1 dev eth4.10 pvid untagged
-      labels:
-        graph-icon: switch
-        graph-group: "Data Center X"
-        graph-level: ToR
-        graph-posX: "5"
-        graph-posY: "690"
-        graph-groupLabelPos: bottom-center
-    ToR-X-02:
-      exec:
-        - ip link add name br01 type bridge
-        - ip link set dev br01 type bridge vlan_filtering 1
-        - ip link set br01 up
-        - ip link add link eth1 name eth1.20 type vlan id 20
-        - ip link add link eth2 name eth2.20 type vlan id 20
-        - ip link add link eth3 name eth3.20 type vlan id 20
-        - ip link add link eth4 name eth4.20 type vlan id 20
-        - ip link set eth1.20 master br01
-        - ip link set eth2.20 master br01
-        - ip link set eth3.20 master br01
-        - ip link set eth4.20 master br01
-        - ip link set eth1.20 up
-        - ip link set eth2.20 up
-        - ip link set eth3.20 up
-        - ip link set eth4.20 up
-        - bridge vlan add vid 20 dev br01 self pvid untagged
-        - bridge vlan add vid 20 dev eth1.20 pvid untagged
-        - bridge vlan add vid 20 dev eth2.20 pvid untagged
-        - bridge vlan add vid 20 dev eth3.20 pvid untagged
-        - bridge vlan add vid 20 dev eth4.20 pvid untagged
-        - bridge vlan del vid 1 dev br01 self pvid untagged
-        - bridge vlan del vid 1 dev eth1.20 pvid untagged
-        - bridge vlan del vid 1 dev eth2.20 pvid untagged
-        - bridge vlan del vid 1 dev eth3.20 pvid untagged
-        - bridge vlan del vid 1 dev eth4.20 pvid untagged
-      labels:
-        graph-icon: switch
-        graph-group: "Data Center X"
-        graph-level: ToR
-        graph-posX: "165"
-        graph-posY: "695"
-        graph-groupLabelPos: bottom-center
-    ToR-Y-01:
-      exec:
-        - ip link add name br01 type bridge
-        - ip link set dev br01 type bridge vlan_filtering 1
-        - ip link set br01 up
-        - ip link add link eth1 name eth1.10 type vlan id 10
-        - ip link add link eth2 name eth2.10 type vlan id 10
-        - ip link add link eth3 name eth3.10 type vlan id 10
-        - ip link add link eth4 name eth4.10 type vlan id 10
-        - ip link set eth1.10 master br01
-        - ip link set eth2.10 master br01
-        - ip link set eth3.10 master br01
-        - ip link set eth4.10 master br01
-        - ip link set eth1.10 up
-        - ip link set eth2.10 up
-        - ip link set eth3.10 up
-        - ip link set eth4.10 up
-        - bridge vlan add vid 10 dev br01 self pvid untagged
-        - bridge vlan add vid 10 dev eth1.10 pvid untagged
-        - bridge vlan add vid 10 dev eth2.10 pvid untagged
-        - bridge vlan add vid 10 dev eth3.10 pvid untagged
-        - bridge vlan add vid 10 dev eth4.10 pvid untagged
-        - bridge vlan del vid 1 dev br01 self pvid untagged
-        - bridge vlan del vid 1 dev eth1.10 pvid untagged
-        - bridge vlan del vid 1 dev eth2.10 pvid untagged
-        - bridge vlan del vid 1 dev eth3.10 pvid untagged
-        - bridge vlan del vid 1 dev eth4.10 pvid untagged
-      labels:
-        graph-icon: switch
-        graph-group: "Data Center Y"
-        graph-level: ToR
-        graph-posX: "415"
-        graph-posY: "700"
-        graph-groupLabelPos: bottom-center
-    ToR-Y-02:
-      exec:
-        - ip link add name br01 type bridge
-        - ip link set dev br01 type bridge vlan_filtering 1
-        - ip link set br01 up
-        - ip link add link eth1 name eth1.20 type vlan id 20
-        - ip link add link eth2 name eth2.20 type vlan id 20
-        - ip link add link eth3 name eth3.20 type vlan id 20
-        - ip link add link eth4 name eth4.20 type vlan id 20
-        - ip link set eth1.20 master br01
-        - ip link set eth2.20 master br01
-        - ip link set eth3.20 master br01
-        - ip link set eth4.20 master br01
-        - ip link set eth1.20 up
-        - ip link set eth2.20 up
-        - ip link set eth3.20 up
-        - ip link set eth4.20 up
-        - bridge vlan add vid 20 dev br01 self pvid untagged
-        - bridge vlan add vid 20 dev eth1.20 pvid untagged
-        - bridge vlan add vid 20 dev eth2.20 pvid untagged
-        - bridge vlan add vid 20 dev eth3.20 pvid untagged
-        - bridge vlan add vid 20 dev eth4.20 pvid untagged
-        - bridge vlan del vid 1 dev br01 self pvid untagged
-        - bridge vlan del vid 1 dev eth1.20 pvid untagged
-        - bridge vlan del vid 1 dev eth2.20 pvid untagged
-        - bridge vlan del vid 1 dev eth3.20 pvid untagged
-        - bridge vlan del vid 1 dev eth4.20 pvid untagged
-      labels:
-        graph-icon: switch
-        graph-group: "Data Center Y"
-        graph-level: ToR
-        graph-posX: "575"
-        graph-posY: "705"
+        graph-posX: "605"
+        graph-posY: "515"
         graph-groupLabelPos: bottom-center
 
     ### Client ###
@@ -574,8 +493,8 @@ topology:
         graph-icon: server
         graph-group: "Data Center X"
         graph-level: Server
-        graph-posX: "-35"
-        graph-posY: "800"
+        graph-posX: "-25"
+        graph-posY: "595"
         graph-groupLabelPos: bottom-center
     SV-02:
       binds:
@@ -591,7 +510,7 @@ topology:
         graph-group: "Data Center X"
         graph-level: Server
         graph-posX: "45"
-        graph-posY: "805"
+        graph-posY: "595"
         graph-groupLabelPos: bottom-center
     SV-03:
       binds:
@@ -606,8 +525,8 @@ topology:
         graph-icon: server
         graph-group: "Data Center X"
         graph-level: Server
-        graph-posX: "125"
-        graph-posY: "805"
+        graph-posX: "135"
+        graph-posY: "595"
         graph-groupLabelPos: bottom-center
     SV-04:
       binds:
@@ -622,8 +541,8 @@ topology:
         graph-icon: server
         graph-group: "Data Center X"
         graph-level: Server
-        graph-posX: "205"
-        graph-posY: "805"
+        graph-posX: "195"
+        graph-posY: "595"
         graph-groupLabelPos: bottom-center
     SV-05:
       binds:
@@ -638,8 +557,8 @@ topology:
         graph-icon: server
         graph-group: "Data Center Y"
         graph-level: Server
-        graph-posX: "375"
-        graph-posY: "800"
+        graph-posX: "395"
+        graph-posY: "595"
         graph-groupLabelPos: bottom-center
     SV-06:
       binds:
@@ -655,7 +574,7 @@ topology:
         graph-group: "Data Center Y"
         graph-level: Server
         graph-posX: "465"
-        graph-posY: "805"
+        graph-posY: "595"
         graph-groupLabelPos: bottom-center
     SV-07:
       binds:
@@ -671,7 +590,7 @@ topology:
         graph-group: "Data Center Y"
         graph-level: Server
         graph-posX: "535"
-        graph-posY: "805"
+        graph-posY: "595"
         graph-groupLabelPos: bottom-center
     SV-08:
       binds:
@@ -686,8 +605,8 @@ topology:
         graph-icon: server
         graph-group: "Data Center Y"
         graph-level: Server
-        graph-posX: "615"
-        graph-posY: "805"
+        graph-posX: "605"
+        graph-posY: "595"
         graph-groupLabelPos: bottom-center
 
   links:
@@ -707,18 +626,10 @@ topology:
     - endpoints: [ "RT-S-X-02:eth2", "RT-L-X-02:eth2" ]
     - endpoints: [ "RT-S-X-02:eth3", "RT-L-X-03:eth2" ]
     - endpoints: [ "RT-S-X-02:eth4", "RT-L-X-04:eth2" ]
-    - endpoints: [ "RT-L-X-01:eth3", "ToR-X-01:eth1" ]
-    - endpoints: [ "RT-L-X-02:eth3", "ToR-X-01:eth2" ]
-    - endpoints: [ "RT-L-X-03:eth3", "ToR-X-02:eth1" ]
-    - endpoints: [ "RT-L-X-04:eth3", "ToR-X-02:eth2" ]
-    - endpoints: [ "SV-01:eth1", "ToR-X-01:eth3" ]
-    - endpoints: [ "SV-02:eth1", "ToR-X-01:eth4" ]
-    - endpoints: [ "SV-03:eth1", "ToR-X-02:eth3" ]
-    - endpoints: [ "SV-04:eth1", "ToR-X-02:eth4" ]
-    - endpoints: [ "SV-05:eth1", "ToR-Y-01:eth3" ]
-    - endpoints: [ "SV-06:eth1", "ToR-Y-01:eth4" ]
-    - endpoints: [ "SV-07:eth1", "ToR-Y-02:eth3" ]
-    - endpoints: [ "SV-08:eth1", "ToR-Y-02:eth4" ]
+    - endpoints: [ "SV-01:eth1", "RT-L-X-01:eth3" ]
+    - endpoints: [ "SV-02:eth1", "RT-L-X-02:eth3" ]
+    - endpoints: [ "SV-03:eth1", "RT-L-X-03:eth3" ]
+    - endpoints: [ "SV-04:eth1", "RT-L-X-04:eth3" ]
     - endpoints: [ "RT-S-Y-01:eth1", "RT-L-Y-01:eth1" ]
     - endpoints: [ "RT-S-Y-01:eth2", "RT-L-Y-02:eth1" ]
     - endpoints: [ "RT-S-Y-01:eth3", "RT-L-Y-03:eth1" ]
@@ -727,7 +638,7 @@ topology:
     - endpoints: [ "RT-S-Y-02:eth2", "RT-L-Y-02:eth2" ]
     - endpoints: [ "RT-S-Y-02:eth3", "RT-L-Y-03:eth2" ]
     - endpoints: [ "RT-S-Y-02:eth4", "RT-L-Y-04:eth2" ]
-    - endpoints: [ "RT-L-Y-01:eth3", "ToR-Y-01:eth1" ]
-    - endpoints: [ "RT-L-Y-02:eth3", "ToR-Y-01:eth2" ]
-    - endpoints: [ "RT-L-Y-03:eth3", "ToR-Y-02:eth1" ]
-    - endpoints: [ "RT-L-Y-04:eth3", "ToR-Y-02:eth2" ]
+    - endpoints: [ "SV-05:eth1", "RT-L-Y-01:eth3" ]
+    - endpoints: [ "SV-06:eth1", "RT-L-Y-02:eth3" ]
+    - endpoints: [ "SV-07:eth1", "RT-L-Y-03:eth3" ]
+    - endpoints: [ "SV-08:eth1", "RT-L-Y-04:eth3" ]
