@@ -1,0 +1,1397 @@
+{
+  "name": "EVPNVXLAN",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-eed23ff3b70b",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH7QgiwIY0+YIF5+AAfoosDZcXxKpcP8FWnoAC4dogcl","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIF6wEYxwg/Ho+m70gVZVPLFDOrvNUkaGE+y9fl1i5sB","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHX6zNaNZGARb/y/p7xLhrEhL+kBT3NMwwJaq1g7/GuD"],
+  "nodes": {
+    "RT-BGW-01": {
+      "index": "0",
+      "shortname": "RT-BGW-01",
+      "longname": "RT-BGW-01",
+      "fqdn": "RT-BGW-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-BGW-01",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.8",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::8",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-BGW-01",
+        "clab-node-longname": "RT-BGW-01",
+        "clab-node-name": "RT-BGW-01",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "BGW",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "router",
+        "graph-level": "1",
+        "graph-posX": "90",
+        "graph-posY": "310"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-BGW-02": {
+      "index": "1",
+      "shortname": "RT-BGW-02",
+      "longname": "RT-BGW-02",
+      "fqdn": "RT-BGW-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-BGW-02",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.18",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::12",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-BGW-02",
+        "clab-node-longname": "RT-BGW-02",
+        "clab-node-name": "RT-BGW-02",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "BGW",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "router",
+        "graph-level": "1",
+        "graph-posX": "500",
+        "graph-posY": "310"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-DCI-01": {
+      "index": "2",
+      "shortname": "RT-DCI-01",
+      "longname": "RT-DCI-01",
+      "fqdn": "RT-DCI-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-01",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.13",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::d",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-01",
+        "clab-node-longname": "RT-DCI-01",
+        "clab-node-name": "RT-DCI-01",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "DCI",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "router",
+        "graph-level": "1",
+        "graph-posX": "290",
+        "graph-posY": "120"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-DCI-02": {
+      "index": "3",
+      "shortname": "RT-DCI-02",
+      "longname": "RT-DCI-02",
+      "fqdn": "RT-DCI-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-02",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.14",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::e",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-02",
+        "clab-node-longname": "RT-DCI-02",
+        "clab-node-name": "RT-DCI-02",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "DCI",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "router",
+        "graph-level": "1",
+        "graph-posX": "90",
+        "graph-posY": "200"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-DCI-03": {
+      "index": "4",
+      "shortname": "RT-DCI-03",
+      "longname": "RT-DCI-03",
+      "fqdn": "RT-DCI-03.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-03",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.17",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::11",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-03",
+        "clab-node-longname": "RT-DCI-03",
+        "clab-node-name": "RT-DCI-03",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "DCI",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "router",
+        "graph-level": "1",
+        "graph-posX": "500",
+        "graph-posY": "200"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-X-01": {
+      "index": "5",
+      "shortname": "RT-L-X-01",
+      "longname": "RT-L-X-01",
+      "fqdn": "RT-L-X-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-01",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.22",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::16",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-01",
+        "clab-node-longname": "RT-L-X-01",
+        "clab-node-name": "RT-L-X-01",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "leaf",
+        "graph-level": "Leaf",
+        "graph-posX": "-25",
+        "graph-posY": "515"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-X-02": {
+      "index": "6",
+      "shortname": "RT-L-X-02",
+      "longname": "RT-L-X-02",
+      "fqdn": "RT-L-X-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-02",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-02",
+        "clab-node-longname": "RT-L-X-02",
+        "clab-node-name": "RT-L-X-02",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "leaf",
+        "graph-level": "Leaf",
+        "graph-posX": "35",
+        "graph-posY": "515"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-X-03": {
+      "index": "7",
+      "shortname": "RT-L-X-03",
+      "longname": "RT-L-X-03",
+      "fqdn": "RT-L-X-03.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-03",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.20",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::14",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-03",
+        "clab-node-longname": "RT-L-X-03",
+        "clab-node-name": "RT-L-X-03",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "leaf",
+        "graph-level": "Leaf",
+        "graph-posX": "125",
+        "graph-posY": "515"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-X-04": {
+      "index": "8",
+      "shortname": "RT-L-X-04",
+      "longname": "RT-L-X-04",
+      "fqdn": "RT-L-X-04.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-04",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.24",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::18",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-04",
+        "clab-node-longname": "RT-L-X-04",
+        "clab-node-name": "RT-L-X-04",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "leaf",
+        "graph-level": "Leaf",
+        "graph-posX": "185",
+        "graph-posY": "515"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-Y-01": {
+      "index": "9",
+      "shortname": "RT-L-Y-01",
+      "longname": "RT-L-Y-01",
+      "fqdn": "RT-L-Y-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-01",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.15",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::f",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-01",
+        "clab-node-longname": "RT-L-Y-01",
+        "clab-node-name": "RT-L-Y-01",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "leaf",
+        "graph-level": "Leaf",
+        "graph-posX": "395",
+        "graph-posY": "515"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-Y-02": {
+      "index": "10",
+      "shortname": "RT-L-Y-02",
+      "longname": "RT-L-Y-02",
+      "fqdn": "RT-L-Y-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-02",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.23",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::17",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-02",
+        "clab-node-longname": "RT-L-Y-02",
+        "clab-node-name": "RT-L-Y-02",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "leaf",
+        "graph-level": "Leaf",
+        "graph-posX": "465",
+        "graph-posY": "515"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-Y-03": {
+      "index": "11",
+      "shortname": "RT-L-Y-03",
+      "longname": "RT-L-Y-03",
+      "fqdn": "RT-L-Y-03.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-03",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.10",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::a",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-03",
+        "clab-node-longname": "RT-L-Y-03",
+        "clab-node-name": "RT-L-Y-03",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "leaf",
+        "graph-level": "Leaf",
+        "graph-posX": "535",
+        "graph-posY": "515"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-Y-04": {
+      "index": "12",
+      "shortname": "RT-L-Y-04",
+      "longname": "RT-L-Y-04",
+      "fqdn": "RT-L-Y-04.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-04",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-04",
+        "clab-node-longname": "RT-L-Y-04",
+        "clab-node-name": "RT-L-Y-04",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "leaf",
+        "graph-level": "Leaf",
+        "graph-posX": "605",
+        "graph-posY": "515"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-S-X-01": {
+      "index": "13",
+      "shortname": "RT-S-X-01",
+      "longname": "RT-S-X-01",
+      "fqdn": "RT-S-X-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-X-01",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.9",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::9",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-X-01",
+        "clab-node-longname": "RT-S-X-01",
+        "clab-node-name": "RT-S-X-01",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "spine",
+        "graph-level": "Spine",
+        "graph-posX": "-5",
+        "graph-posY": "400"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-S-X-02": {
+      "index": "14",
+      "shortname": "RT-S-X-02",
+      "longname": "RT-S-X-02",
+      "fqdn": "RT-S-X-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-X-02",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.21",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::15",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-X-02",
+        "clab-node-longname": "RT-S-X-02",
+        "clab-node-name": "RT-S-X-02",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "spine",
+        "graph-level": "Spine",
+        "graph-posX": "155",
+        "graph-posY": "400"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-S-Y-01": {
+      "index": "15",
+      "shortname": "RT-S-Y-01",
+      "longname": "RT-S-Y-01",
+      "fqdn": "RT-S-Y-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-Y-01",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.26",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::1a",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-Y-01",
+        "clab-node-longname": "RT-S-Y-01",
+        "clab-node-name": "RT-S-Y-01",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "spine",
+        "graph-level": "Spine",
+        "graph-posX": "395",
+        "graph-posY": "410"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-S-Y-02": {
+      "index": "16",
+      "shortname": "RT-S-Y-02",
+      "longname": "RT-S-Y-02",
+      "fqdn": "RT-S-Y-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-Y-02",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.25",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::19",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-Y-02",
+        "clab-node-longname": "RT-S-Y-02",
+        "clab-node-name": "RT-S-Y-02",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "spine",
+        "graph-level": "Spine",
+        "graph-posX": "555",
+        "graph-posY": "410"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-01": {
+      "index": "17",
+      "shortname": "SV-01",
+      "longname": "SV-01",
+      "fqdn": "SV-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-01",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-01",
+        "clab-node-longname": "SV-01",
+        "clab-node-name": "SV-01",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "server",
+        "graph-level": "Server",
+        "graph-posX": "-25",
+        "graph-posY": "595"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-02": {
+      "index": "18",
+      "shortname": "SV-02",
+      "longname": "SV-02",
+      "fqdn": "SV-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-02",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-02",
+        "clab-node-longname": "SV-02",
+        "clab-node-name": "SV-02",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "server",
+        "graph-level": "Server",
+        "graph-posX": "45",
+        "graph-posY": "595"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-03": {
+      "index": "19",
+      "shortname": "SV-03",
+      "longname": "SV-03",
+      "fqdn": "SV-03.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-03",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-03",
+        "clab-node-longname": "SV-03",
+        "clab-node-name": "SV-03",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "server",
+        "graph-level": "Server",
+        "graph-posX": "135",
+        "graph-posY": "595"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-04": {
+      "index": "20",
+      "shortname": "SV-04",
+      "longname": "SV-04",
+      "fqdn": "SV-04.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-04",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.16",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::10",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-04",
+        "clab-node-longname": "SV-04",
+        "clab-node-name": "SV-04",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center X",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "server",
+        "graph-level": "Server",
+        "graph-posX": "195",
+        "graph-posY": "595"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-05": {
+      "index": "21",
+      "shortname": "SV-05",
+      "longname": "SV-05",
+      "fqdn": "SV-05.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-05",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.19",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::13",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-05",
+        "clab-node-longname": "SV-05",
+        "clab-node-name": "SV-05",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "server",
+        "graph-level": "Server",
+        "graph-posX": "395",
+        "graph-posY": "595"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-06": {
+      "index": "22",
+      "shortname": "SV-06",
+      "longname": "SV-06",
+      "fqdn": "SV-06.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-06",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::b",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-06",
+        "clab-node-longname": "SV-06",
+        "clab-node-name": "SV-06",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "server",
+        "graph-level": "Server",
+        "graph-posX": "465",
+        "graph-posY": "595"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-07": {
+      "index": "23",
+      "shortname": "SV-07",
+      "longname": "SV-07",
+      "fqdn": "SV-07.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-07",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.12",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::c",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-07",
+        "clab-node-longname": "SV-07",
+        "clab-node-name": "SV-07",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "server",
+        "graph-level": "Server",
+        "graph-posX": "535",
+        "graph-posY": "595"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-08": {
+      "index": "24",
+      "shortname": "SV-08",
+      "longname": "SV-08",
+      "fqdn": "SV-08.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-08",
+      "kind": "linux",
+      "image": "frrouting/frr:v8.4.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-eed23ff3b70b",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-08",
+        "clab-node-longname": "SV-08",
+        "clab-node-name": "SV-08",
+        "clab-node-type": "",
+        "clab-owner": "akilab",
+        "clab-topo-file": "/home/akilab/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN",
+        "graph-group": "Data Center Y",
+        "graph-groupLabelPos": "bottom-center",
+        "graph-icon": "server",
+        "graph-level": "Server",
+        "graph-posX": "605",
+        "graph-posY": "595"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "RT-DCI-01",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:52:db:4d",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-DCI-02",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:46:8f:8a",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-DCI-01",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:6c:ed:6c",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-DCI-03",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:e1:03:46",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-BGW-01",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:2b:02:1a",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-S-X-01",
+        "interface": "eth5",
+        "mac": "aa:c1:ab:e7:c4:54",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-BGW-01",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:76:0a:46",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-S-X-02",
+        "interface": "eth5",
+        "mac": "aa:c1:ab:cc:9e:88",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-BGW-02",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:1d:c7:74",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-S-Y-01",
+        "interface": "eth5",
+        "mac": "aa:c1:ab:8b:54:de",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-BGW-02",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:3e:72:44",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-S-Y-02",
+        "interface": "eth5",
+        "mac": "aa:c1:ab:84:3f:31",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-BGW-01",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:b6:e6:d1",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-DCI-02",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:98:ef:96",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-BGW-02",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:75:0a:50",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-DCI-03",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:d9:82:2d",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-X-01",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:b0:9d:7d",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-01",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:af:59:34",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-X-01",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:05:9d:f4",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-02",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:78:1c:bd",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-X-01",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:08:4e:25",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-03",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:4c:64:a5",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-X-01",
+        "interface": "eth4",
+        "mac": "aa:c1:ab:f3:45:52",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-04",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:e3:96:81",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-X-02",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:8e:12:0b",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-01",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:9b:7f:bb",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-X-02",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:94:6b:c7",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-02",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:01:1c:d5",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-X-02",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:36:37:66",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-03",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:83:05:5a",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-X-02",
+        "interface": "eth4",
+        "mac": "aa:c1:ab:7b:f0:ce",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-04",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:bc:a2:82",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "SV-01",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:15:3b:01",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-01",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:2a:52:f6",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "SV-02",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:eb:42:b0",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-02",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:99:b4:21",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "SV-03",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:1f:a2:a3",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-03",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:12:0c:ae",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "SV-04",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:3c:6b:5f",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-X-04",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:2c:07:9a",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-Y-01",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:32:bb:08",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-01",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:dc:b7:0f",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-Y-01",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:c7:dc:f4",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-02",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:d9:b3:3b",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-Y-01",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:a3:ec:99",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-03",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:49:d1:16",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-Y-01",
+        "interface": "eth4",
+        "mac": "aa:c1:ab:48:5f:1b",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-04",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:ef:f2:59",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-Y-02",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:97:92:83",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-01",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:5e:03:d8",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-Y-02",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:99:a4:fa",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-02",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:45:53:03",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-Y-02",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:2e:52:52",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-03",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:60:88:fe",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "RT-S-Y-02",
+        "interface": "eth4",
+        "mac": "aa:c1:ab:6f:4a:ab",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-04",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:47:5c:4a",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "SV-05",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:6d:3a:1b",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-01",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:92:83:a9",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "SV-06",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:2f:18:2f",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-02",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:8e:9b:3a",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "SV-07",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:43:52:07",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-03",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:1e:98:67",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "SV-08",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:65:56:7a",
+        "peer": "z"
+      },
+      "z": {
+        "node": "RT-L-Y-04",
+        "interface": "eth3",
+        "mac": "aa:c1:ab:70:71:2a",
+        "peer": "a"
+      }
+    }
+  ]
+}

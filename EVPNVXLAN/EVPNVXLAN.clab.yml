@@ -207,8 +207,8 @@ topology:
         - ip link add br10 type bridge
         - ip link set br10 mtu 9500
         - ip link set br10 master vrf-l3vni-3000
-        - ip link set br10 addr aa:bb:cc:10:11:01
-        - ip addr add 192.168.10.251/28 dev br10
+        - ip link set br10 addr aa:bb:cc:10:11:02
+        - ip addr add 192.168.10.252/28 dev br10
         - ip link add vni1010 type vxlan local 10.1.254.22 dstport 4789 id 1010 nolearning
         - ip link set vni1010 mtu 9500
         - ip link set vni1010 master br10 addrgenmode none
@@ -488,6 +488,7 @@ topology:
         - ip addr del 127.0.0.1/8 dev lo
         - ip link add link eth1 name eth1.10 type vlan id 10
         - ip link set dev eth1.10 up
+        - ip link set dev eth1.10 address aa:bb:cc:10:11:31
         - ip addr add dev eth1.10 192.168.10.241/28
       labels:
         graph-icon: server
@@ -504,6 +505,7 @@ topology:
         - ip addr del 127.0.0.1/8 dev lo
         - ip link add link eth1 name eth1.10 type vlan id 10
         - ip link set dev eth1.10 up
+        - ip link set dev eth1.10 address aa:bb:cc:10:11:32
         - ip addr add dev eth1.10 192.168.10.242/28
       labels:
         graph-icon: server
@@ -520,6 +522,7 @@ topology:
         - ip addr del 127.0.0.1/8 dev lo
         - ip link add link eth1 name eth1.20 type vlan id 20
         - ip link set dev eth1.20 up
+        - ip link set dev eth1.20 address aa:bb:cc:10:22:33
         - ip addr add dev eth1.20 192.168.20.241/28
       labels:
         graph-icon: server
@@ -536,6 +539,7 @@ topology:
         - ip addr del 127.0.0.1/8 dev lo
         - ip link add link eth1 name eth1.20 type vlan id 20
         - ip link set dev eth1.20 up
+        - ip link set dev eth1.20 address aa:bb:cc:10:22:34
         - ip addr add dev eth1.20 192.168.20.242/28
       labels:
         graph-icon: server
@@ -552,6 +556,7 @@ topology:
         - ip addr del 127.0.0.1/8 dev lo
         - ip link add link eth1 name eth1.10 type vlan id 10
         - ip link set dev eth1.10 up
+        - ip link set dev eth1.10 address aa:bb:cc:20:11:35
         - ip addr add dev eth1.10 192.168.10.243/28
       labels:
         graph-icon: server
@@ -568,6 +573,7 @@ topology:
         - ip addr del 127.0.0.1/8 dev lo
         - ip link add link eth1 name eth1.10 type vlan id 10
         - ip link set dev eth1.10 up
+        - ip link set dev eth1.10 address aa:bb:cc:20:11:36
         - ip addr add dev eth1.10 192.168.10.244/28
       labels:
         graph-icon: server
@@ -584,6 +590,7 @@ topology:
         - ip addr del 127.0.0.1/8 dev lo
         - ip link add link eth1 name eth1.20 type vlan id 20
         - ip link set dev eth1.20 up
+        - ip link set dev eth1.20 address aa:bb:cc:20:22:37
         - ip addr add dev eth1.20 192.168.20.243/28
       labels:
         graph-icon: server
@@ -600,6 +607,7 @@ topology:
         - ip addr del 127.0.0.1/8 dev lo
         - ip link add link eth1 name eth1.20 type vlan id 20
         - ip link set dev eth1.20 up
+        - ip link set dev eth1.20 address aa:bb:cc:20:22:38
         - ip addr add dev eth1.20 192.168.20.244/28
       labels:
         graph-icon: server
