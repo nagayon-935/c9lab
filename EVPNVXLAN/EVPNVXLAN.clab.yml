@@ -67,6 +67,40 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
+        # ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
+        # - ip link add vrf-l3vni-3000 type vrf table 3000
+        # - ip link set up vrf-l3vni-3000
+        # - ip link add br3000 type bridge
+        # - ip link set br3000 mtu 9500
+        # - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
+        # - ip link set br3000 addr aa:bb:cc:30:00:11
+        # - ip link add vni3000 type vxlan local 10.1.254.1 dstport 4789 id 3000 nolearning
+        # - ip link set vni3000 mtu 9500
+        # - ip link set vni3000 master br3000 addrgenmode none
+        # - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        # - ip link set up br3000
+        # - ip link set up vni3000
+        # ### l2vni 1010 ###
+        # - ip link add br10 type bridge
+        # - ip link set br10 master vrf-l3vni-3000
+        # - ip link set br10 mtu 9500
+        # - ip link set br10 addr aa:bb:cc:10:11:11
+        # - ip link add vni1010 type vxlan local 10.1.254.1 dstport 4789 id 1010 nolearning
+        # - ip link set vni1010 mtu 9500
+        # - ip link set vni1010 master br10 addrgenmode none
+        # - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        # - ip link set vni1010 up
+        # - ip link set up br10
+        # - ip link add br20 type bridge
+        # - ip link set br20 mtu 9500
+        # - ip link set br20 master vrf-l3vni-3000
+        # - ip link set br20 addr aa:bb:cc:10:22:12
+        # - ip link add vni1020 type vxlan local 10.1.254.1 dstport 4789 id 1020 nolearning
+        # - ip link set vni1020 mtu 9500
+        # - ip link set vni1020 master br20 addrgenmode none
+        # - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        # - ip link set vni1020 up
+        # - ip link set up br20
       labels:
         graph-icon: router
         graph-group: "BGW"
@@ -80,6 +114,40 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
+        # ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
+        # - ip link add vrf-l3vni-3000 type vrf table 3000
+        # - ip link set up vrf-l3vni-3000
+        # - ip link add br3000 type bridge
+        # - ip link set br3000 mtu 9500
+        # - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
+        # - ip link set br3000 addr aa:bb:cc:30:00:22
+        # - ip link add vni3000 type vxlan local 10.2.254.1 dstport 4789 id 3000 nolearning
+        # - ip link set vni3000 mtu 9500
+        # - ip link set vni3000 master br3000 addrgenmode none
+        # - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        # - ip link set up br3000
+        # - ip link set up vni3000
+        # ### l2vni 1010 ###
+        # - ip link add br10 type bridge
+        # - ip link set br10 master vrf-l3vni-3000
+        # - ip link set br10 mtu 9500
+        # - ip link set br10 addr aa:bb:cc:20:11:01
+        # - ip link add vni1010 type vxlan local 10.2.254.1 dstport 4789 id 1010 nolearning
+        # - ip link set vni1010 mtu 9500
+        # - ip link set vni1010 master br10 addrgenmode none
+        # - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        # - ip link set vni1010 up
+        # - ip link set up br10
+        # - ip link add br20 type bridge
+        # - ip link set br20 mtu 9500
+        # - ip link set br20 master vrf-l3vni-3000
+        # - ip link set br20 addr aa:bb:cc:20:22:02
+        # - ip link add vni1020 type vxlan local 10.2.254.1 dstport 4789 id 1020 nolearning
+        # - ip link set vni1020 mtu 9500
+        # - ip link set vni1020 master br20 addrgenmode none
+        # - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        # - ip link set vni1020 up
+        # - ip link set up br20
       labels:
         graph-icon: router
         graph-group: "BGW"
