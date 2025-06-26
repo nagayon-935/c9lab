@@ -29,17 +29,17 @@ EVPNとかVXLANのことについてはZennでまとめるつもり
 
 | デバイス名  | 役割      | MACアドレス                  | IPアドレス                        | Loopback IP      | ASN    | 備考  |
 |-----------|-----------|----------------------------|----------------------------------|------------------|--------|------|
-| BGW-01    | BGW       | auto                       | eth1: 10.1.254.1                 | lo: 10.1.254.1   | 65100  |      |
+| RT-BGW-01 | BGW       | auto                       | eth1: 10.1.254.1                 | lo: 10.1.254.1   | 65100  |      |
 |           |           | auto                       | eth2-3: ipv6 link-local-address  |                  |        |      |
-| Spine-11  | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.1.254.11  | 65110  |      |
-| Spine-12  | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.1.254.12  | 65110  |      |
-| Leaf-11   | Leaf      | VNI3000: aa:bb:cc:10:30:21 | eth1-2: ipv6 link-local-address  | lo: 10.1.254.21  | 65121  |      |
+| RT-S-X-01 | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.1.254.11  | 65110  |      |
+| RT-S-X-02 | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.1.254.12  | 65110  |      |
+| RT-L-X-01 | Leaf      | VNI3000: aa:bb:cc:10:30:21 | eth1-2: ipv6 link-local-address  | lo: 10.1.254.21  | 65121  |      |
 |           |           | VNI1010: aa:bb:cc:10:11:21 | eth3: 192.168.10.251             |                  |        |      |
-| Leaf-12   | Leaf      | VNI3000: aa:bb:cc:10:30:22 | eth1-2: ipv6 link-local-address  | lo: 10.1.254.22  | 65122  |      |
+| RT-L-X-02 | Leaf      | VNI3000: aa:bb:cc:10:30:22 | eth1-2: ipv6 link-local-address  | lo: 10.1.254.22  | 65122  |      |
 |           |           | VNI1010: aa:bb:cc:10:11:22 | eth3: 192.168.10.252             |                  |        |      |
-| Leaf-13   | Leaf      | VNI3000: aa:bb:cc:10:30:23 | eth1-2: ipv6 link-local-address  | lo: 10.1.254.23  | 65123  |      |
+| RT-L-X-03 | Leaf      | VNI3000: aa:bb:cc:10:30:23 | eth1-2: ipv6 link-local-address  | lo: 10.1.254.23  | 65123  |      |
 |           |           | VNI1020: aa:bb:cc:10:12:23 | eth3: 192.168.20.251             |                  |        |      |
-| Leaf-14   | Leaf      | VNI3000: aa:bb:cc:10:30:24 | eth1-2: ipv6 link-local-address  | lo: 10.1.254.24  | 65124  |      |
+| RT-L-X-04 | Leaf      | VNI3000: aa:bb:cc:10:30:24 | eth1-2: ipv6 link-local-address  | lo: 10.1.254.24  | 65124  |      |
 |           |           | VNI1020: aa:bb:cc:10:12:24 | eth3: 192.168.20.252             |                  |        |      |
 | SV-01     | Host      | aa:bb:cc:10:11:31          | eth1: 192.168.10.241             | lo: 10.1.254.31  | 65131  |      |
 | SV-02     | Host      | aa:bb:cc:10:11:32          | eth1: 192.168.10.242             | lo: 10.1.254.32  | 65132  |      |
@@ -52,17 +52,17 @@ EVPNとかVXLANのことについてはZennでまとめるつもり
 
 | デバイス名  | 役割      | MACアドレス                  | IPアドレス                        | Loopback IP      | ASN    | 備考  |
 |-----------|-----------|----------------------------|----------------------------------|------------------|--------|------|
-| BGW-02    | BGW       | auto                       | eth1: 10.2.254.1                 | lo: 10.2.254.1   | 65200  |      |
+| RT-BGW-02 | BGW       | auto                       | eth1: 10.2.254.1                 | lo: 10.2.254.1   | 65200  |      |
 |           |           | auto                       | eth2-3: ipv6 link-local-address  |                  |        |      |
-| Spine-21  | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.2.254.11  | 65210  |      |
-| Spine-22  | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.2.254.12  | 65210  |      |
-| Leaf-21   | Leaf      | VNI3000: aa:bb:cc:20:30:21 | eth1-2: ipv6 link-local-address  | lo: 10.2.254.21  | 65221  |      |
+| RT-S-Y-01 | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.2.254.11  | 65210  |      |
+| RT-S-Y-02 | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.2.254.12  | 65210  |      |
+| RT-L-Y-01 | Leaf      | VNI3000: aa:bb:cc:20:30:21 | eth1-2: ipv6 link-local-address  | lo: 10.2.254.21  | 65221  |      |
 |           |           | VNI1010: aa:bb:cc:20:11:21 | eth3: 192.168.10.253             |                  |        |      |
-| Leaf-22   | Leaf      | VNI3000: aa:bb:cc:20:30:22 | eth1-2: ipv6 link-local-address  | lo: 10.2.254.22  | 65222  |      |
+| RT-L-Y-02 | Leaf      | VNI3000: aa:bb:cc:20:30:22 | eth1-2: ipv6 link-local-address  | lo: 10.2.254.22  | 65222  |      |
 |           |           | VNI1010: aa:bb:cc:20:11:22 | eth3: 192.168.10.254             |                  |        |      |
-| Leaf-23   | Leaf      | VNI3000: aa:bb:cc:20:30:23 | eth1-2: ipv6 link-local-address  | lo: 10.2.254.23  | 65223  |      |
+| RT-L-Y-03 | Leaf      | VNI3000: aa:bb:cc:20:30:23 | eth1-2: ipv6 link-local-address  | lo: 10.2.254.23  | 65223  |      |
 |           |           | VNI1020: aa:bb:cc:20:12:23 | eth3: 192.168.20.253             |                  |        |      |
-| Leaf-24   | Leaf      | VNI3000: aa:bb:cc:20:30:24 | eth1-2: ipv6 link-local-address  | lo: 10.2.254.24  | 65224  |      |
+| RT-L-Y-04 | Leaf      | VNI3000: aa:bb:cc:20:30:24 | eth1-2: ipv6 link-local-address  | lo: 10.2.254.24  | 65224  |      |
 |           |           | VNI1020: aa:bb:cc:20:12:24 | eth3: 192.168.20.254             |                  |        |      |
 | SV-05     | Host      | aa:bb:cc:20:11:35          | eth1: 192.168.10.243             | lo: 10.2.254.31  | 65231  |      |
 | SV-06     | Host      | aa:bb:cc:20:11:36          | eth1: 192.168.10.244             | lo: 10.2.254.32  | 65232  |      |
