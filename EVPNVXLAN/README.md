@@ -29,7 +29,7 @@ EVPNとかVXLANのことについてはZennでまとめるつもり
 
 | デバイス名  | 役割      | MACアドレス                  | IPアドレス                        | Loopback IP      | ASN    | 備考  |
 |-----------|-----------|----------------------------|----------------------------------|------------------|--------|------|
-| BGW-01    | BGW/VTEP  | auto                       | eth1: 10.1.254.1                 | lo: 10.1.254.1   | 65100  |      |
+| BGW-01    | BGW       | auto                       | eth1: 10.1.254.1                 | lo: 10.1.254.1   | 65100  |      |
 |           |           | auto                       | eth2-3: ipv6 link-local-address  |                  |        |      |
 | Spine-11  | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.1.254.11  | 65110  |      |
 | Spine-12  | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.1.254.12  | 65110  |      |
@@ -52,7 +52,7 @@ EVPNとかVXLANのことについてはZennでまとめるつもり
 
 | デバイス名  | 役割      | MACアドレス                  | IPアドレス                        | Loopback IP      | ASN    | 備考  |
 |-----------|-----------|----------------------------|----------------------------------|------------------|--------|------|
-| BGW-02    | BGW/VTEP  | autp                       | eth1: 10.2.254.1                 | lo: 10.2.254.1   | 65200  |      |
+| BGW-02    | BGW       | auto                       | eth1: 10.2.254.1                 | lo: 10.2.254.1   | 65200  |      |
 |           |           | auto                       | eth2-3: ipv6 link-local-address  |                  |        |      |
 | Spine-21  | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.2.254.11  | 65210  |      |
 | Spine-22  | Spine     | auto                       | eth1-5: ipv6 link-local-address  | lo: 10.2.254.12  | 65210  |      |
