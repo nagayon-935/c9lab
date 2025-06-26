@@ -151,7 +151,7 @@ topology:
         - ip link add br3000 type bridge
         - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:11:21
+        - ip link set br3000 addr aa:bb:cc:10:30:21
         - ip link add vni3000 type vxlan local 10.1.254.21 dstport 4789 id 3000 nolearning
         - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
@@ -162,7 +162,7 @@ topology:
         - ip link add br10 type bridge
         - ip link set br10 master vrf-l3vni-3000
         - ip link set br10 mtu 9500
-        - ip link set br10 addr aa:bb:cc:10:11:01
+        - ip link set br10 addr aa:bb:cc:10:11:21
         - ip addr add 192.168.10.251/28 dev br10
         - ip link add vni1010 type vxlan local 10.1.254.21 dstport 4789 id 1010 nolearning
         - ip link set vni1010 mtu 9500
@@ -193,7 +193,7 @@ topology:
         - ip link add br3000 type bridge
         - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:11:22
+        - ip link set br3000 addr aa:bb:cc:10:30:22
         - ip link add vni3000 type vxlan local 10.1.254.22 dstport 4789 id 3000 nolearning
         - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
@@ -204,7 +204,7 @@ topology:
         - ip link add br10 type bridge
         - ip link set br10 mtu 9500
         - ip link set br10 master vrf-l3vni-3000
-        - ip link set br10 addr aa:bb:cc:10:11:02
+        - ip link set br10 addr aa:bb:cc:10:11:22
         - ip addr add 192.168.10.252/28 dev br10
         - ip link add vni1010 type vxlan local 10.1.254.22 dstport 4789 id 1010 nolearning
         - ip link set vni1010 mtu 9500
@@ -235,7 +235,7 @@ topology:
         - ip link add br3000 type bridge
         - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:11:23
+        - ip link set br3000 addr aa:bb:cc:10:30:23
         - ip link add vni3000 type vxlan local 10.1.254.23 dstport 4789 id 3000 nolearning
         - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
@@ -246,7 +246,7 @@ topology:
         - ip link add br20 type bridge
         - ip link set br20 mtu 9500
         - ip link set br20 master vrf-l3vni-3000
-        - ip link set br20 addr aa:bb:cc:20:11:23
+        - ip link set br20 addr aa:bb:cc:10:12:23
         - ip addr add 192.168.20.251/28 dev br20
         - ip link add vni1020 type vxlan local 10.1.254.23 dstport 4789 id 1020 nolearning
         - ip link set vni1020 mtu 9500
@@ -277,7 +277,7 @@ topology:
         - ip link add br3000 type bridge
         - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:11:24
+        - ip link set br3000 addr aa:bb:cc:10:30:24
         - ip link add vni3000 type vxlan local 10.1.254.24 dstport 4789 id 3000 nolearning
         - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
@@ -288,7 +288,7 @@ topology:
         - ip link add br20 type bridge
         - ip link set br20 mtu 9500
         - ip link set br20 master vrf-l3vni-3000
-        - ip link set br20 addr aa:bb:cc:20:11:24
+        - ip link set br20 addr aa:bb:cc:10:12:24
         - ip addr add 192.168.20.252/28 dev br20
         - ip link add vni1020 type vxlan local 10.1.254.24 dstport 4789 id 1020 nolearning
         - ip link set vni1020 mtu 9500
@@ -319,7 +319,7 @@ topology:
         - ip link add br3000 type bridge
         - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:22:21
+        - ip link set br3000 addr aa:bb:cc:20:30:21
         - ip link add vni3000 type vxlan local 10.2.254.21 dstport 4789 id 3000 nolearning
         - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
@@ -330,7 +330,7 @@ topology:
         - ip link add br10 type bridge
         - ip link set br10 master vrf-l3vni-3000
         - ip link set br10 mtu 9500
-        - ip link set br10 addr aa:bb:cc:10:22:01
+        - ip link set br10 addr aa:bb:cc:20:11:21
         - ip addr add 192.168.10.253/28 dev br10
         - ip link add vni1010 type vxlan local 10.2.254.21 dstport 4789 id 1010 nolearning
         - ip link set vni1010 mtu 9500
@@ -361,7 +361,7 @@ topology:
         - ip link add br3000 type bridge
         - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:22:22
+        - ip link set br3000 addr aa:bb:cc:20:30:22
         - ip link add vni3000 type vxlan local 10.2.254.22 dstport 4789 id 3000 nolearning
         - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
@@ -372,7 +372,7 @@ topology:
         - ip link add br10 type bridge
         - ip link set br10 master vrf-l3vni-3000
         - ip link set br10 mtu 9500
-        - ip link set br10 addr aa:bb:cc:10:22:02
+        - ip link set br10 addr aa:bb:cc:20:11:22
         - ip addr add 192.168.10.254/28 dev br10
         - ip link add vni1010 type vxlan local 10.2.254.22 dstport 4789 id 1010 nolearning
         - ip link set vni1010 mtu 9500
@@ -403,7 +403,7 @@ topology:
         - ip link add br3000 type bridge
         - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:22:23
+        - ip link set br3000 addr aa:bb:cc:20:30:23
         - ip link add vni3000 type vxlan local 10.2.254.23 dstport 4789 id 3000 nolearning
         - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
@@ -414,7 +414,7 @@ topology:
         - ip link add br20 type bridge
         - ip link set br20 mtu 9500
         - ip link set br20 master vrf-l3vni-3000
-        - ip link set br20 addr aa:bb:cc:20:22:23
+        - ip link set br20 addr aa:bb:cc:20:12:23
         - ip addr add 192.168.20.253/28 dev br20
         - ip link add vni1020 type vxlan local 10.2.254.23 dstport 4789 id 1020 nolearning
         - ip link set vni1020 mtu 9500
@@ -445,7 +445,7 @@ topology:
         - ip link add br3000 type bridge
         - ip link set br3000 mtu 9500
         - ip link set br3000 master vrf-l3vni-3000 addrgenmode none
-        - ip link set br3000 addr aa:bb:cc:30:22:24
+        - ip link set br3000 addr aa:bb:cc:20:30:24
         - ip link add vni3000 type vxlan local 10.2.254.24 dstport 4789 id 3000 nolearning
         - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
@@ -456,7 +456,7 @@ topology:
         - ip link add br20 type bridge
         - ip link set br20 mtu 9500
         - ip link set br20 master vrf-l3vni-3000
-        - ip link set br20 addr aa:bb:cc:20:22:24
+        - ip link set br20 addr aa:bb:cc:20:12:24
         - ip addr add 192.168.20.254/28 dev br20
         - ip link add vni1020 type vxlan local 10.2.254.24 dstport 4789 id 1020 nolearning
         - ip link set vni1020 mtu 9500
