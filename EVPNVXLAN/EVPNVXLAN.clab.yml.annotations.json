@@ -1,0 +1,382 @@
+{
+  "freeTextAnnotations": [],
+  "groupStyleAnnotations": [],
+  "cloudNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "RT-DCI-01",
+      "position": {
+        "x": 385,
+        "y": 315
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.82907624809327,
+        "lng": 9.486137423118402
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "DCI",
+      "level": "1"
+    },
+    {
+      "id": "RT-DCI-02",
+      "position": {
+        "x": 259,
+        "y": 315
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.71833998050102,
+        "lng": 9.118783234664457
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "DCI",
+      "level": "1"
+    },
+    {
+      "id": "RT-DCI-03",
+      "position": {
+        "x": 497,
+        "y": 315
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.322269164188555,
+        "lng": 9.861665838524328
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "DCI",
+      "level": "1"
+    },
+    {
+      "id": "RT-BGW-01",
+      "position": {
+        "x": 175,
+        "y": 385
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.52892640352591,
+        "lng": 9.378948797485265
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "BGW",
+      "level": "1"
+    },
+    {
+      "id": "RT-BGW-02",
+      "position": {
+        "x": 581,
+        "y": 385
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.04495271618824,
+        "lng": 9.583972590259062
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "BGW",
+      "level": "1"
+    },
+    {
+      "id": "RT-S-X-01",
+      "position": {
+        "x": 105,
+        "y": 441
+      },
+      "icon": "spine",
+      "geoCoordinates": {
+        "lat": 48.82336222077807,
+        "lng": 9.496708785550217
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Spine"
+    },
+    {
+      "id": "RT-S-X-02",
+      "position": {
+        "x": 231,
+        "y": 441
+      },
+      "icon": "spine",
+      "geoCoordinates": {
+        "lat": 49.436725549996645,
+        "lng": 9.390446330645313
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Spine"
+    },
+    {
+      "id": "RT-S-Y-01",
+      "position": {
+        "x": 525,
+        "y": 441
+      },
+      "icon": "spine",
+      "geoCoordinates": {
+        "lat": 49.19275511031393,
+        "lng": 9.620775786488078
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Spine"
+    },
+    {
+      "id": "RT-S-Y-02",
+      "position": {
+        "x": 637,
+        "y": 441
+      },
+      "icon": "spine",
+      "geoCoordinates": {
+        "lat": 49.217753030221964,
+        "lng": 9.15860260774601
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Spine"
+    },
+    {
+      "id": "RT-L-X-01",
+      "position": {
+        "x": 77,
+        "y": 511
+      },
+      "icon": "leaf",
+      "geoCoordinates": {
+        "lat": 48.95155980367455,
+        "lng": 9.18341253059624
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Leaf"
+    },
+    {
+      "id": "RT-L-X-02",
+      "position": {
+        "x": 147,
+        "y": 511
+      },
+      "icon": "leaf",
+      "geoCoordinates": {
+        "lat": 49.40092645153152,
+        "lng": 9.246411226889292
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Leaf"
+    },
+    {
+      "id": "RT-L-X-03",
+      "position": {
+        "x": 217,
+        "y": 511
+      },
+      "icon": "leaf",
+      "geoCoordinates": {
+        "lat": 49.003202826515654,
+        "lng": 9.518566908288214
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Leaf"
+    },
+    {
+      "id": "RT-L-X-04",
+      "position": {
+        "x": 273,
+        "y": 511
+      },
+      "icon": "leaf",
+      "geoCoordinates": {
+        "lat": 49.294051656136645,
+        "lng": 9.567137326045035
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Leaf"
+    },
+    {
+      "id": "RT-L-Y-01",
+      "position": {
+        "x": 497,
+        "y": 511
+      },
+      "icon": "leaf",
+      "geoCoordinates": {
+        "lat": 49.54752248705488,
+        "lng": 9.781600973387649
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Leaf"
+    },
+    {
+      "id": "RT-L-Y-02",
+      "position": {
+        "x": 567,
+        "y": 511
+      },
+      "icon": "leaf",
+      "geoCoordinates": {
+        "lat": 48.826995339177536,
+        "lng": 9.778487086694822
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Leaf"
+    },
+    {
+      "id": "RT-L-Y-03",
+      "position": {
+        "x": 637,
+        "y": 511
+      },
+      "icon": "leaf",
+      "geoCoordinates": {
+        "lat": 49.139651157364966,
+        "lng": 9.527190774274382
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Leaf"
+    },
+    {
+      "id": "RT-L-Y-04",
+      "position": {
+        "x": 707,
+        "y": 511
+      },
+      "icon": "leaf",
+      "geoCoordinates": {
+        "lat": 49.326785897347456,
+        "lng": 9.826435608998056
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Leaf"
+    },
+    {
+      "id": "SV-01",
+      "position": {
+        "x": 77,
+        "y": 567
+      },
+      "icon": "server",
+      "geoCoordinates": {
+        "lat": 48.93954845581162,
+        "lng": 9.691367779284999
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Server"
+    },
+    {
+      "id": "SV-02",
+      "position": {
+        "x": 147,
+        "y": 567
+      },
+      "icon": "server",
+      "geoCoordinates": {
+        "lat": 49.4881174209975,
+        "lng": 9.660905635155629
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Server"
+    },
+    {
+      "id": "SV-03",
+      "position": {
+        "x": 217,
+        "y": 567
+      },
+      "icon": "server",
+      "geoCoordinates": {
+        "lat": 49.457708047156146,
+        "lng": 9.097301729857332
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Server"
+    },
+    {
+      "id": "SV-04",
+      "position": {
+        "x": 273,
+        "y": 567
+      },
+      "icon": "server",
+      "geoCoordinates": {
+        "lat": 49.2105873133262,
+        "lng": 9.62305231771939
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center X",
+      "level": "Server"
+    },
+    {
+      "id": "SV-05",
+      "position": {
+        "x": 497,
+        "y": 567
+      },
+      "icon": "server",
+      "geoCoordinates": {
+        "lat": 48.86353872401157,
+        "lng": 9.699761587317353
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Server"
+    },
+    {
+      "id": "SV-06",
+      "position": {
+        "x": 567,
+        "y": 567
+      },
+      "icon": "server",
+      "geoCoordinates": {
+        "lat": 49.23910220781059,
+        "lng": 9.117133102977226
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Server"
+    },
+    {
+      "id": "SV-07",
+      "position": {
+        "x": 637,
+        "y": 567
+      },
+      "icon": "server",
+      "geoCoordinates": {
+        "lat": 49.1721172145885,
+        "lng": 9.156256283641492
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Server"
+    },
+    {
+      "id": "SV-08",
+      "position": {
+        "x": 707,
+        "y": 567
+      },
+      "icon": "server",
+      "geoCoordinates": {
+        "lat": 49.54666660015986,
+        "lng": 9.830290309220649
+      },
+      "groupLabelPos": "bottom-center",
+      "group": "Data Center Y",
+      "level": "Server"
+    }
+  ]
+}
