@@ -1,5 +1,5 @@
 # EVPN/VXLAN
-EVPN/VXLANの学習のために一足いや5足ぐらい飛んでいるが「Multi Site」構成で組んでみた
+EVPN/VXLANの学習のために一足いや5足ぐらい飛んでいるが「Multi Site・Multi Tenant」構成で組んでみた
 
 EVPNとかVXLANのことについてはZennでまとめるつもり
 
@@ -70,13 +70,3 @@ EVPNとかVXLANのことについてはZennでまとめるつもり
 | SV-08     | Host      | aa:bb:cc:20:12:38          | eth1: 192.168.20.244             | lo: 10.2.254.34  | 65234  |      |
 
 ---
-
-- **同一サイトのBGWとLeaf間、BGWとBGW間でMP-BGPによるEVPNセッションを確立**。
-- **Route TargetやVNIは別資料（またはFRR conf）に記載**。
-
-## Todo
-- [ ] READMEに随時情報をアップデートすること
-- [x] UNDERLAYの構築
-- [ ] leafのvrfで分けたからそこのBGPとかを考えないと
-- [ ] もう少し細かく設計を考える。hostのmacアドレスはleafからEVPNでBGWに伝搬されるよね????てかVTEPってなんだよVXLAN Tunnelの始点と終点らしいけど
-- [ ] EVPN, VXLANについて勉強したことをZennにまとめる  Multi Site, Multi Pod, Multi Fabricの違いってなんぞや
