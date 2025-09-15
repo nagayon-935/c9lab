@@ -1,0 +1,178 @@
+name: EVPNVXLAN-Multihoming
+prefix: ''
+
+# VLAN間ルーティングとVXLAN間ルーティングがごちゃごちゃだな
+
+topology:
+
+  defaults:
+    kind: linux
+
+  kinds:
+    linux:
+      image: frrouting/frr:v8.4.1
+      binds:
+        - config/daemons:/etc/frr/daemons
+        - config/vtysh.conf:/etc/frr/vtysh.conf
+    arista_ceos:
+      image: ceos:4.34.1F
+      env:
+        CLAB_MGMT_VRF: MGMT
+
+  nodes:
+
+    ### SPINE ###
+    RT-S-X-01:
+      binds:
+        - config/RT-S-X-01.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+
+    RT-S-X-02:
+      binds:
+        - config/RT-S-X-02.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+
+    ### LEAF ###
+    RT-L-X-01:
+      kind: arista_ceos
+      startup-config: config/RT-L-X-01.conf
+      image: ceos:4.34.1F
+
+    RT-L-X-02:
+      kind: arista_ceos
+      startup-config: config/RT-L-X-02.conf
+      image: ceos:4.34.1F
+
+    RT-L-X-03:
+      binds:
+        - config/RT-L-X-03.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
+        - ip link add l3vni-3000 type vrf table 3000
+        - ip link set up l3vni-3000
+        - ip link add br3000 type bridge
+        - ip link set br3000 master l3vni-3000 addrgenmode none
+        - ip link set br3000 mtu 9500
+        - ip link set br3000 addr aa:bb:cc:10:30:21
+        - ip link add vni3000 type vxlan local 10.1.254.23 dstport 4789 id 3000 nolearning
+        - ip link set vni3000 mtu 9500
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+        ### l2vni 1010 ###
+        - ip link add br10 type bridge
+        - ip link set br10 master l3vni-3000
+        - ip link set br10 mtu 9500
+        - ip link set br10 addr aa:bb:cc:10:12:23
+        - ip link add vni1010 type vxlan local 10.1.254.23 dstport 4789 id 1010 nolearning
+        - ip link set vni1010 mtu 9500
+        - ip link set vni1010 master br10 addrgenmode none
+        - ip link set vni1010 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1010 up
+        - ip link set up br10
+        - ip link set br10 type bridge vlan_filtering 1
+        - ip link add link eth3 name eth3.10 type vlan id 10
+        - ip link set eth3.10 master br10
+        - ip link set up eth3.10
+
+    RT-L-X-04:
+      binds:
+        - config/RT-L-X-04.conf:/etc/frr/frr.conf
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
+        - ip link add br3000 type bridge
+        - ip link add l3vni-3000 type vrf table 3000
+        - ip link set br3000 mtu 9500
+        - ip link set br3000 addr aa:bb:cc:10:30:24
+        - ip link add vni3000 type vxlan local 10.1.254.24 dstport 4789 id 3000
+          nolearning
+        - ip link set vni3000 mtu 9500
+        - ip link set vni3000 master br3000 addrgenmode none
+        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
+        - ip link set up br3000
+        - ip link set up vni3000
+        ### l2vni 1020 ###
+        - ip link add br20 type bridge
+        - ip link set br20 master l3vni-3000
+        - ip link set br20 mtu 9500
+        - ip link set br20 addr aa:bb:cc:10:12:24
+        - ip link add vni1020 type vxlan local 10.1.254.24 dstport 4789 id 1020
+          nolearning
+        - ip link set vni1020 mtu 9500
+        - ip link set vni1020 master br20 addrgenmode none
+        - ip link set vni1020 type bridge_slave neigh_suppress on learning off
+        - ip link set vni1020 up
+        - ip link set up br20
+        - ip link set br20 type bridge vlan_filtering 1
+        - ip link add link eth3 name eth3.20 type vlan id 20
+        - ip link set eth3.20 master br20
+        - ip link set up eth3.20
+
+    ### Gateway ###
+    RT-X-GW:
+      kind: arista_ceos
+      startup-config: config/RT-X-GW.conf
+      image: ceos:4.34.1F
+
+    ### Server ###
+    SV-01:
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link set eth1 address aa:bb:cc:10:11:11
+        - ip link set eth2 address aa:bb:cc:10:11:12
+        - ip link add bond0 type bond mode 802.3ad lacp_rate fast
+        - ip addr add 192.168.10.1/24 dev bond0
+        - ip link set bond0 address aa:bb:cc::10:11:01
+        - ip link set dev eth1 down
+        - ip link set dev eth2 down
+        - ip link set dev eth1 master bond0
+        - ip link set dev eth2 master bond0
+        - ip link set dev bond0 up
+        - ip route add default via 192.168.10.254
+
+    SV-02:
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.10 type vlan id 10
+        - ip link set dev eth1.10 up
+        - ip link set dev eth1.10 address aa:bb:cc:10:11:10
+        - ip addr add dev eth1.10 192.168.10.10/24
+        - ip route add default via 192.168.10.254
+
+    SV-03:
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.20 type vlan id 20
+        - ip link set dev eth1.20 up
+        - ip link set dev eth1.20 address aa:bb:cc:10:22:01
+        - ip addr add dev eth1.20 192.168.20.1/24
+        - ip route add default via 192.168.20.254
+
+  links:
+    - endpoints: [ RT-S-X-01:eth1, RT-L-X-01:eth1 ]
+    - endpoints: [ RT-S-X-01:eth2, RT-L-X-02:eth1 ]
+    - endpoints: [ RT-S-X-01:eth3, RT-L-X-03:eth1 ]
+    - endpoints: [ RT-S-X-01:eth4, RT-L-X-04:eth1 ]
+    - endpoints: [ RT-S-X-02:eth1, RT-L-X-01:eth2 ]
+    - endpoints: [ RT-S-X-02:eth2, RT-L-X-02:eth2 ]
+    - endpoints: [ RT-S-X-02:eth3, RT-L-X-03:eth2 ]
+    - endpoints: [ RT-S-X-02:eth4, RT-L-X-04:eth2 ]
+    - endpoints: [ RT-X-GW:eth1, RT-S-X-01:eth5 ]
+    - endpoints: [ RT-X-GW:eth2, RT-S-X-02:eth5 ]
+    - endpoints: [ SV-01:eth1, RT-L-X-01:eth3 ]
+    - endpoints: [ SV-01:eth2, RT-L-X-02:eth3 ]
+    - endpoints: [ SV-02:eth1, RT-L-X-03:eth3 ]
+    - endpoints: [ SV-03:eth1, RT-L-X-04:eth3 ]
+

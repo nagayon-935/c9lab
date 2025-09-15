@@ -1,0 +1,200 @@
+{
+  "freeTextAnnotations": [],
+  "groupStyleAnnotations": [
+    {
+      "id": "LEAF:1",
+      "backgroundColor": "#d9d9d9",
+      "backgroundOpacity": 20,
+      "borderColor": "#dddddd",
+      "borderWidth": 0.5,
+      "borderStyle": "solid",
+      "borderRadius": 0,
+      "color": "#ebecf0"
+    },
+    {
+      "id": "SPINE:1",
+      "backgroundColor": "#d9d9d9",
+      "backgroundOpacity": 20,
+      "borderColor": "#dddddd",
+      "borderWidth": 0.5,
+      "borderStyle": "solid",
+      "borderRadius": 0,
+      "color": "#ebecf0"
+    },
+    {
+      "id": "SERVER:1",
+      "backgroundColor": "#d9d9d9",
+      "backgroundOpacity": 20,
+      "borderColor": "#dddddd",
+      "borderWidth": 0.5,
+      "borderStyle": "solid",
+      "borderRadius": 0,
+      "color": "#ebecf0"
+    },
+    {
+      "id": "Gateway:1",
+      "backgroundColor": "#d9d9d9",
+      "backgroundOpacity": 20,
+      "borderColor": "#dddddd",
+      "borderWidth": 0.5,
+      "borderStyle": "solid",
+      "borderRadius": 0,
+      "color": "#ebecf0"
+    }
+  ],
+  "cloudNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "RT-S-X-01",
+      "position": {
+        "x": 1659,
+        "y": 870
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.712305223817786,
+        "lng": 9.545210104459159
+      },
+      "group": "SPINE",
+      "level": "1"
+    },
+    {
+      "id": "RT-S-X-02",
+      "position": {
+        "x": 1715,
+        "y": 870
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.899541972219325,
+        "lng": 9.650939775034228
+      },
+      "group": "SPINE",
+      "level": "1"
+    },
+    {
+      "id": "RT-L-X-01",
+      "position": {
+        "x": 1575,
+        "y": 968
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.236559223630806,
+        "lng": 9.396982452675251
+      },
+      "group": "LEAF",
+      "level": "1"
+    },
+    {
+      "id": "RT-L-X-02",
+      "position": {
+        "x": 1645,
+        "y": 968
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.952563677312135,
+        "lng": 9.28075194686895
+      },
+      "group": "LEAF",
+      "level": "1"
+    },
+    {
+      "id": "RT-L-X-03",
+      "position": {
+        "x": 1715,
+        "y": 968
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.212028215173035,
+        "lng": 9.730497527590558
+      },
+      "group": "LEAF",
+      "level": "1"
+    },
+    {
+      "id": "RT-L-X-04",
+      "position": {
+        "x": 1799,
+        "y": 968
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.843914939122484,
+        "lng": 9.38602623362433
+      },
+      "group": "LEAF",
+      "level": "1"
+    },
+    {
+      "id": "RT-X-GW",
+      "position": {
+        "x": 1883,
+        "y": 968
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.88293114420354,
+        "lng": 9.336881636036
+      },
+      "group": "Gateway",
+      "level": "1"
+    },
+    {
+      "id": "SV-01",
+      "position": {
+        "x": 1603,
+        "y": 1043
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.97205110205024,
+        "lng": 9.022198460519652
+      },
+      "group": "SERVER",
+      "level": "1"
+    },
+    {
+      "id": "SV-02",
+      "position": {
+        "x": 1715,
+        "y": 1038
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 48.88273597968596,
+        "lng": 9.38893293368732
+      },
+      "group": "SERVER",
+      "level": "1"
+    },
+    {
+      "id": "SV-03",
+      "position": {
+        "x": 1799,
+        "y": 1038
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.238016059742975,
+        "lng": 9.509179495077618
+      },
+      "group": "SERVER",
+      "level": "1"
+    },
+    {
+      "id": "SV-04",
+      "position": {
+        "x": 1603,
+        "y": 1099
+      },
+      "icon": "router",
+      "geoCoordinates": {
+        "lat": 49.192773713706366,
+        "lng": 9.457631700596158
+      }
+    }
+  ]
+}
