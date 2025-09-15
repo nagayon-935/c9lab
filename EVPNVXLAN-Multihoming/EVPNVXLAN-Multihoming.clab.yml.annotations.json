@@ -45,110 +45,124 @@
   "cloudNodeAnnotations": [],
   "nodeAnnotations": [
     {
-      "id": "RT-S-X-01",
-      "position": {
-        "x": 1659,
-        "y": 870
-      },
+      "id": "RT-S-01",
       "icon": "router",
+      "position": {
+        "x": -63,
+        "y": 49
+      },
       "geoCoordinates": {
-        "lat": 48.712305223817786,
-        "lng": 9.545210104459159
+        "lat": 49.03093438049306,
+        "lng": 9.406770296428196
       },
       "group": "SPINE",
       "level": "1"
     },
     {
-      "id": "RT-S-X-02",
-      "position": {
-        "x": 1715,
-        "y": 870
-      },
+      "id": "RT-S-02",
       "icon": "router",
+      "position": {
+        "x": 77,
+        "y": 49
+      },
       "geoCoordinates": {
-        "lat": 48.899541972219325,
-        "lng": 9.650939775034228
+        "lat": 49.23093438049306,
+        "lng": 9.606770296428197
       },
       "group": "SPINE",
       "level": "1"
     },
     {
-      "id": "RT-L-X-01",
-      "position": {
-        "x": 1575,
-        "y": 968
-      },
+      "id": "RT-L-01",
       "icon": "router",
+      "position": {
+        "x": -105,
+        "y": 161
+      },
       "geoCoordinates": {
-        "lat": 49.236559223630806,
-        "lng": 9.396982452675251
+        "lat": 49.430934380493056,
+        "lng": 9.806770296428196
       },
       "group": "LEAF",
       "level": "1"
     },
     {
-      "id": "RT-L-X-02",
-      "position": {
-        "x": 1645,
-        "y": 968
-      },
+      "id": "RT-L-02",
       "icon": "router",
+      "position": {
+        "x": -21,
+        "y": 161
+      },
       "geoCoordinates": {
-        "lat": 48.952563677312135,
-        "lng": 9.28075194686895
+        "lat": 49.63093438049306,
+        "lng": 10.006770296428195
       },
       "group": "LEAF",
       "level": "1"
     },
     {
-      "id": "RT-L-X-03",
-      "position": {
-        "x": 1715,
-        "y": 968
-      },
+      "id": "RT-L-03",
       "icon": "router",
+      "position": {
+        "x": 49,
+        "y": 161
+      },
       "geoCoordinates": {
-        "lat": 49.212028215173035,
-        "lng": 9.730497527590558
+        "lat": 49.830934380493055,
+        "lng": 9.306770296428196
       },
       "group": "LEAF",
       "level": "1"
     },
     {
-      "id": "RT-L-X-04",
-      "position": {
-        "x": 1799,
-        "y": 968
-      },
+      "id": "RT-L-04",
       "icon": "router",
+      "position": {
+        "x": 119,
+        "y": 161
+      },
       "geoCoordinates": {
-        "lat": 48.843914939122484,
-        "lng": 9.38602623362433
+        "lat": 49.13093438049306,
+        "lng": 9.506770296428195
       },
       "group": "LEAF",
       "level": "1"
     },
     {
-      "id": "RT-X-GW",
-      "position": {
-        "x": 1883,
-        "y": 968
-      },
+      "id": "RT-GW-01",
       "icon": "router",
+      "position": {
+        "x": -175,
+        "y": 105
+      },
       "geoCoordinates": {
-        "lat": 48.88293114420354,
-        "lng": 9.336881636036
+        "lat": 49.330934380493055,
+        "lng": 9.706770296428196
+      },
+      "group": "Gateway",
+      "level": "1"
+    },
+    {
+      "id": "RT-GW-02",
+      "icon": "router",
+      "position": {
+        "x": 161,
+        "y": 105
+      },
+      "geoCoordinates": {
+        "lat": 49.53093438049306,
+        "lng": 9.906770296428196
       },
       "group": "Gateway",
       "level": "1"
     },
     {
       "id": "SV-01",
-      "position": {
-        "x": 1603,
-        "y": 1043
-      },
       "icon": "router",
+      "position": {
+        "x": -63,
+        "y": 217
+      },
       "geoCoordinates": {
         "lat": 48.97205110205024,
         "lng": 9.022198460519652
@@ -158,11 +172,11 @@
     },
     {
       "id": "SV-02",
-      "position": {
-        "x": 1715,
-        "y": 1038
-      },
       "icon": "router",
+      "position": {
+        "x": 49,
+        "y": 217
+      },
       "geoCoordinates": {
         "lat": 48.88273597968596,
         "lng": 9.38893293368732
@@ -172,29 +186,17 @@
     },
     {
       "id": "SV-03",
-      "position": {
-        "x": 1799,
-        "y": 1038
-      },
       "icon": "router",
+      "position": {
+        "x": 119,
+        "y": 217
+      },
       "geoCoordinates": {
         "lat": 49.238016059742975,
         "lng": 9.509179495077618
       },
       "group": "SERVER",
       "level": "1"
-    },
-    {
-      "id": "SV-04",
-      "position": {
-        "x": 1603,
-        "y": 1099
-      },
-      "icon": "router",
-      "geoCoordinates": {
-        "lat": 49.192773713706366,
-        "lng": 9.457631700596158
-      }
     }
   ]
 }

@@ -1,7 +1,7 @@
 name: EVPNVXLAN-Multihoming
 prefix: ''
 
-# VLAN間ルーティングとVXLAN間ルーティングがごちゃごちゃだな
+# L3VNIが上手く使われてなさそうな気がするのとDUPがめっちゃ起こる
 
 topology:
 
@@ -22,34 +22,32 @@ topology:
   nodes:
 
     ### SPINE ###
-    RT-S-X-01:
+    RT-S-01:
       binds:
-        - config/RT-S-X-01.conf:/etc/frr/frr.conf
+        - config/RT-S-01.conf:/etc/frr/frr.conf
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
 
-    RT-S-X-02:
+    RT-S-02:
       binds:
-        - config/RT-S-X-02.conf:/etc/frr/frr.conf
+        - config/RT-S-02.conf:/etc/frr/frr.conf
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
 
     ### LEAF ###
-    RT-L-X-01:
+    RT-L-01:
       kind: arista_ceos
-      startup-config: config/RT-L-X-01.conf
-      image: ceos:4.34.1F
+      startup-config: config/RT-L-01.conf
 
-    RT-L-X-02:
+    RT-L-02:
       kind: arista_ceos
-      startup-config: config/RT-L-X-02.conf
-      image: ceos:4.34.1F
+      startup-config: config/RT-L-02.conf
 
-    RT-L-X-03:
+    RT-L-03:
       binds:
-        - config/RT-L-X-03.conf:/etc/frr/frr.conf
+        - config/RT-L-03.conf:/etc/frr/frr.conf
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
@@ -60,7 +58,8 @@ topology:
         - ip link set br3000 master l3vni-3000 addrgenmode none
         - ip link set br3000 mtu 9500
         - ip link set br3000 addr aa:bb:cc:10:30:21
-        - ip link add vni3000 type vxlan local 10.1.254.23 dstport 4789 id 3000 nolearning
+        - ip link add vni3000 type vxlan local 10.1.254.23 dstport 4789 id 3000
+          nolearning
         - ip link set vni3000 mtu 9500
         - ip link set vni3000 master br3000 addrgenmode none
         - ip link set vni3000 type bridge_slave neigh_suppress on learning off
@@ -71,7 +70,8 @@ topology:
         - ip link set br10 master l3vni-3000
         - ip link set br10 mtu 9500
         - ip link set br10 addr aa:bb:cc:10:12:23
-        - ip link add vni1010 type vxlan local 10.1.254.23 dstport 4789 id 1010 nolearning
+        - ip link add vni1010 type vxlan local 10.1.254.23 dstport 4789 id 1010
+          nolearning
         - ip link set vni1010 mtu 9500
         - ip link set vni1010 master br10 addrgenmode none
         - ip link set vni1010 type bridge_slave neigh_suppress on learning off
@@ -82,9 +82,9 @@ topology:
         - ip link set eth3.10 master br10
         - ip link set up eth3.10
 
-    RT-L-X-04:
+    RT-L-04:
       binds:
-        - config/RT-L-X-04.conf:/etc/frr/frr.conf
+        - config/RT-L-04.conf:/etc/frr/frr.conf
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
@@ -118,10 +118,13 @@ topology:
         - ip link set up eth3.20
 
     ### Gateway ###
-    RT-X-GW:
+    RT-GW-01:
       kind: arista_ceos
-      startup-config: config/RT-X-GW.conf
-      image: ceos:4.34.1F
+      startup-config: config/RT-GW-01.conf
+
+    RT-GW-02:
+      kind: arista_ceos
+      startup-config: config/RT-GW-02.conf
 
     ### Server ###
     SV-01:
@@ -161,18 +164,19 @@ topology:
         - ip route add default via 192.168.20.254
 
   links:
-    - endpoints: [ RT-S-X-01:eth1, RT-L-X-01:eth1 ]
-    - endpoints: [ RT-S-X-01:eth2, RT-L-X-02:eth1 ]
-    - endpoints: [ RT-S-X-01:eth3, RT-L-X-03:eth1 ]
-    - endpoints: [ RT-S-X-01:eth4, RT-L-X-04:eth1 ]
-    - endpoints: [ RT-S-X-02:eth1, RT-L-X-01:eth2 ]
-    - endpoints: [ RT-S-X-02:eth2, RT-L-X-02:eth2 ]
-    - endpoints: [ RT-S-X-02:eth3, RT-L-X-03:eth2 ]
-    - endpoints: [ RT-S-X-02:eth4, RT-L-X-04:eth2 ]
-    - endpoints: [ RT-X-GW:eth1, RT-S-X-01:eth5 ]
-    - endpoints: [ RT-X-GW:eth2, RT-S-X-02:eth5 ]
-    - endpoints: [ SV-01:eth1, RT-L-X-01:eth3 ]
-    - endpoints: [ SV-01:eth2, RT-L-X-02:eth3 ]
-    - endpoints: [ SV-02:eth1, RT-L-X-03:eth3 ]
-    - endpoints: [ SV-03:eth1, RT-L-X-04:eth3 ]
-
+    - endpoints: [ "RT-L-01:eth1", "RT-S-01:eth1" ]
+    - endpoints: [ "RT-L-01:eth2", "RT-S-02:eth1" ]
+    - endpoints: [ "RT-L-02:eth1", "RT-S-01:eth2" ]
+    - endpoints: [ "RT-L-02:eth2", "RT-S-02:eth2" ]
+    - endpoints: [ "RT-L-03:eth1", "RT-S-01:eth3" ]
+    - endpoints: [ "RT-L-03:eth2", "RT-S-02:eth3" ]
+    - endpoints: [ "RT-L-04:eth1", "RT-S-01:eth4" ]
+    - endpoints: [ "RT-L-04:eth2", "RT-S-02:eth4" ]
+    - endpoints: [ "RT-GW-01:eth1", "RT-S-01:eth5" ]
+    - endpoints: [ "RT-GW-01:eth2", "RT-S-02:eth5" ]
+    - endpoints: [ "RT-GW-02:eth1", "RT-S-01:eth6" ]
+    - endpoints: [ "RT-GW-02:eth2", "RT-S-02:eth6" ]
+    - endpoints: [ "SV-01:eth1", "RT-L-01:eth3" ]
+    - endpoints: [ "SV-01:eth2", "RT-L-02:eth3" ]
+    - endpoints: [ "SV-02:eth1", "RT-L-03:eth3" ]
+    - endpoints: [ "SV-03:eth1", "RT-L-04:eth3" ]
