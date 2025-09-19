@@ -1,7 +1,9 @@
 # EVPN/VXLAN
 EVPN/VXLANの学習のために一足いや5足ぐらい飛んでいるが「Multi Site・Multi Tenant」構成で組んでみた
 
-EVPNとかVXLANのことについてはZennでまとめるつもり
+Zennの記事
+[EVPN/VXLAN -座学編-](https://zenn.dev/nagayon/articles/jicjdsifjie324jifso "EVPN/VXLAN -座学編-")  
+[EVPN/VXLAN -実践編-](https://zenn.dev/nagayon/articles/09379fdsahieojl3 "EVPN/VXLAN -実践編-")
 
 ## 構成
 ![EVPN/VXLAN Multisite](./images/EVPNVXLAN.svg "EVPN/VXLAN Multisite figure")
