@@ -1,0 +1,62 @@
+name: SRv6-TE_uSID
+prefix: ""
+
+topology:
+
+  defaults:
+    kind: cisco_xrd
+
+  kinds:
+    cisco_xrd:
+      image: nagayon/cisco_xrd:25.2.2-v1
+    linux:
+      image: nicolaka/netshoot:latest
+
+  nodes:
+
+    RT-01:
+      startup-config: config/RT-01.cfg
+    RT-02:
+      startup-config: config/RT-02.cfg
+    RT-03:
+      startup-config: config/RT-03.cfg
+    RT-04:
+      startup-config: config/RT-04.cfg
+    RT-05:
+      startup-config: config/RT-05.cfg
+    RT-06:
+      startup-config: config/RT-06.cfg
+    RT-07:
+      startup-config: config/RT-07.cfg
+    RT-08:
+      startup-config: config/RT-08.cfg
+    RT-09:
+      startup-config: config/RT-09.cfg
+    SV-01:
+      kind: linux
+      exec:
+        - ip addr add 100.100.100.1/24 dev eth1
+        - ip route del default
+        - ip route add default via 100.100.100.254
+    SV-02:
+      kind: linux
+      exec:
+        - ip addr add 200.200.200.1/24 dev eth1
+        - ip route del default
+        - ip route add default via 200.200.200.254
+
+  links:
+    - endpoints: [ "RT-01:Gi0-0-0-1", "RT-02:Gi0-0-0-1" ]
+    - endpoints: [ "RT-02:Gi0-0-0-2", "RT-03:Gi0-0-0-1" ]
+    - endpoints: [ "RT-04:Gi0-0-0-2", "RT-05:Gi0-0-0-2" ]
+    - endpoints: [ "RT-05:Gi0-0-0-3", "RT-06:Gi0-0-0-2" ]
+    - endpoints: [ "RT-07:Gi0-0-0-1", "RT-04:Gi0-0-0-3" ]
+    - endpoints: [ "RT-09:Gi0-0-0-1", "RT-06:Gi0-0-0-3" ]
+    - endpoints: [ "RT-08:Gi0-0-0-3", "RT-09:Gi0-0-0-2" ]
+    - endpoints: [ "SV-01:eth1", "RT-07:Gi0-0-0-3" ]
+    - endpoints: [ "SV-02:eth1", "RT-09:Gi0-0-0-3" ]
+    - endpoints: [ "RT-03:Gi0-0-0-2", "RT-06:Gi0-0-0-1" ]
+    - endpoints: [ "RT-02:Gi0-0-0-3", "RT-05:Gi0-0-0-1" ]
+    - endpoints: [ "RT-04:Gi0-0-0-1", "RT-01:Gi0-0-0-2" ]
+    - endpoints: [ "RT-08:Gi0-0-0-1", "RT-07:Gi0-0-0-2" ]
+    - endpoints: [ "RT-08:Gi0-0-0-2", "RT-05:Gi0-0-0-4" ]

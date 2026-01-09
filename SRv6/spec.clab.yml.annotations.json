@@ -1,0 +1,97 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "RT-01",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 119,
+        "y": -7
+      }
+    },
+    {
+      "id": "RT-02",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 203,
+        "y": -7
+      }
+    },
+    {
+      "id": "RT-03",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 287,
+        "y": -7
+      }
+    },
+    {
+      "id": "RT-04",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 119,
+        "y": 63
+      }
+    },
+    {
+      "id": "RT-05",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 203,
+        "y": 63
+      }
+    },
+    {
+      "id": "RT-06",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 287,
+        "y": 63
+      }
+    },
+    {
+      "id": "RT-07",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 119,
+        "y": 133
+      }
+    },
+    {
+      "id": "RT-08",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 203,
+        "y": 133
+      }
+    },
+    {
+      "id": "RT-09",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 287,
+        "y": 133
+      }
+    },
+    {
+      "id": "SV-01",
+      "position": {
+        "x": 35,
+        "y": 133
+      }
+    },
+    {
+      "id": "SV-02",
+      "position": {
+        "x": 371,
+        "y": 133
+      }
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}
