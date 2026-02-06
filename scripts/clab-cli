@@ -1,0 +1,52 @@
+#!/usr/bin/ bash
+
+# Usage: clab-cli <node-name> [shell]
+
+if [ -z "$1" ]; then
+    echo "Usage: clab-cli <node-name> [shell]"
+    exit 1
+fi
+
+NODE=$1
+SHELL_CMD=$2
+
+# Detect kind from clab.yml
+CLAB_FILE=$(ls *.clab.yml 2>/dev/null | head -n 1)
+if [ -z "$CLAB_FILE" ]; then
+    echo "Error: No *.clab.yml found in current directory"
+    exit 1
+fi
+
+# Simple kind detection using grep/sed
+KIND=$(grep -A 10 "$NODE:" "$CLAB_FILE" | grep "kind:" | head -n 1 | awk '{print $2}')
+
+# Default to linux if not found
+if [ -z "$KIND" ]; then
+    # Check topology defaults
+    KIND=$(grep -A 5 "defaults:" "$CLAB_FILE" | grep "kind:" | head -n 1 | awk '{print $2}')
+    [ -z "$KIND" ] && KIND="linux"
+fi
+
+echo "Connecting to $NODE (kind: $KIND)..."
+
+case "$KIND" in
+    linux)
+        if [ -n "$SHELL_CMD" ]; then
+            sudo docker exec -it "$NODE" "$SHELL_CMD"
+        elif sudo docker exec "$NODE" which vtysh >/dev/null 2>&1; then
+            sudo docker exec -it "$NODE" vtysh
+        else
+            sudo docker exec -it "$NODE" bash || sudo docker exec -it "$NODE" sh
+        fi
+        ;;
+    cisco_xrd|cisco_xrv9k|cisco_csr1000v|cisco_n9kv|arista_ceos)
+        ssh -o StrictHostKeyChecking=no "admin@$NODE"
+        ;;
+    juniper_crpd)
+        ssh -o StrictHostKeyChecking=no "root@$NODE"
+        ;;
+    *)
+        # Fallback to SSH
+        ssh -o StrictHostKeyChecking=no "$NODE"
+        ;;
+esac

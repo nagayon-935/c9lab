@@ -1,0 +1,124 @@
+#!/usr/bin/ python3
+import argparse
+import glob
+import os
+import subprocess
+import sys
+import yaml
+import re
+from concurrent.futures import ThreadPoolExecutor
+
+# よく使う操作の抽象化
+COMMAND_ALIASES = {
+    "bgp-summary": {
+        "linux": "vtysh -c 'show ip bgp summary'",
+        "juniper_crpd": "cli -c 'show bgp summary'",
+        "cisco_xrd": "show bgp summary",
+        "cisco_xrv9k": "show bgp summary",
+        "arista_ceos": "show ip bgp summary",
+    },
+    "ip-route": {
+        "linux": "ip route",
+        "juniper_crpd": "cli -c 'show route'",
+        "cisco_xrd": "show route",
+        "arista_ceos": "show ip route",
+    },
+    "interfaces": {
+        "linux": "ip addr",
+        "juniper_crpd": "cli -c 'show interfaces terse'",
+        "cisco_xrd": "show interfaces description",
+        "arista_ceos": "show interfaces status",
+    }
+}
+
+KIND_DEFAULTS = {
+    "cisco_xrd": ("clab", "clab@123"),
+    "cisco_xrv9k": ("clab", "clab@123"),
+    "cisco_csr1000v": ("admin", "admin"),
+    "cisco_n9kv": ("admin", "admin"),
+    "cisco_iol": ("admin", "admin"),
+    "arista_ceos": ("admin", "admin"),
+    "juniper_crpd": ("root", "clab123"),
+}
+
+def load_topology():
+    matches = glob.glob("*.clab.yml")
+    if not matches:
+        return None, None
+    topo_path = matches[0]
+    with open(topo_path, "r") as f:
+        return topo_path, yaml.safe_load(f)
+
+def run_cmd(node, kind, command):
+    if not command:
+        return node, "\033[90m(skipped: no command for this kind)\033[0m"
+
+    if kind == "linux" or kind is None:
+        full_cmd = ["sudo", "docker", "exec", node, "sh", "-c", command]
+        res = subprocess.run(full_cmd, capture_output=True, text=True)
+        return node, res.stdout + res.stderr
+    
+    # Network OS nodes via SSH
+    user, _ = KIND_DEFAULTS.get(kind, ("admin", "admin"))
+    ssh_cmd = ["ssh", "-o", "StrictHostKeyChecking=no", "-o", "BatchMode=yes", f"{user}@{node}", command]
+    try:
+        res = subprocess.run(ssh_cmd, capture_output=True, text=True, timeout=10)
+        return node, res.stdout + res.stderr
+    except subprocess.TimeoutExpired:
+        return node, "\033[31mError: SSH Timeout\033[0m"
+
+def main():
+    parser = argparse.ArgumentParser(description="Execute command on all nodes with kind-awareness")
+    parser.add_argument("command", nargs="?", help="Command or Alias (e.g. bgp-summary)")
+    parser.add_argument("--kind", action="append", help="Kind-specific command, format: kind='command'")
+    parser.add_argument("--filter", help="Filter nodes by name (regex)")
+    args = parser.parse_args()
+
+    # Parse kind-specific overrides from --kind arguments
+    kind_overrides = {}
+    if args.kind:
+        for k in args.kind:
+            if "=" in k:
+                kind, cmd = k.split("=", 1)
+                kind_overrides[kind.strip()] = cmd.strip()
+
+    path, topo = load_topology()
+    if not topo:
+        print("No clab.yml found")
+        sys.exit(1)
+
+    nodes = topo["topology"]["nodes"]
+    default_kind = topo["topology"].get("defaults", {}).get("kind", "linux")
+    
+    with ThreadPoolExecutor(max_workers=15) as executor:
+        futures = []
+        for name, info in nodes.items():
+            if args.filter and not re.search(args.filter, name):
+                continue
+            
+            kind = info.get("kind", default_kind)
+            if kind == "bridge": continue
+
+            # Determine which command to run for this node
+            cmd_to_run = None
+            
+            # 1. Check if it's an override via --kind
+            if kind in kind_overrides:
+                cmd_to_run = kind_overrides[kind]
+            # 2. Check if it's a known alias
+            elif args.command in COMMAND_ALIASES:
+                cmd_to_run = COMMAND_ALIASES[args.command].get(kind)
+            # 3. Use the literal command passed
+            else:
+                cmd_to_run = args.command
+
+            futures.append(executor.submit(run_cmd, name, kind, cmd_to_run))
+        
+        for future in futures:
+            node, output = future.result()
+            print(f"\033[36m=== {node} ===\033[0m")
+            print(output.strip() if output.strip() else "(no output)")
+            print()
+
+if __name__ == "__main__":
+    main()

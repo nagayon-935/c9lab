@@ -2,4 +2,4 @@
 **/*.drawio
 **/*.drawio.bkp
 **/.DS_Store
-**/clab-*
+**/.env
