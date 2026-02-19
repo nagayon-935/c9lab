@@ -81,14 +81,34 @@
       "position": {
         "x": 35,
         "y": 133
-      }
+      },
+      "icon": "client"
     },
     {
       "id": "SV-02",
       "position": {
         "x": 371,
         "y": 133
-      }
+      },
+      "icon": "client"
+    },
+    {
+      "id": "SV-03",
+      "position": {
+        "x": 35,
+        "y": -7
+      },
+      "icon": "client",
+      "interfacePattern": "e1-{n}"
+    },
+    {
+      "id": "SV-04",
+      "position": {
+        "x": 371,
+        "y": -7
+      },
+      "icon": "client",
+      "interfacePattern": "e1-{n}"
     }
   ],
   "edgeAnnotations": [],

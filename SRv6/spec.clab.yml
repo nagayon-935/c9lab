@@ -8,7 +8,7 @@ topology:
 
   kinds:
     cisco_xrd:
-      image: nagayon/cisco_xrd:25.2.2-v1
+      image: ghcr.io/nagayon-935/network-images/cisco_xrd:25.2.2-v1
     linux:
       image: nicolaka/netshoot:latest
 
@@ -44,6 +44,18 @@ topology:
         - ip addr add 200.200.200.1/24 dev eth1
         - ip route del default
         - ip route add default via 200.200.200.254
+    SV-03:
+      kind: linux
+      exec:
+        - ip addr add 100.100.100.11/24 dev eth1
+        - ip route del default
+        - ip route add default via 100.100.100.254
+    SV-04:
+      kind: linux
+      exec:
+        - ip addr add 200.200.200.11/24 dev eth1
+        - ip route del default
+        - ip route add default via 200.200.200.254
 
   links:
     - endpoints: [ "RT-01:Gi0-0-0-1", "RT-02:Gi0-0-0-1" ]
@@ -60,3 +72,5 @@ topology:
     - endpoints: [ "RT-04:Gi0-0-0-1", "RT-01:Gi0-0-0-2" ]
     - endpoints: [ "RT-08:Gi0-0-0-1", "RT-07:Gi0-0-0-2" ]
     - endpoints: [ "RT-08:Gi0-0-0-2", "RT-05:Gi0-0-0-4" ]
+    - endpoints: [ "RT-01:Gi0-0-0-3", "SV-03:eth1" ]
+    - endpoints: [ "RT-03:Gi0-0-0-3", "SV-04:eth1" ]
