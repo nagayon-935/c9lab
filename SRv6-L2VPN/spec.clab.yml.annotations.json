@@ -41,6 +41,29 @@
         "x": 840,
         "y": 320
       }
+    },
+    {
+      "id": "RT-04",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 280,
+        "y": 180
+      }
+    },
+    {
+      "id": "RT-05",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 560,
+        "y": 180
+      }
+    },
+    {
+      "id": "SV-03",
+      "position": {
+        "x": 420,
+        "y": 100
+      }
     }
   ],
   "edgeAnnotations": [],
