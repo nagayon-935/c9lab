@@ -1,0 +1,75 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "pe1",
+      "position": {
+        "x": 400,
+        "y": 280
+      }
+    },
+    {
+      "id": "pe2",
+      "position": {
+        "x": 400,
+        "y": 380
+      }
+    },
+    {
+      "id": "pe3",
+      "position": {
+        "x": 720,
+        "y": 280
+      }
+    },
+    {
+      "id": "p1",
+      "position": {
+        "x": 560,
+        "y": 280
+      }
+    },
+    {
+      "id": "p2",
+      "position": {
+        "x": 580,
+        "y": 480
+      }
+    },
+    {
+      "id": "ce1",
+      "position": {
+        "x": 260,
+        "y": 280
+      },
+      "icon": "pe"
+    },
+    {
+      "id": "ce2",
+      "position": {
+        "x": 840,
+        "y": 280
+      }
+    },
+    {
+      "id": "ce3",
+      "position": {
+        "x": 800,
+        "y": 380
+      }
+    },
+    {
+      "id": "ce12",
+      "position": {
+        "x": 260,
+        "y": 380
+      }
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}
