@@ -59,10 +59,26 @@
       }
     },
     {
-      "id": "SV-03",
+      "id": "SV-04",
       "position": {
-        "x": 420,
-        "y": 100
+        "x": 0,
+        "y": 440
+      }
+    },
+    {
+      "id": "RT-CE-01",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 0,
+        "y": 320
+      }
+    },
+    {
+      "id": "RT-CE-02",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 820,
+        "y": 320
       }
     }
   ],
