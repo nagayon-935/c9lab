@@ -20,10 +20,6 @@ topology:
       startup-config: config/RT-02.cfg
     RT-03:
       startup-config: config/RT-03.cfg
-    # RT-04:
-    #   startup-config: config/RT-04.cfg
-    # RT-05:
-    #   startup-config: config/RT-05.cfg
     RT-CE-01:
       startup-config: config/RT-CE-01.cfg
     RT-CE-02:
@@ -34,7 +30,3 @@ topology:
     - endpoints: [ "RT-02:Gi0-0-0-2", "RT-03:Gi0-0-0-1" ]
     - endpoints: [ "RT-CE-01:Gi0-0-0-1", "RT-01:Gi0-0-0-2" ]
     - endpoints: [ "RT-CE-02:Gi0-0-0-1", "RT-03:Gi0-0-0-2" ]
-    # - endpoints: [ "RT-04:Gi0-0-0-1", "RT-02:Gi0-0-0-3" ]
-    # - endpoints: [ "RT-05:Gi0-0-0-1", "RT-02:Gi0-0-0-4" ]
-    # - endpoints: [ "SV-03:eth1", "RT-04:Gi0-0-0-2" ]
-    # - endpoints: [ "SV-03:eth2", "RT-05:Gi0-0-0-2" ]
