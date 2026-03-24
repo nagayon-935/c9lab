@@ -8,7 +8,7 @@ topology:
 
   kinds:
     linux:
-      image: frrouting/frr:v8.4.1
+      image: ghcr.io/nagayon-935/network-images/frr:10.5.1
       binds:
         - config/daemons:/etc/frr/daemons
         - config/vtysh.conf:/etc/frr/vtysh.conf
