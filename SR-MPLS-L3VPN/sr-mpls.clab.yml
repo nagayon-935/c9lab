@@ -38,11 +38,6 @@ topology:
         graph-posX: "1105"
         graph-posY: "725"
         graph-groupLabelPos: bottom-center
-    CE04:
-      binds:
-        - config/CE03.conf:/etc/frr/frr.conf
-      labels:
-        graph-icon: router
 
     PE01:
       binds:
@@ -95,7 +90,6 @@ topology:
 
   links:
     - endpoints: [ "CE01:eth1", "PE01:eth3" ]
-    - endpoints: [ "CE02:eth1", "PE01:eth4" ]
     - endpoints: [ "PE01:eth2", "RT01:eth1" ]
     - endpoints: [ "PE01:eth3", "RT02:eth1" ]
     - endpoints: [ "RT01:eth2", "RT02:eth2" ]
@@ -104,5 +98,5 @@ topology:
     - endpoints: [ "RT03:eth2", "RT04:eth2" ]
     - endpoints: [ "RT03:eth3", "PE02:eth3" ]
     - endpoints: [ "RT04:eth3", "PE02:eth4" ]
-    - endpoints: [ "PE02:eth1", "CE03:eth1" ]
-    - endpoints: [ "PE02:eth2", "CE04:eth1" ]
+    - endpoints: [ "PE02:eth1", "CE02:eth1" ]
+    - endpoints: [ "PE02:eth2", "CE03:eth1" ]
