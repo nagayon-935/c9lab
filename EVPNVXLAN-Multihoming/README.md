@@ -3,20 +3,30 @@
 このプロジェクトは、Arista cEOS と FRR (Linux) を組み合わせた EVPN-VXLAN ファブリックの検証環境です。
 特に、**集中型エニーキャストゲートウェイ (Centralized Anycast Gateway)** を 2 台のノードで **All-Active** に構成し、冗長性と負荷分散（ECMP）を両立させています。
 
-## ネットワーク構成
+## ネットワーク構成図
+![Topology Diagram](./images/EVPNVXLAN-Multihoming.svg)
 
-### 構成概要
-- **Spine (RT-S-01, 02)**: Arista cEOS (AS 65110)。BGP EVPN の集中ピア（ルートリフレクタ的動作）として機能。
-- **Leaf (RT-L-01, 02)**: Arista cEOS (AS 65121, 65122)。**ESI Multihoming** を使用し、`SV-01` をマルチホーム収容。
-- **Leaf (RT-L-03, 04)**: FRR/Linux (AS 65123, 65124)。Linux ブリッジと VXLAN デバイスを用いた EVPN 構成。
-- **Gateway (RT-GW-01, 02)**: Arista cEOS (AS 65130)。VLAN 10/20 の **Centralized Anycast Gateway**。
+## ネットワークパラメータ
 
-### 接続構成 (L2/L3)
-- **Underlay**: IPv6 Link-Local を使用した **BGP Unnumbered** 構成。
-- **Overlay**: EVPN-VXLAN。
-- **VNI マッピング**:
-    - VNI 1010: VLAN 10 (192.168.10.0/24)
-    - VNI 1020: VLAN 20 (192.168.20.0/24)
+### コントロールプレーン / アンダーレイ
+| カテゴリ | ノード名 | AS番号 | Loopback0 (RID) | Anycast VTEP | 役割 / 備考 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Spine** | RT-S-01 | 65110 | 10.1.254.11 | - | BGP EVPN RR / Underlay Hub |
+| **Spine** | RT-S-02 | 65110 | 10.1.254.12 | - | BGP EVPN RR / Underlay Hub |
+| **Leaf** | RT-L-01 | 65121 | 10.1.254.21 | - | ESI Multihoming (ESI: ...0809) |
+| **Leaf** | RT-L-02 | 65122 | 10.1.254.22 | - | ESI Multihoming (ESI: ...0809) |
+| **Leaf** | RT-L-03 | 65123 | 10.1.254.23 | - | FRR Node (VNI 1010) |
+| **Leaf** | RT-L-04 | 65124 | 10.1.254.24 | - | FRR Node (VNI 1020) |
+| **Gateway** | RT-GW-01 | 65130 | 10.1.254.31 | 10.1.254.30 | Centralized Anycast GW (All-Active) |
+| **Gateway** | RT-GW-02 | 65130 | 10.1.254.32 | 10.1.254.30 | Centralized Anycast GW (All-Active) |
+
+### データプレーン (Anycast GW & Servers)
+| ノード名 | インターフェース | IPアドレス | MACアドレス | 備考 |
+| :--- | :--- | :--- | :--- | :--- |
+| **Anycast GW** | Vlan 10/20 | .254 | aa:bb:cc:00:02:54 | Virtual IP/MAC |
+| **SV-01** | bond0 | 192.168.10.1/24 | aa:bb:cc:10:11:01 | VLAN 10 (Access) |
+| **SV-02** | eth1.10 | 192.168.10.10/24 | aa:bb:cc:10:11:10 | VLAN 10 (Tagged) |
+| **SV-03** | eth1.20 | 192.168.20.1/24 | aa:bb:cc:10:22:01 | VLAN 20 (Tagged) |
 
 ## 主要な技術的特徴
 
