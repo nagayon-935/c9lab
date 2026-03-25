@@ -1,6 +1,7 @@
 {
   "freeTextAnnotations": [],
   "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
   "groupStyleAnnotations": [],
   "networkNodeAnnotations": [],
   "nodeAnnotations": [
@@ -8,7 +9,7 @@
       "id": "RT-01",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 160,
+        "x": 240,
         "y": 320
       }
     },
@@ -24,39 +25,15 @@
       "id": "RT-03",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 680,
+        "x": 600,
         "y": 320
       }
-    },
-    {
-      "id": "RT-CE-03",
-      "position": {
-        "x": 420,
-        "y": 80
-      },
-      "interfacePattern": "Gi0-0-0-{n}"
     },
     {
       "id": "SV-02",
       "position": {
         "x": 840,
         "y": 320
-      }
-    },
-    {
-      "id": "RT-04",
-      "interfacePattern": "Gi0-0-0-{n}",
-      "position": {
-        "x": 300,
-        "y": 200
-      }
-    },
-    {
-      "id": "RT-05",
-      "interfacePattern": "Gi0-0-0-{n}",
-      "position": {
-        "x": 520,
-        "y": 200
       }
     },
     {
@@ -70,7 +47,7 @@
       "id": "RT-CE-01",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 0,
+        "x": 40,
         "y": 320
       }
     },
@@ -78,7 +55,7 @@
       "id": "RT-CE-02",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 820,
+        "x": 780,
         "y": 320
       }
     }
