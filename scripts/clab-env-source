@@ -12,6 +12,11 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   exit 2
 fi
 
+# scripts ディレクトリを PATH に追加
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export PATH="$SCRIPT_DIR:$PATH"
+unset SCRIPT_DIR
+
 # 初期値設定
 ENV_FILE=".env"
 OPTIND=1

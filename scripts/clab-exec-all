@@ -13,6 +13,8 @@ COMMAND_ALIASES = {
     "bgp-summary": {
         "linux": "vtysh -c 'show ip bgp summary'",
         "juniper_crpd": "cli -c 'show bgp summary'",
+        "juniper_vjunosrouter": "show bgp summary",
+        "juniper_vjunosswitch": "show bgp summary",
         "cisco_xrd": "show bgp summary",
         "cisco_xrv9k": "show bgp summary",
         "arista_ceos": "show ip bgp summary",
@@ -20,13 +22,19 @@ COMMAND_ALIASES = {
     "ip-route": {
         "linux": "ip route",
         "juniper_crpd": "cli -c 'show route'",
+        "juniper_vjunosrouter": "show route",
+        "juniper_vjunosswitch": "show route",
         "cisco_xrd": "show route",
+        "cisco_xrv9k": "show route",
         "arista_ceos": "show ip route",
     },
     "interfaces": {
         "linux": "ip addr",
         "juniper_crpd": "cli -c 'show interfaces terse'",
+        "juniper_vjunosrouter": "show interfaces terse",
+        "juniper_vjunosswitch": "show interfaces terse",
         "cisco_xrd": "show interfaces description",
+        "cisco_xrv9k": "show interfaces description",
         "arista_ceos": "show interfaces status",
     }
 }
@@ -39,6 +47,11 @@ KIND_DEFAULTS = {
     "cisco_iol": ("admin", "admin"),
     "arista_ceos": ("admin", "admin"),
     "juniper_crpd": ("root", "clab123"),
+    "juniper_vjunosrouter": ("admin", "admin@123"),
+    "juniper_vjunosswitch": ("admin", "admin@123"),
+    "juniper_vmx": ("admin", "admin@123"),
+    "juniper_vsrx": ("admin", "admin@123"),
+    "juniper_cjunosevolved": ("admin", "admin@123"),
 }
 
 def load_topology():

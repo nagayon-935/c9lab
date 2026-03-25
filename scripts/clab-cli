@@ -39,11 +39,17 @@ case "$KIND" in
             sudo docker exec -it "$NODE" bash || sudo docker exec -it "$NODE" sh
         fi
         ;;
-    cisco_xrd|cisco_xrv9k|cisco_csr1000v|cisco_n9kv|arista_ceos)
+    cisco_xrd|cisco_xrv9k)
+        ssh -o StrictHostKeyChecking=no "clab@$NODE"
+        ;;
+    cisco_csr1000v|cisco_n9kv|cisco_iol|arista_ceos)
         ssh -o StrictHostKeyChecking=no "admin@$NODE"
         ;;
     juniper_crpd)
         ssh -o StrictHostKeyChecking=no "root@$NODE"
+        ;;
+    juniper_vjunosrouter|juniper_vjunosswitch|juniper_vmx|juniper_vsrx|juniper_cjunosevolved)
+        ssh -o StrictHostKeyChecking=no "admin@$NODE"
         ;;
     *)
         # Fallback to SSH
