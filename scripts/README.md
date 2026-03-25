@@ -16,7 +16,7 @@
 
 ### 2. 設定管理
 - **`clab-fetch-configs`**: 稼働中のノードから設定（running-config）を取得し、`save/` ディレクトリに保存します。
-- **`clab-generate-startup-configs`**: 保存された設定を `startup-configs/` にコピーし、次回のラボ起動時に反映されるようにします。
+- **`clab-generate-startup-configs`**: 保存された設定を、clab.yml の `startup-config` に定義されたパスへコピーし、次回のラボ起動時に反映されるようにします。ノードに `startup-config` が未定義の場合は `startup-configs/` をデフォルトパスとして使用します。
 
 ### 3. テスト・検証
 - **`clab-test-run`**: `test.yml` に定義されたテストケースを再帰的に実行し、結果をレポートします。
@@ -27,7 +27,6 @@
   - **使い方**: `./scripts/pcap.sh <ホスト名> <コンテナ名> <インターフェース名>`
   - **例**: `./scripts/pcap.sh clab-host RT-L-X-01 eth1`
 
-- **`clab-bridge-create` / `delete`**: `clab.yml` に定義されたブリッジノードに対応する Linux ブリッジを OS 上に作成・削除します。
 - **`clab-env-source`**: `.env` ファイルから環境変数を読み込みます。
   - **使い方**: `source scripts/clab-env-source`
 
