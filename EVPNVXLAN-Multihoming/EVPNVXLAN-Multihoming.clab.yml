@@ -1,8 +1,6 @@
 name: EVPNVXLAN-Multihoming
 prefix: ''
 
-# L3VNIが上手く使われてなさそうな気がするのとDUPがめっちゃ起こる
-
 topology:
 
   defaults:
@@ -10,12 +8,12 @@ topology:
 
   kinds:
     linux:
-      image: frrouting/frr:v8.4.1
+      image: ghcr.io/nagayon-935/network-images/frr:10.5.1
       binds:
         - config/daemons:/etc/frr/daemons
         - config/vtysh.conf:/etc/frr/vtysh.conf
     arista_ceos:
-      image: ceos:4.34.1F
+      image: ghcr.io/nagayon-935/network-images/ceos:4.34.1F
       env:
         CLAB_MGMT_VRF: MGMT
 
@@ -23,18 +21,12 @@ topology:
 
     ### SPINE ###
     RT-S-01:
-      binds:
-        - config/RT-S-01.conf:/etc/frr/frr.conf
-      exec:
-        - ip route del default
-        - ip addr del 127.0.0.1/8 dev lo
+      kind: arista_ceos
+      startup-config: config/RT-S-01.conf
 
     RT-S-02:
-      binds:
-        - config/RT-S-02.conf:/etc/frr/frr.conf
-      exec:
-        - ip route del default
-        - ip addr del 127.0.0.1/8 dev lo
+      kind: arista_ceos
+      startup-config: config/RT-S-02.conf
 
     ### LEAF ###
     RT-L-01:
@@ -51,23 +43,8 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
-        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
-        - ip link add l3vni-3000 type vrf table 3000
-        - ip link set up l3vni-3000
-        - ip link add br3000 type bridge
-        - ip link set br3000 master l3vni-3000 addrgenmode none
-        - ip link set br3000 mtu 9500
-        - ip link set br3000 addr aa:bb:cc:10:30:21
-        - ip link add vni3000 type vxlan local 10.1.254.23 dstport 4789 id 3000
-          nolearning
-        - ip link set vni3000 mtu 9500
-        - ip link set vni3000 master br3000 addrgenmode none
-        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
-        - ip link set up br3000
-        - ip link set up vni3000
         ### l2vni 1010 ###
-        - ip link add br10 type bridge
-        - ip link set br10 master l3vni-3000
+        - ip link add br10 type bridge vlan_filtering 1
         - ip link set br10 mtu 9500
         - ip link set br10 addr aa:bb:cc:10:12:23
         - ip link add vni1010 type vxlan local 10.1.254.23 dstport 4789 id 1010
@@ -77,7 +54,6 @@ topology:
         - ip link set vni1010 type bridge_slave neigh_suppress on learning off
         - ip link set vni1010 up
         - ip link set up br10
-        - ip link set br10 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.10 type vlan id 10
         - ip link set eth3.10 master br10
         - ip link set up eth3.10
@@ -88,21 +64,8 @@ topology:
       exec:
         - ip route del default
         - ip addr del 127.0.0.1/8 dev lo
-        ### ip-vrf vrf-l3vni-3000 L3vni 3000 ###
-        - ip link add br3000 type bridge
-        - ip link add l3vni-3000 type vrf table 3000
-        - ip link set br3000 mtu 9500
-        - ip link set br3000 addr aa:bb:cc:10:30:24
-        - ip link add vni3000 type vxlan local 10.1.254.24 dstport 4789 id 3000
-          nolearning
-        - ip link set vni3000 mtu 9500
-        - ip link set vni3000 master br3000 addrgenmode none
-        - ip link set vni3000 type bridge_slave neigh_suppress on learning off
-        - ip link set up br3000
-        - ip link set up vni3000
         ### l2vni 1020 ###
-        - ip link add br20 type bridge
-        - ip link set br20 master l3vni-3000
+        - ip link add br20 type bridge vlan_filtering 1
         - ip link set br20 mtu 9500
         - ip link set br20 addr aa:bb:cc:10:12:24
         - ip link add vni1020 type vxlan local 10.1.254.24 dstport 4789 id 1020
@@ -112,7 +75,6 @@ topology:
         - ip link set vni1020 type bridge_slave neigh_suppress on learning off
         - ip link set vni1020 up
         - ip link set up br20
-        - ip link set br20 type bridge vlan_filtering 1
         - ip link add link eth3 name eth3.20 type vlan id 20
         - ip link set eth3.20 master br20
         - ip link set up eth3.20
