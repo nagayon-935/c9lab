@@ -1,6 +1,7 @@
 {
   "freeTextAnnotations": [],
   "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
   "groupStyleAnnotations": [],
   "networkNodeAnnotations": [],
   "nodeAnnotations": [
@@ -8,87 +9,87 @@
       "id": "RT-01",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 119,
-        "y": -7
+        "x": 80,
+        "y": -60
       }
     },
     {
       "id": "RT-02",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 203,
-        "y": -7
+        "x": 220,
+        "y": -60
       }
     },
     {
       "id": "RT-03",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 287,
-        "y": -7
+        "x": 360,
+        "y": -60
       }
     },
     {
       "id": "RT-04",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 119,
-        "y": 63
+        "x": 80,
+        "y": 80
       }
     },
     {
       "id": "RT-05",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 203,
-        "y": 63
+        "x": 220,
+        "y": 80
       }
     },
     {
       "id": "RT-06",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 287,
-        "y": 63
+        "x": 360,
+        "y": 80
       }
     },
     {
       "id": "RT-07",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 119,
-        "y": 133
+        "x": 80,
+        "y": 200
       }
     },
     {
       "id": "RT-08",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 203,
-        "y": 133
+        "x": 220,
+        "y": 200
       }
     },
     {
       "id": "RT-09",
       "interfacePattern": "Gi0-0-0-{n}",
       "position": {
-        "x": 287,
-        "y": 133
+        "x": 360,
+        "y": 200
       }
     },
     {
       "id": "SV-01",
       "position": {
-        "x": 35,
-        "y": 133
+        "x": -60,
+        "y": 200
       },
       "icon": "client"
     },
     {
       "id": "SV-02",
       "position": {
-        "x": 371,
-        "y": 133
+        "x": 500,
+        "y": 200
       },
       "icon": "client"
     },
