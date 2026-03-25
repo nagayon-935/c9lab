@@ -37,7 +37,29 @@ RT-07 には、RT-09 (9:9:9::9) を宛先とする SR-TE ポリシー (`DRAW_J57
 このポリシーは明示的なセグメントリスト (`DRAW_J57_LIST`) を使用し、以下の順序でトポロジーを通過します。
 `RT-08 -> RT-05 -> RT-04 -> RT-01 -> RT-02 -> RT-03 -> RT-06 -> RT-09`
 
-### 使用されている SRv6 機能 (Behavior)
+## 設定と機能の対応
+
+各設定ファイルにおける、SRv6 および SR-TE に関連する主な設定箇所は以下の通りです。
+
+### 1. SRv6 基本設定 (全ノード共通)
+SRv6 を有効化し、ノードごとの Locator (SID 空間) を定義します。
+- **Locator の定義**: `segment-routing srv6 locators`
+- **IGP での広告**: `router isis 1 address-family ipv6 unicast segment-routing srv6`
+- **カプセル化ソース**: `segment-routing srv6 encapsulation source-address`
+
+### 2. L3VPN over SRv6 (PE ノード: RT-07, RT-09)
+BGP VPNv4 を使用して、SRv6 カプセル化による L3VPN を実現します。
+- **BGP での SRv6 有効化**: `router bgp 65100 neighbor ... address-family vpnv4 unicast encapsulation-type srv6`
+- **VRF への Locator 割り当て**: `router bgp 65100 vrf NETCON address-family ipv4 unicast segment-routing srv6 locator J57`
+- **SID 割り当てモード**: `alloc mode per-vrf` (VRF ごとに 1 つの SID を使用)
+
+### 3. SR-TE (ヘッドエンドノード: RT-07)
+明示的なパスを指定するためのトラフィックエンジニアリング設定です。
+- **パスの定義 (Segment List)**: `segment-routing traffic-eng segment-lists segment-list DRAW_J57_LIST`
+- **ポリシーの定義**: `segment-routing traffic-eng policy DRAW_J57_POLICY`
+- **Binding SID の動作**: `behavior ub6-insert-reduced` (SRH を挿入してパケットをステアリング)
+
+## 必要要件
 
 このトポロジーでは、以下の SRv6 Behavior が使用されています。
 
