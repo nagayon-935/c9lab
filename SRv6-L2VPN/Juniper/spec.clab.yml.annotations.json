@@ -1,6 +1,7 @@
 {
   "freeTextAnnotations": [],
   "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
   "groupStyleAnnotations": [],
   "networkNodeAnnotations": [],
   "nodeAnnotations": [
@@ -50,15 +51,15 @@
     {
       "id": "ce2",
       "position": {
-        "x": 840,
-        "y": 280
+        "x": 260,
+        "y": 380
       }
     },
     {
       "id": "ce3",
       "position": {
-        "x": 800,
-        "y": 380
+        "x": 840,
+        "y": 280
       }
     },
     {
