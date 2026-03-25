@@ -4,7 +4,8 @@ Cisco XRD を使用した SRv6 L2VPN (EVPN-VPWS) の検証用環境です。
 
 ## 構成
 
-- PE: Cisco XRD (RT-01, RT-02, RT-03)
+- PE: Cisco XRD (RT-01, RT-03)
+- P (Route Reflector): Cisco XRD (RT-02)
 - CE: Cisco XRD (RT-CE-01, RT-CE-02)
 
 ## トポロジー図
