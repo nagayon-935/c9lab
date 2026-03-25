@@ -5,9 +5,6 @@ topology:
     juniper_vjunosrouter:
       memory: 5GiB
       cpu: 2
-      qemu-args: "-cpu host"
-    arista_ceos:
-      memory: 1GiB
 
   nodes:
     pe1:
@@ -23,8 +20,8 @@ topology:
       image: ghcr.io/nagayon-935/network-images/juniper_vjunos_router:25.2R1.9
       startup-config: ./config/pe3-init.cfg
     p1:
-      kind: juniper_vjunosrouter
-      image: ghcr.io/nagayon-935/network-images/juniper_vjunos_router:25.2R1.9
+      kind: arista_ceos
+      image: ghcr.io/nagayon-935/network-images/ceos:4.34.1F
       startup-config: ./config/p1-init.cfg
     ce1:
       kind: arista_ceos
