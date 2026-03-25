@@ -58,6 +58,46 @@
         "x": 780,
         "y": 320
       }
+    },
+    {
+      "id": "PE-01",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 260,
+        "y": 320
+      }
+    },
+    {
+      "id": "P-01",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 420,
+        "y": 320
+      }
+    },
+    {
+      "id": "PE-02",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 580,
+        "y": 320
+      }
+    },
+    {
+      "id": "CE-01",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 100,
+        "y": 320
+      }
+    },
+    {
+      "id": "CE-02",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 740,
+        "y": 320
+      }
     }
   ],
   "edgeAnnotations": [],
