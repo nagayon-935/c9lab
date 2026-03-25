@@ -21,6 +21,15 @@ Cisco XRD を使用した SRv6 L2VPN (EVPN-VPWS) の検証用環境です。
 - **Endpoint Behavior**: 
     - `End.DX2`: L2VPWS の終端に使用。
 
+## SRv6 設定の解説
+
+本構成では、Cisco IOS-XR における標準的な SRv6 uSID (micro-segment) 設定を採用しています。
+
+1.  **uSID 形式の定義**: `segment-routing srv6` 配下で `format usid-f3216` を指定し、32bit のブロックと 16bit の ID を持つ uSID 形式を使用します。
+2.  **Locator の設定**: 各 PE に `locator J57` を定義し、`micro-segment behavior unode psp-usd` を指定することで、uSID ベースのパケット転送を有効にしています。
+3.  **IGP (ISIS) での広報**: `router isis` 内で `segment-routing srv6` を有効にし、定義した Locator を IGP でアドバタイズします。これにより、各ノードが他のノードの SID への経路を学習します。
+4.  **L2VPN (EVPN) との統合**: `l2vpn xconnect` 設定において `segment-routing srv6` を指定することで、従来の MPLS ではなく SRv6 カプセル化を使用して L2 フレームを転送します。
+
 ## 確認用コマンド集
 
 デプロイ後に以下のコマンドで状態を確認できます。（※これらのコマンドはAIによって生成されたため、実際の挙動と異なる可能性があります。内容の正確性は保証されません）
