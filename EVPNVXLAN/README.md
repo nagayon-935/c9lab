@@ -21,6 +21,36 @@ Zennの記事
 
 以上のような構成で行う。Data Centerは X Site と Y Site を用意し、それぞれわかるように命名をしている。
 
+## 技術スタック・ネットワーク構成詳細
+
+本ラボ構成では、以下の技術およびアーキテクチャを採用しています。
+
+### インフラストラクチャ
+- **プラットフォーム**: [containerlab](https://containerlab.dev/)
+- **ネットワークOS**: [FRR (Free Range Routing)](https://frrouting.org/) v10.5.1
+
+### ネットワーク構成 (Underlay / Overlay)
+- **物理トポロジ**: 各サイト内は 3-stage Clos (Spine-Leaf) 構成。
+- **Underlay**: 
+  - **BGP Unnumbered**: IPv6 Link-Localアドレスを利用したEBGPピアリング (RFC 5549)。
+  - **ECMP**: Spine-Leaf間のマルチパス通信による負荷分散。
+- **Control Plane (Overlay)**: 
+  - **BGP EVPN**: Type-2 (MAC/IP), Type-3 (IMET), Type-5 (IP Prefix) ルートの広告。
+  - **Multi-AS**: 各LeafおよびBGWに個別のAS番号を割り当てたEBGP構成。
+- **Data Plane (Overlay)**: 
+  - **VXLAN**: VTEP間でのカプセル化（標準UDP 4789ポート）。
+
+### マルチテナント・マルチサイト
+- **L3 Multi-Tenancy**: 
+  - **VRF**: テナント分離のための仮想ルーティング（VRF `l3vni-3000`）。
+  - **Symmetric IRB**: L3VNI (VNI 3000) を使用したサイト内・サイト間のルーティング。
+- **L2 Extension**: 
+  - **L2VNI**: 同一セグメントをサイト間で延伸（VNI 1010, 1020）。
+- **Anycast Gateway**: 各Leafで共通のIP/MACアドレスを保持し、ホストのデフォルトゲートウェイとして機能。
+- **Multi-Site (DCI)**: 
+  - **Border Gateway (BGW)**: サイト間のEVPNルート交換およびVXLANトラフィックの終端・転送を担当。
+  - **DCI (Data Center Interconnect)**: BGW間を中継する外部ネットワーク。
+
 # EVPN/VXLAN トポロジ情報
 
 本構成は、マルチサイト対応のEVPN/VXLANネットワークであり、各Leafに一意のASNを割り当て、Route Server経由でEVPNルートを交換します。BGWにはVTEPが設定され、VXLANトンネルを通じてサイト間L2/L3通信を可能にしています。
