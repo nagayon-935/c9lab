@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1653" height="1586" viewBox="-5 -5 1653 1586"><defs>
+<filter id="text-shadow" x="-50%" y="-50%" width="200%" height="200%">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur"/>
+  <feFlood flood-color="#3C3E41" result="color"/>
+  <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+  <feMerge>
+    <feMergeNode in="shadow"/>
+    <feMergeNode in="SourceGraphic"/>
+  </feMerge>
+</filter>
+</defs><g transform="translate(872.9374895825943, -274.3510200533151) scale(1.6690761620259829)"><g class="export-edge" data-id="Clab-Link0"><path d="M -465 540 L -375 420" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-454.2" cy="525.6" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-454.2" y="525.6" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g><g class="edge-label"><circle cx="-385.8" cy="434.4" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-385.8" y="434.4" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g></g><g class="export-edge" data-id="Clab-Link1"><path d="M -460 553.0434782608696 L -40 406.95652173913044" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-442.9990576592891" cy="547.1301070119267" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-442.9990576592891" y="547.1301070119267" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">2</text></g><g class="edge-label"><circle cx="-57.000942340710864" cy="412.86989298807333" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-57.000942340710864" y="412.86989298807333" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g></g><g class="export-edge" data-id="Clab-Link2"><path d="M -272.5 540 L -347.5 420" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-282.03998092005725" cy="524.7360305279084" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-282.03998092005725" y="524.7360305279084" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g><g class="edge-label"><circle cx="-337.96001907994275" cy="435.26396947209156" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-337.96001907994275" y="435.26396947209156" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">2</text></g></g><g class="export-edge" data-id="Clab-Link3"><path d="M -240 546.6666666666666 L -40 413.3333333333333" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-225.0230947019188" cy="536.6820631346125" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-225.0230947019188" y="536.6820631346125" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">2</text></g><g class="edge-label"><circle cx="-54.976905298081185" cy="423.3179368653874" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-54.976905298081185" y="423.3179368653874" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">2</text></g></g><g class="export-edge" data-id="Clab-Link4"><path d="M -140 546.6666666666666 L -340 413.3333333333333" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-154.9769052980812" cy="536.6820631346125" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-154.9769052980812" y="536.6820631346125" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g><g class="edge-label"><circle cx="-325.0230947019188" cy="423.3179368653874" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-325.0230947019188" y="423.3179368653874" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">3</text></g></g><g class="export-edge" data-id="Clab-Link5"><path d="M -107.5 540 L -32.5 420" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-97.96001907994275" cy="524.7360305279084" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-97.96001907994275" y="524.7360305279084" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">2</text></g><g class="edge-label"><circle cx="-42.03998092005724" cy="435.26396947209156" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-42.03998092005724" y="435.26396947209156" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">3</text></g></g><g class="export-edge" data-id="Clab-Link6"><path d="M 60 552.7272727272727 L -340 407.27272727272725" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="43.083718377208136" cy="546.5758975917121" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="43.083718377208136" y="546.5758975917121" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g><g class="edge-label"><circle cx="-323.08371837720813" cy="413.4241024082879" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-323.08371837720813" y="413.4241024082879" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">4</text></g></g><g class="export-edge" data-id="Clab-Link7"><path d="M 67.5 540 L -7.5 420" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="57.96001907994276" cy="524.7360305279084" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="57.96001907994276" y="524.7360305279084" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">2</text></g><g class="edge-label"><circle cx="2.039980920057239" cy="435.26396947209156" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="2.039980920057239" y="435.26396947209156" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">4</text></g></g><g class="export-edge" data-id="Clab-Link8"><path d="M -291.42857142857144 280 L -348.57142857142856 380" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-300.35907231899444" cy="295.6283765582403" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-300.35907231899444" y="295.6283765582403" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g><g class="edge-label"><circle cx="-339.64092768100556" cy="364.3716234417597" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-339.64092768100556" y="364.3716234417597" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">5</text></g></g><g class="export-edge" data-id="Clab-Link9"><path d="M -260 270.7692307692308 L -40 389.2307692307692" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-244.15152020140084" cy="279.3030275838611" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-244.15152020140084" y="279.3030275838611" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">2</text></g><g class="edge-label"><circle cx="-55.84847979859916" cy="380.6969724161389" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-55.84847979859916" y="380.6969724161389" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">5</text></g></g><g class="export-edge" data-id="Clab-Link10"><path d="M -100 270 L -340 390" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-116.09968943799848" cy="278.0498447189992" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-116.09968943799848" y="278.0498447189992" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g><g class="edge-label"><circle cx="-323.9003105620015" cy="381.9501552810008" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-323.9003105620015" y="381.9501552810008" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">6</text></g></g><g class="export-edge" data-id="Clab-Link11"><path d="M -71.42857142857143 280 L -28.57142857142857 380" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-64.33802405414642" cy="296.54461054032504" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-64.33802405414642" y="296.54461054032504" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">2</text></g><g class="edge-label"><circle cx="-35.661975945853584" cy="363.45538945967496" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-35.661975945853584" y="363.45538945967496" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">6</text></g></g><g class="export-edge" data-id="Clab-Link12"><path d="M -380 660 L -460 580" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-392.72792206135784" cy="647.2720779386422" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-392.72792206135784" y="647.2720779386422" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g><g class="edge-label"><circle cx="-447.27207793864216" cy="592.7279220613578" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-447.27207793864216" y="592.7279220613578" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">3</text></g></g><g class="export-edge" data-id="Clab-Link13"><path d="M -343.3333333333333 660 L -276.6666666666667 580" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-331.8100141393727" cy="646.1720169672473" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-331.8100141393727" y="646.1720169672473" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">2</text></g><g class="edge-label"><circle cx="-288.1899858606273" cy="593.8279830327527" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-288.1899858606273" y="593.8279830327527" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">3</text></g></g><g class="export-edge" data-id="Clab-Link14"><path d="M -120 660 L -120 580" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="-120" cy="642" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-120" y="642" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g><g class="edge-label"><circle cx="-120" cy="598" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="-120" y="598" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">3</text></g></g><g class="export-edge" data-id="Clab-Link15"><path d="M 80 660 L 80 580" fill="none" stroke="#969799" stroke-width="2.5" opacity="0.5"/><g class="edge-label"><circle cx="80" cy="642" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="80" y="642" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">1</text></g><g class="edge-label"><circle cx="80" cy="598" r="6" fill="#bec8d2" stroke="rgba(0, 0, 0, 0.25)" stroke-width="0.7"/><text x="80" y="598" font-size="9" font-family="Helvetica, Arial, sans-serif" dominant-baseline="middle" alignment-baseline="middle" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.6" paint-order="stroke" stroke-linejoin="round">3</text></g></g><g class="export-node topology-node" data-id="RT-S-01"><g transform="rotate(0 -360 400)"><rect x="-380" y="380" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(-380, 380)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="-387.1" y="422" width="54.199999999999996" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="-360" y="431.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">RT-S-01</text></g><g class="export-node topology-node" data-id="RT-S-02"><g transform="rotate(0 -20 400)"><rect x="-40" y="380" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(-40, 380)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="-47.099999999999994" y="422" width="54.199999999999996" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="-19.999999999999996" y="431.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">RT-S-02</text></g><g class="export-node topology-node" data-id="RT-L-01"><g transform="rotate(0 -480 560)"><rect x="-500" y="540" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(-500, 540)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="-507.1" y="582" width="54.199999999999996" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="-480" y="591.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">RT-L-01</text></g><g class="export-node topology-node" data-id="RT-L-02"><g transform="rotate(0 -260 560)"><rect x="-280" y="540" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(-280, 540)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="-287.1" y="582" width="54.199999999999996" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="-260" y="591.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">RT-L-02</text></g><g class="export-node topology-node" data-id="RT-L-03"><g transform="rotate(0 -120 560)"><rect x="-140" y="540" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(-140, 540)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="-147.1" y="582" width="54.199999999999996" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="-120" y="591.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">RT-L-03</text></g><g class="export-node topology-node" data-id="RT-L-04"><g transform="rotate(0 80 560)"><rect x="60" y="540" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(60, 540)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="52.900000000000006" y="582" width="54.199999999999996" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="80" y="591.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">RT-L-04</text></g><g class="export-node topology-node" data-id="RT-GW-01"><g transform="rotate(0 -280 260)"><rect x="-300" y="240" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(-300, 240)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="-310.4" y="282" width="60.8" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="-280" y="291.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">RT-GW-01</text></g><g class="export-node topology-node" data-id="RT-GW-02"><g transform="rotate(0 -80 260)"><rect x="-100" y="240" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(-100, 240)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="-110.4" y="282" width="60.8" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="-80" y="291.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">RT-GW-02</text></g><g class="export-node topology-node" data-id="SV-01"><g transform="rotate(0 -360 680)"><rect x="-380" y="660" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(-380, 660)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="-380.5" y="702" width="41" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="-360" y="711.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">SV-01</text></g><g class="export-node topology-node" data-id="SV-02"><g transform="rotate(0 -120 680)"><rect x="-140" y="660" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(-140, 660)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="-140.5" y="702" width="41" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="-120" y="711.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">SV-02</text></g><g class="export-node topology-node" data-id="SV-03"><g transform="rotate(0 80 680)"><rect x="60" y="660" width="40" height="40" rx="4" ry="4" fill="#005aff"/><g transform="translate(60, 660)" style="color: #005aff"><g transform="scale(0.3333)">
+                        
+                        <rect height="120" width="120" fill="currentColor"/>
+                        <g>
+                            <g>
+                                <path d="M71.7,19.7V48h28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M91.2,38.5l7.5,7.6c1.3,1.3,1.3,3.1,0,4.3L91.1,58" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M20,47.8h28.4v-28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M38.8,28.3l7.6-7.5c1.3-1.3,3.1-1.3,4.3,0l7.7,7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M48,100.3V72H20" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.5,81.5L21,73.9c-1.3-1.3-1.3-3.1,0-4.3l7.6-7.7" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <g>
+                                <path d="M100,71.9H71.6v28" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M81.2,91.4l-7.6,7.5c-1.3,1.3-3.1,1.3-4.3,0l-7.7-7.6" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </g>
+                    </g></g></g><rect x="59.5" y="702" width="41" height="15" fill="rgba(0, 0, 0, 0.85)" rx="3" ry="3"/><text x="80" y="711.8" font-size="11" font-weight="500" font-family="system-ui, -apple-system, sans-serif" fill="#FFFFFF" text-anchor="middle" stroke="rgba(0, 0, 0, 0.95)" stroke-width="0.8" paint-order="stroke" stroke-linejoin="round" filter="url(#text-shadow)">SV-03</text></g></g></svg>
