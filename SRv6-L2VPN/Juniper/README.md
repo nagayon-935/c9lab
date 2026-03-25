@@ -53,7 +53,15 @@ show route table elan200.evpn.0
 
 ## デプロイ
 
-
 ```bash
 sudo containerlab deploy -t spec.clab.yml
 ```
+
+## トラブルシューティング (vJunos 起動に関して)
+
+vJunos はリソース消費が激しく、完全に起動するまで 10〜15 分程度かかることがあります。
+
+- **Health チェックが unhealthy のまま**: `docker logs <container_name>` で起動状況を確認してください。シリアルコンソールの `login:` プロンプトで停止している場合は、バックグラウンドでの初期設定に時間がかかっています。
+- **リソース要件**: ノードあたり最低 5GiB のメモリと 2 コアを推奨します。ホストマシンのメモリ不足により OOM (Out Of Memory) が発生すると、インターフェースが上がらない、またはノードがクラッシュする原因となります。
+- **KVM**: ホストで `/dev/kvm` が有効であることを確認してください。また、`spec.clab.yml` の `qemu-args: "-cpu host"` 設定により、ホストの CPU 機能をパススルーさせることで安定性が向上する場合があります。
+
