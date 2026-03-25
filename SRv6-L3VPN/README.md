@@ -4,6 +4,8 @@
 
 ## トポロジー概要
 
+![Topology](images/SRv6-TE_uSID_L3VPN.svg)
+
 このラボは 9 台の Cisco XRd ルーターと 2 台の Linux ホスト (netshoot) で構成されています。
 
 - **AS 番号**: 65100
