@@ -1,0 +1,126 @@
+---
+RT-BGW-01:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.16
+RT-BGW-02:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.12
+RT-DCI-01:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.26
+RT-DCI-02:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.23
+RT-DCI-03:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.13
+RT-L-X-01:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.4
+RT-L-X-02:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.20
+RT-L-X-03:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.15
+RT-L-X-04:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.22
+RT-L-Y-01:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.11
+RT-L-Y-02:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.19
+RT-L-Y-03:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.10
+RT-L-Y-04:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.5
+RT-S-X-01:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.3
+RT-S-X-02:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.18
+RT-S-Y-01:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.6
+RT-S-Y-02:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.7
+SV-01:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.21
+SV-02:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.24
+SV-03:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.25
+SV-04:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.17
+SV-05:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.14
+SV-06:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.8
+SV-07:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.9
+SV-08:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.2

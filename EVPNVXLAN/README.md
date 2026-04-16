@@ -48,7 +48,7 @@ Zennの記事
 - **L2 Extension**: 
   - **L2VNI**: 同一セグメントをサイト間で延伸（VNI 1010, 1020）。
 - **Anycast Gateway**: 各Leafで共通のIP/MACアドレスを保持し、ホストのデフォルトゲートウェイとして機能。
-- **VLAN-based Bridge**: 1 VNIに対して1つのLinux Bridgeを作成する標準的な構成。`evpn-learn-ip` 設定によりホスト情報を確実に収集。
+- **VLAN-based Bridge**: 1 VNIに対して1つのLinux Bridgeを作成する標準的な構成。シンプルな構成により、ホストのARP情報を自動的に収集しEVPNへ同期。
 - **Multi-Site (DCI)**: 
   - **Border Gateway (BGW)**: サイト間のEVPNルート交換およびVXLANトラフィックの終端・転送を担当。
   - **DCI (Data Center Interconnect)**: BGW間を中継する外部ネットワーク。

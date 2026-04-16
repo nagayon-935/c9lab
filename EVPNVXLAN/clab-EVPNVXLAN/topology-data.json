@@ -1,0 +1,1310 @@
+{
+  "name": "EVPNVXLAN",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-9f8d9855fb90",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICsEVwOukV3Bc0BbWvo6599VB+pyk3JzaSIF+5NhlItp","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHX6zNaNZGARb/y/p7xLhrEhL+kBT3NMwwJaq1g7/GuD"],
+  "nodes": {
+    "RT-BGW-01": {
+      "index": "0",
+      "shortname": "RT-BGW-01",
+      "longname": "RT-BGW-01",
+      "fqdn": "RT-BGW-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-BGW-01",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.16",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::10",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-BGW-01",
+        "clab-node-longname": "RT-BGW-01",
+        "clab-node-name": "RT-BGW-01",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-BGW-02": {
+      "index": "1",
+      "shortname": "RT-BGW-02",
+      "longname": "RT-BGW-02",
+      "fqdn": "RT-BGW-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-BGW-02",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.12",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::c",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-BGW-02",
+        "clab-node-longname": "RT-BGW-02",
+        "clab-node-name": "RT-BGW-02",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-DCI-01": {
+      "index": "2",
+      "shortname": "RT-DCI-01",
+      "longname": "RT-DCI-01",
+      "fqdn": "RT-DCI-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-01",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.26",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::1a",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-01",
+        "clab-node-longname": "RT-DCI-01",
+        "clab-node-name": "RT-DCI-01",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-DCI-02": {
+      "index": "3",
+      "shortname": "RT-DCI-02",
+      "longname": "RT-DCI-02",
+      "fqdn": "RT-DCI-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-02",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.23",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::17",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-02",
+        "clab-node-longname": "RT-DCI-02",
+        "clab-node-name": "RT-DCI-02",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-DCI-03": {
+      "index": "4",
+      "shortname": "RT-DCI-03",
+      "longname": "RT-DCI-03",
+      "fqdn": "RT-DCI-03.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-03",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.13",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::d",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-DCI-03",
+        "clab-node-longname": "RT-DCI-03",
+        "clab-node-name": "RT-DCI-03",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-X-01": {
+      "index": "5",
+      "shortname": "RT-L-X-01",
+      "longname": "RT-L-X-01",
+      "fqdn": "RT-L-X-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-01",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-01",
+        "clab-node-longname": "RT-L-X-01",
+        "clab-node-name": "RT-L-X-01",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-X-02": {
+      "index": "6",
+      "shortname": "RT-L-X-02",
+      "longname": "RT-L-X-02",
+      "fqdn": "RT-L-X-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-02",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.20",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::14",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-02",
+        "clab-node-longname": "RT-L-X-02",
+        "clab-node-name": "RT-L-X-02",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-X-03": {
+      "index": "7",
+      "shortname": "RT-L-X-03",
+      "longname": "RT-L-X-03",
+      "fqdn": "RT-L-X-03.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-03",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.15",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::f",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-03",
+        "clab-node-longname": "RT-L-X-03",
+        "clab-node-name": "RT-L-X-03",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-X-04": {
+      "index": "8",
+      "shortname": "RT-L-X-04",
+      "longname": "RT-L-X-04",
+      "fqdn": "RT-L-X-04.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-04",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.22",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::16",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-X-04",
+        "clab-node-longname": "RT-L-X-04",
+        "clab-node-name": "RT-L-X-04",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-Y-01": {
+      "index": "9",
+      "shortname": "RT-L-Y-01",
+      "longname": "RT-L-Y-01",
+      "fqdn": "RT-L-Y-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-01",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::b",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-01",
+        "clab-node-longname": "RT-L-Y-01",
+        "clab-node-name": "RT-L-Y-01",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-Y-02": {
+      "index": "10",
+      "shortname": "RT-L-Y-02",
+      "longname": "RT-L-Y-02",
+      "fqdn": "RT-L-Y-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-02",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.19",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::13",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-02",
+        "clab-node-longname": "RT-L-Y-02",
+        "clab-node-name": "RT-L-Y-02",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-Y-03": {
+      "index": "11",
+      "shortname": "RT-L-Y-03",
+      "longname": "RT-L-Y-03",
+      "fqdn": "RT-L-Y-03.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-03",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.10",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::a",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-03",
+        "clab-node-longname": "RT-L-Y-03",
+        "clab-node-name": "RT-L-Y-03",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-L-Y-04": {
+      "index": "12",
+      "shortname": "RT-L-Y-04",
+      "longname": "RT-L-Y-04",
+      "fqdn": "RT-L-Y-04.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-04",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-L-Y-04",
+        "clab-node-longname": "RT-L-Y-04",
+        "clab-node-name": "RT-L-Y-04",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-S-X-01": {
+      "index": "13",
+      "shortname": "RT-S-X-01",
+      "longname": "RT-S-X-01",
+      "fqdn": "RT-S-X-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-X-01",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-X-01",
+        "clab-node-longname": "RT-S-X-01",
+        "clab-node-name": "RT-S-X-01",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-S-X-02": {
+      "index": "14",
+      "shortname": "RT-S-X-02",
+      "longname": "RT-S-X-02",
+      "fqdn": "RT-S-X-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-X-02",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.18",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::12",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-X-02",
+        "clab-node-longname": "RT-S-X-02",
+        "clab-node-name": "RT-S-X-02",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-S-Y-01": {
+      "index": "15",
+      "shortname": "RT-S-Y-01",
+      "longname": "RT-S-Y-01",
+      "fqdn": "RT-S-Y-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-Y-01",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-Y-01",
+        "clab-node-longname": "RT-S-Y-01",
+        "clab-node-name": "RT-S-Y-01",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "RT-S-Y-02": {
+      "index": "16",
+      "shortname": "RT-S-Y-02",
+      "longname": "RT-S-Y-02",
+      "fqdn": "RT-S-Y-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-Y-02",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/RT-S-Y-02",
+        "clab-node-longname": "RT-S-Y-02",
+        "clab-node-name": "RT-S-Y-02",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-01": {
+      "index": "17",
+      "shortname": "SV-01",
+      "longname": "SV-01",
+      "fqdn": "SV-01.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-01",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.21",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::15",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-01",
+        "clab-node-longname": "SV-01",
+        "clab-node-name": "SV-01",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-02": {
+      "index": "18",
+      "shortname": "SV-02",
+      "longname": "SV-02",
+      "fqdn": "SV-02.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-02",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.24",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::18",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-02",
+        "clab-node-longname": "SV-02",
+        "clab-node-name": "SV-02",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-03": {
+      "index": "19",
+      "shortname": "SV-03",
+      "longname": "SV-03",
+      "fqdn": "SV-03.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-03",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.25",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::19",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-03",
+        "clab-node-longname": "SV-03",
+        "clab-node-name": "SV-03",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-04": {
+      "index": "20",
+      "shortname": "SV-04",
+      "longname": "SV-04",
+      "fqdn": "SV-04.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-04",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.17",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::11",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-04",
+        "clab-node-longname": "SV-04",
+        "clab-node-name": "SV-04",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-05": {
+      "index": "21",
+      "shortname": "SV-05",
+      "longname": "SV-05",
+      "fqdn": "SV-05.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-05",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.14",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::e",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-05",
+        "clab-node-longname": "SV-05",
+        "clab-node-name": "SV-05",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-06": {
+      "index": "22",
+      "shortname": "SV-06",
+      "longname": "SV-06",
+      "fqdn": "SV-06.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-06",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.8",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::8",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-06",
+        "clab-node-longname": "SV-06",
+        "clab-node-name": "SV-06",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-07": {
+      "index": "23",
+      "shortname": "SV-07",
+      "longname": "SV-07",
+      "fqdn": "SV-07.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-07",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.9",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::9",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-07",
+        "clab-node-longname": "SV-07",
+        "clab-node-name": "SV-07",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    },
+    "SV-08": {
+      "index": "24",
+      "shortname": "SV-08",
+      "longname": "SV-08",
+      "fqdn": "SV-08.EVPNVXLAN.io",
+      "group": "",
+      "labdir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-08",
+      "kind": "linux",
+      "image": "ghcr.io/nagayon-935/network-images/frr:10.5.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-9f8d9855fb90",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/nagayoshi/c9lab/EVPNVXLAN/clab-EVPNVXLAN/SV-08",
+        "clab-node-longname": "SV-08",
+        "clab-node-name": "SV-08",
+        "clab-node-type": "",
+        "clab-owner": "nagayoshi",
+        "clab-topo-file": "/home/nagayoshi/c9lab/EVPNVXLAN/EVPNVXLAN.clab.yml",
+        "containerlab": "EVPNVXLAN"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-DCI-01",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:20:55:ac",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-DCI-02",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:ed:0c:7e",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-DCI-01",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:55:98:f1",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-DCI-03",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:bd:50:ca",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-BGW-01",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:ee:11:5a",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-S-X-01",
+          "interface": "eth5",
+          "mac": "aa:c1:ab:62:e0:76",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-BGW-01",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:2a:cb:1e",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-S-X-02",
+          "interface": "eth5",
+          "mac": "aa:c1:ab:92:81:a0",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-BGW-02",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:58:8b:bb",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-S-Y-01",
+          "interface": "eth5",
+          "mac": "aa:c1:ab:11:0f:37",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-BGW-02",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:f6:67:47",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-S-Y-02",
+          "interface": "eth5",
+          "mac": "aa:c1:ab:3d:62:1e",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-BGW-01",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:d0:6e:98",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-DCI-02",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:06:a0:0f",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-BGW-02",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:2c:87:a3",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-DCI-03",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:fc:9e:23",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-X-01",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:cf:0e:93",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-01",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:89:af:a6",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-X-01",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:d9:c4:52",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-02",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:b7:94:23",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-X-01",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:5c:f0:27",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-03",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:09:f6:4c",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-X-01",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:8f:1b:3a",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-04",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:f9:f2:fa",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-X-02",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:e6:02:c1",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-01",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:a9:1c:a1",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-X-02",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:ce:fa:b3",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-02",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:e3:c7:1e",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-X-02",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:85:44:25",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-03",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:19:c6:b3",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-X-02",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:49:34:14",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-04",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:ee:ff:68",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SV-01",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:dc:ec:5a",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-01",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:4d:88:ae",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SV-02",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:c1:fe:09",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-02",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:c7:86:9f",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SV-03",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:1e:9f:2c",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-03",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:07:b2:0a",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SV-04",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:d6:5d:4f",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-X-04",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:32:e5:44",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-Y-01",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:35:2d:8b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-01",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:43:f2:d0",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-Y-01",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:1d:b5:28",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-02",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:72:36:fd",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-Y-01",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:8e:7a:e9",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-03",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:59:4e:d0",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-Y-01",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:25:34:90",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-04",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:e2:a9:3d",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-Y-02",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:7d:04:c6",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-01",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:bd:cf:35",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-Y-02",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:aa:34:6f",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-02",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:d4:d1:99",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-Y-02",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:0f:64:35",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-03",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:87:8d:25",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "RT-S-Y-02",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:d0:76:a2",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-04",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:ea:3e:d4",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SV-05",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:a4:60:a0",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-01",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:e5:95:3c",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SV-06",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:36:10:72",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-02",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:31:94:c7",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SV-07",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:27:dd:3b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-03",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:b0:b7:60",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "SV-08",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:de:94:db",
+          "peer": "z"
+        },
+        "z": {
+          "node": "RT-L-Y-04",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:3f:a6:96",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}
