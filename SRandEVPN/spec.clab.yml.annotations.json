@@ -1,0 +1,170 @@
+{
+  "freeTextAnnotations": [],
+  "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "leaf-01",
+      "position": {
+        "x": -280,
+        "y": 400
+      },
+      "icon": "router",
+      "interfacePattern": "e1-{n}"
+    },
+    {
+      "id": "spine-01",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": -180,
+        "y": 240
+      }
+    },
+    {
+      "id": "spine-02",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": -40,
+        "y": 240
+      }
+    },
+    {
+      "id": "p-01",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": -100,
+        "y": -180
+      }
+    },
+    {
+      "id": "pe-01",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": -100,
+        "y": -20
+      }
+    },
+    {
+      "id": "pe-02",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 80,
+        "y": -180
+      }
+    },
+    {
+      "id": "ce-01",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": -100,
+        "y": 140
+      }
+    },
+    {
+      "id": "ce-02",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": 260,
+        "y": -180
+      }
+    },
+    {
+      "id": "ce-03",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": -440,
+        "y": -180
+      }
+    },
+    {
+      "id": "sv-06",
+      "position": {
+        "x": 140,
+        "y": 520
+      }
+    },
+    {
+      "id": "sv-05",
+      "position": {
+        "x": 0,
+        "y": 520
+      }
+    },
+    {
+      "id": "sv-04",
+      "position": {
+        "x": 60,
+        "y": 520
+      }
+    },
+    {
+      "id": "sv-03",
+      "position": {
+        "x": -80,
+        "y": 520
+      }
+    },
+    {
+      "id": "sv-02",
+      "position": {
+        "x": -160,
+        "y": 520
+      }
+    },
+    {
+      "id": "sv-01",
+      "position": {
+        "x": -280,
+        "y": 520
+      }
+    },
+    {
+      "id": "leaf-04",
+      "position": {
+        "x": 100,
+        "y": 400
+      }
+    },
+    {
+      "id": "leaf-03",
+      "position": {
+        "x": -40,
+        "y": 400
+      }
+    },
+    {
+      "id": "leaf-02",
+      "position": {
+        "x": -160,
+        "y": 400
+      }
+    },
+    {
+      "id": "pe-03",
+      "interfacePattern": "Gi0-0-0-{n}",
+      "position": {
+        "x": -260,
+        "y": -180
+      }
+    },
+    {
+      "id": "sv-08",
+      "position": {
+        "x": -600,
+        "y": -180
+      }
+    },
+    {
+      "id": "sv-07",
+      "position": {
+        "x": 400,
+        "y": -180
+      }
+    }
+  ],
+  "edgeAnnotations": [],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}

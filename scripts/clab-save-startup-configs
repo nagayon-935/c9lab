@@ -1,4 +1,4 @@
-#!/usr/bin/ python3
+#!/usr/bin/env python3
 import argparse
 import glob
 import os
@@ -16,13 +16,14 @@ KIND_COMMAND = {
     "cisco_csr1000v": "terminal length 0\nshow running-config",
     "cisco_n9kv": "terminal length 0\nshow running-config",
     "cisco_iol": "terminal length 0\nshow running-config",
-    "arista_ceos": "terminal length 0\nshow running-config",
-    "juniper_crpd": "show configuration | display set | no-more",
-    "juniper_vmx": "show configuration | display set | no-more",
-    "juniper_vsrx": "show configuration | display set | no-more",
-    "juniper_vjunosrouter": "show configuration | display set | no-more",
-    "juniper_vjunosswitch": "show configuration | display set | no-more",
-    "juniper_cjunosevolved": "show configuration | display set | no-more",
+    "arista_ceos": "enable\nshow running-config | no-more",
+    "arista_veos": "enable\nshow running-config | no-more",
+    "juniper_crpd": "show configuration | no-more",
+    "juniper_vmx": "show configuration | no-more",
+    "juniper_vsrx": "show configuration | no-more",
+    "juniper_vjunosrouter": "show configuration | no-more",
+    "juniper_vjunosswitch": "show configuration | no-more",
+    "juniper_cjunosevolved": "show configuration | no-more",
 }
 
 KIND_DEFAULTS = {
@@ -32,6 +33,7 @@ KIND_DEFAULTS = {
     "cisco_n9kv": ("admin", "admin"),
     "cisco_iol": ("admin", "admin"),
     "arista_ceos": ("admin", "admin"),
+    "arista_veos": ("admin", "admin"),
     "juniper_crpd": ("root", "clab123"),
     "juniper_vmx": ("admin", "admin@123"),
     "juniper_vsrx": ("admin", "admin@123"),
@@ -55,6 +57,14 @@ def clean_output(text):
         if line.startswith("Connection to "):
             continue
         if line.startswith("Warning: Permanently added "):
+            continue
+        # Strip CLI prompts and command-echo lines produced when SSH allocates a
+        # PTY (-tt).  Arista emits lines like "leaf-01#show running-config" or
+        # "> show running-config" (bare EXEC-mode echo before enable completes).
+        stripped = line.strip()
+        if stripped.endswith("#") or stripped.endswith(">"):
+            continue
+        if stripped.startswith("> ") or stripped.startswith("# "):
             continue
         lines.append(line)
     return "\n".join(lines).rstrip() + "\n"
@@ -145,12 +155,14 @@ def main():
 
     topo_dir = os.path.dirname(topo_path)
     data = load_topology(topo_path)
-    nodes = data["topology"]["nodes"]
+    topology = data["topology"]
+    nodes = topology["nodes"]
+    default_kind = topology.get("defaults", {}).get("kind")
     ssh_args = build_ssh_args(args)
 
     failures = []
     for node, info in nodes.items():
-        kind = info.get("kind")
+        kind = info.get("kind") or default_kind
         cmd = KIND_COMMAND.get(kind)
         if not cmd:
             print(f"[skip] {node}: unsupported kind '{kind}'")

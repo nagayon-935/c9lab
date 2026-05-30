@@ -1,0 +1,153 @@
+name: SRandEVPN
+prefix: ""
+
+topology:
+
+  defaults:
+    kind: arista_ceos
+
+  kinds:
+    arista_ceos:
+      image: ghcr.io/nagayon-935/network-images/ceos:4.34.1F
+      env:
+        CLAB_MGMT_VRF: MGMT
+    cisco_xrd:
+      image: ghcr.io/nagayon-935/network-images/cisco_xrd:25.2.2-v1
+    juniper_vjunosrouter:
+      image: ghcr.io/nagayon-935/network-images/juniper_vjunos_router:25.2R1.9
+    linux:
+      image: nicolaka/netshoot:latest
+
+  nodes:
+    leaf-01:
+      kind: arista_ceos
+      startup-config: config/leaf-01.cfg
+    leaf-02:
+      startup-config: config/leaf-02.cfg
+    leaf-03:
+      startup-config: config/leaf-03.cfg
+    leaf-04:
+      startup-config: config/leaf-04.cfg
+    spine-01:
+      kind: juniper_vjunosrouter
+      startup-config: config/spine-01.cfg
+    spine-02:
+      kind: juniper_vjunosrouter
+      startup-config: config/spine-02.cfg
+    p-01:
+      kind: cisco_xrd
+      startup-config: config/p-01.cfg
+    pe-01:
+      kind: cisco_xrd
+      startup-config: config/pe-01.cfg
+    pe-02:
+      kind: cisco_xrd
+      startup-config: config/pe-02.cfg
+    pe-03:
+      kind: cisco_xrd
+      startup-config: config/pe-03.cfg
+    ce-01:
+      kind: cisco_xrd
+      startup-config: config/ce-01.cfg
+    ce-02:
+      kind: cisco_xrd
+      startup-config: config/ce-02.cfg
+    ce-03:
+      kind: cisco_xrd
+      startup-config: config/ce-03.cfg
+    sv-01:
+      kind: linux
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip addr add 192.168.0.128/24 dev eth1
+        - ip route add default via 192.168.0.254
+    sv-02:
+      kind: linux
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip addr add 192.168.0.128/24 dev eth1
+        - ip route add default via 192.168.0.254
+    sv-03:
+      kind: linux
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.1101 type vlan id 1101
+        - ip link set dev eth1.1101 up
+        - ip addr add 192.168.1.101/24 dev eth1.1101
+        - ip route add default via 192.168.1.254 dev eth1.1101
+    sv-04:
+      kind: linux
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.1102 type vlan id 1102
+        - ip link set dev eth1.1102 up
+        - ip addr add 192.168.2.102/24 dev eth1.1102
+        - ip route add default via 192.168.2.254 dev eth1.1102
+    sv-05:
+      kind: linux
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.1201 type vlan id 1201
+        - ip link set dev eth1.1201 up
+        - ip addr add 192.168.1.201/24 dev eth1.1201
+        - ip route add default via 192.168.1.254 dev eth1.1201
+    sv-06:
+      kind: linux
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.1202 type vlan id 1202
+        - ip link set dev eth1.1202 up
+        - ip addr add 192.168.2.202/24 dev eth1.1202
+        - ip route add default via 192.168.2.254 dev eth1.1202
+    sv-07:
+      kind: linux
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.1103 type vlan id 1103
+        - ip link set dev eth1.1103 up
+        - ip addr add 192.168.3.103/24 dev eth1.1103
+        - ip route add default via 192.168.3.254 dev eth1.1103
+    sv-08:
+      kind: linux
+      exec:
+        - ip route del default
+        - ip addr del 127.0.0.1/8 dev lo
+        - ip link add link eth1 name eth1.1203 type vlan id 1203
+        - ip link set dev eth1.1203 up
+        - ip addr add 192.168.3.203/24 dev eth1.1203
+        - ip route add default via 192.168.3.254 dev eth1.1203
+
+  links:
+    [
+      { endpoints: [ "pe-01:Gi0-0-0-1", "p-01:Gi0-0-0-1" ] },
+      { endpoints: [ "pe-02:Gi0-0-0-1", "p-01:Gi0-0-0-2" ] },
+      { endpoints: [ "pe-03:Gi0-0-0-1", "p-01:Gi0-0-0-3" ] },
+      { endpoints: [ "ce-02:Gi0-0-0-1", "pe-02:Gi0-0-0-2" ] },
+      { endpoints: [ "ce-03:Gi0-0-0-1", "pe-03:Gi0-0-0-2" ] },
+      { endpoints: [ "sv-08:eth1", "ce-03:Gi0-0-0-2" ] },
+      { endpoints: [ "sv-07:eth1", "ce-02:Gi0-0-0-2" ] },
+      { endpoints: [ "ce-01:Gi0-0-0-1", "pe-01:Gi0-0-0-2" ] },
+      { endpoints: [ "spine-01:eth1", "ce-01:Gi0-0-0-2" ] },
+      { endpoints: [ "spine-02:eth1", "ce-01:Gi0-0-0-3" ] },
+      { endpoints: [ "leaf-01:eth1", "spine-01:eth2" ] },
+      { endpoints: [ "leaf-02:eth1", "spine-01:eth3" ] },
+      { endpoints: [ "leaf-01:eth2", "spine-02:eth2" ] },
+      { endpoints: [ "leaf-03:eth1", "spine-01:eth4" ] },
+      { endpoints: [ "leaf-04:eth1", "spine-01:eth5" ] },
+      { endpoints: [ "leaf-02:eth2", "spine-02:eth3" ] },
+      { endpoints: [ "leaf-03:eth2", "spine-02:eth4" ] },
+      { endpoints: [ "leaf-04:eth2", "spine-02:eth5" ] },
+      { endpoints: [ "sv-01:eth1", "leaf-01:eth3" ] },
+      { endpoints: [ "sv-02:eth1", "leaf-02:eth3" ] },
+      { endpoints: [ "sv-03:eth1", "leaf-03:eth3" ] },
+      { endpoints: [ "sv-04:eth1", "leaf-04:eth3" ] },
+      { endpoints: [ "sv-05:eth1", "leaf-03:eth4" ] },
+      { endpoints: [ "sv-06:eth1", "leaf-04:eth4" ] },
+    ]
