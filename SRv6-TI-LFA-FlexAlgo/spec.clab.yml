@@ -1,0 +1,63 @@
+name: SRv6-TI-LFA-FlexAlgo
+prefix: ""
+
+# Topology:
+#
+#          [top path: IGP=10, delay=20ms/link]
+#           RT-02 ─────────── RT-03
+#          /                        \
+# CE-01 ── RT-01                  RT-06 ── CE-02
+#          \                        /
+#           RT-04 ─────────── RT-05
+#          [bottom path: IGP=20, delay=1ms/link]
+#
+# Default (Algo 0)   : RT-01 -> RT-02 -> RT-03 -> RT-06  (IGP: 30)
+# Flex-Algo 128 (delay): RT-01 -> RT-04 -> RT-05 -> RT-06  (delay: 3ms)
+# TI-LFA: top-path failure -> fast-reroute via bottom path
+
+topology:
+
+  defaults:
+    kind: cisco_xrd
+
+  kinds:
+    cisco_xrd:
+      image: ghcr.io/nagayon-935/network-images/cisco_xrd:25.2.2-v1
+    linux:
+      image: nicolaka/netshoot:latest
+
+  nodes:
+    RT-01:
+      startup-config: config/RT-01.cfg
+    RT-02:
+      startup-config: config/RT-02.cfg
+    RT-03:
+      startup-config: config/RT-03.cfg
+    RT-04:
+      startup-config: config/RT-04.cfg
+    RT-05:
+      startup-config: config/RT-05.cfg
+    RT-06:
+      startup-config: config/RT-06.cfg
+    CE-01:
+      kind: linux
+      exec:
+        - ip addr add 100.0.1.1/24 dev eth1
+        - ip route del default
+        - ip route add default via 100.0.1.254
+    CE-02:
+      kind: linux
+      exec:
+        - ip addr add 100.0.6.1/24 dev eth1
+        - ip route del default
+        - ip route add default via 100.0.6.254
+
+  links:
+    - endpoints: ["RT-01:Gi0-0-0-1", "RT-02:Gi0-0-0-1"]
+    - endpoints: ["RT-02:Gi0-0-0-2", "RT-03:Gi0-0-0-1"]
+    - endpoints: ["RT-03:Gi0-0-0-2", "RT-06:Gi0-0-0-1"]
+    - endpoints: ["RT-01:Gi0-0-0-2", "RT-04:Gi0-0-0-1"]
+    - endpoints: ["RT-04:Gi0-0-0-2", "RT-05:Gi0-0-0-1"]
+    - endpoints: ["RT-05:Gi0-0-0-2", "RT-06:Gi0-0-0-2"]
+    - endpoints: ["RT-01:Gi0-0-0-3", "CE-01:eth1"]
+    - endpoints: ["RT-06:Gi0-0-0-3", "CE-02:eth1"]
