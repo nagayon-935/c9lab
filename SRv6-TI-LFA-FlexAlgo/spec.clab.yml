@@ -51,6 +51,18 @@ topology:
         - ip addr add 100.0.6.1/24 dev eth1
         - ip route del default
         - ip route add default via 100.0.6.254
+    CE-03:
+      kind: linux
+      exec:
+        - ip addr add 100.0.11.1/24 dev eth1
+        - ip route del default
+        - ip route add default via 100.0.11.254
+    CE-04:
+      kind: linux
+      exec:
+        - ip addr add 100.0.16.1/24 dev eth1
+        - ip route del default
+        - ip route add default via 100.0.16.254
 
   links:
     - endpoints: ["RT-01:Gi0-0-0-1", "RT-02:Gi0-0-0-1"]
@@ -61,3 +73,5 @@ topology:
     - endpoints: ["RT-05:Gi0-0-0-2", "RT-06:Gi0-0-0-2"]
     - endpoints: ["RT-01:Gi0-0-0-3", "CE-01:eth1"]
     - endpoints: ["RT-06:Gi0-0-0-3", "CE-02:eth1"]
+    - endpoints: ["RT-01:Gi0-0-0-4", "CE-03:eth1"]
+    - endpoints: ["RT-06:Gi0-0-0-4", "CE-04:eth1"]
